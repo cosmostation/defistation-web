@@ -17,7 +17,7 @@ const Banner = observer((props) => {
     return (
         <div className="banner">
             <span className="bannerTitle">Binance Smart Chain</span>
-            <p className="bannerContent">Uniswap is a fully decentralized on-chain protocol for token exchange on Ethereum that uses liquidity pools instead of order books. </p>
+            <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism.</p>
         </div>
     );
 })

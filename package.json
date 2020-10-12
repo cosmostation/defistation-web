@@ -10,9 +10,12 @@
     "mobx-react": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "social-media-icons-react": "^1.1.2"
+    "social-media-icons-react": "^1.1.2",
+    "typeface-montserrat": "^1.1.13",
+    "typeface-roboto": "^1.1.13"
   },
   "scripts": {
     "start": "react-app-rewired start",

@@ -5,12 +5,17 @@ import useStores from '../../useStores';
 
 import TvlLink from './tvlLink/TvlLink';
 
+import Chart from "react-google-charts";
+
 import bscLogo from "../../assets/images/bsc_logo@2x.png";
 import bscScanLogo from "../../assets/images/bscscan_logo@2x.png";
 import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
 import cosmostationLogo from "../../assets/images/cosmostation_logo@2x.png";
 
 const TotalValue = observer((props) => {
+
+    // all, 1year, 90days
+    const [chartPeriod, setChartPeriod] = useState("all");
 
     useEffect(() => {
 
@@ -28,12 +33,58 @@ const TotalValue = observer((props) => {
                         <ul className="tvlChartCardUl">
                             <li>
                                 <span className="tvlChartCardTitle">Total Value Locked (USD) in DeFi</span>
-                                <p className="tvlValueUsd">$00.00B</p>
+                                <p className="tvlValueUsd">$10.89B</p>
+
+                                <div id="tvlGoogleChart">
+                                    <Chart
+                                    id="tvlGoogleChart"
+                                    width={'750px'}
+                                    height={'220px'}
+                                    chartType="LineChart"
+                                    loader={<div style={{ "height": "750px", "width": "220px" }}></div>}
+                                    data={[
+                                        ['x', 'TVL(USD)'],
+                                        ["Jan", 1400],
+                                        ["Feb", 1300],
+                                        ["Mar", 3510],
+                                        ["Apr", 1070],
+                                        ["May", 2480],
+                                        ["Jun", 5140],
+                                        ["Jul", 5520],
+                                        ["Aug", 8830],
+                                    ]}
+                                    options={{
+                                        backgroundColor: "#262932",
+                                        legend: "none",
+                                        hAxis: {
+                                            textStyle: {
+                                                color: '#bbbebf',
+                                            },
+                                            baselineColor: '#fff',
+                                            gridlineColor: '#20232a',
+                                        },
+                                        vAxis: {
+                                            minValue: 0,
+                                            textStyle: {
+                                                color: '#bbbebf',
+                                            },
+                                            baselineColor: '#fff',
+                                            gridlineColor: '#20232a',
+                                        },
+                                        series: {
+                                        0: { curveType: 'function' },
+                                        },
+                                        colors: ['#f0b923'],
+                                        chartArea: { width: '86%', height: '75%' },
+                                    }}
+                                    rootProps={{ 'data-testid': '2' }}
+                                    />
+                                </div>    
                             </li>
                             <li>
-                                <button className="periodBtnSelected">All</button>
-                                <button className="periodBtn">1 Year</button>
-                                <button className="periodBtn">90 Day</button>
+                                <button className="periodBtnSelected" onClick={() => setChartPeriod("all")}>All</button>
+                                <button className="periodBtn" onClick={() => setChartPeriod("1year")}>1 Year</button>
+                                <button className="periodBtn" onClick={() => setChartPeriod("90days")}>90 Day</button>
                             </li>
                         </ul>
                     </div>
@@ -41,7 +92,7 @@ const TotalValue = observer((props) => {
                 <li>
                     <div className="tvlLink">
                         <TvlLink icon={bscLogo} title="Binance Smart Chain" subTitle="Crypto asset exchange" />
-                        <TvlLink icon={bscScanLogo} title="BscScan" subTitle="decentralized exchange" />
+                        <TvlLink icon={bscScanLogo} title="BscScan" subTitle="Decentralized exchange" />
                         <TvlLink icon={exchangeLogo} title="Exchange" subTitle="Crypto asset exchange" />
                         <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Token launch platform" />
                     </div>

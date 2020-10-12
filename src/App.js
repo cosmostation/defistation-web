@@ -11,6 +11,12 @@ import Banner from './components/banner/Banner';
 import DefiList from './components/defiList/DefiList';
 import Footer from './components/footer/Footer';
 
+// require('typeface-montserrat');
+import 'typeface-montserrat';
+import 'typeface-roboto';
+
+// import 
+
 import './App.css';
 
 const App = observer(() => {

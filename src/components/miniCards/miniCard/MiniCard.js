@@ -15,8 +15,8 @@ const MiniCard = observer((props) => {
 
     return (
         <li className="miniCardList">
-            <span className="miniCardTitle">BSC Swap Dominance</span>
-            <p className="miniCardDataNum">21.80%</p>
+            <span className="miniCardTitle">{props.title}</span>
+            <p className="miniCardDataNum">{props.dataNum}</p>
         </li>
     );
 })

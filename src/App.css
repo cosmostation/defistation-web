@@ -18,6 +18,19 @@ li {
   /* background-color: aqua; */
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  .wrapper {
+    position: absolute;
+    left: 50%;
+    border: solid 0px;
+    width: 320px;
+    height: 100%;
+    margin-left: -160px;
+    margin-top: 0px;
+    /* background-color: aqua; */
+  }
+}
+
 /* -------------------------------- topBar -------------------------------- */
 
 .topBar {
@@ -25,7 +38,7 @@ li {
   width: 100%;
   /* height: 200px; */
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -68,6 +81,20 @@ li {
   text-align: right;
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  .topBarUl li:nth-child(2) { 
+    display: none;
+  }
+  
+  .topBarUl li:nth-child(3) { 
+    display: none;
+  }
+  
+  .topBarUl li:nth-child(4) { 
+    display: none;
+  }
+}
+
 /* -------------------------------- Chart -------------------------------- */
 
 .totalValueUl {
@@ -101,6 +128,35 @@ li {
   padding: 20px;
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  #tvlGoogleChart {
+    display: none;
+  }
+
+  .tvlChartCard {
+    width: 275px;
+    height: 56px;
+    margin-bottom: 15px;
+  }
+  
+  .totalValueUl {
+    display: list-item;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+  }
+  
+  .totalValueUl li:nth-child(1) { 
+    /* width: 75%; */
+    width: 280px;
+  }
+  
+  .totalValueUl li:nth-child(2) { 
+    /* width: 25%; */
+    width: 280px;
+  }
+}
+
 /* Link Button */
 .tvlLink {
   height: 305px;
@@ -127,7 +183,8 @@ li {
 }
 
 .tvlLinkBoxUl li:nth-child(1) {
-  width: 27%;
+  /* width: 27%; */
+  width: 50px;
 }
 
 .tvlLinkBoxUl li:nth-child(2) {
@@ -138,7 +195,7 @@ li {
 
 .linkBoxTitle {
   font-family: Montserrat;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -150,7 +207,7 @@ li {
 
 .linkBoxSubTitle {
   font-family: Montserrat;
-  font-size: 12px;
+  font-size: 10.5px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -170,6 +227,16 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #757f8e;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .tvlLink {
+    width: 300px;
+  }
+
+  .tvlLinkBox {
+    width: 280px;
+  }
 }
 
 .tvlValueUsd {
@@ -197,6 +264,16 @@ li {
 .tvlChartCardUl li:nth-child(2) {
   width: 60%;
   text-align: right;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .tvlChartCardUl li:nth-child(1) {
+    width: 100%;
+  }
+  
+  .tvlChartCardUl li:nth-child(2) {
+    display: none;
+  }
 }
 
 .periodBtnSelected {
@@ -274,9 +351,9 @@ li {
 
 .miniCardDataNum {
   margin: auto 0;
-  margin-top: 4px;
+  margin-top: 8px;
   font-family: Montserrat;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -284,6 +361,17 @@ li {
   letter-spacing: normal;
   text-align: right;
   color: #ffffff;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .miniCardUl {
+    display: list-item;
+  }
+  
+  .miniCardUl li {
+    width: 285px;
+    margin-bottom: 15px;
+  }
 }
 
 /* -------------------------------- Banner -------------------------------- */
@@ -309,6 +397,7 @@ li {
   line-height: 1;
   letter-spacing: normal;
   text-align: left;
+  font-weight: 600;
   color: #f0b923;
 }
 
@@ -320,10 +409,17 @@ li {
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.6;
+  line-height: 1.65;
   letter-spacing: normal;
   text-align: left;
   color: #ffffff;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .banner {
+    width: 315px;
+    height: 130px;
+  }
 }
 
 .defiList {
@@ -336,6 +432,14 @@ li {
   padding: 15px 30px 15px 30px;
 
   box-sizing: border-box;
+  overflow: auto;
+  /* -ms-overflow-style: -ms-autohiding-scrollbar; */
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiList {
+    height: 860px;
+  }
 }
 
 .defiListTable {
@@ -388,7 +492,7 @@ li {
   width: 100%;
   height: 100px;
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
