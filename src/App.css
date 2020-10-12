@@ -351,9 +351,9 @@ li {
 
 .miniCardDataNum {
   margin: auto 0;
-  margin-top: 8px;
+  margin-top: 12px;
   font-family: Montserrat;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -451,9 +451,41 @@ li {
 }
 
 .defiListTable th, td {
-  height: 40px;
+  height: 38px;
   border-bottom: 1px solid #444444;
   padding: 10px;
+}
+
+.defiListTable th:nth-child(2) {
+  text-align: left;
+}
+
+.defiListTable td:nth-child(2) {
+  text-align: left;
+}
+
+.defiListTable th:nth-child(3) {
+  text-align: left;
+}
+
+.defiListTable td:nth-child(3) {
+  text-align: left;
+}
+
+.defiListTable th:nth-child(4) {
+  text-align: left;
+}
+
+.defiListTable td:nth-child(4) {
+  text-align: left;
+}
+
+.defiListTable th:nth-child(5) {
+  text-align: right;
+}
+
+.defiListTable th:nth-child(6) {
+  text-align: right;
 }
 
 .defiListTable td:nth-child(5) {

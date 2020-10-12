@@ -23,7 +23,7 @@ const DefiList = observer((props) => {
             <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>Rank</th><th>Name</th><th>Chain</th><th>Category</th><th>Locked(USD)</th><th>1 Days</th>
+                        <th>Rank</th><th>Name</th><th>Chain</th><th>Category</th><th>Locked(USD)</th><th>1 Day</th>
                     </tr>
                 </thead>
                 <tbody className="defiListTableBody">
@@ -37,7 +37,7 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td><img src={rankIcon2} style={{"width":"24px", marginTop:"4px"}} /></td>
-                        <td>BSC Swap</td>
+                        <td>Pancake</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>
@@ -45,15 +45,15 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td><img src={rankIcon3} style={{"width":"24px", marginTop:"4px"}} /></td>
-                        <td>BSC Swap</td>
+                        <td>Mathdapp</td>
                         <td>Binance Smart Chain</td>
-                        <td>Dex</td>
+                        <td>Lending</td>
                         <td>$0.00B</td>
                         <td>+9.99%</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>BSC Swap</td>
+                        <td>beefy</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>
@@ -61,15 +61,15 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>BSC Swap</td>
+                        <td>stakecow</td>
                         <td>Binance Smart Chain</td>
-                        <td>Dex</td>
+                        <td>Lending</td>
                         <td>$0.00B</td>
                         <td>+9.99%</td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>BSC Swap</td>
+                        <td>peachswap</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>
@@ -77,7 +77,7 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>BSC Swap</td>
+                        <td>stormswap</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>
@@ -85,15 +85,15 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td>BSC Swap</td>
+                        <td>beergarden</td>
                         <td>Binance Smart Chain</td>
-                        <td>Dex</td>
+                        <td>Derivatives</td>
                         <td>$0.00B</td>
                         <td>+9.99%</td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td>BSC Swap</td>
+                        <td>Apple Swap</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>
@@ -101,7 +101,7 @@ const DefiList = observer((props) => {
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>BSC Swap</td>
+                        <td>Boo Swap</td>
                         <td>Binance Smart Chain</td>
                         <td>Dex</td>
                         <td>$0.00B</td>

@@ -91,10 +91,10 @@ const TotalValue = observer((props) => {
                 </li>
                 <li>
                     <div className="tvlLink">
-                        <TvlLink icon={bscLogo} title="Binance Smart Chain" subTitle="Crypto asset exchange" />
-                        <TvlLink icon={bscScanLogo} title="BscScan" subTitle="Decentralized exchange" />
+                        <TvlLink icon={bscLogo} title="Binance Smart Chain" subTitle="EVM compatible PoS" />
+                        <TvlLink icon={bscScanLogo} title="BscScan" subTitle="BSC Explorer" />
                         <TvlLink icon={exchangeLogo} title="Exchange" subTitle="Crypto asset exchange" />
-                        <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Token launch platform" />
+                        <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Access DeFi" />
                     </div>
                 </li>
             </ul>
