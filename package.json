@@ -10,7 +10,9 @@
     "mobx-react": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "social-media-icons-react": "^1.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -39,7 +41,8 @@
     "@babel/plugin-proposal-decorators": "^7.10.5",
     "core-decorators": "^0.20.0",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.6"
+    "react-app-rewired": "^2.1.6",
+    "react-social-icons": "^4.1.0"
   },
   "babel": {
     "presets": [

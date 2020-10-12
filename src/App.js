@@ -1,17 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment, Suspense, useState, useEffect } from 'react';
+import { observer, inject } from 'mobx-react';
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { useHistory, useLocation } from 'react-router-dom';
+import useStores from './useStores';
+
+import TopBar from './components/topBar/TopBar';
+import TotalValue from './components/totalValue/TotalValue';
+import MiniCards from './components/miniCards/MiniCards';
+import Banner from './components/banner/Banner';
+import DefiList from './components/defiList/DefiList';
+import Footer from './components/footer/Footer';
+
 import './App.css';
 
-function App() {
+const App = observer(() => {
+  // inject 이름
+  const { global, account } = useStores();
+
+  const location = useLocation();
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log('렌더링이 완료되었습니다!');
+
+    return () => {
+      console.log('cleanup');
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          defistation 테스트
-        </p>
-      </header>
+    <div className="wrapper">
+      <TopBar />
+      <TotalValue />
+      <MiniCards />
+      <Banner />
+      <DefiList />
+      <Footer />
     </div>
   );
-}
+})
 
 export default App;

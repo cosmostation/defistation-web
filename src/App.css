@@ -1,38 +1,401 @@
-.App {
-  text-align: center;
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+  position: absolute;
+  left: 50%;
+  border: solid 0px;
+  width: 1034px;
+  height: 100%;
+  margin-left: -517px;
+  margin-top: 0px;
+  /* background-color: aqua; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* -------------------------------- topBar -------------------------------- */
+
+.topBar {
+  /* width: 1200px; */
+  width: 100%;
+  /* height: 200px; */
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.topBarUl li {
+  margin-top: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.topBarUl li img {
+  cursor: pointer;
+}
+
+.topBarUl li span {
+  cursor: pointer;
+}
+
+.topBarUl li:nth-child(1) { 
+  width: 55%;
+}
+
+.topBarUl li:nth-child(2) { 
+  width: 15%;
+  text-align: right;
+}
+
+.topBarUl li:nth-child(3) { 
+  width: 15%;
+  text-align: right;
+}
+
+.topBarUl li:nth-child(4) { 
+  width: 15%;
+  text-align: right;
+}
+
+/* -------------------------------- Chart -------------------------------- */
+
+.totalValueUl {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  /* justify-content: space-around; */
 }
 
-.App-link {
-  color: #61dafb;
+.totalValueUl li {
+  /* display: inline-block; */
+  /* display: flex; */
+  /* justify-content: space-around; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.totalValueUl li:nth-child(1) { 
+  /* width: 75%; */
+  width: 732px;
+}
+
+.totalValueUl li:nth-child(2) { 
+  /* width: 25%; */
+  width: 250px;
+}
+
+.tvlChartCard {
+  width: 100%;
+  height: 270px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding: 20px;
+}
+
+/* Link Button */
+.tvlLink {
+  height: 305px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+.tvlLinkBox {
+  margin-top: 10px;
+  width: 216px;
+  height: 60px;
+  border-radius: 5px;
+  border: solid 1px #404752;
+  background-color: #20232b;
+  cursor: pointer;
+}
+
+.tvlLinkBoxUl {
+  margin: 11px;
+  display: flex;
+}
+
+.tvlLinkBoxUl li:nth-child(1) {
+  width: 27%;
+}
+
+.tvlLinkBoxUl li:nth-child(2) {
+  width: 69%;
+  line-height: 13px;
+  margin-top: 4px;
+}
+
+.linkBoxTitle {
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.linkBoxSubTitle {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.tvlChartCardTitle {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.tvlValueUsd {
+  margin: auto 0;
+  margin-top: 10px;
+  height: 29px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.21;
+  letter-spacing: normal;
+  color: #ffffff;
+}
+
+.tvlChartCardUl {
+  display: flex;
+}
+
+.tvlChartCardUl li:nth-child(1) {
+  width: 40%;
+}
+
+.tvlChartCardUl li:nth-child(2) {
+  width: 60%;
+  text-align: right;
+}
+
+.periodBtnSelected {
+  width: 72px;
+  height: 24px;
+  border-radius: 5px;
+  background-color: #f0b923;
+  border: 0;
+  outline: 0;
+  font-family: OpenSans;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.periodBtn {
+  margin-left: 20px;
+  width: 72px;
+  height: 17px;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  color: #757f8e;
+  border: 0;
+  outline: 0;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+/* -------------------------------- MiniCard -------------------------------- */
+
+.miniCards {
+  margin-top: -3px;
+}
+
+.miniCardUl {
+  display: flex;
+  justify-content: space-between;
+}
+
+.miniCardUl li {
+  /* width: 24%; */
+  width: 220px;
+}
+
+.miniCardList {
+  padding: 15px;
+  /* width: 230px; */
+  height: 50px;
+  border-radius: 5px;
+  background-color: #262932;
+}
+
+.miniCardTitle {
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.miniCardDataNum {
+  margin: auto 0;
+  margin-top: 4px;
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ffffff;
+}
+
+/* -------------------------------- Banner -------------------------------- */
+
+.banner {
+  margin-top: -3px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 80px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.bannerTitle {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f0b923;
+}
+
+.bannerContent {
+  margin: auto 0;
+  margin-top: 8px;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.defiList {
+  margin-top: 13px;
+  width: 100%;
+  height: 720px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding: 15px 30px 15px 30px;
+
+  box-sizing: border-box;
+}
+
+.defiListTable {
+  /* padding: 15px;
+  box-sizing: border-box; */
+  width: 100%;
+  /* border-top: 1px solid #444444; */
+  border-collapse: collapse;
+}
+
+.defiListTable th, td {
+  height: 40px;
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+
+.defiListTable td:nth-child(5) {
+  text-align: right;
+}
+
+.defiListTable td:nth-child(6) {
+  text-align: right;
+}
+
+.defiListTableHead {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #757f8e;
+}
+
+.defiListTableBody {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+  text-align: right;
+  padding-top: 40px;
 }
