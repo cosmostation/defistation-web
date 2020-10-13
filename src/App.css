@@ -134,9 +134,10 @@ li {
   }
 
   .tvlChartCard {
-    width: 275px;
-    height: 56px;
+    width: 320px;
+    height: 92px;
     margin-bottom: 15px;
+    box-sizing: border-box;
   }
   
   .totalValueUl {
@@ -159,18 +160,19 @@ li {
 
 /* Link Button */
 .tvlLink {
-  height: 305px;
+  height: 310px;
   border-radius: 5px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #262932;
   padding-top: 5px;
   padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .tvlLinkBox {
   margin-top: 10px;
   width: 216px;
-  height: 60px;
+  height: 61px;
   border-radius: 5px;
   border: solid 1px #404752;
   background-color: #20232b;
@@ -231,11 +233,14 @@ li {
 
 @media (min-width:1px) and (max-width:1034px) {
   .tvlLink {
-    width: 300px;
+    width: 320px;
+    box-sizing: border-box;
   }
 
   .tvlLinkBox {
-    width: 280px;
+    width: 290px;
+    height: 62px;
+    box-sizing: border-box;
   }
 }
 
@@ -326,15 +331,16 @@ li {
 
 .miniCardUl li {
   /* width: 24%; */
-  width: 220px;
+  width: 250px;
 }
 
 .miniCardList {
   padding: 15px;
   /* width: 230px; */
-  height: 50px;
+  height: 80px;
   border-radius: 5px;
   background-color: #262932;
+  box-sizing: border-box;
 }
 
 .miniCardTitle {
@@ -369,8 +375,10 @@ li {
   }
   
   .miniCardUl li {
-    width: 285px;
+    width: 320px;
+    height: 80px;
     margin-bottom: 15px;
+    box-sizing: border-box;
   }
 }
 
@@ -417,7 +425,7 @@ li {
 
 @media (min-width:1px) and (max-width:1034px) {
   .banner {
-    width: 315px;
+    width: 320px;
     height: 130px;
   }
 }
