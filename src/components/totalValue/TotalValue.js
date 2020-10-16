@@ -33,7 +33,7 @@ const TotalValue = observer((props) => {
                         <ul className="tvlChartCardUl">
                             <li>
                                 <span className="tvlChartCardTitle">Total Value Locked (USD) in DeFi</span>
-                                <p className="tvlValueUsd">$10.89B</p>
+                                <p className="tvlValueUsd">$00.00</p>
 
                                 <div id="tvlGoogleChart">
                                     <Chart

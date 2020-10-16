@@ -7,6 +7,9 @@ li {
   list-style: none;
 }
 
+.noDrag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}
+.noDragImg {-webkit-user-drag: none;}
+
 .wrapper {
   position: absolute;
   left: 50%;
@@ -177,6 +180,10 @@ li {
   border: solid 1px #404752;
   background-color: #20232b;
   cursor: pointer;
+}
+
+.tvlLinkBox:hover {
+  background-color: #404752;
 }
 
 .tvlLinkBoxUl {
@@ -391,9 +398,17 @@ li {
   height: 80px;
   border-radius: 5px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
-  padding: 15px;
+  /* background-color: #262932; */
+  background-image: linear-gradient(to left, #1b2027, #252932);
+  padding: 20px;
   cursor: pointer;
+  overflow: hidden;
+}
+
+.banner img {
+  width: 21%;
+  margin-left: 760px;
+  margin-top: -130px;
 }
 
 .bannerTitle {
@@ -411,9 +426,9 @@ li {
 
 .bannerContent {
   margin: auto 0;
-  margin-top: 8px;
+  margin-top: 5px;
   font-family: Roboto;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -429,6 +444,8 @@ li {
     height: 130px;
   }
 }
+
+/* -------------------------------- Table -------------------------------- */
 
 .defiList {
   margin-top: 13px;
@@ -458,9 +475,17 @@ li {
   border-collapse: collapse;
 }
 
+.defiListTable tbody tr {
+  cursor: pointer;
+}
+
+.defiListTable tbody tr:hover {
+  background-color: #404752;
+}
+
 .defiListTable th, td {
   height: 38px;
-  border-bottom: 1px solid #444444;
+  border-bottom: 1px solid #404752;
   padding: 10px;
 }
 
@@ -528,6 +553,30 @@ li {
   color: #ffffff;
 }
 
+.textGreen {
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #37cc6e;
+}
+
+.textRed {
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ff2745;
+}
+
+/* -------------------------------- Footer -------------------------------- */
+
 .footer {
   width: 100%;
   height: 100px;
@@ -542,4 +591,43 @@ li {
   color: #757f8e;
   text-align: right;
   padding-top: 40px;
+}
+
+/* -------------------------------- Detail Page -------------------------------- */
+
+.navBox {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.navHome {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+  cursor: pointer;
+}
+
+.navDefiName {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f0b923;
 }

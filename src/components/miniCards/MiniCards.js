@@ -19,14 +19,10 @@ const MiniCards = observer((props) => {
     return (
         <div className="miniCards">
             <ul className="miniCardUl">
-                {/* <li className="miniCardList">
-                    <span className="miniCardTitle">Uniswap Dominance</span>
-                    <p className="miniCardDataNum">21.80%</p>
-                </li> */}
-                <MiniCard title="Total Value Locked (USD)" dataNum="$10.89B" />
-                <MiniCard title="BSC Swap Dominance" dataNum="21.80%" />
-                <MiniCard title="Total BNB Locked" dataNum="918,281" symbol="BNB" />
-                <MiniCard title="TVL 1 Day (%)" dataNum="+27.72%" />
+                <MiniCard title="Total Value Locked (USD)" dataNum="$00.00B" />
+                <MiniCard title="Total BNB Locked" dataNum="0" symbol="BNB" />
+                <MiniCard title="Project" dataNum="3" />
+                <MiniCard title="TVL 1 Day (%)" dataNum="+00.00%" />
             </ul>
         </div>
     );

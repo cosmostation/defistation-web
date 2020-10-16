@@ -5,6 +5,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import '../../App.css';
 
+import binanceImg1 from "../../assets/images/binance_img@2x.png";
+
 const Banner = observer((props) => {
 
     useEffect(() => {
@@ -15,9 +17,10 @@ const Banner = observer((props) => {
     }, [])
 
     return (
-        <div className="banner">
+        <div className="banner" onClick={() => window.open("https://www.binance.org/en/smartChain", "_blank")}>
             <span className="bannerTitle">Binance Smart Chain</span>
             <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism.</p>
+            <img className="noDragImg" src={binanceImg1} />
         </div>
     );
 })

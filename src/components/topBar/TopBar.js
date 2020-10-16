@@ -46,6 +46,13 @@ import defistationLogo from "../../assets/images/defistation_logo@2x.png";
 
 const TopBar = observer((props) => {
 
+    const location = useLocation();
+    const history = useHistory();
+
+    function movePage(path) {
+        history.push(path);
+    }
+
     useEffect(() => {
 
         return () => {
@@ -58,7 +65,7 @@ const TopBar = observer((props) => {
         <div className="topBar">
             <ul className="topBarUl">
                 <li>
-                    <img src={defistationLogo} style={{"width":"260px"}} />
+                    <img src={defistationLogo} style={{"width":"260px"}} onClick={() => movePage("/")} />
                 </li>
                 <li><span>About</span></li>
                 <li><span>The DeFi List</span></li>
