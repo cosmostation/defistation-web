@@ -3,6 +3,8 @@ import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useStores from '../../useStores';
 
+import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
+
 import TvlLink from './tvlLink/TvlLink';
 
 import Chart from "react-google-charts";
@@ -32,7 +34,7 @@ const TotalValue = observer((props) => {
                     <div className="tvlChartCard">
                         <ul className="tvlChartCardUl">
                             <li>
-                                <span className="tvlChartCardTitle">Total Value Locked (USD) in DeFi</span>
+                                <span className="tvlChartCardTitle">Total Value Locked (USD) in {props.defiName}</span>
                                 <p className="tvlValueUsd">$00.00</p>
 
                                 <div id="tvlGoogleChart">
@@ -90,11 +92,30 @@ const TotalValue = observer((props) => {
                     </div>
                 </li>
                 <li>
-                    <div className="tvlLink">
+                    {/* Home */}
+                    <div className="tvlLink" style={props.defiName == "DeFi" ? undefined : { display: "none" } }>
                         <TvlLink icon={bscLogo} title="Binance Smart Chain" subTitle="EVM compatible PoS" />
                         <TvlLink icon={bscScanLogo} title="BscScan" subTitle="BSC Explorer" />
                         <TvlLink icon={exchangeLogo} title="Exchange" subTitle="Crypto asset exchange" />
                         <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Access DeFi" />
+                    </div>
+                    <div className="tvlLink" style={props.defiName == "DeFi" ? { display: "none" } : undefined }>
+                        <TvlLink icon={bscLogo} title={props.defiName} subTitle="EVM compatible PoS" />
+                        {/* pancake */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "pancake" ? undefined : { display: "none" } }>
+                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
+                            <span>Daistats</span><br />
+                            <span>Daistats</span><br />
+                            <span>Daistats</span><br />
+                            <span>Daistats</span><br />
+                            <span>Daistats</span><br />
+                        </div>
+                        {/* bscswap */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "bscswap" ? undefined : { display: "none" } }>
+                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
+                            <span>Daistats</span><br />
+                        </div>
+
                     </div>
                 </li>
             </ul>

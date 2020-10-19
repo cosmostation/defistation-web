@@ -183,7 +183,7 @@ li {
 }
 
 .tvlLinkBox:hover {
-  background-color: #404752;
+  background-color: #252932;
 }
 
 .tvlLinkBoxUl {
@@ -270,11 +270,11 @@ li {
 }
 
 .tvlChartCardUl li:nth-child(1) {
-  width: 40%;
+  width: 55%;
 }
 
 .tvlChartCardUl li:nth-child(2) {
-  width: 60%;
+  width: 45%;
   text-align: right;
 }
 
@@ -445,12 +445,12 @@ li {
   }
 }
 
-/* -------------------------------- Table -------------------------------- */
+/* -------------------------------- Main Table -------------------------------- */
 
 .defiList {
   margin-top: 13px;
   width: 100%;
-  height: 720px;
+  /* height: 720px; */
   border-radius: 5px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #262932;
@@ -463,7 +463,7 @@ li {
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiList {
-    height: 860px;
+    /* height: 860px; */
   }
 }
 
@@ -480,7 +480,7 @@ li {
 }
 
 .defiListTable tbody tr:hover {
-  background-color: #404752;
+  background-color: #1f232b;
 }
 
 .defiListTable th, td {
@@ -617,7 +617,6 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #757f8e;
-  cursor: pointer;
 }
 
 .navDefiName {
@@ -630,4 +629,201 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #f0b923;
+}
+
+.defiDetailPageLink {
+  line-height: 1.8;
+}
+
+.defiDetailPageLink span {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.defiDetailPageLink span:hover {
+  text-decoration: underline;
+}
+
+.ecoSystemLinkTitle {
+  margin-top: 25px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+
+.defiOverview {
+  margin-top: -3px;
+  width: 100%;
+  /* height: 262px; */
+  opacity: 0.8;
+  border-radius: 5px;
+  background-color: #1a1d22;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.defiOverviewTitle {
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.defiOverviewContent {
+  opacity: 1;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #9aa0a8;
+}
+
+/* -------------------------------- Not Found -------------------------------- */
+
+.notFound {
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: center;
+  color: #636363;
+  display: none;
+}
+
+/* -------------------------------- defiDetailList Table -------------------------------- */
+
+.defiDetailList {
+  margin-top: 13px;
+  width: 100%;
+  /* height: 720px; */
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding: 15px 30px 15px 30px;
+
+  box-sizing: border-box;
+  overflow: auto;
+  /* -ms-overflow-style: -ms-autohiding-scrollbar; */
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiDetailList {
+    /* height: 860px; */
+  }
+}
+
+.defiDetailListTable {
+  /* padding: 15px;
+  box-sizing: border-box; */
+  width: 100%;
+  /* border-top: 1px solid #444444; */
+  border-collapse: collapse;
+}
+
+/* .defiDetailListTable tbody tr {
+  cursor: pointer;
+}
+
+.defiDetailListTable tbody tr:hover {
+  background-color: #1f232b;
+} */
+
+.defiDetailListTable th, td {
+  height: 38px;
+  border-bottom: 1px solid #404752;
+  padding: 10px;
+}
+
+.defiDetailListTable th:nth-child(1) {
+  text-align: left;
+}
+
+.defiDetailListTable th:nth-child(2) {
+  text-align: left;
+}
+
+.defiDetailListTable td:nth-child(2) {
+  text-align: right;
+}
+
+.defiDetailListTable th:nth-child(3) {
+  text-align: right;
+}
+
+.defiDetailListTable th:nth-child(4) {
+  text-align: right;
+}
+
+.defiDetailListTable th:nth-child(5) {
+  text-align: right;
+}
+
+.defiDetailListTable td:nth-child(1) {
+  text-align: left;
+}
+
+.defiDetailListTable td:nth-child(2) {
+  text-align: right;
+}
+
+.defiDetailListTable td:nth-child(3) {
+  text-align: right;
+}
+
+.defiDetailListTable td:nth-child(4) {
+  text-align: right;
+}
+
+.defiDetailListTable td:nth-child(5) {
+  text-align: right;
+}
+
+.defiDetailListTableHead {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #757f8e;
+}
+
+.defiDetailListTableBody {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }

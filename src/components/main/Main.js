@@ -23,8 +23,8 @@ const Main = observer(() => {
     return (
         <div className="wrapper">
             <TopBar />
-            <TotalValue />
-            <MiniCards />
+            <TotalValue defiName="DeFi" />
+            <MiniCards defiName="DeFi" />
             <Banner />
             <DefiList />
             <Footer />

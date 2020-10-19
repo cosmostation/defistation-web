@@ -44,8 +44,8 @@ const App = observer(() => {
                     <Route exact path="/" component={Main} />
                     <Route path="/:defiName" component={DefiDetail} />
                     {/* <Route path="/about" component={About} />
-          <Route path="/defilist" component={Defilist} />
-          <Route path="/apply" component={Apply} /> */}
+                    <Route path="/defilist" component={Defilist} />
+                    <Route path="/apply" component={Apply} /> */}
                 </Switch>
             </Suspense>
         </>
