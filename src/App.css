@@ -704,16 +704,16 @@ li {
 /* -------------------------------- Not Found -------------------------------- */
 
 .notFound {
+  margin-top: 50px;
   font-family: Montserrat;
-  font-size: 30px;
+  font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.22;
   letter-spacing: normal;
   text-align: center;
-  color: #636363;
-  display: none;
+  color: #4e4e4e;
 }
 
 /* -------------------------------- defiDetailList Table -------------------------------- */

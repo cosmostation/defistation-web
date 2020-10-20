@@ -38,7 +38,7 @@ const ConnectBtn = observer((props) => {
     }, [])
 
     return (
-        <div className="tvlLinkBox">
+        <div className="tvlLinkBox" onClick={() => window.open(props.goPage, "_blank")}>
             <ul className="tvlLinkBoxUl">
                 <li>
                     <img src={props.icon} width="38px" />

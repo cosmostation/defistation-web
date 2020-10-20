@@ -176,9 +176,9 @@ const DefiDetailList = observer((props) => {
                         <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
                         <td><span className="textGreen">+ 000.00</span></td>
                     </tr>
-                    <br />
                 </tbody>
             </table>
+            <br />
         </div>
     );
 })

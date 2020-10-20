@@ -19,3 +19,29 @@ export function capitalize(str) {
 export function replaceAll(str, searchStr, replaceStr) {
 	return str.split(searchStr).join(replaceStr);
 }
+
+export function getCurrencyUnit(amount) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(amount)) >= 1.0e+9
+    ? "B"
+    // Six Zeroes for Millions 
+    : Math.abs(Number(amount)) >= 1.0e+6
+    ? "M"
+    // Three Zeroes for Thousands
+    : Math.abs(Number(amount)) >= 1.0e+3
+    ? "K"
+    : "";
+}
+
+export function getCurrencyDigit(amount) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(amount)) >= 1.0e+9
+    ? 1000000000
+    // Six Zeroes for Millions 
+    : Math.abs(Number(amount)) >= 1.0e+6
+    ? 1000000
+    // Three Zeroes for Thousands
+    : Math.abs(Number(amount)) >= 1.0e+3
+	? 1000
+	: 1;
+}

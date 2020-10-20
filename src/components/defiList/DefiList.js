@@ -25,7 +25,7 @@ const DefiList = observer((props) => {
     async function getDefiList() {
         console.log("getDefiList 함수 시작");
 
-        const res = await fetch(defistationApiUrl + "/defiList");
+        const res = await fetch(defistationApiUrl + "/defiTvlList");
         res
             .json()
             .then(res => {
@@ -38,9 +38,8 @@ const DefiList = observer((props) => {
                     let rankNum = i + 1;
                     let defiName = res[i].name;
 
-                    // beefy.finance 같은 경우 기호 제거(url 용도)
+                    // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
                     defiName = replaceAll(defiName, ".", "");
-                    // 이름에 빈 칸 제거
                     defiName = replaceAll(defiName, " ", "");
                     defiName = defiName.toLowerCase();
 
@@ -83,58 +82,6 @@ const DefiList = observer((props) => {
                 setDefiListTableCode(tableCodeArr);
             })
             .catch(err => setResponseError(err));
-
-        // console.log("currentChainNum : ", getCurrentChainNum());
-        // let chainNum = getCurrentChainNum();
-
-        // console.log("chainConfig[0].name : ", chainConfig[chainNum].name);
-
-        // switch (chainConfig[chainNum].name) {
-        //   case "band":
-        //     const res0 = await fetch(chainConfig[chainNum].lcd + "/staking/pool");
-        //     res0
-        //       .json()
-        //       .then(res0 => {
-        //         // 상단 Network Bonded
-
-        //         // let sumTokens = res0.result.not_bonded_tokens * 1 + res0.result.bonded_tokens * 1;
-        //         setBondedRatio(res0.result.bonded_tokens * 1 / 100000000000000 * 100);
-
-        //         // bonded 변화율을 아직 api가 없어서 알수 없음
-        //         setBondedChangeText(<span className="navTextGray"> </span>);
-        //       })
-        //       .catch(err => setResponseError(err));
-        //     break;
-        //   default:
-        //     const res = await fetch(chainConfig[chainNum].api.network);
-        //     res
-        //       .json()
-        //       .then(res => {
-        //         // 상단 Network Bonded
-        //         // https://api.cosmostation.io/v1/stats/network
-        //         // bonded_tokens_stats[0].bonded_ratio: 최신
-
-        //         // 상단 Network Bonded 변동률
-        //         // bonded_tokens_percent_change_24h
-
-        //         console.log("res(network): ", res);
-
-        //         // 보정치 적용
-        //         setBondedRatio(res.bonded_tokens_stats[0].bonded_ratio * chainConfig[chainNum].apiCorrectionValue.network);
-
-        //         // 상단: Network Bonded
-        //         if (res.bonded_tokens_percent_change_24h > 0) {
-        //           // bonded 변화가 양수일 경우
-        //           setBondedChangeText(<span className="navTextGreen">+{(res.bonded_tokens_percent_change_24h * 100).toFixed(2)}% ▴</span>);
-        //         } else if (res.bonded_tokens_percent_change_24h == 0) {
-        //           setBondedChangeText(<span className="navTextGray">{(res.bonded_tokens_percent_change_24h * 100).toFixed(2)}% </span>);
-        //         } else if (res.bonded_tokens_percent_change_24h < 0) {
-        //           setBondedChangeText(<span className="navTextRed">{(res.bonded_tokens_percent_change_24h * 100).toFixed(2)}% ▼</span>);
-        //         }
-        //       })
-        //       .catch(err => setResponseError(err));
-        //     break;
-        // }
     }
 
     function movePage(path) {
@@ -161,9 +108,9 @@ const DefiList = observer((props) => {
                 </thead>
                 <tbody className="defiListTableBody">
                     {defiListTableCode}
-                    <br />
                 </tbody>
             </table>
+            <br />
         </div>
     );
 })

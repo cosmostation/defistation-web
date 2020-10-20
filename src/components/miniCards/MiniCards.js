@@ -1,13 +1,14 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../../useStores';
+import useStores from '../../useStores';
 
 import '../../App.css';
 
 import MiniCard from './miniCard/MiniCard';
 
 const MiniCards = observer((props) => {
+    const { global } = useStores();
 
     const [miniCardTitle3, setMiniCardTitle3] = useState();
     const [miniCardData3, setMiniCardData3] = useState();
@@ -32,7 +33,7 @@ const MiniCards = observer((props) => {
     return (
         <div className="miniCards">
             <ul className="miniCardUl">
-                <MiniCard title="Total Value Locked (USD)" dataNum="$00.00B" />
+                <MiniCard title="Total Value Locked (USD)" dataNum={global.totalValueLockedUsd} />
                 <MiniCard title="Total BNB Locked" dataNum="0" symbol="BNB" />
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} />
                 <MiniCard title="TVL 1 Day (%)" dataNum="+00.00%" />
