@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-import useStores from '../../useStores';
+// import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
 
@@ -15,7 +15,7 @@ import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
 import cosmostationLogo from "../../assets/images/cosmostation_logo@2x.png";
 
 const TotalValue = observer((props) => {
-    const { global } = useStores();
+    // const { global } = useStores();
 
     // all, 1year, 90days
     const [chartPeriod, setChartPeriod] = useState("all");
@@ -99,7 +99,7 @@ const TotalValue = observer((props) => {
 
                     if (i == resultArr.length - 1) {
                         setTotalValueLockedUsd(currencyNum + " " + currencyUnit);
-                        global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
+                        // global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
                     }
                 }
 

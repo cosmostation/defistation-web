@@ -2,7 +2,7 @@ import React, { Component, Fragment, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 // import ReactTooltip from 'react-tooltip';
-import useStores from '../../useStores';
+// import useStores from '../../useStores';
 
 import defistationLogo from "../../assets/images/defistation_logo@2x.png";
 

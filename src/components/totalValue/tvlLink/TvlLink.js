@@ -1,7 +1,7 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-import useStores from '../../../useStores';
+// import useStores from '../../../useStores';
 
 // import 'react-responsive-modal/styles.css';
 // import { Modal } from 'react-responsive-modal';   // https://github.com/pradel/react-responsive-modal

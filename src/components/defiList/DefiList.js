@@ -1,7 +1,7 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../../useStores';
+// import useStores from '../../useStores';
 
 import '../../App.css';
 
@@ -12,6 +12,7 @@ import rankIcon2 from "../../assets/images/rank2@2x.png";
 import rankIcon3 from "../../assets/images/rank3@2x.png";
 
 const DefiList = observer((props) => {
+    // const { global } = useStores();
 
     const history = useHistory();
 
@@ -90,8 +91,6 @@ const DefiList = observer((props) => {
 
     useEffect(() => {
         getDefiList();
-
-
 
         return () => {
 

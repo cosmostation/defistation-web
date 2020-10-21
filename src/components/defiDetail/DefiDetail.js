@@ -1,6 +1,7 @@
 import React, { Component, Suspense, useState, useEffect } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
+// import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
 
@@ -14,6 +15,7 @@ import DefiDetailList from '../defiDetailList/DefiDetailList';
 import Footer from '../footer/Footer';
 
 const DefiDetail = observer(() => {
+    // const { global } = useStores();
 
     const location = useLocation();
 
@@ -71,6 +73,7 @@ const DefiDetail = observer(() => {
 
         // DB에 있는 defiName 에 해당하는지 체크
 
+        
 
         
 

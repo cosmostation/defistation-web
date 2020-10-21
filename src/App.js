@@ -2,7 +2,7 @@ import React, { Component, Fragment, Suspense, useState, useEffect } from 'react
 import { observer, inject } from 'mobx-react';
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { useHistory, useLocation } from 'react-router-dom';
-import useStores from './useStores';
+// import useStores from './useStores';
 
 // import TopBar from './components/topBar/TopBar';
 // import TotalValue from './components/totalValue/TotalValue';
@@ -24,7 +24,7 @@ import './App.css';
 
 const App = observer(() => {
     // inject 이름
-    const { global, account } = useStores();
+    // const { global, account } = useStores();
 
     const location = useLocation();
     const history = useHistory();

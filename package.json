@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "mobx": "^6.0.1",
     "mobx-react": "^7.0.0",
+    "mobx-react-lite": "^3.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-google-charts": "^3.0.15",
