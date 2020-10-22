@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
-// import GlobalStore from './stores/GlobalStore';
+import RootStore from './stores';
 import { BrowserRouter } from 'react-router-dom';
 
-// const globalStore = new GlobalStore();
-const tvlContext = React.createContext(0);
+const root = new RootStore();
 
 ReactDOM.render(
-  <Provider>
+  <Provider {...root}>
     <BrowserRouter>
       <App />
     </BrowserRouter>

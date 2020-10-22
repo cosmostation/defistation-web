@@ -15,8 +15,8 @@ import Main from './components/main/Main';
 import DefiDetail from './components/defiDetail/DefiDetail';
 
 // require('typeface-montserrat');
-import 'typeface-montserrat';
-import 'typeface-roboto';
+import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
+import 'typeface-roboto';       // $ npm install --save typeface-roboto
 
 // import 
 

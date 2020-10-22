@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../useStores';
+import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
 
@@ -15,7 +15,7 @@ import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
 import cosmostationLogo from "../../assets/images/cosmostation_logo@2x.png";
 
 const TotalValue = observer((props) => {
-    // const { global } = useStores();
+    const { global } = useStores();
 
     // all, 1year, 90days
     const [chartPeriod, setChartPeriod] = useState("all");
@@ -27,7 +27,7 @@ const TotalValue = observer((props) => {
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
 
-    const defistationApiUrl = "https://api.defistation.io";
+    // const defistationApiUrl = "https://api.defistation.io";
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     function getMonthAndDay(date) {
@@ -48,7 +48,7 @@ const TotalValue = observer((props) => {
 
         console.log("urlStr: ", urlStr);
 
-        const res = await fetch(defistationApiUrl + "/chart/" + urlStr);
+        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr);
         res
             .json()
             .then(res => {
@@ -66,6 +66,12 @@ const TotalValue = observer((props) => {
                 //     ["Aug", 8830],
                 // ]}
                 let tempChartData = [['x', 'TVL(USD)']];
+
+                if (res.result == null) {
+                    setMinTvl(0);
+                    global.changeTotalValueLockedUsd("$ 0");
+                    return;
+                }
 
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
@@ -100,6 +106,8 @@ const TotalValue = observer((props) => {
                     if (i == resultArr.length - 1) {
                         setTotalValueLockedUsd(currencyNum + " " + currencyUnit);
                         // global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
+
+                        global.changeTotalValueLockedUsd("$ " + numberWithCommas(resultArr[i][1]));
                     }
                 }
 
