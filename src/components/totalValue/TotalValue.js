@@ -48,6 +48,7 @@ const TotalValue = observer((props) => {
 
         // console.log("urlStr: ", urlStr);
         if (urlStr == "") {
+            global.changeTotalValueLockedUsd("$ 0");
             global.changeTvl1DayPercent(0);
             return;
         }
@@ -124,7 +125,7 @@ const TotalValue = observer((props) => {
                 // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
                 if (chartPeriod - resultArr.length > 0) {
                     let createEmptyDataLength = chartPeriod - resultArr.length;
-                    console.log("createEmptyDataLength: ", createEmptyDataLength);
+                    // console.log("createEmptyDataLength: ", createEmptyDataLength);
                     for (var i = 0; i < createEmptyDataLength; i++) {
                         let calTimestamp = initTimestamp - (86400 * (i + 1));
                         // tempChartData 의 제일 앞에 넣어야함
@@ -145,10 +146,9 @@ const TotalValue = observer((props) => {
                     let latestTvl = resultArr[resultArr.length - 1][1];
                     let pastTvl = resultArr[resultArr.length - 2][1];
 
-                    console.log("latestTvl: ", latestTvl);
-                    console.log("pastTvl: ", pastTvl);
-
-                    console.log("((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1: ", ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1);
+                    // console.log("latestTvl: ", latestTvl);
+                    // console.log("pastTvl: ", pastTvl);
+                    // console.log("((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1: ", ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1);
 
                     let resultTvl1DayPercent = ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1;
                     if (!isNaN(resultTvl1DayPercent)) {
@@ -161,13 +161,40 @@ const TotalValue = observer((props) => {
                     // 계산할 값이 없으면 0
                     global.changeTvl1DayPercent(0);
                 }
+
+                // 홈 하단 1 Day Change 계산
+                console.log("res.details: ", res.details);
+                let resultDetailsObj = res.details;
+                global.changeChartDataDetails(resultDetailsObj);
+
+                // // tvl1DayChangeArr["pancake"] 이렇게 사용하도록 형식 변경
+                // let resultDetailsObj = res.details;
+                // var resultDetailsArr = Object.keys(resultDetailsObj).map((key) => [key, resultDetailsObj[key]]);
+
+                // console.log("resultDetailsArr: ", resultDetailsArr);
+
+                // let tvl1DayChangesArr = new Object;
+                // for (var i = 0; i < resultDetailsArr.length; i++) {
+                //     tvl1DayChangesArr[resultDetailsArr[i][0]] = resultDetailsArr[i][1];
+                // }
+
+                // console.log("tvl1DayChangesArr: ", tvl1DayChangesArr);
+
+
+
+
+
+
+
+
+
             })
             .catch(err => setResponseError(err));
     }
 
     useEffect(() => {
         getChart(props.defiName);
-
+        console.count("TotalValue render");
         return () => {
             // console.log('cleanup');
             // clearTimeout(timer);

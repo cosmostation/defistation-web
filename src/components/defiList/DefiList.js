@@ -1,7 +1,8 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../useStores';
+import useStores from '../../useStores';
+import _ from "lodash";
 
 import '../../App.css';
 
@@ -12,7 +13,7 @@ import rankIcon2 from "../../assets/images/rank2@2x.png";
 import rankIcon3 from "../../assets/images/rank3@2x.png";
 
 const DefiList = observer((props) => {
-    // const { global } = useStores();
+    const { global } = useStores();
 
     const history = useHistory();
 
@@ -24,13 +25,15 @@ const DefiList = observer((props) => {
     const defistationApiUrl = "https://api.defistation.io";
 
     async function getDefiList() {
-        console.log("getDefiList 함수 시작");
+        console.count("getDefiListCall");
+        if (global.chartDataDetails == null) return;
+        // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
         const res = await fetch(defistationApiUrl + "/defiTvlList");
         res
             .json()
             .then(res => {
-                console.log("res: ", res);
+                // console.log("res: ", res);
 
                 let tableCodeArr = [];
 
@@ -58,14 +61,54 @@ const DefiList = observer((props) => {
                         chainName = res[i].chain;
                     }
 
+
+
+                    // let change24hValue = global.chartDataDetails[res[i].name][1603274430];
+                    // for (var j = 0; j < global.chartDataDetails[res[i].name].length; j++) {
+
+                    // }
+
+                    // let detailsObj = global.chartDataDetails[res[i].name];
+                    // var detailsArr = Object.keys(detailsObj).map((key) => [Number(key), detailsObj[key]]);
+
+                    // for (var j = 0; j < detailsArr.length; j++) {
+                        
+                    // }
+
+
+
+                    const target = global.chartDataDetails;
+                    const ret = {};
+                    _.each(_.keys(global.chartDataDetails), key => {
+                        try {
+                            const values = _.keys(target[key]);
+                            const lastTwo = [values.pop(), values.pop()];
+                            ret[key] = (1 - target[key][lastTwo[1]] / target[key][lastTwo[0]]);
+                        } catch {
+                            ret[key] = 0;
+                        }
+                    });
+
+            
+                    
+                    
+                    
+
+
+
+
+
+
+                    // let change24hValue = res[i].tvlPercentChange24h;
+                    let change24hValue = ret[res[i].name];
                     let change24hTag;
-                    if (res[i].tvlPercentChange24h > 0) {
-                    // +
-                    change24hTag = <span className="textGreen">+{(res[i].tvlPercentChange24h * 100).toFixed(2)}%</span>;
-                    } else if (res[i].tvlPercentChange24h == 0) {
-                    change24hTag = <span>{(res[i].tvlPercentChange24h * 100).toFixed(2)}%</span>;
-                    } else if (res[i].tvlPercentChange24h < 0) {
-                    change24hTag = <span className="textRed">{(res[i].tvlPercentChange24h * 100).toFixed(2)}%</span>;
+                    if (change24hValue > 0) {
+                        // +
+                        change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
+                    } else if (change24hValue == 0) {
+                        change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
+                    } else if (change24hValue < 0) {
+                        change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
                     }
 
                     tableCodeArr.push(
@@ -79,7 +122,7 @@ const DefiList = observer((props) => {
                         </tr>
                     );
                 }
-
+                console.count("DefiList Call");
                 setDefiListTableCode(tableCodeArr);
             })
             .catch(err => setResponseError(err));
@@ -95,7 +138,7 @@ const DefiList = observer((props) => {
         return () => {
 
         };
-    }, [])
+    }, [global.chartDataDetails])
 
     return (
         <div className="defiList">

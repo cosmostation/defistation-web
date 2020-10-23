@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import '../../App.css';
 
-import binanceImg1 from "../../assets/images/binance_img@2x.png";
+import binanceImg1 from "../../assets/images/binanceimg.gif";
 
 const Banner = observer((props) => {
 

@@ -54,21 +54,20 @@ const MiniCards = observer((props) => {
             urlStr = defiName;
         }
 
-        console.log("urlStr: ", urlStr);
+        // console.log("urlStr: ", urlStr);
         const res = await fetch(global.defistationApiUrl + "/defiNames");
         res
             .json()
             .then(res => {
-                console.log("res: ", res);
+                // console.log("res: ", res);
                 setMiniCardData3(numberWithCommas(res.length));
             })
             .catch(err => setResponseError(err));
     }
 
     function showTvl1Day() {
-        console.log("showTvl1Day 함수 시작");
-        console.log("global.tvl1DayPercent: ", global.tvl1DayPercent);
-
+        // console.log("showTvl1Day 함수 시작");
+        // console.log("global.tvl1DayPercent: ", global.tvl1DayPercent);
         if (global.tvl1DayPercent > 0) { 
             setTvl1DayPercentTag("+" + global.tvl1DayPercent + "%");
         } else {
@@ -77,7 +76,7 @@ const MiniCards = observer((props) => {
     }
 
     useEffect(() => {
-        console.log("props.defiName: ", props.defiName);
+        // console.log("props.defiName: ", props.defiName);
 
         getTotalBnbLocked(props.defiName);
         showTvl1Day();

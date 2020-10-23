@@ -30,7 +30,7 @@ const App = observer(() => {
     const history = useHistory();
 
     useEffect(() => {
-        console.log('렌더링이 완료되었습니다!');
+        // console.log('렌더링이 완료되었습니다!');
 
         return () => {
             console.log('cleanup');
