@@ -29,13 +29,13 @@ const DefiDetail = observer(() => {
     const defistationApiUrl = "https://api.defistation.io";
 
     async function checkValidDefiName() {
-        console.log("checkValidDefiName 함수 시작");
+        // console.log("checkValidDefiName 함수 시작");
 
         const res = await fetch(defistationApiUrl + "/defiNames");
         res
             .json()
             .then(res => {
-                console.log("res: ", res);
+                // console.log("res: ", res);
 
                 for (var i = 0; i < res.length; i++) {
                     // res[i] 에 기호, 공백 제거하고 소문자로 변경하기

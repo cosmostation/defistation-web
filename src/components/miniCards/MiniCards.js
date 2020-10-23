@@ -20,8 +20,10 @@ const MiniCards = observer((props) => {
     const [totalBnbLockedNum, setTotalBnbLockedNum] = useState(0);
     const [projectNum, setProjectNum] = useState(0);
 
+    const [tvl1DayPercentTag, setTvl1DayPercentTag] = useState();
+
     async function getTotalBnbLocked(defiName) {
-        console.log("getTotalBnbLocked 함수 시작");
+        // console.log("getTotalBnbLocked 함수 시작");
 
         let urlStr = "";
         if (defiName == "DeFi") {
@@ -30,19 +32,20 @@ const MiniCards = observer((props) => {
             urlStr = defiName;
         }
 
-        console.log("urlStr: ", urlStr);
+        // console.log("urlStr: ", urlStr);
+        if (urlStr == "") return;
         const res = await fetch(global.defistationApiUrl + "/totalbnblocked/" + urlStr);
         res
             .json()
             .then(res => {
-                console.log("res: ", res);
+                // console.log("res: ", res);
                 setTotalBnbLockedNum(numberWithCommas(Math.floor(res.totalBnbLocked)));
             })
             .catch(err => setResponseError(err));
     }
 
     async function getProjectNumOnHome(defiName) {
-        console.log("getProjectNum 함수 시작");
+        // console.log("getProjectNum 함수 시작");
 
         let urlStr = "";
         if (defiName == "DeFi") {
@@ -62,11 +65,23 @@ const MiniCards = observer((props) => {
             .catch(err => setResponseError(err));
     }
 
+    function showTvl1Day() {
+        console.log("showTvl1Day 함수 시작");
+        console.log("global.tvl1DayPercent: ", global.tvl1DayPercent);
+
+        if (global.tvl1DayPercent > 0) { 
+            setTvl1DayPercentTag("+" + global.tvl1DayPercent + "%");
+        } else {
+            setTvl1DayPercentTag(global.tvl1DayPercent + "%");
+        }
+    }
+
     useEffect(() => {
         console.log("props.defiName: ", props.defiName);
 
         getTotalBnbLocked(props.defiName);
-
+        showTvl1Day();
+        
         if (props.defiName == "DeFi") {
             // 메인에서 프로젝트 숫자 보여주기
             getProjectNumOnHome();
@@ -76,13 +91,13 @@ const MiniCards = observer((props) => {
         } else {
             setMiniCardTitle3("Supply Locked (%)");
             //props.defiName 에 따라 다른 데이터 넣으면 됨
-            setMiniCardData3("3.04%");
+            setMiniCardData3("0.00%");
         }
         
         return () => {
 
         };
-    }, [props.defiName])
+    }, [props.defiName, global.tvl1DayPercent])
 
     return (
         <div className="miniCards">
@@ -90,7 +105,7 @@ const MiniCards = observer((props) => {
                 <MiniCard title="Total Value Locked (USD)" dataNum={global.totalValueLockedUsd} />
                 <MiniCard title="Total BNB Locked" dataNum={totalBnbLockedNum} symbol="BNB" />
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} />
-                <MiniCard title="TVL 1 Day (%)" dataNum="+00.00%" />
+                <MiniCard title="TVL 1 Day (%)" dataNum={tvl1DayPercentTag} />
             </ul>
         </div>
     );

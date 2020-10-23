@@ -12,5 +12,10 @@ export default class GlobalStore {
     this.totalValueLockedUsd = value;
   };
 
+  @observable tvl1DayPercent = 0;
+  @action changeTvl1DayPercent = (value) => {
+    this.tvl1DayPercent = value;
+  };
+
 
 }

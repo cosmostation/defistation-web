@@ -18,7 +18,7 @@ const TotalValue = observer((props) => {
     const { global } = useStores();
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("all");
+    const [chartPeriod, setChartPeriod] = useState("7");    // 7, 30, 90, 365
 
     const [chartData, setChartData] = useState(['x', 'TVL(USD)']);
     const [totalValueLockedUsd, setTotalValueLockedUsd] = useState(0);
@@ -37,7 +37,7 @@ const TotalValue = observer((props) => {
     }
 
     async function getChart(defiName) {
-        console.log("getChart 함수 시작");
+        // console.log("getChart 함수 시작");
 
         let urlStr = "";
         if (defiName == "DeFi") {
@@ -46,13 +46,17 @@ const TotalValue = observer((props) => {
             urlStr = defiName;
         }
 
-        console.log("urlStr: ", urlStr);
+        // console.log("urlStr: ", urlStr);
+        if (urlStr == "") {
+            global.changeTvl1DayPercent(0);
+            return;
+        }
 
         const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr);
         res
             .json()
             .then(res => {
-                console.log("res: ", res);
+                // console.log("res: ", res);
 
                 // data={[
                 //     ['x', 'TVL(USD)'],
@@ -65,7 +69,9 @@ const TotalValue = observer((props) => {
                 //     ["Jul", 5520],
                 //     ["Aug", 8830],
                 // ]}
-                let tempChartData = [['x', 'TVL(USD)']];
+                // let tempChartData = [['x', 'TVL(USD)']];
+
+                let tempChartData = [];
 
                 if (res.result == null) {
                     setMinTvl(0);
@@ -77,6 +83,7 @@ const TotalValue = observer((props) => {
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
+                let initTimestamp = 0;
                 let tempMinTvl = 0;
 
                 // K, M, B 기준은 최초 0번째 데이터
@@ -84,6 +91,10 @@ const TotalValue = observer((props) => {
                 let currencyUnit = getCurrencyUnit(resultArr[0][1]);
                 
                 for (var i = 0; i < resultArr.length; i++) {
+                    if (i == 0) {
+                        initTimestamp = resultArr[i][0];
+                    }
+
                     // console.log("resultArr[i][0]: ", resultArr[i][0]);
                     // console.log("resultArr[i][1]: ", resultArr[i][1]);
 
@@ -106,16 +117,50 @@ const TotalValue = observer((props) => {
                     if (i == resultArr.length - 1) {
                         setTotalValueLockedUsd(currencyNum + " " + currencyUnit);
                         // global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
-
                         global.changeTotalValueLockedUsd("$ " + numberWithCommas(resultArr[i][1]));
+                    }
+                }
+                
+                // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
+                if (chartPeriod - resultArr.length > 0) {
+                    let createEmptyDataLength = chartPeriod - resultArr.length;
+                    console.log("createEmptyDataLength: ", createEmptyDataLength);
+                    for (var i = 0; i < createEmptyDataLength; i++) {
+                        let calTimestamp = initTimestamp - (86400 * (i + 1));
+                        // tempChartData 의 제일 앞에 넣어야함
+                        tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
                     }
                 }
 
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
-
-                // 차트 최솟값 설정
+                // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
+                // 차트 데이터 적용
+                tempChartData.unshift(['x', 'TVL(USD)']);
                 setChartData(tempChartData);
+
+                // TVL 1 DAY(%)
+                // resultArr 가 2개 이상 요소를 가지고 있어야함. 그리고 가장 마지막과 그 이전의 % 차이를 계산하면 됨
+                if (resultArr.length >= 2) {
+                    let latestTvl = resultArr[resultArr.length - 1][1];
+                    let pastTvl = resultArr[resultArr.length - 2][1];
+
+                    console.log("latestTvl: ", latestTvl);
+                    console.log("pastTvl: ", pastTvl);
+
+                    console.log("((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1: ", ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1);
+
+                    let resultTvl1DayPercent = ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1;
+                    if (!isNaN(resultTvl1DayPercent)) {
+                        // 숫자인 경우에만
+                        global.changeTvl1DayPercent(resultTvl1DayPercent);
+                    } else {
+                        global.changeTvl1DayPercent(0);
+                    }
+                } else {
+                    // 계산할 값이 없으면 0
+                    global.changeTvl1DayPercent(0);
+                }
             })
             .catch(err => setResponseError(err));
     }
@@ -127,7 +172,7 @@ const TotalValue = observer((props) => {
             // console.log('cleanup');
             // clearTimeout(timer);
         };
-    }, [props.defiName])
+    }, [props.defiName, global.tvl1DayPercent])
 
     return (
         <div className="totalValue">
@@ -177,7 +222,7 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#20232a',
                                         },
                                         series: {
-                                        0: { curveType: 'function' },
+                                        // 0: { curveType: 'function' },
                                         },
                                         colors: ['#f0b923'],
                                         chartArea: { width: '86%', height: '75%' },
@@ -190,7 +235,7 @@ const TotalValue = observer((props) => {
                                 {/* <button className="periodBtnSelected" onClick={() => setChartPeriod("all")}>All</button>
                                 <button className="periodBtn" onClick={() => setChartPeriod("1year")}>1 Year</button>
                                 <button className="periodBtn" onClick={() => setChartPeriod("90days")}>90 Days</button> */}
-                                <button className="periodBtnSelected" onClick={() => setChartPeriod("7days")}>7 Days</button>
+                                <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7 Days</button>
                             </li>
                         </ul>
                     </div>
