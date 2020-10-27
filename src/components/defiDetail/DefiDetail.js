@@ -90,7 +90,7 @@ const DefiDetail = observer(() => {
                 <TotalValue defiName={defiName} />
                 <MiniCards defiName={defiName} />
                 <DefiOverview defiName={defiName} />
-                <DefiDetailList />
+                <DefiDetailList defiName={defiName} />
                 <Footer />
             </div>
             {/* <div id="wrapper" style={defiName == "" ? undefined : {display: "none"}}>

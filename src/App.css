@@ -66,23 +66,23 @@ li {
 }
 
 .topBarUl li:nth-child(1) { 
-  width: 55%;
+  width: 76%;
 }
 
 .topBarUl li:nth-child(2) { 
-  width: 15%;
+  width: 12%;
   text-align: right;
 }
 
 .topBarUl li:nth-child(3) { 
-  width: 15%;
+  width: 12%;
   text-align: right;
 }
 
-.topBarUl li:nth-child(4) { 
+/* .topBarUl li:nth-child(4) { 
   width: 15%;
   text-align: right;
-}
+} */
 
 @media (min-width:1px) and (max-width:1034px) {
   .topBarUl li:nth-child(2) { 
@@ -187,7 +187,7 @@ li {
 }
 
 .tvlLinkBoxUl {
-  margin: 11px;
+  margin: 12px 11px 11px 11px;
   display: flex;
 }
 
@@ -659,7 +659,7 @@ li {
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
   color: #757f8e;
@@ -669,9 +669,9 @@ li {
   margin-top: -3px;
   width: 100%;
   /* height: 262px; */
-  opacity: 0.8;
+  /* opacity: 0.8; */
   border-radius: 5px;
-  background-color: #1a1d22;
+  background-color: #171a20;
   padding: 15px;
   box-sizing: border-box;
 }
@@ -765,7 +765,7 @@ li {
 }
 
 .defiDetailListTable th:nth-child(2) {
-  text-align: left;
+  text-align: right;
 }
 
 .defiDetailListTable td:nth-child(2) {
@@ -827,3 +827,194 @@ li {
   text-align: center;
   color: #ffffff;
 }
+
+/* -------------------------------- About -------------------------------- */
+
+.aboutBox {
+  width: 100%;
+  /* height: 635px; */
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #171a20;
+  padding: 40px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .aboutBox {
+    width: 320px;
+  }
+}
+
+.cosmostationLogoOnAbout {
+  width: 20%;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .cosmostationLogoOnAbout {
+    width: 180px;
+  }
+}
+
+.productOnAbout {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #9c6cff;
+}
+
+.productListBox {
+  line-height: 1.5;
+}
+
+.productListBox span {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* -------------------------------- TheDefiList -------------------------------- */
+
+.applyBtn {
+  margin-top: 10px;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #171a20;
+  padding-top: 5px;
+  padding-left: 25px;
+  box-sizing: border-box;
+  padding-right: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .applyBtn {
+    height: 100px;
+  }
+}
+
+.applyBtnUl li {
+  display: inline-block;
+}
+
+.applyBtnUl li:nth-child(1) {
+  width: 80%;
+}
+
+.applyBtnUl li:nth-child(2) {
+  width: 20%;
+  text-align: right;
+}
+
+.applyBtnTitle {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f0b923;
+}
+
+.applyBtnText {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.theDefiListUl li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 338px;
+  height: 136px;
+  border-radius: 5px;
+  background-color: #20232b;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* 1,4,7,10 */
+.theDefiListUl li:nth-child(1) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(4) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(7) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(10) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(13) {
+  margin-left: 0px;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .theDefiListUl li {
+    display: inline-block;
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 320px;
+    height: 160px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+.theDefiListCardTitle {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.theDefiListCardText {
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+}
+

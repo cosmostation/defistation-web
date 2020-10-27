@@ -45,3 +45,10 @@ export function getCurrencyDigit(amount) {
 	? 1000
 	: 1;
 }
+
+export function textEllipsis(input) {
+    if (input.length > 85) {
+       return input.substring(0, 85) + ' ...';
+    }
+    return input;
+};

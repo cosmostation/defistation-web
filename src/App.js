@@ -13,6 +13,9 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import Main from './components/main/Main';
 import DefiDetail from './components/defiDetail/DefiDetail';
+import About from './components/about/About';
+import TheDefiList from './components/theDefiList/TheDefiList';
+import Apply from './components/apply/Apply';
 
 // require('typeface-montserrat');
 import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
@@ -42,10 +45,10 @@ const App = observer(() => {
             <Suspense fallback={<div></div>}>
                 <Switch>
                     <Route exact path="/" component={Main} />
+                    <Route path="/about" component={About} />
+                    <Route path="/projects" component={TheDefiList} />
+                    {/* <Route path="/apply" component={Apply} /> */}
                     <Route path="/:defiName" component={DefiDetail} />
-                    {/* <Route path="/about" component={About} />
-                    <Route path="/defilist" component={Defilist} />
-                    <Route path="/apply" component={Apply} /> */}
                 </Switch>
             </Suspense>
         </>

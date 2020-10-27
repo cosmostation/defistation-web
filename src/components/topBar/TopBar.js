@@ -67,9 +67,9 @@ const TopBar = observer((props) => {
                 <li>
                     <img src={defistationLogo} style={{"width":"260px"}} onClick={() => movePage("/")} />
                 </li>
-                <li><span>About</span></li>
-                <li><span>The DeFi List</span></li>
-                <li><span>Apply to be listed</span></li>
+                <li><span onClick={() => movePage("/about")}>About</span></li>
+                <li><span onClick={() => movePage("/projects")}>Projects</span></li>
+                {/* <li><span>Apply to be listed</span></li> */}
             </ul>
         </div>
     );

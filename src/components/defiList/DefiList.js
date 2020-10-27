@@ -76,39 +76,49 @@ const DefiList = observer((props) => {
                     // }
 
 
+                    // Chart 기준 변화량
+                    // const target = global.chartDataDetails;
+                    // const ret = {};
+                    // _.each(_.keys(global.chartDataDetails), key => {
+                    //     try {
+                    //         const values = _.keys(target[key]);
+                    //         const lastTwo = [values.pop(), values.pop()];
+                    //         ret[key] = (1 - target[key][lastTwo[1]] / target[key][lastTwo[0]]);
+                    //     } catch {
+                    //         ret[key] = 0;
+                    //     }
+                    // });
 
-                    const target = global.chartDataDetails;
-                    const ret = {};
-                    _.each(_.keys(global.chartDataDetails), key => {
-                        try {
-                            const values = _.keys(target[key]);
-                            const lastTwo = [values.pop(), values.pop()];
-                            ret[key] = (1 - target[key][lastTwo[1]] / target[key][lastTwo[0]]);
-                        } catch {
-                            ret[key] = 0;
-                        }
-                    });
+                    // // let change24hValue = res[i].tvlPercentChange24h;
+                    // let change24hValue = ret[res[i].name];
+                    // let change24hTag;
+                    // if (change24hValue > 0) {
+                    //     // +
+                    //     change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
+                    // } else if (change24hValue == 0) {
+                    //     change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
+                    // } else if (change24hValue < 0) {
+                    //     change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
+                    // }
 
-            
-                    
-                    
-                    
+                    console.log("res[i].tvlPercentChange24h: ", res[i].tvlPercentChange24h);
 
-
-
-
-
-
-                    // let change24hValue = res[i].tvlPercentChange24h;
-                    let change24hValue = ret[res[i].name];
+                    // 현재 기준 변화량
+                    let change24hValue = res[i].tvlPercentChange24h;
                     let change24hTag;
-                    if (change24hValue > 0) {
-                        // +
-                        change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
-                    } else if (change24hValue == 0) {
-                        change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
-                    } else if (change24hValue < 0) {
-                        change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
+
+                    if (change24hValue == 1) {
+                        // 100% 는 표기하지 않는다
+                        change24hTag = <span>-</span>;
+                    } else {
+                        if (change24hValue > 0) {
+                            // +
+                            change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
+                        } else if (change24hValue == 0) {
+                            change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
+                        } else if (change24hValue < 0) {
+                            change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
+                        }
                     }
 
                     tableCodeArr.push(
@@ -145,7 +155,7 @@ const DefiList = observer((props) => {
             <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>Rank</th><th>Name</th><th>Chain</th><th>Category</th><th>Locked(USD)</th><th>1 Day</th>
+                        <th>Rank</th><th>Name</th><th>Chain</th><th>Category</th><th>Locked(USD)</th><th>24 Hours</th>
                     </tr>
                 </thead>
                 <tbody className="defiListTableBody">
