@@ -150,7 +150,7 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break;  
-            case "Narwhal Swap":
+            case "Narwhalswap":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
