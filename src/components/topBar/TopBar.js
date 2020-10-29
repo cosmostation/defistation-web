@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 // import useStores from '../../useStores';
 
 import defistationLogo from "../../assets/images/defistation_logo@2x.png";
+import defistationLogoAlpha from "../../assets/images/defistation_logo_alpha.svg";
 
 // import Chart from "react-google-charts";
 // import * as Icon from 'react-feather';
@@ -65,7 +66,7 @@ const TopBar = observer((props) => {
         <div className="topBar">
             <ul className="topBarUl">
                 <li>
-                    <img src={defistationLogo} style={{"width":"260px"}} onClick={() => movePage("/")} />
+                    <img src={defistationLogoAlpha} style={{"width":"260px"}} onClick={() => movePage("/")} />
                 </li>
                 <li><span onClick={() => movePage("/about")}>About</span></li>
                 <li><span onClick={() => movePage("/projects")}>Projects</span></li>

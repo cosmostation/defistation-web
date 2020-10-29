@@ -19,7 +19,7 @@ const Banner = observer((props) => {
     return (
         <div className="banner" onClick={() => window.open("https://www.binance.org/en/smartChain", "_blank")}>
             <span className="bannerTitle">Binance Smart Chain</span>
-            <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism.</p>
+            <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism</p>
             <img className="noDragImg" src={binanceImg1} />
         </div>
     );

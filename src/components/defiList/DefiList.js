@@ -6,11 +6,17 @@ import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName } from '../../util/Util';
 
+// table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
 import rankIcon2 from "../../assets/images/rank2@2x.png";
 import rankIcon3 from "../../assets/images/rank3@2x.png";
+
+import verifiedIcon from "../../assets/images/verifiedic.svg";
+import noVerifiedIcon from "../../assets/images/verifiedic_none.svg";
+
+import questionIcon from "../../assets/images/question_ic.svg";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -18,7 +24,6 @@ const DefiList = observer((props) => {
     const history = useHistory();
 
     const [responseError, setResponseError] = useState();
-    const [response, setResponse] = useState({});
 
     const [defiListTableCode, setDefiListTableCode] = useState();
 
@@ -26,7 +31,7 @@ const DefiList = observer((props) => {
 
     async function getDefiList() {
         console.count("getDefiListCall");
-        if (global.chartDataDetails == null) return;
+        // if (global.chartDataDetails == null) return;
         // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
         const res = await fetch(defistationApiUrl + "/defiTvlList");
@@ -56,12 +61,10 @@ const DefiList = observer((props) => {
                     }
 
                     if (res[i].chain == "bsc") {
-                        chainName = "Binance Smart Chain";
+                        chainName = "BSC";
                     } else {
                         chainName = res[i].chain;
                     }
-
-
 
                     // let change24hValue = global.chartDataDetails[res[i].name][1603274430];
                     // for (var j = 0; j < global.chartDataDetails[res[i].name].length; j++) {
@@ -101,7 +104,7 @@ const DefiList = observer((props) => {
                     //     change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
                     // }
 
-                    console.log("res[i].tvlPercentChange24h: ", res[i].tvlPercentChange24h);
+                    // console.log("res[i].tvlPercentChange24h: ", res[i].tvlPercentChange24h);
 
                     // 현재 기준 변화량
                     let change24hValue = res[i].tvlPercentChange24h;
@@ -121,14 +124,24 @@ const DefiList = observer((props) => {
                         }
                     }
 
+                    let verifiedTag;
+                    if (res[i].verified) {
+                        verifiedTag = <img src={verifiedIcon} />
+                    } else {
+                        verifiedTag = <img src={noVerifiedIcon} />
+                    }
+
                     tableCodeArr.push(
                         <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                             <td>{rankNum}</td>
-                            <td>{res[i].name}</td>
+                            <td>{verifiedTag}</td>
+                            <td>{getOfficialDefiName(res[i].name)}</td>
                             <td>{chainName}</td>
                             <td>{capitalize(res[i].category)}</td>
+                            <td>{res[i].contractNum}</td>
                             <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
                             <td>{change24hTag}</td>
+                            <td>{new Date(res[i].lastUpdated * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')}</td>
                         </tr>
                     );
                 }
@@ -155,7 +168,25 @@ const DefiList = observer((props) => {
             <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>Rank</th><th>Name</th><th>Chain</th><th>Category</th><th>Locked(USD)</th><th>24 Hours</th>
+                        <th>Rank</th>
+                        <th>
+                            <ul className="defiListTableHeadCell">
+                                <li>Verified</li>
+                                <li><img src={questionIcon} onClick={() => movePage("/about")} /></li>
+                            </ul>
+                        </th>
+                        <th>Name</th>
+                        <th>Chain</th>
+                        <th>Category</th>
+                        <th>Contract(#)</th>
+                        <th>Locked</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Change 24h</li>
+                                <li><img src={questionIcon} onClick={() => movePage("/about")} /></li>
+                            </ul>
+                        </th>
+                        <th>Last updated(UTC)</th>
                     </tr>
                 </thead>
                 <tbody className="defiListTableBody">

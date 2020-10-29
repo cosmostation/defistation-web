@@ -102,7 +102,7 @@ const MiniCards = observer((props) => {
             setMiniCardTitle3("Projects");
             // setMiniCardData3(3);
         } else {
-            setMiniCardTitle3("Supply Locked (%)");
+            setMiniCardTitle3("Supply Locked");
             //props.defiName 에 따라 다른 데이터 넣으면 됨
         }
         
@@ -114,10 +114,10 @@ const MiniCards = observer((props) => {
     return (
         <div className="miniCards">
             <ul className="miniCardUl">
-                <MiniCard title="Total Value Locked (USD)" dataNum={global.totalValueLockedUsd} />
+                <MiniCard title="Total Value Locked" dataNum={global.totalValueLockedUsd} />
                 <MiniCard title="Total BNB Locked" dataNum={totalBnbLockedNum} symbol="BNB" />
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} />
-                <MiniCard title="TVL 24 Hours (%)" dataNum={tvl1DayPercentTag} />
+                <MiniCard title="TVL Change 24h" dataNum={tvl1DayPercentTag} />
             </ul>
         </div>
     );

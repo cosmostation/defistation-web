@@ -52,3 +52,29 @@ export function textEllipsis(input) {
     }
     return input;
 };
+
+export function convertDateFormat(date) {
+    // return date.toISOString().substring(0, 10);
+    var year = date.getFullYear();
+    var month = (1 + date.getMonth());
+    month = month >= 10 ? month : '0' + month;
+    var day = date.getDate();
+    day = day >= 10 ? day : '0' + day;
+    return year + '-' + month + '-' + day;
+}
+
+export function getOfficialDefiName(defiName) {
+    let convertedName;
+    switch (defiName) {
+        case "pancake":
+            convertedName = "PancakeSwap";
+            break;
+        case "bscSwap":
+            convertedName = "BSC Swap";
+            break;
+        default:
+            convertedName = defiName;
+            break;                                                   
+    }
+    return convertedName;
+}

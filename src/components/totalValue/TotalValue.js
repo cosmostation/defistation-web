@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useStores from '../../useStores';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
 
 import TvlLink from './tvlLink/TvlLink';
 
@@ -199,15 +199,6 @@ const TotalValue = observer((props) => {
                 // }
 
                 // console.log("tvl1DayChangesArr: ", tvl1DayChangesArr);
-
-                
-
-
-
-
-
-
-
             })
             .catch(err => setResponseError(err));
     }
@@ -303,10 +294,10 @@ const TotalValue = observer((props) => {
         <div className="totalValue">
             <ul className="totalValueUl">
                 <li>
-                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {"background-color": "#171a20"} : {"background-color": "#262932"}}>
+                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}}>
                         <ul className="tvlChartCardUl">
                             <li>
-                                <span className="tvlChartCardTitle">Total Value Locked (USD) in {props.defiName}</span>
+                                <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
 
                                 {/* Main Chart */}
@@ -400,7 +391,7 @@ const TotalValue = observer((props) => {
                         <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Access DeFi" goPage="https://www.cosmostation.io/" />
                     </div>
                     <div className="tvlLink" style={props.defiName == "DeFi" ? { display: "none" } : undefined }>
-                        <TvlLink icon={defiIcon} title={props.defiName} subTitle="Official Website" goPage={linkTag} />
+                        <TvlLink icon={defiIcon} title={getOfficialDefiName(props.defiName)} subTitle="Official Website" goPage={linkTag} />
                         {/* pancake */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "pancake" ? undefined : { display: "none" } }>
                             <p className="ecoSystemLinkTitle">Ecosystem Links</p>

@@ -302,7 +302,7 @@ li {
   line-height: 1.36;
   letter-spacing: normal;
   color: #ffffff;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .periodBtn {
@@ -490,17 +490,15 @@ li {
 }
 
 .defiListTable th:nth-child(2) {
-  text-align: left;
+  text-align: center;
 }
-
 .defiListTable td:nth-child(2) {
-  text-align: left;
+  text-align: center;
 }
 
 .defiListTable th:nth-child(3) {
   text-align: left;
 }
-
 .defiListTable td:nth-child(3) {
   text-align: left;
 }
@@ -508,24 +506,42 @@ li {
 .defiListTable th:nth-child(4) {
   text-align: left;
 }
-
 .defiListTable td:nth-child(4) {
   text-align: left;
 }
 
 .defiListTable th:nth-child(5) {
-  text-align: right;
+  text-align: left;
+}
+.defiListTable td:nth-child(5) {
+  text-align: left;
 }
 
 .defiListTable th:nth-child(6) {
   text-align: right;
 }
-
-.defiListTable td:nth-child(5) {
+.defiListTable td:nth-child(6) {
   text-align: right;
 }
 
-.defiListTable td:nth-child(6) {
+.defiListTable th:nth-child(7) {
+  text-align: right;
+}
+.defiListTable td:nth-child(7) {
+  text-align: right;
+}
+
+.defiListTable th:nth-child(8) {
+  text-align: right;
+}
+.defiListTable td:nth-child(8) {
+  text-align: right;
+}
+
+.defiListTable th:nth-child(9) {
+  text-align: right;
+}
+.defiListTable td:nth-child(9) {
   text-align: right;
 }
 
@@ -551,6 +567,45 @@ li {
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+}
+
+.defiListTableHeadCell {
+  display: table;
+  vertical-align: middle;
+}
+
+.defiListTableHeadCell li {
+  display: table-cell;
+}
+
+.defiListTableHeadCell li img {
+  display: table-cell;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.defiListTableHeadCell li:nth-child(2) {
+  vertical-align: middle;
+}
+
+.defiListTableHeadCellRight {
+  display: table;
+  vertical-align: middle;
+  float: right;
+}
+
+.defiListTableHeadCellRight li {
+  display: table-cell;
+}
+
+.defiListTableHeadCellRight li img {
+  display: table-cell;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.defiListTableHeadCellRight li:nth-child(2) {
+  vertical-align: middle;
 }
 
 .textGreen {
@@ -699,6 +754,38 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #9aa0a8;
+}
+
+.defiOverviewWebsiteLink {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.defiOverviewWebsiteLinkUl {
+  display: table;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.defiOverviewWebsiteLinkUl li {
+  display: table-cell;
+}
+
+.defiOverviewWebsiteLinkUl li img {
+  display: table-cell;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.defiOverviewWebsiteLinkUl li:nth-child(1) {
+  vertical-align: middle;
 }
 
 /* -------------------------------- Not Found -------------------------------- */
@@ -957,6 +1044,10 @@ li {
   padding: 20px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.theDefiListUl li:hover {
+  background-color: #171A20;
 }
 
 /* 1,4,7,10 */

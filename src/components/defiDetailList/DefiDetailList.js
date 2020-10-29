@@ -5,7 +5,7 @@ import useStores from '../../useStores';
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat } from '../../util/Util';
 
 import rankIcon1 from "../../assets/images/rank1@2x.png";
 import rankIcon2 from "../../assets/images/rank2@2x.png";
@@ -30,16 +30,6 @@ const DefiDetailList = observer((props) => {
         let monthName = monthNames[date.getMonth()];
         let day = date.getDate();
         return monthName + " " + day;
-    }
-
-    function convertDateFormat(date) {
-        // return date.toISOString().substring(0, 10);
-        var year = date.getFullYear();
-        var month = (1 + date.getMonth());
-        month = month >= 10 ? month : '0' + month;
-        var day = date.getDate();
-        day = day >= 10 ? day : '0' + day;
-        return year + '-' + month + '-' + day;
     }
 
     async function getBnbLockedList(defiName) {
@@ -207,7 +197,7 @@ const DefiDetailList = observer((props) => {
             <table className="defiDetailListTable">
                 <thead className="defiDetailListTableHead">
                     <tr>
-                        <th>Date</th><th>TVL (USD)</th><th>TVL Change</th><th>Total BNB Locked</th><th>BNB Locked 24H</th>
+                        <th>Date</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th>
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">
