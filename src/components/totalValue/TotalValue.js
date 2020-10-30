@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useStores from '../../useStores';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
 
 import TvlLink from './tvlLink/TvlLink';
 
@@ -35,6 +35,9 @@ const TotalValue = observer((props) => {
 
     const history = useHistory();
 
+    const [responseError, setResponseError] = useState();
+    const [response, setResponse] = useState({});
+
     // all, 1year, 90days
     const [chartPeriod, setChartPeriod] = useState("7");    // 7, 30, 90, 365
 
@@ -44,8 +47,7 @@ const TotalValue = observer((props) => {
     const [linkTag, setLinkTag] = useState("");
     const [defiIcon, setDefiIcon] = useState();
 
-    const [responseError, setResponseError] = useState();
-    const [response, setResponse] = useState({});
+    const [currencyFullName, setCurrencyFullName] = useState("");
 
     // const defistationApiUrl = "https://api.defistation.io";
 
@@ -110,6 +112,8 @@ const TotalValue = observer((props) => {
                 // K, M, B 기준은 최초 0번째 데이터
                 let digit = getCurrencyDigit(resultArr[0][1]);
                 let currencyUnit = getCurrencyUnit(resultArr[0][1]);
+                let tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
+                setCurrencyFullName(tempCurrencyFullName);
                 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
@@ -153,6 +157,14 @@ const TotalValue = observer((props) => {
                     }
                 }
 
+                // 차트: 7d
+                if (tempChartData.length > 7) {
+                    let remainDataLength = tempChartData.length - 7;
+                    for (var i = 0; i < remainDataLength; i++) {
+                        tempChartData.shift();  // 맨 앞 원소 제거
+                    }
+                }
+
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
@@ -183,7 +195,7 @@ const TotalValue = observer((props) => {
                 }
 
                 // 홈 하단 1 Day Change 계산
-                console.log("res.details: ", res.details);
+                console.log("res.details: ", res.details);  // undefined
                 let resultDetailsObj = res.details;
                 global.changeChartDataDetails(resultDetailsObj);
 
@@ -299,6 +311,7 @@ const TotalValue = observer((props) => {
                             <li>
                                 <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
+                                <p className="tvlChartUnitY">({currencyFullName} USD)</p>
 
                                 {/* Main Chart */}
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
@@ -317,7 +330,7 @@ const TotalValue = observer((props) => {
                                                 color: '#bbbebf',
                                             },
                                             baselineColor: '#fff',
-                                            gridlineColor: '#20232a',
+                                            gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
                                             minValue: minTvl,
@@ -325,7 +338,7 @@ const TotalValue = observer((props) => {
                                                 color: '#bbbebf',
                                             },
                                             baselineColor: '#fff',
-                                            gridlineColor: '#20232a',
+                                            gridlineColor: '#3D424D',
                                         },
                                         series: {
                                         // 0: { curveType: 'function' },
@@ -353,7 +366,7 @@ const TotalValue = observer((props) => {
                                                 color: '#bbbebf',
                                             },
                                             baselineColor: '#fff',
-                                            gridlineColor: '#20232a',
+                                            gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
                                             minValue: minTvl,
@@ -361,7 +374,7 @@ const TotalValue = observer((props) => {
                                                 color: '#bbbebf',
                                             },
                                             baselineColor: '#fff',
-                                            gridlineColor: '#20232a',
+                                            gridlineColor: '#3D424D',
                                         },
                                         series: {
                                         // 0: { curveType: 'function' },
@@ -377,7 +390,7 @@ const TotalValue = observer((props) => {
                                 {/* <button className="periodBtnSelected" onClick={() => setChartPeriod("all")}>All</button>
                                 <button className="periodBtn" onClick={() => setChartPeriod("1year")}>1 Year</button>
                                 <button className="periodBtn" onClick={() => setChartPeriod("90days")}>90 Days</button> */}
-                                <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7 Days</button>
+                                <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7d</button>
                             </li>
                         </ul>
                     </div>
@@ -492,7 +505,7 @@ const TotalValue = observer((props) => {
                             <span onClick={() => openWindow("https://medium.com/@BakerySwap")}>Blog</span><br />
                         </div>
                         {/* fortube */}
-                        <div className="defiDetailPageLink noDrag" style={props.defiName == "fortube" ? undefined : { display: "none" } }>
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "ForTube" ? undefined : { display: "none" } }>
                             <p className="ecoSystemLinkTitle">Ecosystem Links</p>
                             {/* <span onClick={() => openWindow("https://for.tube/home")}>Official Website</span><br /> */}
                             <span onClick={() => openWindow("https://github.com/thefortube")}>Github</span><br />

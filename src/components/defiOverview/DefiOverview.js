@@ -3,6 +3,8 @@ import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 // import useStores from '../../../useStores';
 
+import { getOfficialDefiName } from '../../util/Util';
+
 import '../../App.css';
 
 import binanceImg1 from "../../assets/images/binance_img@2x.png";
@@ -34,7 +36,7 @@ const DefiOverview = observer((props) => {
             //         </div>
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                        <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                        <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         PancakeSwap is one of the top liquidity providers on BSC in terms of swap volume, active users, and gas fee contribution to the BSC ecosystem. Its unique gamification program sets PancakeSwap apart from other AMM protocols, bringing stronger incentive for user participation as well as more token use cases.
                         </span>
                     </div>
@@ -44,7 +46,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                        <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                        <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         An evolution of Uniswap with Peach tokenomics on Binance Smart Chain.
                         </span>
                     </div>
@@ -54,7 +56,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                        <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                        <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Streamity is an autonomous company on the Binance Smart Chain to provide services in finance, education, healthcare, science and sports spheres.
                         </span>
                     </div>
@@ -64,7 +66,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                        <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                        <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Launched on 9 September 2020, BSCswap is a decentralized exchange and an Automated Market Making protocol for Binance Smart Chain. It supports multiple BEP20 tokens over BSC ecosystem to create liquidity and fetch price oracles via on-chain smart contracts. Users can also yield-farm BSCswap LP tokens from the supported projects from BSC ecosystem.
                         </span>
                     </div>
@@ -74,7 +76,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         A protocol for incentivised liquidity and synthetic assets on Binance Smart Chain. 
                         </span>
                     </div>
@@ -84,7 +86,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Democratized DeFi platform on Binance Smart Chain. List and trade any BEP20 asset. Provide liquidity and participate in community governance to earn from tx fees and liquidity mining rewards.
                         </span>
                     </div>
@@ -94,8 +96,8 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
-                        Stakecow is a yield farming project based on BSC
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                        MILK Protocol is a yield farming project based on BSC
                         </span>
                     </div>
                 );
@@ -104,7 +106,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Alpha Finance Lab is an ecosystem of DeFi products, starting on Binance Smart Chain and Ethereum. Alpha Finance Lab is focused on building an ecosystem of automated yield-maximizing Alpha products that interoperate to bring optimal alpha to users on a cross-chain level.
                         </span>
                     </div>
@@ -114,7 +116,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         C.R.E.A.M. is a peer to peer lending and exchange platform on Ethereum and BSC.
                         </span>
                     </div>
@@ -124,17 +126,17 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Bakery Swap is the first AMM and NFT platform on Binance Smart Chain.
                         </span>
                     </div>
                 );
                 break;
-            case "fortube":
+            case "ForTube":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Based on The Force Protocol, ForTube is committed to providing decentralized lending services for cryptoasset enthusiasts around the world.
                         </span>
                     </div>
@@ -144,7 +146,7 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                         Automated Market Maker built on Binance Smart Chain
                         </span>
                     </div>
@@ -154,16 +156,26 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {props.defiName}?</span><br /><br />
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
                             Narwhalswap is an AMM protocol but is on Binance Smart Chain.
                         </span>
                     </div>
                 );
-                break;        
+                break;  
+            case "beefy.finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            beefy.finance is a yield farming optimizer on Binance Smart Chain.
+                        </span>
+                    </div>
+                );
+                break;            
             default:
                 setOverviewTag(
                     <div className="defiOverview">
-                        <span className="defiOverviewTitle">-</span><br /><br />
+                        <span className="defiOverviewTitle">-</span><br /><div className="defiOverviewBr"></div>
                         <span className="defiOverviewContent">
                         -
                         </span>

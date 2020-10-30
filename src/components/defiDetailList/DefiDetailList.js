@@ -85,7 +85,7 @@ const DefiDetailList = observer((props) => {
                 
                 let defiDataTagArr = [];
 
-                console.log("test111111111111");
+                // console.log("test111111111111");
 
                 let tvlChangeTag;
                 let bnbChangeTag;
@@ -143,7 +143,7 @@ const DefiDetailList = observer((props) => {
                     // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
 
                     // let tempDate = new Date(resultArr[i][0] * 1000);
-                    console.log("getMonthAndDay(new Date(resultArr[i][0] * 1000)): ", getMonthAndDay(new Date(resultArr[i][0] * 1000)));
+                    // console.log("getMonthAndDay(new Date(resultArr[i][0] * 1000)): ", getMonthAndDay(new Date(resultArr[i][0] * 1000)));
 
                     // console.log("2: ", numberWithCommas(resultArr[i][1]));
                     // console.log("3: ", tvlChangeTag);

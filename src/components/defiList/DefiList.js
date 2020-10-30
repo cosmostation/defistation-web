@@ -6,7 +6,7 @@ import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, convertDateFormat2 } from '../../util/Util';
 
 // table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
@@ -131,17 +131,27 @@ const DefiList = observer((props) => {
                         verifiedTag = <img src={noVerifiedIcon} />
                     }
 
+                    // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
+                    let tempDate;
+                    console.log("res[i].lastUpdated: ", res[i].lastUpdated); 
+                    if (res[i].lastUpdated == 0) {
+                        tempDate = "-";
+                    } else {
+                        tempDate = new Date(res[i].lastUpdated * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                        tempDate = tempDate.substring(0, tempDate.length - 3);
+                    }
+
                     tableCodeArr.push(
                         <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                             <td>{rankNum}</td>
                             <td>{verifiedTag}</td>
                             <td>{getOfficialDefiName(res[i].name)}</td>
                             <td>{chainName}</td>
-                            <td>{capitalize(res[i].category)}</td>
+                            <td>{getOfficialCategoryName(res[i].category)}</td>
                             <td>{res[i].contractNum}</td>
                             <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
                             <td>{change24hTag}</td>
-                            <td>{new Date(res[i].lastUpdated * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '')}</td>
+                            <td>{tempDate}</td>
                         </tr>
                     );
                 }

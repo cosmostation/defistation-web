@@ -1,6 +1,7 @@
 import React, { Component, Suspense, useState, useEffect } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
+import ReactGA from "react-ga";
 // import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
@@ -18,6 +19,7 @@ const DefiDetail = observer(() => {
     // const { global } = useStores();
 
     const location = useLocation();
+    const history = useHistory();
 
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
@@ -25,6 +27,7 @@ const DefiDetail = observer(() => {
     const [urlPathName, setUrlPathName] = useState();
     const [defiName, setDefiName] = useState("");
     // const [invalidNameFlag, setInvalidNameFlag] = useState(false);
+
 
     const defistationApiUrl = "https://api.defistation.io";
 
@@ -57,6 +60,10 @@ const DefiDetail = observer(() => {
             .catch(err => setResponseError(err));
     }
 
+    function movePage(path) {
+        history.push(path);
+    }
+
     useEffect(() => {
         //   console.log('렌더링이 완료되었습니다!');
         checkValidDefiName();
@@ -74,8 +81,7 @@ const DefiDetail = observer(() => {
         // DB에 있는 defiName 에 해당하는지 체크
 
         
-
-        
+        if (process.env.NODE_ENV === "production") ReactGA.pageview(window.location.pathname + window.location.search);
 
         return () => {
             console.log('cleanup');
@@ -86,7 +92,7 @@ const DefiDetail = observer(() => {
         <>
             <div className="wrapper" style={defiName != "" ? undefined : {display: "none"}}>
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome">DEFISTATION</span> &gt; <span className="navDefiName">{defiName}</span></div>
+                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">{defiName}</span></div>
                 <TotalValue defiName={defiName} />
                 <MiniCards defiName={defiName} />
                 <DefiOverview defiName={defiName} />

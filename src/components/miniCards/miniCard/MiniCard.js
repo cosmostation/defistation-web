@@ -8,9 +8,8 @@ import '../../../App.css';
 const MiniCard = observer((props) => {
     // const { global } = useStores();
     
-
     useEffect(() => {
-        
+
         return () => {
 
         };

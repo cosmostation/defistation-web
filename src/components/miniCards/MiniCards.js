@@ -105,11 +105,20 @@ const MiniCards = observer((props) => {
             setMiniCardTitle3("Supply Locked");
             //props.defiName 에 따라 다른 데이터 넣으면 됨
         }
+
+        // minicard 0 으로 보이는 현상 임시
+        if (tvl1DayPercentTag == "0%") {
+            setTimeout(function() {
+                if (tvl1DayPercentTag != "0%") return;
+                console.log("global.totalValueLockedUsd: ", global.totalValueLockedUsd);
+                showTvl1Day();
+            }, 3000);
+        }
         
         return () => {
 
         };
-    }, [props.defiName, global.tvl1DayPercent])
+    }, [props.defiName, global.totalValueLockedUsd, tvl1DayPercentTag])
 
     return (
         <div className="miniCards">

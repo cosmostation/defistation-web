@@ -1,5 +1,6 @@
 import React, { Component, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
+import ReactGA from "react-ga";
 
 import '../../App.css';
 
@@ -13,7 +14,9 @@ import Footer from '../footer/Footer';
 const Main = observer(() => {
 
     useEffect(() => {
-        //   console.log('렌더링이 완료되었습니다!');
+        
+        // Google Analytics
+        if (process.env.NODE_ENV === "production") ReactGA.pageview(window.location.pathname + window.location.search);
 
         return () => {
             console.log('cleanup');

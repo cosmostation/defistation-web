@@ -265,6 +265,27 @@ li {
   color: #ffffff;
 }
 
+.tvlChartUnitY {
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e;
+  position: absolute;
+  z-index: 10;
+  margin-top: 3px;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .tvlChartUnitY {
+    display: none;
+  }
+}
+
 .tvlChartCardUl {
   display: flex;
 }
@@ -289,19 +310,20 @@ li {
 }
 
 .periodBtnSelected {
-  width: 72px;
-  height: 24px;
+  width: 32px;
+  height: 18px;
   border-radius: 5px;
   background-color: #f0b923;
   border: 0;
   outline: 0;
-  font-family: OpenSans;
+  font-family: Montserrat;
+  font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.36;
   letter-spacing: normal;
-  color: #ffffff;
+  color: #0e1014;
   /* cursor: pointer; */
 }
 
@@ -664,7 +686,7 @@ li {
 
 .navHome {
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -672,11 +694,12 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #757f8e;
+  cursor: pointer;
 }
 
 .navDefiName {
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -754,6 +777,10 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #9aa0a8;
+}
+
+.defiOverviewBr {
+  height: 7px;
 }
 
 .defiOverviewWebsiteLink {
@@ -944,6 +971,12 @@ li {
   }
 }
 
+.formLinkOnAbout {
+  text-decoration: underline;
+  color: #fff;
+  cursor: pointer;
+}
+
 .productOnAbout {
   font-family: Montserrat;
   font-size: 12px;
@@ -1068,6 +1101,22 @@ li {
 }
 
 .theDefiListUl li:nth-child(13) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(16) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(19) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(22) {
+  margin-left: 0px;
+}
+
+.theDefiListUl li:nth-child(25) {
   margin-left: 0px;
 }
 

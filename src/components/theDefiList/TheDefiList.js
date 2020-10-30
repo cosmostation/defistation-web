@@ -27,6 +27,9 @@ import stakecow from "../../assets/images/defiLogo/stakecow@2x.png";
 import streamity from "../../assets/images/defiLogo/streamity@2x.png";
 import stormswap from "../../assets/images/defiLogo/stormswap@2x.png";
 import narwhalswap from "../../assets/images/defiLogo/narwhalswap@2x.png";
+import bnexchange from "../../assets/images/defiLogo/bnexchange@2x.png";
+import softdrinkswap from "../../assets/images/defiLogo/softdrinkswap@2x.png";
+import nyanswap from "../../assets/images/defiLogo/nyanswap@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -44,6 +47,10 @@ const TheDefiList = observer(() => {
 
     // const defistationApiUrl = "https://api.defistation.io";
 
+    function movePage(path) {
+        history.push(path);
+    }
+
     useEffect(() => {
         
         return () => {
@@ -55,12 +62,12 @@ const TheDefiList = observer(() => {
         <>
             <div className="wrapper">
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome">DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
+                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
                 <div className="applyBtn" onClick={() => window.open("https://david407562.typeform.com/to/emRhsYx0", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>
                             <span className="applyBtnTitle">Apply to be listed</span><br />
-                            <span className="applyBtnText">The DeFi List Application - Add your project to The DeFi List!</span>
+                            <span className="applyBtnText">Please fill in this application form to be begin your screening process to be listed on Defistation</span>
                         </li>
                         <li>
                             <img src={yellowArrow} width="40px" />
@@ -120,9 +127,9 @@ const TheDefiList = observer(() => {
                         {/* icon */}
                         <img src={stakecow} width="40px" /><br />
                         {/* 이름 */}
-                        <span className="theDefiListCardTitle">Stakecow</span><br />
+                        <span className="theDefiListCardTitle">MILK Protocol</span><br />
                         {/* 설명 */}
-                        <span className="theDefiListCardText">Stakecow is a yield farming project based on BSC. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span className="theDefiListCardText">MILK Protocol is a yield farming project based on BSC. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </li>
                     <li onClick={() => window.open("https://alphafinance.io/", "_blank")}>
                         {/* icon */}
@@ -148,7 +155,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Bakery Swap is the first AMM and NFT platform on Binance Smart Chain.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://for.tube/home", "_blank")}>
+                    <li onClick={() => history.push("fortube")}>
                         {/* icon */}
                         <img src={fortube} width="40px" /><br />
                         {/* 이름 */}
@@ -171,6 +178,46 @@ const TheDefiList = observer(() => {
                         <span className="theDefiListCardTitle">Narwhal Swap</span><br />
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Narwhalswap is an AMM protocol but is on Binance Smart Chain.")}</span>
+                    </li>
+                    <li onClick={() => window.open("https://dex.stormswap.io/#/home", "_blank")}>
+                        {/* icon */}
+                        <img src={stormswap} width="40px" /><br />
+                        {/* 이름 */}
+                        <span className="theDefiListCardTitle">Storm Swap</span><br />
+                        {/* 설명 */}
+                        <span className="theDefiListCardText">{textEllipsis("Aumomated Market Maker built on Binance Smart Chain.")}</span>
+                    </li>
+                    <li onClick={() => window.open("https://bnex.org/", "_blank")}>
+                        {/* icon */}
+                        <img src={bnexchange} width="40px" /><br />
+                        {/* 이름 */}
+                        <span className="theDefiListCardTitle">Bn Exchange</span><br />
+                        {/* 설명 */}
+                        <span className="theDefiListCardText">{textEllipsis("Decentralized exchange for automated market making built on Binance Smart Chain.")}</span>
+                    </li>
+                    <li onClick={() => window.open("https://www.softdrinkswap.org/#/home", "_blank")}>
+                        {/* icon */}
+                        <img src={softdrinkswap} width="40px" /><br />
+                        {/* 이름 */}
+                        <span className="theDefiListCardTitle">SoftDrinkSwap</span><br />
+                        {/* 설명 */}
+                        <span className="theDefiListCardText">{textEllipsis("Decentrazlied finance automated market maker built on Binance Smart Chain")}</span>
+                    </li>
+                    <li onClick={() => window.open("https://nyanswop.org/#/swap", "_blank")}>
+                        {/* icon */}
+                        <img src={nyanswap} width="40px" /><br />
+                        {/* 이름 */}
+                        <span className="theDefiListCardTitle">Nyanswop</span><br />
+                        {/* 설명 */}
+                        <span className="theDefiListCardText">{textEllipsis("Nyanswop is a decentralized protocol for automated liquidity provision on Binance Smart Chain.")}</span>
+                    </li>
+                    <li onClick={() => window.open("https://beefy.finance/", "_blank")}>
+                        {/* icon */}
+                        <img src={beefyfinance} width="40px" /><br />
+                        {/* 이름 */}
+                        <span className="theDefiListCardTitle">beefy.finance</span><br />
+                        {/* 설명 */}
+                        <span className="theDefiListCardText">{textEllipsis("beefy.finance is a yield farming optimizer on Binance Smart Chain.")}</span>
                     </li>
                 </ul>
                 <Footer />

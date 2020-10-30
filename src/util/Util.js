@@ -12,6 +12,10 @@ export const numberWithCommas = (n, pointSizeDownFlag = true) => {
 	}
 }
 
+function capitalize2(str) {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -30,6 +34,19 @@ export function getCurrencyUnit(amount) {
     // Three Zeroes for Thousands
     : Math.abs(Number(amount)) >= 1.0e+3
     ? "K"
+    : "";
+}
+
+export function getCurrencyUnitFullName(amount) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(amount)) >= 1.0e+9
+    ? "Billion"
+    // Six Zeroes for Millions 
+    : Math.abs(Number(amount)) >= 1.0e+6
+    ? "Million"
+    // Three Zeroes for Thousands
+    : Math.abs(Number(amount)) >= 1.0e+3
+    ? "Thousand"
     : "";
 }
 
@@ -63,6 +80,29 @@ export function convertDateFormat(date) {
     return year + '-' + month + '-' + day;
 }
 
+function fillZeros(n, digits) {  
+    var zero = '';  
+    n = n.toString();  
+
+    if (n.length < digits) {  
+        for (i = 0; i < digits - n.length; i++)  
+            zero += '0';  
+    }  
+    return zero + n;  
+}
+
+export function convertDateFormat2(d) {
+    var s = fillZeros(d.getFullYear(), 4) + '-' +  
+            fillZeros(d.getMonth() + 1, 2) + '-' +  
+            fillZeros(d.getDate(), 2) + ' ' +  
+      
+            fillZeros(d.getHours(), 2) + ':' +  
+            fillZeros(d.getMinutes(), 2) + ':' +  
+            fillZeros(d.getSeconds(), 2);  
+
+    return s;  
+}
+
 export function getOfficialDefiName(defiName) {
     let convertedName;
     switch (defiName) {
@@ -70,10 +110,38 @@ export function getOfficialDefiName(defiName) {
             convertedName = "PancakeSwap";
             break;
         case "bscSwap":
-            convertedName = "BSC Swap";
+            convertedName = "BSCSwap";
             break;
+        case "Cream Finance":
+            convertedName = "C.R.E.A.M. Finance";
+            break;
+        case "Bakery Swap":
+            convertedName = "BakerySwap";
+            break;
+        case "Narwhalswap":
+            convertedName = "NarwhalSwap";
+            break;
+        case "Stakecow":
+            convertedName = "MILK Protocol";
+            break;    
         default:
             convertedName = defiName;
+            break;                                                   
+    }
+    return convertedName;
+}
+
+export function getOfficialCategoryName(category) {
+    let convertedName;
+    switch (category) {
+        case "dex":
+            convertedName = "DEXes";
+            break;
+        case "farm":
+            convertedName = "Yield Farming";
+            break;
+        default:
+            convertedName = capitalize2(category);
             break;                                                   
     }
     return convertedName;

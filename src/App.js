@@ -25,6 +25,14 @@ import 'typeface-roboto';       // $ npm install --save typeface-roboto
 
 import './App.css';
 
+// Google Analytics
+import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
+if (process.env.NODE_ENV === "production") {
+    ReactGA.initialize('UA-181754248-1');
+}
+
+
+
 const App = observer(() => {
     // inject 이름
     // const { global, account } = useStores();
