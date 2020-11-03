@@ -140,6 +140,9 @@ export function getOfficialCategoryName(category) {
         case "farm":
             convertedName = "Yield Farming";
             break;
+        case "YieldOptimization":
+            convertedName = "Yield Optimization";
+            break;    
         default:
             convertedName = capitalize2(category);
             break;                                                   
