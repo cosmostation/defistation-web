@@ -107,7 +107,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Launched on 9 September 2020, BSCswap is a decentralized exchange and an Automated Market Making protocol for Binance Smart Chain. It supports multiple BEP20 tokens over BSC ecosystem to create liquidity and fetch price oracles via on-chain smart contracts. Users can also yield-farm BSCswap LP tokens from the supported projects from BSC ecosystem.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://spartanprotocol.org/", "_blank")}>
+                    <li onClick={() => history.push("spartanprotocol")}>
                         {/* icon */}
                         <img src={spartanprotocol} width="40px" /><br />
                         {/* 이름 */}

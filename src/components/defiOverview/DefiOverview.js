@@ -72,7 +72,7 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break;
-            case "spartanprotocol":
+            case "Spartan Protocol":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
