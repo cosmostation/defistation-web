@@ -123,7 +123,10 @@ export function getOfficialDefiName(defiName) {
             break;
         case "Stakecow":
             convertedName = "MILK Protocol";
-            break;    
+            break;  
+        case "STORMSWAP":
+            convertedName = "Storm Swap";
+            break;        
         default:
             convertedName = defiName;
             break;                                                   

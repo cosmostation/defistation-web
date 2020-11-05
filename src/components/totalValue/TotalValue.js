@@ -280,7 +280,11 @@ const TotalValue = observer((props) => {
             case "Narwhalswap":
                 setDefiIcon(narwhalswap);
                 setLinkTag("https://narwhalswap.org");
-                break;    
+                break;   
+            case "STORMSWAP":
+                setDefiIcon(stormswap);
+                setLinkTag("https://dex.stormswap.io/#/home");
+                break;        
             default:
                 setLinkTag("");
                 break;    
@@ -515,7 +519,7 @@ const TotalValue = observer((props) => {
                             <span onClick={() => openWindow("https://fortube.medium.com/")}>Blog</span><br />
                         </div>
                         {/* fryworld */}
-                        <div className="defiDetailPageLink noDrag" style={props.defiName == "fryworld" ? undefined : { display: "none" } }>
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "FryWorld" ? undefined : { display: "none" } }>
                             <p className="ecoSystemLinkTitle">Ecosystem Links</p>
                             {/* <span onClick={() => openWindow("https://fry.world/")}>Official Website</span><br /> */}
                             <span onClick={() => openWindow("https://github.com/fryworld-finance/fryworld-farming-core")}>Github</span><br />
@@ -541,6 +545,12 @@ const TotalValue = observer((props) => {
                             <span onClick={() => openWindow("https://twitter.com/narwhalswap")}>Twitter</span><br />
                             <span onClick={() => openWindow("https://t.me/narwhalswap")}>Telegram</span><br />
                             {/* <span onClick={() => openWindow("https://medium.com/beefyfinance")}>Blog</span><br /> */}
+                        </div>
+                        {/* Storm Swap */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "STORMSWAP" ? undefined : { display: "none" } }>
+                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
+                            <span onClick={() => openWindow("https://github.com/stormswap")}>Github</span><br />
+                            <span onClick={() => openWindow("https://twitter.com/storm_swap")}>Twitter</span><br />
                         </div>
 
                     </div>

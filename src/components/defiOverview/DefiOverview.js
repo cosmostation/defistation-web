@@ -142,7 +142,7 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break;
-            case "fryworld":
+            case "FryWorld":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
@@ -171,7 +171,17 @@ const DefiOverview = observer((props) => {
                         </span>
                     </div>
                 );
-                break;            
+                break;    
+            case "STORMSWAP":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            Aumomated Market Maker built on Binance Smart Chain.
+                        </span>
+                    </div>
+                );
+                break;                
             default:
                 setOverviewTag(
                     <div className="defiOverview">

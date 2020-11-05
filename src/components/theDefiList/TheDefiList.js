@@ -163,7 +163,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Based on The Force Protocol, ForTube is committed to providing decentralized lending services for cryptoasset enthusiasts around the world.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://fry.world/", "_blank")}>
+                    <li onClick={() => history.push("fryworld")}>
                         {/* icon */}
                         <img src={fryworld} width="40px" /><br />
                         {/* 이름 */}
@@ -179,7 +179,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Narwhalswap is an AMM protocol but is on Binance Smart Chain.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://dex.stormswap.io/#/home", "_blank")}>
+                    <li onClick={() => history.push("stormswap")}>
                         {/* icon */}
                         <img src={stormswap} width="40px" /><br />
                         {/* 이름 */}
