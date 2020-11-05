@@ -187,7 +187,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Aumomated Market Maker built on Binance Smart Chain.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://bnex.org/", "_blank")}>
+                    <li onClick={() => history.push("bnex")}>
                         {/* icon */}
                         <img src={bnexchange} width="40px" /><br />
                         {/* 이름 */}

@@ -29,6 +29,9 @@ import stakecow from "../../assets/images/defiLogo/stakecow@2x.png";
 import streamity from "../../assets/images/defiLogo/streamity@2x.png";
 import stormswap from "../../assets/images/defiLogo/stormswap@2x.png";
 import narwhalswap from "../../assets/images/defiLogo/narwhalswap@2x.png";
+import bnexchange from "../../assets/images/defiLogo/bnexchange@2x.png";
+import softdrinkswap from "../../assets/images/defiLogo/softdrinkswap@2x.png";
+import nyanswap from "../../assets/images/defiLogo/nyanswap@2x.png";
 
 const TotalValue = observer((props) => {
     const { global } = useStores();
@@ -284,7 +287,11 @@ const TotalValue = observer((props) => {
             case "STORMSWAP":
                 setDefiIcon(stormswap);
                 setLinkTag("https://dex.stormswap.io/#/home");
-                break;        
+                break;       
+            case "BnEX":
+                setDefiIcon(bnexchange);
+                setLinkTag("https://bnex.org/");
+                break;       
             default:
                 setLinkTag("");
                 break;    
@@ -552,7 +559,15 @@ const TotalValue = observer((props) => {
                             <span onClick={() => openWindow("https://github.com/stormswap")}>Github</span><br />
                             <span onClick={() => openWindow("https://twitter.com/storm_swap")}>Twitter</span><br />
                         </div>
-
+                         {/* BnEX */}
+                         <div className="defiDetailPageLink noDrag" style={props.defiName == "BnEX" ? undefined : { display: "none" } }>
+                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
+                            <span onClick={() => openWindow("https://github.com/bnex-finance")}>Github</span><br />
+                            {/* <span onClick={() => openWindow("https://docs.for.tube/")}>Docs</span><br /> */}
+                            <span onClick={() => openWindow("https://twitter.com/BnEXchange")}>Twitter</span><br />
+                            <span onClick={() => openWindow("https://t.me/bnexswap")}>Telegram</span><br />
+                            <span onClick={() => openWindow("https://medium.com/bnex")}>Blog</span><br />
+                        </div>
                     </div>
                 </li>
             </ul>

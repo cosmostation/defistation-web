@@ -181,7 +181,17 @@ const DefiOverview = observer((props) => {
                         </span>
                     </div>
                 );
-                break;                
+                break;              
+            case "BnEX":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            Decentralized exchange for automated market making built on Binance Smart Chain.
+                        </span>
+                    </div>
+                );
+                break;                    
             default:
                 setOverviewTag(
                     <div className="defiOverview">
