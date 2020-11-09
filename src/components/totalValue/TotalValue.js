@@ -37,6 +37,7 @@ const TotalValue = observer((props) => {
     const { global } = useStores();
 
     const history = useHistory();
+    const location = useLocation();
 
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
@@ -51,6 +52,8 @@ const TotalValue = observer((props) => {
     const [defiIcon, setDefiIcon] = useState();
 
     const [currencyFullName, setCurrencyFullName] = useState("");
+
+    const [viewWidth, setViewWidth] = useState("750px");
 
     // const defistationApiUrl = "https://api.defistation.io";
 
@@ -298,9 +301,37 @@ const TotalValue = observer((props) => {
         }
     }
 
+    // ------------ 모바일 구글 차트를 위한 resize 체크 START ------------
+    function resizedw(){
+        // Haven't resized in 100ms!
+        if (window.innerWidth <= 1034) {
+            console.log("1034 이하");
+            // 홈 화면인 경우
+            window.location.replace(location.pathname);
+        } else {
+            console.log("1034 초과");
+            window.location.replace(location.pathname);
+        }
+    }
+    
+    var doit;
+    function checkWindowWidth() {
+        window.onresize = function(){
+            clearTimeout(doit);
+            doit = setTimeout(resizedw, 100);
+        };
+    }
+    // ------------ 모바일 구글 차트를 위한 resize 체크 END ------------
+
     useEffect(() => {
         getChart(props.defiName);
 
+        {/* PC: 750px, Mobile: 300px */}
+        if (window.innerWidth <= 1034) {
+            setViewWidth("300px");
+        }
+
+        checkWindowWidth();
 
         console.count("TotalValue render");
         console.log("props.defiName: ", props.defiName);
@@ -311,10 +342,25 @@ const TotalValue = observer((props) => {
             // console.log('cleanup');
             // clearTimeout(timer);
         };
-    }, [props.defiName, global.tvl1DayPercent, linkTag])
+    }, [props.defiName, global.tvl1DayPercent, linkTag, viewWidth])
 
     return (
         <div className="totalValue">
+            {/* subpage 타이틀 */}
+            <div>
+                <ul className="tvlTitleBox">
+                    <li>
+                        <ul className="tvlSubPageTitleIconLabel">
+                            <li><img src={defiIcon} /></li>
+                            <li><span>{getOfficialDefiName(props.defiName)}</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">{props.defiName}</span></div>
+                    </li>
+                </ul>
+            </div>
+            
             <ul className="totalValueUl">
                 <li>
                     <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}}>
@@ -326,12 +372,13 @@ const TotalValue = observer((props) => {
 
                                 {/* Main Chart */}
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
+                                    {/* PC: 750px, Mobile: 300px */}
                                     <Chart
                                     id="tvlGoogleChart"
-                                    width={'750px'}
+                                    width={viewWidth}
                                     height={'220px'}
                                     chartType="LineChart"
-                                    loader={<div style={{ "height": "750px", "width": "220px" }}></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "220px" }}></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -364,10 +411,10 @@ const TotalValue = observer((props) => {
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>
                                     <Chart
                                     id="tvlGoogleChart"
-                                    width={'750px'}
+                                    width={viewWidth}
                                     height={'220px'}
                                     chartType="LineChart"
-                                    loader={<div style={{ "height": "750px", "width": "220px" }}></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "220px" }}></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#171a20",

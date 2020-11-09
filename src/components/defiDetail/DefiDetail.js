@@ -80,7 +80,7 @@ const DefiDetail = observer(() => {
 
         // DB에 있는 defiName 에 해당하는지 체크
 
-        
+        // Google Analytics
         if (process.env.NODE_ENV === "production") ReactGA.pageview(window.location.pathname + window.location.search);
 
         return () => {
@@ -92,21 +92,13 @@ const DefiDetail = observer(() => {
         <>
             <div className="wrapper" style={defiName != "" ? undefined : {display: "none"}}>
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">{defiName}</span></div>
+                {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">{defiName}</span></div> */}
                 <TotalValue defiName={defiName} />
                 <MiniCards defiName={defiName} />
                 <DefiOverview defiName={defiName} />
                 <DefiDetailList defiName={defiName} />
                 <Footer />
             </div>
-            {/* <div id="wrapper" style={defiName == "" ? undefined : {display: "none"}}>
-                <div className="notFound" style={defiName == "" ? undefined : {display: "none"}}>
-                    <h1>404</h1>
-                    <div>
-                        <h3>This page could not be found</h3>
-                    </div>
-                </div>
-            </div > */}
         </>
     );
 })

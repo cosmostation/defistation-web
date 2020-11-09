@@ -143,7 +143,7 @@ const TheDefiList = observer(() => {
                         {/* icon */}
                         <img src={creamfinance} width="40px" /><br />
                         {/* 이름 */}
-                        <span className="theDefiListCardTitle">Cream Financep</span><br />
+                        <span className="theDefiListCardTitle">Cream Finance</span><br />
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("C.R.E.A.M. is a peer to peer lending and exchange platform on Ethereum and BSC.")}</span>
                     </li>

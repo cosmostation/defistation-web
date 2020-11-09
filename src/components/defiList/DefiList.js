@@ -6,7 +6,7 @@ import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, convertDateFormat2 } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2 } from '../../util/Util';
 
 // table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
@@ -141,6 +141,10 @@ const DefiList = observer((props) => {
                         tempDate = tempDate.substring(0, tempDate.length - 3);
                     }
 
+                    let digit = getCurrencyDigit(res[i].lockedUsd);
+                    let currencyUnit = getCurrencyUnit(res[i].lockedUsd);
+                    let currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
+
                     tableCodeArr.push(
                         <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                             <td>{rankNum}</td>
@@ -150,6 +154,7 @@ const DefiList = observer((props) => {
                             <td>{getOfficialCategoryName(res[i].category)}</td>
                             <td>{res[i].contractNum}</td>
                             <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
+                            <td>$ {currencyNum + currencyUnit}</td>
                             <td>{change24hTag}</td>
                             <td>{tempDate}</td>
                         </tr>
@@ -190,10 +195,11 @@ const DefiList = observer((props) => {
                         <th>Category</th>
                         <th>Contract(#)</th>
                         <th>Locked</th>
+                        <th>Locked</th>
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Change 24h</li>
-                                <li><img src={questionIcon} onClick={() => movePage("/about")} /></li>
+                                <li className="change24h"><img src={questionIcon} onClick={() => movePage("/about")} /></li>
                             </ul>
                         </th>
                         <th>Last updated(UTC)</th>

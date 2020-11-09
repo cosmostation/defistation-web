@@ -1,3 +1,9 @@
+html {
+  width: 100%;
+}
+
+.hidden {height:100%; min-height:100%; overflow:hidden !important; touch-action:none;}
+
 ul {
   list-style: none;
   padding: 0;
@@ -79,10 +85,11 @@ li {
   text-align: right;
 }
 
-/* .topBarUl li:nth-child(4) { 
-  width: 15%;
-  text-align: right;
-} */
+@media (min-width:1034px) {
+  .topBarUl li:nth-child(4) { 
+    display: none;
+  }
+}
 
 @media (min-width:1px) and (max-width:1034px) {
   .topBarUl li:nth-child(2) { 
@@ -94,11 +101,121 @@ li {
   }
   
   .topBarUl li:nth-child(4) { 
-    display: none;
+    /* display: none; */
+    width: 24%;
+    text-align: right;
+    color: #fff;
   }
 }
 
+.sideMenuCover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1000;
+  float: left;
+  left: 0;
+  margin-top: -13px;
+}
+
+.sideMenuBox {
+  float: right;
+  right: 0;
+  position: fixed;
+  margin-top: -13px;
+  width: 65%;
+  height: 100%;
+  background-color: #262932;
+  color: #fff;
+  z-index: 1001;
+}
+
+.closeBtn {
+  float: right;
+  right: 0;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.sideMenuUl {
+  margin-top: 70px;
+  margin-left: 24px;
+}
+
+.sideMenuUl li {
+  margin-top: 24px;
+}
+
+.sideMenuUl li span {
+  cursor: pointer;
+}
+
+hr.sideMenuLine {
+  border: 1px solid #3e434e;
+  margin-left: -24px;
+  margin-top: 24px;
+}
+
+.sideMenuIconLabel {
+  display: table;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.sideMenuIconLabel li {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.sideMenuIconLabel li img {
+  display: table-cell;
+  margin-right: 7px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
 /* -------------------------------- Chart -------------------------------- */
+
+.tvlTitleBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tvlTitleBox li:nth-child(1) {
+  float: left;
+}
+
+.tvlTitleBox li:nth-child(2) {
+  float: right;
+}
+
+.tvlSubPageTitleIconLabel {
+  display: table;
+  vertical-align: middle;
+}
+
+.tvlSubPageTitleIconLabel li {
+  display: table-cell;
+  vertical-align: middle;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.tvlSubPageTitleIconLabel li img {
+  display: table-cell;
+  margin-right: 7px;
+  vertical-align: middle;
+  width: 34px;
+}
 
 .totalValueUl {
   display: flex;
@@ -133,12 +250,12 @@ li {
 
 @media (min-width:1px) and (max-width:1034px) {
   #tvlGoogleChart {
-    display: none;
+    /* display: none; */
   }
 
   .tvlChartCard {
     width: 320px;
-    height: 92px;
+    height: 310px;
     margin-bottom: 15px;
     box-sizing: border-box;
   }
@@ -170,6 +287,12 @@ li {
   padding-top: 5px;
   padding-left: 15px;
   box-sizing: border-box;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .tvlLink {
+    display: none;
+  }
 }
 
 .tvlLinkBox {
@@ -282,7 +405,7 @@ li {
 
 @media (min-width:1px) and (max-width:1034px) {
   .tvlChartUnitY {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -305,7 +428,9 @@ li {
   }
   
   .tvlChartCardUl li:nth-child(2) {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    right: 20px;
   }
 }
 
@@ -404,10 +529,35 @@ li {
   }
   
   .miniCardUl li {
-    width: 320px;
+    width: 153px;
     height: 80px;
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+  }
+
+  .miniCardUl li:nth-child(2) {
+    margin-left: 14px;
+  }
+
+  .miniCardUl li:nth-child(4) {
+    margin-left: 14px;
+  }
+
+  .miniCardUl li:nth-child(3) {
+    clear: both;
+  }
+
+  .miniCardTitle {
+    font-size: 12px;
+  }
+
+  .miniCardDataNum {
+    font-size: 14px;
   }
 }
 
@@ -463,7 +613,20 @@ li {
 @media (min-width:1px) and (max-width:1034px) {
   .banner {
     width: 320px;
-    height: 130px;
+    height: 90px;
+    padding: 15px;
+  }
+
+  .bannerTitle {
+    font-size: 14px;
+  }
+  
+  .bannerContent {
+    font-size: 11px;
+  }
+
+  .banner img {
+    display: none;
   }
 }
 
@@ -477,7 +640,6 @@ li {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #262932;
   padding: 15px 30px 15px 30px;
-
   box-sizing: border-box;
   overflow: auto;
   /* -ms-overflow-style: -ms-autohiding-scrollbar; */
@@ -486,6 +648,7 @@ li {
 @media (min-width:1px) and (max-width:1034px) {
   .defiList {
     /* height: 860px; */
+    padding: 0px 15px 0px 15px;
   }
 }
 
@@ -509,6 +672,12 @@ li {
   height: 38px;
   border-bottom: 1px solid #404752;
   padding: 10px;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiListTable th, td {
+    padding: 0 10px 0 10px;
+  }
 }
 
 .defiListTable th:nth-child(2) {
@@ -567,6 +736,66 @@ li {
   text-align: right;
 }
 
+@media (min-width:1035px) {
+  .defiListTable th:nth-child(8) {
+    display: none;
+  }
+  .defiListTable td:nth-child(8) {
+    display: none;
+  }
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiListTable th:nth-child(2) {
+    display: none;
+  }
+  .defiListTable td:nth-child(2) {
+    display: none;
+  }
+
+  .defiListTable th:nth-child(4) {
+    display: none;
+  }
+  .defiListTable td:nth-child(4) {
+    display: none;
+  }
+
+  .defiListTable th:nth-child(5) {
+    display: none;
+  }
+  .defiListTable td:nth-child(5) {
+    display: none;
+  }
+
+  .defiListTable th:nth-child(6) {
+    display: none;
+  }
+  .defiListTable td:nth-child(6) {
+    display: none;
+  }
+
+  .defiListTable th:nth-child(7) {
+    display: none;
+  }
+  .defiListTable td:nth-child(7) {
+    display: none;
+  }
+
+  .defiListTable th:nth-child(8) {
+    width: 30%;
+  }
+  .defiListTable td:nth-child(8) {
+    width: 30%;
+  }
+
+  .defiListTable th:nth-child(10) {
+    display: none;
+  }
+  .defiListTable td:nth-child(10) {
+    display: none;
+  }
+}
+
 .defiListTableHead {
   font-family: Roboto;
   font-size: 14px;
@@ -589,6 +818,16 @@ li {
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiListTableHead {
+    font-size: 12px;
+  }
+  
+  .defiListTableBody {
+    font-size: 12px;
+  }
 }
 
 .defiListTableHeadCell {
@@ -628,6 +867,12 @@ li {
 
 .defiListTableHeadCellRight li:nth-child(2) {
   vertical-align: middle;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiListTableHeadCellRight li:nth-child(2) {
+    display: none;
+  }
 }
 
 .textGreen {
@@ -744,6 +989,7 @@ li {
 }
 
 .defiOverview {
+  display: inline-block;
   margin-top: -3px;
   width: 100%;
   /* height: 262px; */
@@ -849,6 +1095,7 @@ li {
 @media (min-width:1px) and (max-width:1034px) {
   .defiDetailList {
     /* height: 860px; */
+    padding: 0 15px 0 15px;
   }
 }
 
@@ -918,6 +1165,36 @@ li {
   text-align: right;
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  .defiDetailListTable th:nth-child(1) {
+    width: 30%;
+  }
+  .defiDetailListTable td:nth-child(1) {
+    width: 30%;
+  }
+
+  .defiDetailListTable th:nth-child(2) {
+    width: 35%;
+  }
+  .defiDetailListTable td:nth-child(2) {
+    width: 35%;
+  }
+  
+  .defiDetailListTable th:nth-child(3) {
+    display: none;
+  }
+  .defiDetailListTable td:nth-child(3) {
+    display: none;
+  }
+
+  .defiDetailListTable th:nth-child(5) {
+    display: none;
+  }
+  .defiDetailListTable td:nth-child(5) {
+    display: none;
+  }
+}
+
 .defiDetailListTableHead {
   font-family: Roboto;
   font-size: 14px;
@@ -940,6 +1217,16 @@ li {
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiDetailListTableHead {
+    font-size: 12px;
+  }
+  
+  .defiDetailListTableBody {
+    font-size: 12px;
+  }
 }
 
 /* -------------------------------- About -------------------------------- */
