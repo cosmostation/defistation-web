@@ -125,7 +125,7 @@ li {
   right: 0;
   position: fixed;
   margin-top: -13px;
-  width: 65%;
+  width: 70%;
   height: 100%;
   background-color: #262932;
   color: #fff;
@@ -181,6 +181,8 @@ hr.sideMenuLine {
 .tvlTitleBox {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: -5px;
 }
 
 .tvlTitleBox li:nth-child(1) {
@@ -214,7 +216,18 @@ hr.sideMenuLine {
   display: table-cell;
   margin-right: 7px;
   vertical-align: middle;
-  width: 34px;
+  width: 32px;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .tvlSubPageTitleIconLabel li {
+    font-size: 16px;
+  }
+  
+  .tvlSubPageTitleIconLabel li img {
+    width: 20px;
+    margin-right: 3px;
+  }
 }
 
 .totalValueUl {
@@ -290,8 +303,13 @@ hr.sideMenuLine {
 }
 
 @media (min-width:1px) and (max-width:1034px) {
-  .tvlLink {
+  .tvlLink0 {
     display: none;
+  }
+  
+  .tvlLink {
+    /* display: none; */
+    height: 168px;
   }
 }
 
@@ -371,6 +389,74 @@ hr.sideMenuLine {
     width: 290px;
     height: 62px;
     box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 10px;
+  }
+}
+
+.defiDetailPageLink {
+  display: list-item;
+}
+
+.subPageDefiLinkBox {
+  width: 216px;
+  height: 40px;
+  margin: 8.6px 0 8.6px;
+  border-radius: 5px;
+  border: solid 1px #404752;
+  background-color: #20232b;
+  padding: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiDetailPageLink {
+    display: grid;
+    grid-template-columns: 150px 150px;
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+}
+
+/* 이미지 가운데 맞추기 */
+.subPageDefiLinkBox img {
+  max-width:100%; max-height:100%;
+  display:inline-block;
+  vertical-align:middle;
+  margin-left: 5px;
+}
+
+.subPageDefiLinkBox:hover {
+  background-color: #252932;
+}
+
+.disableBtn {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.subPageDefiLinkBoxTitle {
+  margin: 2px 0 1px 8px;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .subPageDefiLinkBox {
+    width: 140px;
+    height: 40px;
   }
 }
 
@@ -954,7 +1040,17 @@ hr.sideMenuLine {
   color: #f0b923;
 }
 
-.defiDetailPageLink {
+@media (min-width:1px) and (max-width:1034px) {
+  .navHome {
+    font-size: 10px;
+  }
+  
+  .navDefiName {
+    font-size: 10px;
+  }
+}
+
+/* .defiDetailPageLink {
   line-height: 1.8;
 }
 
@@ -973,7 +1069,7 @@ hr.sideMenuLine {
 
 .defiDetailPageLink span:hover {
   text-decoration: underline;
-}
+} */
 
 .ecoSystemLinkTitle {
   margin-top: 25px;
@@ -1023,6 +1119,16 @@ hr.sideMenuLine {
   letter-spacing: normal;
   text-align: left;
   color: #9aa0a8;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .defiOverviewTitle {
+    font-size: 15px;
+  }
+  
+  .defiOverviewContent {
+    font-size: 12px;
+  }
 }
 
 .defiOverviewBr {
@@ -1312,7 +1418,7 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .applyBtn {
-    height: 100px;
+    height: 115px;
   }
 }
 

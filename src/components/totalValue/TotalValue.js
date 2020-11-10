@@ -32,6 +32,13 @@ import narwhalswap from "../../assets/images/defiLogo/narwhalswap@2x.png";
 import bnexchange from "../../assets/images/defiLogo/bnexchange@2x.png";
 import softdrinkswap from "../../assets/images/defiLogo/softdrinkswap@2x.png";
 import nyanswap from "../../assets/images/defiLogo/nyanswap@2x.png";
+// Defi Link 아이콘
+import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
+import defiGithubIcon from "../../assets/images/defiLink/github.svg";
+import defiDocsIcon from "../../assets/images/defiLink/docs.svg";
+import defiTwitterIcon from "../../assets/images/defiLink/twitter.svg";
+import defiTelegramIcon from "../../assets/images/defiLink/telegram.svg";
+import defiBlogIcon from "../../assets/images/defiLink/blog.svg";
 
 const TotalValue = observer((props) => {
     const { global } = useStores();
@@ -348,7 +355,7 @@ const TotalValue = observer((props) => {
         <div className="totalValue">
             {/* subpage 타이틀 */}
             <div>
-                <ul className="tvlTitleBox">
+                <ul className="tvlTitleBox" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>
                     <li>
                         <ul className="tvlSubPageTitleIconLabel">
                             <li><img src={defiIcon} /></li>
@@ -455,165 +462,157 @@ const TotalValue = observer((props) => {
                 </li>
                 <li>
                     {/* Home */}
-                    <div className="tvlLink" style={props.defiName == "DeFi" ? undefined : { display: "none" } }>
+                    <div className="tvlLink0" style={props.defiName == "DeFi" ? undefined : { display: "none" } }>
                         <TvlLink icon={bscLogo} title="Binance Smart Chain" subTitle="EVM compatible PoS" goPage="https://www.binance.org/en/smartChain" />
                         <TvlLink icon={bscScanLogo} title="BscScan" subTitle="BSC Explorer" goPage="https://bscscan.com/" />
                         <TvlLink icon={exchangeLogo} title="Exchange" subTitle="Crypto asset exchange" goPage="https://www.binance.com/en?ref=39076268" />
                         <TvlLink icon={cosmostationLogo} title="Cosmostation" subTitle="Access DeFi" goPage="https://www.cosmostation.io/" />
                     </div>
                     <div className="tvlLink" style={props.defiName == "DeFi" ? { display: "none" } : undefined }>
-                        <TvlLink icon={defiIcon} title={getOfficialDefiName(props.defiName)} subTitle="Official Website" goPage={linkTag} />
+                        {/* <TvlLink icon={defiIcon} title={getOfficialDefiName(props.defiName)} subTitle="Official Website" goPage={linkTag} /> */}
                         {/* pancake */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "pancake" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            <span onClick={() => openWindow("https://github.com/pancakeswap")}>Github</span><br />
-                            <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br />
-                            <span onClick={() => openWindow("https://twitter.com/pancakeswap")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/PancakeSwap")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@pancakeswap")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://pancakeswap.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/pancakeswap")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.pancakeswap.finance/")} style={{"clear": "both"}}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/pancakeswap")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/PancakeSwap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@pancakeswap")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* peachswap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "peachswap" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://peachswap.org/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/peachswapprotocol")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/peachswap")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/PeachSwapOfficial")}>Telegram</span><br />
-                            {/* <span onClick={() => openWindow("https://medium.com/@pancakeswap")}>Blog</span><br /> */}
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://peachswap.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/peachswapprotocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/peachswap")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/PeachSwapOfficial")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Streamity */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "streamity" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://streamity.org/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/streamity/")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/streamityorg")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/stm_international")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@streamityorg")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://streamity.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/streamity/")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/streamityorg")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/stm_international")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@streamityorg")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* bscSwap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "bscSwap" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://bscswap.com/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/bscswap/contracts")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/BSCswapProtocol")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/bscswap")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://bscswapprotocol.medium.com/")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscswap.com/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bscswap/contracts")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/BSCswapProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bscswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscswapprotocol.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Spartan Protocol */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Spartan Protocol" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://spartanprotocol.org/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/spartan-protocol")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/SpartanProtocol")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/SpartanProtocolOrg")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@spartanprotocol")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://spartanprotocol.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/spartan-protocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/SpartanProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/SpartanProtocolOrg")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@spartanprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* burgerswap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "burgerswap" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://burgerswap.org/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/burgerswap-org/burgerswap-core")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            {/* <span onClick={() => openWindow("https://twitter.com/SpartanProtocol")}>Twitter</span><br /> */}
-                            <span onClick={() => openWindow("https://t.me/burgerswap")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@bnburgerking/")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://burgerswap.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/burgerswap-org/burgerswap-core")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/burgerswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@bnburgerking/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Stakecow */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Stakecow" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://stakecow.com/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/milk-protocol")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            {/* <span onClick={() => openWindow("https://twitter.com/SpartanProtocol")}>Twitter</span><br /> */}
-                            <span onClick={() => openWindow("https://t.me/stakecow_en")}>Telegram</span><br />
-                            {/* <span onClick={() => openWindow("https://medium.com/@bnburgerking/")}>Blog</span><br /> */}
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://stakecow.com/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/milk-protocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/stakecow_en")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* alphafinance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "alphafinance" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://alphafinance.io/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/AlphaFinanceLab")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/alphafinancelab")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/AlphaFinanceLab")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://blog.alphafinance.io/")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://alphafinance.io/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/AlphaFinanceLab")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/alphafinancelab")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/AlphaFinanceLab")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://blog.alphafinance.io/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* creamfinance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Cream Finance" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://cream.finance/")}>Official Website</span><br /> */}
-                            {/* <span onClick={() => openWindow("https://github.com/AlphaFinanceLab")}>Github</span><br /> */}
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/CreamdotFinance")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/CreamdotFinance")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@CreamdotFinance")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://cream.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/CreamdotFinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/CreamdotFinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@CreamdotFinance")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Bakery Swap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Bakery Swap" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://www.bakeryswap.org/#/home")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/BakeryProject")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.pancakeswap.finance/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/bakery_swap")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/bakeryswap")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@BakerySwap")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://www.bakeryswap.org/#/home")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/BakeryProject")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/bakery_swap")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bakeryswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@BakerySwap")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* fortube */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "ForTube" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://for.tube/home")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/thefortube")}>Github</span><br />
-                            <span onClick={() => openWindow("https://docs.for.tube/")}>Docs</span><br />
-                            <span onClick={() => openWindow("https://twitter.com/ForTubeFi")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/theforceprotocol666")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://fortube.medium.com/")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://for.tube/home")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/thefortube")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.for.tube/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/ForTubeFi")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/theforceprotocol666")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://fortube.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* fryworld */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "FryWorld" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            {/* <span onClick={() => openWindow("https://fry.world/")}>Official Website</span><br /> */}
-                            <span onClick={() => openWindow("https://github.com/fryworld-finance/fryworld-farming-core")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.for.tube/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/fry_world")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/FryWorldFinance")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/@fryworld")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://fry.world/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/fryworld-finance/fryworld-farming-core")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/fry_world")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/FryWorldFinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@fryworld")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* beefy.finance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "beefy.finance" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            <span onClick={() => openWindow("https://github.com/beefyfinance")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.for.tube/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/beefyfinance")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/beefyfinance")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/beefyfinance")}>Blog</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://beefy.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/beefyfinance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/beefyfinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/beefyfinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/beefyfinance")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Narwhalswap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Narwhalswap" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            <span onClick={() => openWindow("https://github.com/narwhalswap")}>Github</span><br />
-                            <span onClick={() => openWindow("https://docs.narwhalswap.org/")}>Docs</span><br />
-                            <span onClick={() => openWindow("https://twitter.com/narwhalswap")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/narwhalswap")}>Telegram</span><br />
-                            {/* <span onClick={() => openWindow("https://medium.com/beefyfinance")}>Blog</span><br /> */}
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://narwhalswap.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/narwhalswap")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.narwhalswap.org/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/narwhalswap")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/narwhalswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Storm Swap */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "STORMSWAP" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            <span onClick={() => openWindow("https://github.com/stormswap")}>Github</span><br />
-                            <span onClick={() => openWindow("https://twitter.com/storm_swap")}>Twitter</span><br />
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://dex.stormswap.io/#/home")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/stormswap")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/storm_swap")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
-                         {/* BnEX */}
-                         <div className="defiDetailPageLink noDrag" style={props.defiName == "BnEX" ? undefined : { display: "none" } }>
-                            <p className="ecoSystemLinkTitle">Ecosystem Links</p>
-                            <span onClick={() => openWindow("https://github.com/bnex-finance")}>Github</span><br />
-                            {/* <span onClick={() => openWindow("https://docs.for.tube/")}>Docs</span><br /> */}
-                            <span onClick={() => openWindow("https://twitter.com/BnEXchange")}>Twitter</span><br />
-                            <span onClick={() => openWindow("https://t.me/bnexswap")}>Telegram</span><br />
-                            <span onClick={() => openWindow("https://medium.com/bnex")}>Blog</span><br />
+                        {/* BnEX */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "BnEX" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bnex.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bnex-finance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/BnEXchange")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bnexswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/bnex")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

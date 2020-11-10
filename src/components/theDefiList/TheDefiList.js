@@ -211,7 +211,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("Nyanswop is a decentralized protocol for automated liquidity provision on Binance Smart Chain.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://beefy.finance/", "_blank")}>
+                    <li onClick={() => history.push("beefyfinance")}>
                         {/* icon */}
                         <img src={beefyfinance} width="40px" /><br />
                         {/* 이름 */}
