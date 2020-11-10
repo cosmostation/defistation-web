@@ -420,7 +420,7 @@ const TotalValue = observer((props) => {
                                         legend: "none",
                                         hAxis: {
                                             textStyle: {
-                                                color: '#bbbebf',
+                                                color: '#757f8e',
                                             },
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
@@ -428,7 +428,7 @@ const TotalValue = observer((props) => {
                                         vAxis: {
                                             minValue: minTvl,
                                             textStyle: {
-                                                color: '#bbbebf',
+                                                color: '#757f8e',
                                             },
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
@@ -480,7 +480,7 @@ const TotalValue = observer((props) => {
                                         legend: "none",
                                         hAxis: {
                                             textStyle: {
-                                                color: '#bbbebf',
+                                                color: '#757f8e',
                                             },
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
@@ -488,7 +488,7 @@ const TotalValue = observer((props) => {
                                         vAxis: {
                                             minValue: minTvl,
                                             textStyle: {
-                                                color: '#bbbebf',
+                                                color: '#757f8e',
                                             },
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',

@@ -270,7 +270,7 @@ hr.sideMenuLine {
   .tvlChartCard {
     width: 320px;
     height: 310px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     box-sizing: border-box;
   }
   
@@ -320,7 +320,7 @@ hr.sideMenuLine {
   
   .tvlLink {
     /* display: none; */
-    height: 168px;
+    height: 166px;
   }
 }
 
@@ -403,7 +403,7 @@ hr.sideMenuLine {
   }
 
   .tvlChartCardTitle {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
@@ -589,6 +589,12 @@ hr.sideMenuLine {
   margin-top: -3px;
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  .miniCards {
+    margin-top: -6px;
+  }
+}
+
 .miniCardUl {
   display: flex;
   justify-content: space-between;
@@ -640,23 +646,24 @@ hr.sideMenuLine {
   }
   
   .miniCardUl li {
-    width: 153px;
-    height: 80px;
-    margin-bottom: 14px;
+    width: 155px;
+    height: 70px;
+    margin-bottom: 10px;
     box-sizing: border-box;
   }
 
   .miniCardList {
     float: left; 
     display: inline-block;
+    padding: 10px 15px 10px 15px;
   }
 
   .miniCardUl li:nth-child(2) {
-    margin-left: 14px;
+    margin-left: 10px;
   }
 
   .miniCardUl li:nth-child(4) {
-    margin-left: 14px;
+    margin-left: 10px;
   }
 
   .miniCardUl li:nth-child(3) {
@@ -664,10 +671,11 @@ hr.sideMenuLine {
   }
 
   .miniCardTitle {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .miniCardDataNum {
+    margin-top: 12px;
     font-size: 14px;
   }
 }
@@ -759,6 +767,7 @@ hr.sideMenuLine {
 @media (min-width:1px) and (max-width:1034px) {
   .defiList {
     /* height: 860px; */
+    margin-top: 10px;
     padding: 0px 15px 0px 15px;
   }
 }
@@ -1147,6 +1156,10 @@ hr.sideMenuLine {
 }
 
 @media (min-width:1px) and (max-width:1034px) {
+  .defiOverview {
+    margin-top: 0px;
+  }
+  
   .defiOverviewTitle {
     font-size: 15px;
   }
@@ -1226,6 +1239,7 @@ hr.sideMenuLine {
 @media (min-width:1px) and (max-width:1034px) {
   .defiDetailList {
     /* height: 860px; */
+    margin-top: 10px;
     padding: 0 15px 0 15px;
   }
 }
