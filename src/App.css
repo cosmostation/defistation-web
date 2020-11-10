@@ -69,6 +69,7 @@ li {
 
 .topBarUl li span {
   cursor: pointer;
+  -webkit-tap-highlight-color : rgba(0,0,0,0);
 }
 
 .topBarUl li:nth-child(1) { 
@@ -292,6 +293,16 @@ hr.sideMenuLine {
 }
 
 /* Link Button */
+.tvlLink0 {
+  height: 310px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932;
+  padding-top: 5px;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
 .tvlLink {
   height: 310px;
   border-radius: 5px;
@@ -1351,6 +1362,7 @@ hr.sideMenuLine {
 @media (min-width:1px) and (max-width:1034px) {
   .aboutBox {
     width: 320px;
+    padding: 30px;
   }
 }
 
@@ -1433,6 +1445,12 @@ hr.sideMenuLine {
 .applyBtnUl li:nth-child(2) {
   width: 20%;
   text-align: right;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .applyBtnUl li img {
+    margin-bottom: 24px;
+  }
 }
 
 .applyBtnTitle {
@@ -1519,7 +1537,7 @@ hr.sideMenuLine {
     margin-left: 0px;
     margin-top: 10px;
     width: 320px;
-    height: 160px;
+    height: 140px;
     border-radius: 5px;
     background-color: #20232b;
     padding: 20px;

@@ -323,11 +323,38 @@ const TotalValue = observer((props) => {
     
     var doit;
     function checkWindowWidth() {
+        var width = window.innerWidth;
+        // var height = window.innerHeight;
+
         window.onresize = function(){
-            clearTimeout(doit);
-            doit = setTimeout(resizedw, 100);
+            // clearTimeout(doit);
+            // doit = setTimeout(resizedw, 100);
+
+            // if ($(window).width() != width || $(window).height() != height) {
+            //     //Do something
+            // }
+
+            if (window.innerWidth != width) {
+                clearTimeout(doit);
+                doit = setTimeout(resizedw, 100);
+            }
         };
     }
+
+    // function checkWindowWidth() {
+    //     if (window.matchMedia("(max-width: 1035px)").matches) {
+    //         /* the viewport is less than or exactly 500 pixels wide */
+    //         console.log("1034 이하");
+    //         // 홈 화면인 경우
+    //         window.location.replace(location.pathname);
+
+    //     } else {
+    //         /* the viewport is more than 500 pixels wide */
+    //         console.log("1034 초과");
+    //         // 홈 화면인 경우
+    //         window.location.replace(location.pathname);
+    //     }
+    // }
     // ------------ 모바일 구글 차트를 위한 resize 체크 END ------------
 
     useEffect(() => {
@@ -370,7 +397,8 @@ const TotalValue = observer((props) => {
             
             <ul className="totalValueUl">
                 <li>
-                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}}>
+                    {/* style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}} */}
+                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
                         <ul className="tvlChartCardUl">
                             <li>
                                 <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
@@ -423,8 +451,32 @@ const TotalValue = observer((props) => {
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px" }}></div>}
                                     data={chartData}
+                                    // options={{
+                                    //     backgroundColor: "#171a20",
+                                    //     legend: "none",
+                                    //     hAxis: {
+                                    //         textStyle: {
+                                    //             color: '#bbbebf',
+                                    //         },
+                                    //         baselineColor: '#fff',
+                                    //         gridlineColor: '#3D424D',
+                                    //     },
+                                    //     vAxis: {
+                                    //         minValue: minTvl,
+                                    //         textStyle: {
+                                    //             color: '#bbbebf',
+                                    //         },
+                                    //         baselineColor: '#fff',
+                                    //         gridlineColor: '#3D424D',
+                                    //     },
+                                    //     series: {
+                                    //     // 0: { curveType: 'function' },
+                                    //     },
+                                    //     colors: ['#f0b923'],
+                                    //     chartArea: { width: '86%', height: '75%' },
+                                    // }}
                                     options={{
-                                        backgroundColor: "#171a20",
+                                        backgroundColor: "#262932",
                                         legend: "none",
                                         hAxis: {
                                             textStyle: {
