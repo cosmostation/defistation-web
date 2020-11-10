@@ -447,8 +447,22 @@ hr.sideMenuLine {
 }
 
 .disableBtn {
-  opacity: 0.4;
+  /* opacity: 0.4; */
+  /* 757F8E */
   cursor: default;
+}
+
+.disableBtn:hover {
+  background-color: #20232b;
+}
+
+.disableBtn img {
+  filter:saturate(0%);
+  opacity: 0.5;
+}
+
+.disableBtn span {
+  color: #757F8E;
 }
 
 .subPageDefiLinkBoxTitle {
