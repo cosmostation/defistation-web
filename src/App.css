@@ -221,13 +221,17 @@ hr.sideMenuLine {
 }
 
 @media (min-width:1px) and (max-width:1034px) {
+  .navBox {
+    display: none;
+  }
+
   .tvlSubPageTitleIconLabel li {
     font-size: 16px;
   }
   
   .tvlSubPageTitleIconLabel li img {
-    width: 20px;
-    margin-right: 3px;
+    width: 18px;
+    margin-right: 5px;
   }
 }
 
