@@ -145,20 +145,37 @@ const DefiList = observer((props) => {
                     let currencyUnit = getCurrencyUnit(res[i].lockedUsd);
                     let currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
 
-                    tableCodeArr.push(
-                        <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
-                            <td>{rankNum}</td>
-                            <td>{verifiedTag}</td>
-                            <td>{getOfficialDefiName(res[i].name)}</td>
-                            <td>{chainName}</td>
-                            <td>{getOfficialCategoryName(res[i].category)}</td>
-                            <td>{res[i].contractNum}</td>
-                            <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
-                            <td>$ {currencyNum + currencyUnit}</td>
-                            <td>{change24hTag}</td>
-                            <td>{tempDate}</td>
-                        </tr>
-                    );
+                    if (res[i].contractNum == 0) {
+                        tableCodeArr.push(
+                            <tr key={i}>
+                                <td>{rankNum}</td>
+                                <td>{verifiedTag}</td>
+                                <td>{getOfficialDefiName(res[i].name)}</td>
+                                <td>{chainName}</td>
+                                <td>{getOfficialCategoryName(res[i].category)}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span className="comingSoon">Coming Soon</span></td>
+                            </tr>
+                        );
+                    } else {
+                        tableCodeArr.push(
+                            <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                                <td>{rankNum}</td>
+                                <td>{verifiedTag}</td>
+                                <td>{getOfficialDefiName(res[i].name)}</td>
+                                <td>{chainName}</td>
+                                <td>{getOfficialCategoryName(res[i].category)}</td>
+                                <td>{res[i].contractNum}</td>
+                                <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
+                                <td>$ {currencyNum + currencyUnit}</td>
+                                <td>{change24hTag}</td>
+                                <td>{tempDate}</td>
+                            </tr>
+                        );
+                    }
                 }
                 console.count("DefiList Call");
                 setDefiListTableCode(tableCodeArr);
@@ -186,8 +203,8 @@ const DefiList = observer((props) => {
                         <th>Rank</th>
                         <th>
                             <ul className="defiListTableHeadCell">
-                                <li>Verified</li>
-                                <li><img src={questionIcon} onClick={() => movePage("/about")} /></li>
+                                <li>Audit</li>
+                                {/* <li><img src={questionIcon} onClick={() => movePage("/about")} /></li> */}
                             </ul>
                         </th>
                         <th>Name</th>

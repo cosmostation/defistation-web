@@ -784,12 +784,24 @@ hr.sideMenuLine {
   border-collapse: collapse;
 }
 
-.defiListTable tbody tr {
+/* .defiListTable tbody tr {
   cursor: pointer;
 }
 
 .defiListTable tbody tr:hover {
   background-color: #1f232b;
+} */
+
+.defiListTableTr {
+  cursor: pointer;
+}
+
+.defiListTableTr:hover {
+  background-color: #1f232b;
+}
+
+.comingSoon {
+  color: #757F8E;
 }
 
 .defiListTable th, td {
@@ -1019,6 +1031,13 @@ hr.sideMenuLine {
   letter-spacing: normal;
   text-align: center;
   color: #ff2745;
+}
+
+.applyBtnOnTable {
+  border-radius: 5px;
+  border: solid 1px #404752;
+  background-color: #20232b;
+  cursor: pointer;
 }
 
 /* -------------------------------- Footer -------------------------------- */

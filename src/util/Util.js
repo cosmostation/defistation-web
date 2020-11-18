@@ -138,17 +138,32 @@ export function getOfficialCategoryName(category) {
     let convertedName;
     switch (category) {
         case "dex":
-            convertedName = "DEXes";
+            convertedName = "Spot Trading";
             break;
         case "farm":
-            convertedName = "Yield Farming";
+            convertedName = "Earn";
             break;
         case "YieldOptimization":
-            convertedName = "Vault";
+            convertedName = "Earn";
+            break;  
+        case "lending":
+            convertedName = "Lending";
+            break;      
+        case "assets":
+            convertedName = "Assets";
             break;    
+        case "derivatives":
+            convertedName = "Derivatives";
+            break;        
+        case "payments":
+            convertedName = "Payments";
+            break;      
         default:
-            convertedName = capitalize2(category);
-            break;                                                   
+            convertedName = "Misc";
+            break;                    
+        // default:
+        //     convertedName = capitalize2(category);
+        //     break;                                                   
     }
     return convertedName;
 }

@@ -191,7 +191,19 @@ const DefiOverview = observer((props) => {
                         </span>
                     </div>
                 );
-                break;                    
+                break;
+            // case "7up.finance":
+            //     break;
+            // case "BFis.finance":
+            //     break;
+            // case "bStable.finance":
+            //     break;
+            // case "Dego":
+            //     break;
+            // case "DODO":
+            //     break;
+            // case "Equator.finance":
+            //     break;
             default:
                 setOverviewTag(
                     <div className="defiOverview">

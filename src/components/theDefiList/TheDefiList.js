@@ -30,6 +30,12 @@ import narwhalswap from "../../assets/images/defiLogo/narwhalswap@2x.png";
 import bnexchange from "../../assets/images/defiLogo/bnexchange@2x.png";
 import softdrinkswap from "../../assets/images/defiLogo/softdrinkswap@2x.png";
 import nyanswap from "../../assets/images/defiLogo/nyanswap@2x.png";
+import sevenupfinance from "../../assets/images/defiLogo/7upfinance@2x.png";
+import bfisfinance from "../../assets/images/defiLogo/bfisfinance@2x.png";
+import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
+import dego from "../../assets/images/defiLogo/dego@2x.png";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
+import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
