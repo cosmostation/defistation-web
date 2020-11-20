@@ -38,6 +38,12 @@ import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
 import dego from "../../assets/images/defiLogo/dego@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
+import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
+import qian from "../../assets/images/defiLogo/qian@2x.png";
+import pancakebunny from "../../assets/images/defiLogo/pancakebunny@2x.png";
+import julswap from "../../assets/images/defiLogo/julswap@2x.png";
+import justliquidity from "../../assets/images/defiLogo/justliquidity@2x.png";
+
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
 import defiGithubIcon from "../../assets/images/defiLink/github.svg";
@@ -246,92 +252,79 @@ const TotalValue = observer((props) => {
         switch (defiName) {
             case "pancake":
                 setDefiIcon(pancake);
-                setLinkTag("https://pancakeswap.finance/");
                 break;
             case "Peach Swap":
                 setDefiIcon(peachswap);
-                setLinkTag("https://peachswap.org/");
                 break;   
             case "Streamity":
                 setDefiIcon(streamity);
-                setLinkTag("https://streamity.org/");
                 break;   
             case "bscSwap":
                 setDefiIcon(bscswap);
-                setLinkTag("https://bscswap.com/");
                 break;   
             case "Spartan Protocol":
                 setDefiIcon(spartanprotocol);
-                setLinkTag("https://spartanprotocol.org/");
                 break;   
             case "Burger Swap":
                 setDefiIcon(burgerswap);
-                setLinkTag("https://burgerswap.org/");
                 break;   
             case "Stakecow":
                 setDefiIcon(stakecow);
-                setLinkTag("https://stakecow.com/");
                 break;   
             case "Alpha Finance":
                 setDefiIcon(alphafinance);
-                setLinkTag("https://alphafinance.io/");
                 break;   
             case "Cream Finance":
                 setDefiIcon(creamfinance);
-                setLinkTag("https://cream.finance/");
                 break;   
             case "Bakery Swap":
                 setDefiIcon(bakeryswap);
-                setLinkTag("https://www.bakeryswap.org/#/home");
                 break;   
             case "ForTube":
                 setDefiIcon(fortube);
-                setLinkTag("https://for.tube/home");
                 break;   
             case "FryWorld":
                 setDefiIcon(fryworld);
-                setLinkTag("https://fry.world/");
                 break;   
             case "beefy.finance":
                 setDefiIcon(beefyfinance);
-                setLinkTag("https://beefy.finance/");
                 break;
             case "Narwhalswap":
                 setDefiIcon(narwhalswap);
-                setLinkTag("https://narwhalswap.org");
                 break;   
             case "STORMSWAP":
                 setDefiIcon(stormswap);
-                setLinkTag("https://dex.stormswap.io/#/home");
                 break;       
             case "BnEX":
                 setDefiIcon(bnexchange);
-                setLinkTag("https://bnex.org/");
                 break;
             case "7up.finance":
                 setDefiIcon(sevenupfinance);
-                setLinkTag("https://7up.finance/#/");
                 break;
             case "BFis.finance":
                 setDefiIcon(bfisfinance);
-                setLinkTag("https://bfis.finance/");
                 break;
             case "bStable.finance":
                 setDefiIcon(bstablefinance);
-                setLinkTag("https://bstable.finance/");
                 break;
             case "Dego":
                 setDefiIcon(dego);
-                setLinkTag("https://bsc.dego.finance/");
                 break;
             case "DODO":
                 setDefiIcon(dodo);
-                setLinkTag("https://dodoex.io/");
                 break;
             case "Equator.finance":
                 setDefiIcon(equatorfinance);
-                setLinkTag("https://www.equator.finance/");
                 break;
+            case "StableXSwap":
+                setDefiIcon(stablexswap);
+                break;
+            case "QIAN":
+                setDefiIcon(qian);
+                break;    
+            case "PancakeBunny":
+                setDefiIcon(pancakebunny);
+                break;  
             default:
                 setLinkTag("");
                 break;    
@@ -571,7 +564,7 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Streamity */}
-                        <div className="defiDetailPageLink noDrag" style={props.defiName == "streamity" ? undefined : { display: "none" } }>
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Streamity" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://streamity.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/streamity/")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
@@ -597,8 +590,8 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/SpartanProtocolOrg")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@spartanprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
-                        {/* burgerswap */}
-                        <div className="defiDetailPageLink noDrag" style={props.defiName == "burgerswap" ? undefined : { display: "none" } }>
+                        {/* Burger Swap */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Burger Swap" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://burgerswap.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/burgerswap-org/burgerswap-core")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
@@ -717,11 +710,11 @@ const TotalValue = observer((props) => {
                         {/* bStable.finance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "bStable.finance" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bstable.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
-                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bStableDeFi")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
-                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
-                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
-                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/bStableFi")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("http://t.me/bStable")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("http://bstable.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>    
                         {/* Dego */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Dego" ? undefined : { display: "none" } }>
@@ -744,6 +737,33 @@ const TotalValue = observer((props) => {
                         {/* Equator.finance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Equator.finance" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://www.equator.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* StableXSwap */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "StableXSwap" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://stablexswap.com/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* QIAN */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "QIAN" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://qian.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/QIAN-Protocol/")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/QIAN_stablecoin")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/qianprotocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* PancakeBunny */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "PancakeBunny" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://pancakebunny.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>

@@ -36,6 +36,11 @@ import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
 import dego from "../../assets/images/defiLogo/dego@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
+import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
+import qian from "../../assets/images/defiLogo/qian@2x.png";
+import pancakebunny from "../../assets/images/defiLogo/pancakebunny@2x.png";
+import julswap from "../../assets/images/defiLogo/julswap@2x.png";
+import justliquidity from "../../assets/images/defiLogo/justliquidity@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -97,7 +102,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("An evolution of Uniswap with Peach tokenomics on Binance Smart Chain.")}</span>
                     </li>
-                    <li onClick={() => window.open("https://streamity.org/", "_blank")}>
+                    <li onClick={() => history.push("streamity")}>
                         {/* icon */}
                         <img src={streamity} width="40px" /><br />
                         {/* 이름 */}
@@ -121,7 +126,7 @@ const TheDefiList = observer(() => {
                         {/* 설명 */}
                         <span className="theDefiListCardText">{textEllipsis("A protocol for incentivised liquidity and synthetic assets on Binance Smart Chain. ")}</span>
                     </li>
-                    <li onClick={() => window.open("https://burgerswap.org/", "_blank")}>
+                    <li onClick={() => history.push("burgerswap")}>
                         {/* icon */}
                         <img src={burgerswap} width="40px" /><br />
                         {/* 이름 */}

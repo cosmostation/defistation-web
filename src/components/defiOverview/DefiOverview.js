@@ -52,7 +52,7 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break;
-            case "streamity":
+            case "Streamity":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
@@ -82,7 +82,7 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break; 
-            case "burgerswap":
+            case "Burger Swap":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
@@ -196,14 +196,60 @@ const DefiOverview = observer((props) => {
             //     break;
             // case "BFis.finance":
             //     break;
-            // case "bStable.finance":
-            //     break;
-            // case "Dego":
-            //     break;
+            case "bStable.finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            bStable is an open-source, automated market maker (AMM) mechanism especially designed to enable token swaps between any stablecoin on Binance Smart Chain (BSC) at low fees and with minimal price slippage.
+                        </span>
+                    </div>
+                );
+                break;
+            case "Dego":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            Dego.finance as a NFT+DeFi Fusion Reactor whose transparency and fairness is governed by Law of Codes, for the unprivileged and unbanked underdogs.
+                        </span>
+                    </div>
+                );
+                break;
             // case "DODO":
             //     break;
-            // case "Equator.finance":
-            //     break;
+            case "Equator.finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            The Generic Liquidity Protocol: Build Customized Pools with Flexibility
+                        </span>
+                    </div>
+                );
+                break;
+            case "StableXSwap":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            StableXSwap is a stablecoin-focused AMM-style decentralized exchange built on Binance Smart Chain. Similar to what Curve.fi did for the Ethereum DEX space, StableXSwap describes itself as the first DEX featuring lower slippage and lower fees for the trading of stable assets. With minimized impermanent loss and lower gas fees on Binance Smart Chain, the swap mechanism is ideal for casual users and experienced arbitrageurs alike.
+                        </span>
+                    </div>
+                );
+                break;
+            case "QIAN":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            QIAN stablecoin protocol provides a set of open architecture allowing anyone to generate stable-value tokens with the legal currency of various countries as the pricing standard, anytime and anywhere.
+                        </span>
+                    </div>
+                );
+                break;    
+            // case "PancakeBunny":
+            //     break;      
             default:
                 setOverviewTag(
                     <div className="defiOverview">
