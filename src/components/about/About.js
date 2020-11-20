@@ -55,7 +55,7 @@ enjoy a fast block time of ~5 seconds and make use of the vibrant ecosystem tool
 
                     <span className="defiOverviewTitle">How do I get listed on Defistation?</span><br /><div className="defiOverviewBr"></div>
                     <span className="defiOverviewContent">
-                    If you are a DeFi project operating on Binance Smart Chain, please fill out this <span className="formLinkOnAbout" onClick={() => window.open("https://david407562.typeform.com/to/emRhsYx0", "_blank")}>form</span> to go 
+                    If you are a DeFi project operating on Binance Smart Chain, please fill out this <span className="formLinkOnAbout" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>form</span> to go 
 through our initial screening process. Defistation will reach out to projects individually after assessing each application. For any questions or inquiries, 
 please e-mail defistation@stamper.network
                     </span><br /><br /><br />

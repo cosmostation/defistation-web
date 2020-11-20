@@ -74,7 +74,7 @@ const TheDefiList = observer(() => {
             <div className="wrapper">
                 <TopBar />
                 <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
-                <div className="applyBtn" onClick={() => window.open("https://david407562.typeform.com/to/emRhsYx0", "_blank")}>
+                <div className="applyBtn" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>
                             <span className="applyBtnTitle">Apply to be listed</span><br />
