@@ -41,6 +41,10 @@ import qian from "../../assets/images/defiLogo/qian@2x.png";
 import pancakebunny from "../../assets/images/defiLogo/pancakebunny@2x.png";
 import julswap from "../../assets/images/defiLogo/julswap@2x.png";
 import justliquidity from "../../assets/images/defiLogo/justliquidity@2x.png";
+import anyswap from "../../assets/images/defiLogo/anyswap@2x.png";
+import cokefinance from "../../assets/images/defiLogo/cokefinance@2x.png";
+import renvm from "../../assets/images/defiLogo/renvm@2x.png";
+import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();

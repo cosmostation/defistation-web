@@ -149,7 +149,7 @@ export function getOfficialCategoryName(category) {
         case "lending":
             convertedName = "Lending";
             break;      
-        case "assets":
+        case "Assets":
             convertedName = "Assets";
             break;    
         case "derivatives":
