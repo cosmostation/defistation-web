@@ -26,7 +26,7 @@ The "tvl" and "bnb" values must be entered. In "data", you can freely input toke
 You can enter data 10 minutes before every hour (00:50, 01:50, 02:50, ..., 23:50). (24 times / 1 day)
 
 ```
-// Request
+// Request (LP)
 curl -X POST \
   https://api.defistation.io/dataProvider/tvl \
   -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
@@ -55,6 +55,48 @@ curl -X POST \
                 }
             }
         ]
+    }
+}'
+
+// Request (Vault)
+curl -X POST \
+  https://api.defistation.io/dataProvider/tvl \
+  -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "tvl": 261098389,
+    "bnb": 717048.6336811137,
+    "data": {
+        "pairs": [
+            {
+                "id": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
+                "token0": {
+                    "symbol": "BUSD"
+                }
+            },
+            {
+                "id": "0x00af854f8e5522c1f0c22f7dd5f37cdb9ad1dd71",
+                "token0": {
+                    "symbol": "LINK"
+                }
+            }
+        ]
+    }
+}'
+
+// Request (Lending)
+curl -X POST \
+  https://api.defistation.io/dataProvider/tvl \
+  -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "tvl": 261098389,
+    "bnb": 717048.6336811137,
+    "data": {
+        "NiceSwap": {
+            "contractAddress": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
+            "tokens": ["BTCB", "USDT", "BUSD", "ETH", "DOT", "XRP", "LTC", "BCH", "EOS", "DAI", "ONT", "LINK", "YFII", "BAND", "ZEC", "XTZ", "FIL", "ATOM", "ADA", "FREE", "PROPEL", "FOR"]
+        }
     }
 }'
 ```
