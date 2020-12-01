@@ -23,7 +23,7 @@ The base URI for our API: `https://api.defistation.io/dataProvider`.
 
 The "tvl" and "bnb" values must be entered. In "data", you can freely input token and read contract method information related to all contract addresses belonging to TVL so that TVL can be verified at Defistation. There are no restrictions on the structure of the data contents. The data.pairEntities below is an example and doesn't have to be like this. However, all TVL related Contract Addresses must be entered so that TVL figures can be displayed. 
 
-TVL data can be added every hour. (24 times / 1 day)
+You can enter data 10 minutes before every hour (00:50, 01:50, 02:50, ..., 23:50). (24 times / 1 day)
 
 ```
 // Request
