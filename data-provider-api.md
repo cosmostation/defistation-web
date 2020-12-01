@@ -15,7 +15,7 @@ In order to input TVL data to Defistation, ID and API Key must be issued first. 
 The base URI for our API: `https://api.defistation.io/dataProvider`.
 
 | Resource                                              | GET                                                 | POST                                  | PUT                               | DELETE                                      |
-| ----------------------------------------------------- | --------------------------------------------------- | ------------------------------------- | --------------------------------- | ------------------------------------------- |
+| ----------------------------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
 | /tvl                                         | N/A                                                | Input a new TVL | N/A                               | N/A                                         |
 | /tvl?from={from-timestamp}&to={to-timestamp} | Returns a list of TVL defi service provider posted | N/A             | N/A                               | N/A                                         |
 
