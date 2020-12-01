@@ -34,7 +34,12 @@ const DefiDetailList = observer((props) => {
 
     async function getBnbLockedList(defiName) {
         return new Promise(async function(resolve, reject) {
-            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName);
+            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName, {
+                method: 'GET',
+                headers: {
+                    Authorization: 'Basic Og=='
+                }
+            });
             res
                 .json()
                 .then(res => {
@@ -64,7 +69,12 @@ const DefiDetailList = observer((props) => {
         let lockedBnbArr = await getBnbLockedList(defiName);
         console.log("lockedBnbArr: ", lockedBnbArr);
 
-        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr);
+        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {

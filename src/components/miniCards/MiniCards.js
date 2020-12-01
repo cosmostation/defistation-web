@@ -36,7 +36,12 @@ const MiniCards = observer((props) => {
 
         // console.log("urlStr: ", urlStr);
         if (urlStr == "") return;
-        const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr);
+        const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {
@@ -69,7 +74,12 @@ const MiniCards = observer((props) => {
         }
 
         // console.log("urlStr: ", urlStr);
-        const res = await fetch(global.defistationApiUrl + "/defiNames");
+        const res = await fetch(global.defistationApiUrl + "/defiNames", {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {

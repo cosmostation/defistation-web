@@ -34,7 +34,12 @@ const DefiList = observer((props) => {
         // if (global.chartDataDetails == null) return;
         // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
-        const res = await fetch(defistationApiUrl + "/defiTvlList");
+        const res = await fetch(defistationApiUrl + "/defiTvlList", {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {

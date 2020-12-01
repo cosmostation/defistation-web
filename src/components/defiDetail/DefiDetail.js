@@ -34,7 +34,12 @@ const DefiDetail = observer(() => {
     async function checkValidDefiName() {
         // console.log("checkValidDefiName 함수 시작");
 
-        const res = await fetch(defistationApiUrl + "/defiNames");
+        const res = await fetch(defistationApiUrl + "/defiNames", {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {

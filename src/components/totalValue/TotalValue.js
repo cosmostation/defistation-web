@@ -104,7 +104,12 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr);
+        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr, {
+            method: 'GET',
+            headers: {
+                Authorization: 'Basic Og=='
+            }
+        });
         res
             .json()
             .then(res => {
