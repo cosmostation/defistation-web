@@ -1,6 +1,4 @@
-<p align="center">
-  <a href="https://www.cosmostation.io" target="_blank" rel="noopener noreferrer"><img width="100" src="https://user-images.githubusercontent.com/20435620/55696624-d7df2e00-59f8-11e9-9126-edf9a40b11a8.png" alt="Cosmostation logo"></a>
-</p>
+![defistation](https://user-images.githubusercontent.com/34641838/100820703-2248d480-3492-11eb-8ac5-69149d08f4dd.png)
 <h1 align="center">
     Defistation Data Provider REST API
 </h1>
