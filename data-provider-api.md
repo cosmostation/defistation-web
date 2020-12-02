@@ -5,12 +5,17 @@
 
 ## Introduction
 
-Data Provider API is a service created by DeFi service providers to efficiently update TVL data to Defistation.
+Data Provider API is a tool created for DeFi service providers to efficiently update TVL data to Defistation.
 
 ### URI Summary
 
-In order to input TVL data to Defistation, ID and API Key must be issued first. Fill out the [Apply to be listed](https://www.defistation.io/projects) form and contact the Defistation staff. Use the ID and API Key as Basic Auth type. Finally, you need to enter the header in the form of 'Authorization: Basic XXXX...'.
-The base URI for our API: `https://api.defistation.io/dataProvider`.
+In order to have your real-time TVL data displayed on Defistation, you must be issued an ID and API Key first. Please fill out the [Apply to be listed](https://www.defistation.io/projects) form and wait for a Defistation representative to reach back out after the initial screening process.
+To expedite the listing process, please make sure to provide as much detail as possible and complete the required fields in the application form.
+After review, Defistation will contact your team member through the contact info provided in the application. We will invite you to a slack group through the e-mail ID you provide in the application to proceed with the listing process.
+Once you join the Slack group, we will issue and individually send your project’s own ID & API Key as Basic Auth type through direct message.
+You must enter the header in the following form: ‘Authorization: Basic XXXX…’.
+The base URL for our API: `https://api.defistation.io/dataProvider`. 
+
 
 | Resource                                              | GET                                                 | POST                                  | PUT                               | DELETE                                      |
 | ----------------------------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
