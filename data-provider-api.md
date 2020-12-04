@@ -9,13 +9,16 @@ Data Provider API is a tool created for DeFi service providers to efficiently up
 
 ### URL Summary
 
-In order to have your real-time TVL data displayed on Defistation, you must be issued an ID and API Key first. Please fill out the [Apply to be listed](https://www.defistation.io/projects) form and wait for a Defistation representative to reach back out after the initial screening process.
+In order to have your real-time TVL data displayed on Defistation, you must be issued an ID and API Key first. Please fill out the [Apply to be listed](https://forms.gle/SUPc87JiR8Nt4FMp7) form and wait for a Defistation representative to reach back out after the initial screening process.
 To expedite the listing process, please make sure to provide as much detail as possible and complete the required fields in the application form.
 After review, Defistation will contact your team member through the contact info provided in the application. We will invite you to a slack group through the e-mail ID you provide in the application to proceed with the listing process.
 Once you join the Slack group, we will issue and individually send your project’s own ID & API Key as Basic Auth type through direct message.
 You must enter the header in the following form: ‘Authorization: Basic XXXX…’.
 The base URL for our API: `https://api.defistation.io/dataProvider`. 
 
+1. Fill out the "Apply to be listed" form (screening process will be taken place)
+2. Wait until Defistation representative to contract
+3. You will be given your project's ID and API key that needs to be kept within your organization.
 
 | Resource                                              | GET                                                 | POST                                  | PUT                               | DELETE                                      |
 | ----------------------------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
@@ -27,6 +30,9 @@ The base URL for our API: `https://api.defistation.io/dataProvider`.
 You are required to enter your “tvl” and locked “bnb” values (i.e. If you you do not have any BNB locked in your protocol, please enter 0). In “data”, please input all of contract information and contract addresses that are included towards your TVL count. Defistation will cross-check and verify the TVL value you input by calculating your TVL according to the contract list/address you provide with the data json value.
 In “data”, please include all contract addresses that contain tokens, their respective token symbol, any contract addresses that contain your TVL count method, and any information/details/explanations that can help accurately calculate your TVL in json format.
 There are no restrictions on the structure of “data” contents. The example below shows a json example using data.pairEntities key.
+
+1. Calculate your TVL and make a json file using your tvl, locked bnb, and data.
+2. Send a tvl json as a POST type.
 
 ```
 // Request (LP)
@@ -58,7 +64,8 @@ curl -X POST \
                 }
             }
         ]
-    }
+    },
+    "test": false
 }'
 
 // Request (Vault)
@@ -84,7 +91,8 @@ curl -X POST \
                 }
             }
         ]
-    }
+    },
+    "test": false
 }'
 
 // Request (Lending)
@@ -100,7 +108,8 @@ curl -X POST \
             "contractAddress": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
             "tokens": ["BTCB", "USDT", "BUSD", "ETH", "DOT", "XRP", "LTC", "BCH", "EOS", "DAI", "ONT", "LINK", "YFII", "BAND", "ZEC", "XTZ", "FIL", "ATOM", "ADA", "FREE", "PROPEL", "FOR"]
         }
-    }
+    },
+    "test": false
 }'
 ```
 
@@ -161,6 +170,7 @@ Status 200 OK
         "bnb": 1429018.6336811137,
         "totalValue": 103653764,
         "data": "{\"pairEntities\":[{\"id\":\"0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e\",\"token0\":{\"symbol\":\"BUSD\"},\"token1\":{\"symbol\":\"WBNB\"}},{\"id\":\"0x00af854f8e5522c1f0c22f7dd5f37cdb9ad1dd71\",\"token0\":{\"symbol\":\"LINK\"},\"token1\":{\"symbol\":\"WBNB\"}}]}",
+        "test": 0,
         "timestamp": 1606803480
     }
 ]
