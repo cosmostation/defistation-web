@@ -24,9 +24,9 @@ The base URL for our API: `https://api.defistation.io/dataProvider`.
 
 ## Add your TVL
 
-The "tvl" and "bnb" values must be entered. In "data", you can freely input token and read contract method information related to all contract addresses belonging to TVL so that TVL can be verified at Defistation. There are no restrictions on the structure of the data contents. The data.pairEntities below is an example and doesn't have to be like this. However, all TVL related Contract Addresses must be entered so that TVL figures can be displayed. 
-
-You can enter data 10 minutes before every hour (00:50, 01:50, 02:50, ..., 23:50). (24 times / 1 day)
+You are required to enter your “tvl” and locked “bnb” values (i.e. If you you do not have any BNB locked in your protocol, please enter 0). In “data”, please input all of contract information and contract addresses that are included towards your TVL count. Defistation will cross-check and verify the TVL value you input by calculating your TVL according to the contract list/address you provide with the data json value.
+In “data”, please include all contract addresses that contain tokens, their respective token symbol, any contract addresses that contain your TVL count method, and any information/details/explanations that can help accurately calculate your TVL in json format.
+There are no restrictions on the structure of “data” contents. The example below shows a json example using data.pairEntities key.
 
 ```
 // Request (LP)
@@ -103,6 +103,10 @@ curl -X POST \
     }
 }'
 ```
+
+Defistation updates project TVLs every hour. You must post your TVL/locked BNB/json data 10 minutes before each hour (ex. 00:50, 01:50, 02:50, 03:50, ….., 23:50) - 24 times every day.
+Projects that fail to post their hourly up-to-date information for a prolonged period of time will be delisted from Defistation. Please keep your data up-to-date at all times.
+The data you post between 01:50~01:59 will be displayed on Defistation at 02:00.
 
 ```
 // Response
