@@ -45,6 +45,7 @@ import anyswap from "../../assets/images/defiLogo/anyswap@2x.png";
 import cokefinance from "../../assets/images/defiLogo/cokefinance@2x.png";
 import renvm from "../../assets/images/defiLogo/renvm@2x.png";
 import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
+import venus from "../../assets/images/defiLogo/venus@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();

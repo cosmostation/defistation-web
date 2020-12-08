@@ -47,6 +47,7 @@ import anyswap from "../../assets/images/defiLogo/anyswap@2x.png";
 import cokefinance from "../../assets/images/defiLogo/cokefinance@2x.png";
 import renvm from "../../assets/images/defiLogo/renvm@2x.png";
 import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
+import venus from "../../assets/images/defiLogo/venus@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -223,6 +224,11 @@ const TotalValue = observer((props) => {
                     } else {
                         global.changeTvl1DayPercent(0);
                     }
+
+                    // 숫자가 이상한 경우 (2020.12.7 09:00 PM)
+                    if (resultTvl1DayPercent > 1000) {
+                        global.changeTvl1DayPercent(0);
+                    }
                 } else {
                     // 계산할 값이 없으면 0
                     global.changeTvl1DayPercent(0);
@@ -352,6 +358,9 @@ const TotalValue = observer((props) => {
             case "UniFi":
                 setDefiIcon(unifiprotocol);
                 break;
+            case "Venus":
+                setDefiIcon(venus);
+                break;    
             default:
                 setLinkTag("");
                 break;    
@@ -850,6 +859,15 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/unifiprotocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/unifiprotocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@unifiprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Venus */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Venus" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://venus.io/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/SwipeWallet/Venus-Protocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/VenusProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/VenusProtocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/venusprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

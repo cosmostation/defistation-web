@@ -78,6 +78,24 @@ curl -X POST \
     "tvl": 261098389,
     "bnb": 717048.6336811137,
     "data": {
+        "NiceFarm": {
+            "contractAddress": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
+            "tokens": ["BTCB", "USDT", "BUSD", "ETH", "DOT", "XRP", "LTC", "BCH", "EOS", "DAI", "ONT", "LINK", "YFII", "BAND", "ZEC", "XTZ", "FIL", "ATOM", "ADA", "FREE", "PROPEL", "FOR"]
+        }
+    },
+    "test": false
+}'
+```
+
+// Request (Lending)
+curl -X POST \
+  https://api.defistation.io/dataProvider/tvl \
+  -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "tvl": 627182614,
+    "bnb": 38121.93615245,
+    "data": {
         "pairs": [
             {
                 "id": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
@@ -96,27 +114,9 @@ curl -X POST \
     "test": false
 }'
 
-// Request (Lending)
-curl -X POST \
-  https://api.defistation.io/dataProvider/tvl \
-  -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "tvl": 261098389,
-    "bnb": 717048.6336811137,
-    "data": {
-        "NiceSwap": {
-            "contractAddress": "0x00201101f5fd2cba32e6d3cf7d431e4475b16d3e",
-            "tokens": ["BTCB", "USDT", "BUSD", "ETH", "DOT", "XRP", "LTC", "BCH", "EOS", "DAI", "ONT", "LINK", "YFII", "BAND", "ZEC", "XTZ", "FIL", "ATOM", "ADA", "FREE", "PROPEL", "FOR"]
-        }
-    },
-    "test": false
-}'
-```
 
-Defistation updates project TVLs every hour. You must post your TVL/locked BNB/json data 10 minutes before each hour (ex. 00:50, 01:50, 02:50, 03:50, ….., 23:50) - 24 times every day.
-Projects that fail to post their hourly up-to-date information for a prolonged period of time will be delisted from Defistation. Please keep your data up-to-date at all times.
-The data you post between 01:50~01:59 will be displayed on Defistation at 02:00.
+
+Defistation updates project TVLs every hour. You must post your TVL/locked BNB/json data 10 minutes before each hour (ex. 00:50, 01:50, 02:50, 03:50, ….., 23:50) - 24 times every day. Projects that fail to post their hourly up-to-date information for a prolonged period of time will be delisted from Defistation. Please keep your data up-to-date at all times. (i.e. The data you post at 01:50 will be displayed on Defistation at 02:00)
 
 ```
 // Response
