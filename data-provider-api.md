@@ -27,11 +27,11 @@ The base URL for our API: `https://api.defistation.io/dataProvider`.
 
 ## Use your ID and API Key
 
-To enter tvl using the Data Provider API, you can use the api key in the following two ways. You can use usename and api_key. The second method can be encoded in Base64.
+To enter tvl using the Data Provider API, you can use the API key in the following two ways. You can use project ID and api_key. The second method can be encoded in Base64.
 
 1. You can use CURL command using as 
 ```
-curl -u username:api_key https://api.defistation.io/dataProvider/tvl
+curl -u your_id:api_key https://api.defistation.io/dataProvider/tvl
 ```
 
 2. Also you can do it with Basic auth template encoded on Base64:
@@ -39,7 +39,7 @@ curl -u username:api_key https://api.defistation.io/dataProvider/tvl
 curl -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX'
 ```
 
-Below is an example of encoding username and api key with javascript.
+Below is an example of encoding ID and API key with javascript.
 
 ```js
 var clientId = "YOUR_ID";
