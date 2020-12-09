@@ -25,6 +25,30 @@ The base URL for our API: `https://api.defistation.io/dataProvider`.
 | /tvl                                         | N/A                                                | Input a new TVL | N/A                               | N/A                                         |
 | /tvl?from={from-timestamp}&to={to-timestamp} | Returns a list of TVL defi service provider posted | N/A             | N/A                               | N/A                                         |
 
+## Use your ID and API Key
+
+To enter tvl using the Data Provider API, you can use the api key in the following two ways. You can use usename and api_key. The second method can be encoded in Base64.
+
+1. You can use CURL command using as 
+```
+curl -u username:api_key https://api.defistation.io/dataProvider/tvl
+```
+
+2. Also you can do it with Basic auth template encoded on Base64:
+```
+curl -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX'
+```
+
+Below is an example of encoding username and api key with javascript.
+
+```js
+var clientId = "YOUR_ID";
+var clientSecret = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+
+var authorizationBasic = window.btoa(clientId + ':' + clientSecret);
+console.log("authorizationBasic: ", authorizationBasic);
+```
+
 ## Add your TVL
 
 You are required to enter your “tvl” and locked “bnb” values (i.e. If you you do not have any BNB locked in your protocol, please enter 0). In “data”, please input all of contract information and contract addresses that are included towards your TVL count. Defistation will cross-check and verify the TVL value you input by calculating your TVL according to the contract list/address you provide with the data json value.

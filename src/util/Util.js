@@ -126,7 +126,7 @@ export function getOfficialDefiName(defiName) {
             break;  
         case "STORMSWAP":
             convertedName = "Storm Swap";
-            break;        
+            break;
         default:
             convertedName = defiName;
             break;                                                   
