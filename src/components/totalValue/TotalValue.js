@@ -144,10 +144,22 @@ const TotalValue = observer((props) => {
                 let initTimestamp = 0;
                 let tempMinTvl = 0;
 
-                // K, M, B 기준은 최초 0번째 데이터
-                let digit = getCurrencyDigit(resultArr[0][1]);
-                let currencyUnit = getCurrencyUnit(resultArr[0][1]);
-                let tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
+                // K, M, B 기준은 최초 0번째 데이터(단, 0번째가 0이 아닐때)
+                // let digit = getCurrencyDigit(resultArr[0][1]);
+                // let currencyUnit = getCurrencyUnit(resultArr[0][1]);
+                // let tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
+                let digit;
+                let currencyUnit;
+                let tempCurrencyFullName;
+                if (resultArr[0][1] > 0) {
+                    digit = getCurrencyDigit(resultArr[0][1]);
+                    currencyUnit = getCurrencyUnit(resultArr[0][1]);
+                    tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
+                } else {
+                    digit = getCurrencyDigit(resultArr[resultArr.length - 1][1]);
+                    currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
+                    tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
+                }
                 setCurrencyFullName(tempCurrencyFullName);
                 
                 for (var i = 0; i < resultArr.length; i++) {
@@ -864,7 +876,7 @@ const TotalValue = observer((props) => {
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Venus" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://venus.io/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/SwipeWallet/Venus-Protocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
-                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.venus.io/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/VenusProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/VenusProtocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/venusprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>

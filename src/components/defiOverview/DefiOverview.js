@@ -247,9 +247,17 @@ const DefiOverview = observer((props) => {
                         </span>
                     </div>
                 );
+                break;
+            case "Venus":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            Venus is an algorithmic-based money market system designed to bring a complete decentralized finance-based lending and credit system onto Binance Smart Chain.
+                        </span>
+                    </div>
+                );
                 break;    
-            // case "PancakeBunny":
-            //     break;      
             default:
                 setOverviewTag(
                     <div className="defiOverview">
