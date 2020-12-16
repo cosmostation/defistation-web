@@ -48,6 +48,7 @@ import cokefinance from "../../assets/images/defiLogo/cokefinance@2x.png";
 import renvm from "../../assets/images/defiLogo/renvm@2x.png";
 import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
 import venus from "../../assets/images/defiLogo/venus@2x.png";
+import thugs from "../../assets/images/defiLogo/thugs@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -372,7 +373,10 @@ const TotalValue = observer((props) => {
                 break;
             case "Venus":
                 setDefiIcon(venus);
-                break;    
+                break;   
+            case "Thugs":
+                setDefiIcon(thugs);
+                break;        
             default:
                 setLinkTag("");
                 break;    
@@ -880,6 +884,15 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/VenusProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/VenusProtocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/venusprotocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Thugs */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Thugs" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://www.thugs.fi")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/thugs-defi")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.thugs.fi/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/ThugsFinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/thugsfinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://thugsfinace.medium.com")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

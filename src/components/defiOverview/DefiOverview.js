@@ -257,7 +257,17 @@ const DefiOverview = observer((props) => {
                         </span>
                     </div>
                 );
-                break;    
+                break;  
+            case "Thugs":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            Yield Farms with a Gangster twist.  Enter our "traps" to farm your liquidity tokens for our DRUGS reward token.  Drugs can then be converted to HOES which earn more DRUGS and can also be staked for additional rewards.
+                        </span>
+                    </div>
+                );
+                break;        
             default:
                 setOverviewTag(
                     <div className="defiOverview">
