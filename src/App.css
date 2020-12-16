@@ -872,11 +872,12 @@ hr.sideMenuLine {
   text-align: right;
 }
 
+/* Mobile Locked */
 @media (min-width:1035px) {
-  .defiListTable th:nth-child(8) {
+  .defiListTable th:nth-child(7) {
     display: none;
   }
-  .defiListTable td:nth-child(8) {
+  .defiListTable td:nth-child(7) {
     display: none;
   }
 }
@@ -911,17 +912,28 @@ hr.sideMenuLine {
   }
 
   .defiListTable th:nth-child(7) {
-    display: none;
+    /* display: none; */
+    width: 30%;
   }
   .defiListTable td:nth-child(7) {
-    display: none;
+    /* display: none; */
+    width: 30%;
   }
 
   .defiListTable th:nth-child(8) {
     width: 30%;
+    /* display: none; */
   }
   .defiListTable td:nth-child(8) {
     width: 30%;
+    /* display: none; */
+  }
+
+  .defiListTable th:nth-child(9) {
+    display: none;
+  }
+  .defiListTable td:nth-child(9) {
+    display: none;
   }
 
   .defiListTable th:nth-child(10) {
@@ -958,11 +970,12 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiListTableHead {
-    font-size: 11.9px;
+    font-size: 11.7px;
   }
   
   .defiListTableBody {
-    font-size: 11.9px;
+    font-size: 11.7px;
+    letter-spacing: -0.3px;
   }
 }
 

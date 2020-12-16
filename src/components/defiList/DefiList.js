@@ -158,7 +158,7 @@ const DefiList = observer((props) => {
                                 <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{chainName}</td>
                                 <td>{getOfficialCategoryName(res[i].category)}</td>
-                                <td></td>
+                                {/* <td></td> */}
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -173,7 +173,7 @@ const DefiList = observer((props) => {
                                 <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{chainName}</td>
                                 <td>{getOfficialCategoryName(res[i].category)}</td>
-                                <td>{res[i].contractNum}</td>
+                                {/* <td>{res[i].contractNum}</td> */}
                                 <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
                                 <td>$ {currencyNum + currencyUnit}</td>
                                 <td>{change24hTag}</td>
@@ -215,7 +215,7 @@ const DefiList = observer((props) => {
                         <th>Name</th>
                         <th>Chain</th>
                         <th>Category</th>
-                        <th>Contract(#)</th>
+                        {/* <th>Contract(#)</th> */}
                         <th>Locked</th>
                         <th>Locked</th>
                         <th>
