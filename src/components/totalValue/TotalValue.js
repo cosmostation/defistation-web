@@ -892,7 +892,7 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.thugs.fi/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/ThugsFinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/thugsfinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://thugsfinace.medium.com")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://thugsfinance.medium.com")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

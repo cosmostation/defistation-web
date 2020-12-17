@@ -157,7 +157,10 @@ export function getOfficialCategoryName(category) {
             break;        
         case "payments":
             convertedName = "Payments";
-            break;      
+            break;     
+        case "Content Sharing":
+            convertedName = "Content Sharing";
+            break;          
         default:
             convertedName = "Misc";
             break;                    
