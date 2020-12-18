@@ -16,6 +16,9 @@ const DefiDetailList = observer((props) => {
 
     const history = useHistory();
 
+    // all, 1year, 90days
+    const [chartPeriod, setChartPeriod] = useState("30");    // 7, 30, 90, 365
+
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
 
@@ -34,7 +37,15 @@ const DefiDetailList = observer((props) => {
 
     async function getBnbLockedList(defiName) {
         return new Promise(async function(resolve, reject) {
-            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName, {
+            // let bnbLockedListFullUrl;
+            // if (chartPeriod == 7) {
+            //     // default
+            //     bnbLockedListFullUrl = "/bnblockedList/" + defiName;
+            // } else {
+            //     bnbLockedListFullUrl = "/bnblockedList/" + defiName + "?days=" + chartPeriod;
+            // }
+            
+            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=30", {
                 method: 'GET',
                 headers: {
                     Authorization: 'Basic Og=='
@@ -69,7 +80,15 @@ const DefiDetailList = observer((props) => {
         let lockedBnbArr = await getBnbLockedList(defiName);
         console.log("lockedBnbArr: ", lockedBnbArr);
 
-        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr, {
+        let chartFullUrl;
+        if (chartPeriod == 7) {
+            // default
+            chartFullUrl = "/chart/" + urlStr;
+        } else {
+            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        }
+
+        const res = await fetch(global.defistationApiUrl + chartFullUrl, {
             method: 'GET',
             headers: {
                 Authorization: 'Basic Og=='
