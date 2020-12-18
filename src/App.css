@@ -568,7 +568,7 @@ hr.sideMenuLine {
 }
 
 .periodBtn {
-  margin-left: 20px;
+  /* margin-left: 20px;
   width: 72px;
   height: 17px;
   font-family: OpenSans;
@@ -584,6 +584,24 @@ hr.sideMenuLine {
   background-color: transparent !important;
   background-image: none !important;
   border-color: transparent;
+  cursor: pointer; */
+  margin-left: 20px;
+  width: 32px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent;
+  border: 0;
+  outline: 0;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: #757f8e;
   cursor: pointer;
 }
 
@@ -1189,6 +1207,12 @@ hr.sideMenuLine {
   letter-spacing: normal;
   text-align: left;
   color: #9aa0a8;
+}
+
+.defiOverviewContent a {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @media (min-width:1px) and (max-width:1034px) {

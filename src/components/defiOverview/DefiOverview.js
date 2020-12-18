@@ -76,8 +76,9 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                        A protocol for incentivised liquidity and synthetic assets on Binance Smart Chain. 
+                        Spartan is a protocol for incentivized liquidity and synthetic assets on Binance Smart Chain.<br /><br />
+
+Spartan Protocol has been audited by Certik. Audit report by Certik: <a href="https://github.com/spartan-protocol/resources/blob/master/certik-audit.pdf" target="_blank">https://github.com/spartan-protocol/resources/blob/master/certik-audit.pdf</a>
                         </span>
                     </div>
                 );
@@ -136,8 +137,9 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                        Based on The Force Protocol, ForTube is committed to providing decentralized lending services for cryptoasset enthusiasts around the world.
+                        ForTube is a DeFi money market platform based on The Force Protocol. ForTube Bank is a liquidity pool based lending protocol that enables anyone to supply digital assets to earn interest, or borrow against a collateral. It supports a wide range of digital assets, and the borrowing & lending rates are algorithmically adjusted to incentivise and foster maximum liquidity in pools.<br /><br />
+
+ForTube has a bug bounty program <a href="https://for.tube/bounty" target="_blank">https://for.tube/bounty</a>. The latest public audit reports <a href="https://for.tube/Smart%20Contract%20Security%20Audit%20Report%20-%20Fortube%20Bank%202.0.pdf" target="_blank">https://for.tube/Smart%20Contract%20Security%20Audit%20Report%20-%20Fortube%20Bank%202.0.pdf</a> are provided by the SlowMist team.
                         </span>
                     </div>
                 );
@@ -192,16 +194,27 @@ const DefiOverview = observer((props) => {
                     </div>
                 );
                 break;
-            // case "7up.finance":
-            //     break;
+            case "7up.finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        7up.finance is a DeFi Filecoin (FIL) lending and investment platform based on Binance Smart Chain. Through matching the FIL holders and FIL seekers, 7up is designed for the FIL borrowing market. Meanwhile, on the 7up platform, lending itself is a way of mining. Once a loan contract takes effect, the borrower and lender will both receive rewards in 7UP, the native token of the platform.<br /><br />
+
+After the recent launch of the Filecoin mainnet, a huge gap has grown between the large demand for FIL tokens by miners on the Filecoin mainnet and the small circulation volume of the token in the secondary market, a situation caused by Filecoin’s pre-stake mechanism. Filecoin’s economic design requires miners to pledge FIL tokens as initial collateral in order to seal data into valid network sectors so that they can increase their effective storage mining power.<br />
+In order to have in-depth and immediate participation in the network activities, miners have to obtain FIL tokens in the secondary market. Therefore, a large demand for FIL tokens has emerged on the market.
+                        </span>
+                    </div>
+                );
+                break;
             // case "BFis.finance":
             //     break;
             case "bStable.finance":
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                            bStable is an open-source, automated market maker (AMM) mechanism especially designed to enable token swaps between any stablecoin on Binance Smart Chain (BSC) at low fees and with minimal price slippage.
+                        bStable is an open-source, automated market maker (AMM) mechanism especially designed to enable token swaps between any stablecoin on Binance Smart Chain (BSC) at low fees and with minimal price slippage.<br /><br />
+
+The latest bStable public audit report (<a href="https://bstable.finance/assets/audit/report.pdf" target="_blank">https://bstable.finance/assets/audit/report.pdf</a>) was conducted by AnChain.ai (<a href="https://www.anchain.ai/bstable-certificate" target="_blank">https://www.anchain.ai/bstable-certificate</a>).
                         </span>
                     </div>
                 );
@@ -242,8 +255,9 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                            QIAN stablecoin protocol provides a set of open architecture allowing anyone to generate stable-value tokens with the legal currency of various countries as the pricing standard, anytime and anywhere.
+                        QIAN is a stablecoin protocol based on Ethereum and Binance smart chain. It provides a one-stop liquidity solution for mainstream cryptoassets. It is committed to providing users with immediate access to liquidity by the assets they hold with low risk, no cost, and no loss of ownership. Users can lock their cryptoassets (such as ETH, HBTC, WBTC, USD stablecoins, mainstream exchange platform tokens, etc.) to the protocol and mint the stablecoin QUSD, the stablecoins can also be returned to smart contracts to redeem their assets.<br /><br />
+
+The latest public audit reports (<a href="https://bsc.qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf" target="_blank">https://bsc.qian.finance/PeckShield-Audit-Report-QIAN2-v1.0.pdf</a>) are provided by PeckShield. There's also a bug bounty program (<a href="https://bsc.qian.finance/bounty" target="_blank">https://bsc.qian.finance/bounty</a>) for QIAN.
                         </span>
                     </div>
                 );
@@ -252,8 +266,11 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                            Venus is an algorithmic-based money market system designed to bring a complete decentralized finance-based lending and credit system onto Binance Smart Chain.
+                            Venus Protocol (“Venus”) is an algorithmic-based money market system designed to bring a complete decentralized finance-based lending and credit system onto Binance Smart Chain. Venus enables users to utilize their cryptocurrencies by supplying collateral to the network that may be borrowed by pledging over-collateralized cryptocurrencies. This creates a secure lending environment where the lender receives a compounded interest rate annually (APY) paid per block, while the borrower pays interest on the cryptocurrency borrowed.<br /><br />
+
+These interest rates are set by the protocol in a curve yield, where the rates are automated based on the demand of the specific market, such as Bitcoin. The difference of Venus from other money market protocols is the ability to use the collateral supplied to the market not only to borrow other assets but also to mint synthetic stablecoins with over-collateralized positions that protect the protocol. These synthetic stablecoins are not backed by a basket of fiat currencies but by a basket of cryptocurrencies. Venus utilizes the Binance Smart chain for fast, low-cost transactions while accessing a deep network of wrapped tokens and liquidity.<br /><br />
+
+Check out the latest security audits and reports for Venus: <a href="https://docs.venus.io/docs/security" target="_blank">https://docs.venus.io/docs/security</a>
                         </span>
                     </div>
                 );
@@ -262,12 +279,80 @@ const DefiOverview = observer((props) => {
                 setOverviewTag(
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
-                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                            Yield Farms with a Gangster twist.  Enter our "traps" to farm your liquidity tokens for our DRUGS reward token.  Drugs can then be converted to HOES which earn more DRUGS and can also be staked for additional rewards.
+                        Welcome to the Traphouse, where Thugs come to do their Defi Yield Farming.  We offer some of the dopest rewards in BSC with our DRUGS token which you can farm by providing liquidity for many popular token pairs.  Once you start earning DRUGS you can hold on to those DRUGS and turn them in to HOES, our staking token.  HOES automatically stake for DRUGS, but they can also be staked in one of our HOES Staking Pools to earn an additional reward token.  You can earn our own GUNS token which will play a big part of our upcoming NFT project, or tokens from projects which have partnered with us to provide their tokens for our community.<br /><br />
+
+Audit done by Vidar the Auditor. No major issues found during initial audit.<br /><br />
+
+<a href="https://ipfs.io/ipfs/QmbWFXdyVbuejK3wmizMMMbGqqMKkJegmkU4vDSLVSv4fZ?filename=Thugs_review_v1.pdf" target="_blank">https://ipfs.io/ipfs/QmbWFXdyVbuejK3wmizMMMbGqqMKkJegmkU4vDSLVSv4fZ?filename=Thugs_review_v1.pdf</a><br /><br />
+
+$10,000 Bug Bounty Program is live, anyone finding bugs in our contracts is welcome to apply for a bounty.  To date, one small concern was brought to our attention with the user interface, corrected and reporter was compensated from the bounty fund.
                         </span>
                     </div>
                 );
-                break;        
+                break; 
+            case "CBerry":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        CBerry is a content sharing system on the Binance Smart Chain. Users are rewarded with CBY and can be tipped in BNB and CBY for quality contents shared. CBerry also integrates DeFi Swap infrastructure to create a solid content creation and reward ecosystem. CBerry aims at producing a platform even better than steemit on the Binance Smart Chain. After registration users can make posts, reactions on the post will mint new CBY tokens as earning for the post, the post author and those who reacted will share whatever was earned on the post after 7 days.<br /><br />
+
+Post can be tipped before and after the 7 days without time limit in BNB and CBY. CBerry will incorporate a Swap system on the platform for easy conversion of assets on the platform. We intend to add other assets on Binance Smart Chain to our wallet also, do that users can be tipped in different assets and a Swap infrastructure will be totally useful in that case.
+                        </span>
+                    </div>
+                );
+                break;   
+            case "Jetfuel.Finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        Jetfuel is a yield farming and yield aggregator platform that combines features from the most successful DeFi projects such as Compound, Fry.World, Yearn, and Harvest on Binance Smart Chain (BSC).<br /><br />
+
+The FUEL token is a deflationary token that burns 1% per transaction. This helps alleviate sell pressure and makes the supply of FUEL more scarce over time.<br />
+In addition, FUEL also funds the Jet Hanger with a 1% tax per transaction. The Jet Hanger is an easy to use staking and governance portal where users can control developments and features.<br /><br />
+
+JET is the native governance token of the Jetfuel platform and can be earned by staking FUEL token. It allows users to submit and vote on proposals on the governance page to decentralize the project and put more power within the community rather than the team. Jet holders will earn all the FUEL produced in the hanger, along with a generous rewards rate as a stand-alone farming pool.<br />
+Staking will go live 1 week after launch.<br /><br />
+
+The Jet Vault allows users to automate and maximize their returns through various Binance Smart Chain protocols using a variety of liquidity provider tokens, staking tokens and other assets that generate positive yield for the user.<br />
+The Jet Vaults will automatically harvest, sell, compound and buy tokens for you so you can maximize your returns without lifting a finger.
+                        </span>
+                    </div>
+                );
+                break;   
+            case "ACryptoS":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
+                            
+                        </span>
+                    </div>
+                );
+                break;
+            case "PancakeBunny":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        PancakeBunny is a new and rapidly growing DeFi yield aggregator that is used for PancakeSwap. PancakeBunny protocol empowers farmers to leverage their yield-seeking tendencies to optimize yield compounding strategy on BSC. We are providing strategies for the various needs of farmers from the highest yield seekers to the risk reward optimizing smart investors.<br /><br />
+
+The PancakeBunny team is dedicated to support the underlying DeFi ecosystem by providing users with an easy way to automatically compound their yields through the Binance Smart Chain. The DeFi movement, and more specifically Yield Aggregators, have seen a huge surge in activity in 2020. The Rise of Yearn, which uses existing protocols such as Compound, DyDx, and Curve, has influenced the development of various other Yield Aggregator projects on the Ethereum Network. Our goal is to expand that same interest through the Binance Smart Chain Ecosystem.
+                        </span>
+                    </div>
+                );
+                break;  
+            case "AnySwap":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        AnySwap is a fully decentralized cross chain swap protocol, with automated pricing and liquidity system. AnySwap enables swaps between any coins on any blockchain which uses ECDSA or EDDSA as signature algorithm, including BTC, ETH, BNB, USDT, XRP, LTC, FSN, etc.<br /><br />
+
+AnySwap Cross-Chain Bridge is an innovative, safe, and decentralized cross-chain solution based on secure multi-party computation (SMPC) + threshold signature solution (TSS). It is composed of SMPC network based on distributed control rights management (DCRM) and Cross-Chain Bridge smart contract.<br /><br />
+
+The latest public audit reports (<a href="https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist" target="_blank">https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist</a>) are provided by the SlowMist team.
+                        </span>
+                    </div>
+                );
+                break;                            
             default:
                 setOverviewTag(
                     <div className="defiOverview">

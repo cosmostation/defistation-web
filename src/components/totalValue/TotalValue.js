@@ -49,6 +49,9 @@ import renvm from "../../assets/images/defiLogo/renvm@2x.png";
 import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
 import venus from "../../assets/images/defiLogo/venus@2x.png";
 import thugs from "../../assets/images/defiLogo/thugs@2x.png";
+import cberry from "../../assets/images/defiLogo/cberry@2x.png";
+import jetfuel from "../../assets/images/defiLogo/jetfuel@2x.png";
+import acryptos from "../../assets/images/defiLogo/acryptos@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -376,7 +379,16 @@ const TotalValue = observer((props) => {
                 break;   
             case "Thugs":
                 setDefiIcon(thugs);
-                break;        
+                break; 
+            case "CBerry":
+                setDefiIcon(cberry);
+                break; 
+            case "Jetfuel.Finance":
+                setDefiIcon(jetfuel);
+                break;  
+            case "ACryptoS":
+                setDefiIcon(acryptos);
+                break;                    
             default:
                 setLinkTag("");
                 break;    
@@ -579,10 +591,8 @@ const TotalValue = observer((props) => {
                                 </div>    
                             </li>
                             <li>
-                                {/* <button className="periodBtnSelected" onClick={() => setChartPeriod("all")}>All</button>
-                                <button className="periodBtn" onClick={() => setChartPeriod("1year")}>1 Year</button>
-                                <button className="periodBtn" onClick={() => setChartPeriod("90days")}>90 Days</button> */}
                                 <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7d</button>
+                                <button className="periodBtn" onClick={() => setChartPeriod("90days")}>30d</button>
                             </li>
                         </ul>
                     </div>
@@ -893,6 +903,33 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/ThugsFinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/thugsfinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://thugsfinance.medium.com")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* CBerry */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "CBerry" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://cberry.net/posts")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/cberry_official")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/CberryOfficial")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Jetfuel.Finance */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Jetfuel.Finance" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://jetfuel.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/jetfuelfinance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/Jetfuelfinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/jetfuelfinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://jetfuelfinance.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* ACryptoS */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "ACryptoS" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://acryptos.com/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/acryptos")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.acryptos.com/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/acryptosx")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/acryptos9")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://acryptos.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>
