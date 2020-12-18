@@ -550,6 +550,7 @@ hr.sideMenuLine {
 }
 
 .periodBtnSelected {
+  margin-left: 20px;
   width: 32px;
   height: 18px;
   border-radius: 5px;

@@ -109,7 +109,15 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        const res = await fetch(global.defistationApiUrl + "/chart/" + urlStr, {
+        let chartFullUrl;
+        if (chartPeriod == 7) {
+            // default
+            chartFullUrl = "/chart/" + urlStr;
+        } else {
+            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        }
+
+        const res = await fetch(global.defistationApiUrl + chartFullUrl, {
             method: 'GET',
             headers: {
                 Authorization: 'Basic Og=='
@@ -209,8 +217,8 @@ const TotalValue = observer((props) => {
                 }
 
                 // 차트: 7d
-                if (tempChartData.length > 7) {
-                    let remainDataLength = tempChartData.length - 7;
+                if (tempChartData.length > chartPeriod) {
+                    let remainDataLength = tempChartData.length - chartPeriod;
                     for (var i = 0; i < remainDataLength; i++) {
                         tempChartData.shift();  // 맨 앞 원소 제거
                     }
@@ -463,7 +471,7 @@ const TotalValue = observer((props) => {
             // console.log('cleanup');
             // clearTimeout(timer);
         };
-    }, [props.defiName, global.tvl1DayPercent, linkTag, viewWidth])
+    }, [props.defiName, global.tvl1DayPercent, linkTag, viewWidth, chartPeriod])
 
     return (
         <div className="totalValue">
@@ -508,7 +516,9 @@ const TotalValue = observer((props) => {
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
+                                                fontSize: 11,
                                             },
+                                            slantedText: true,
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
@@ -524,7 +534,7 @@ const TotalValue = observer((props) => {
                                         // 0: { curveType: 'function' },
                                         },
                                         colors: ['#f0b923'],
-                                        chartArea: { width: '86%', height: '75%' },
+                                        chartArea: { width: '86%', height: '70%' },
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
@@ -568,7 +578,9 @@ const TotalValue = observer((props) => {
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
+                                                fontSize: 11,
                                             },
+                                            slantedText: true,
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
@@ -584,15 +596,21 @@ const TotalValue = observer((props) => {
                                         // 0: { curveType: 'function' },
                                         },
                                         colors: ['#f0b923'],
-                                        chartArea: { width: '86%', height: '75%' },
+                                        chartArea: { width: '86%', height: '70%' },
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
                                 </div>    
                             </li>
                             <li>
-                                <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7d</button>
-                                <button className="periodBtn" onClick={() => setChartPeriod("90days")}>30d</button>
+                                {/* <button className="periodBtnSelected" onClick={() => setChartPeriod("7")}>7d</button>
+                                <button className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button> */}
+
+                                <button style={chartPeriod == 7 ? undefined : { display: "none" }} className="periodBtnSelected">7d</button>
+                                <button style={chartPeriod == 7 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("7")}>7d</button>
+
+                                <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">30d</button>
+                                <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button>
                             </li>
                         </ul>
                     </div>
