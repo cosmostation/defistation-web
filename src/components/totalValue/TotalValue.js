@@ -71,7 +71,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("7");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("30");    // 7, 30, 90, 365
 
     const [chartData, setChartData] = useState(['x', 'TVL(USD)']);
     const [totalValueLockedUsd, setTotalValueLockedUsd] = useState(0);
