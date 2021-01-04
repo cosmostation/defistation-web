@@ -847,7 +847,7 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/PancakeBunny-finance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/PancakeBunnyFin")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/pancake_bunny")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/pancakebunny_fin")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://pancakebunny.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* JulSwap */}
