@@ -10,10 +10,11 @@ import '../../App.css';
 import TopBar from '../topBar/TopBar';
 import Footer from '../footer/Footer';
 
-import projectList from '../../../projectList.json';
+import projectList from '../../projectList.json';
 
 import yellowArrow from "../../assets/images/arrowic@2x.png";
 // 프로젝트 아이콘
+import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
 import alphafinance from "../../assets/images/defiLogo/alphafinance@2x.png";
 import bakeryswap from "../../assets/images/defiLogo/bakeryswap@2x.png";
 import beefyfinance from "../../assets/images/defiLogo/beefyfinance@2x.png";
@@ -48,6 +49,10 @@ import cokefinance from "../../assets/images/defiLogo/cokefinance@2x.png";
 import renvm from "../../assets/images/defiLogo/renvm@2x.png";
 import unifiprotocol from "../../assets/images/defiLogo/unifiprotocol@2x.png";
 import venus from "../../assets/images/defiLogo/venus@2x.png";
+import thugs from "../../assets/images/defiLogo/thugs@2x.png";
+import cberry from "../../assets/images/defiLogo/cberry@2x.png";
+import jetfuel from "../../assets/images/defiLogo/jetfuel@2x.png";
+import acryptos from "../../assets/images/defiLogo/acryptos@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -61,16 +66,221 @@ const TheDefiList = observer(() => {
 
     const [urlPathName, setUrlPathName] = useState();
     const [defiName, setDefiName] = useState("");
-    // const [invalidNameFlag, setInvalidNameFlag] = useState(false);
-
-    // const defistationApiUrl = "https://api.defistation.io";
+    
+    const [defiListCode, setDefiListCode] = useState();
 
     function movePage(path) {
         history.push(path);
     }
 
+    function createDefiProjectCard() {
+        // projectList 에 있는 전체 리스트 다 보여주기
+        console.log("projectList: ", projectList);
+
+        let codeArr = [];
+        let defiIconArr = [];
+
+        for (var i = 0; i < projectList.length; i++) {
+
+            let defiInfoName = (projectList[i].name).toLowerCase();
+
+            // 예외처리
+            if (defiInfoName == "pancakeswap") {
+                defiInfoName = "pancake";
+            }
+
+            // 이름에 공백 제거
+            if (defiInfoName.indexOf(" ") > 0) {
+                defiInfoName = defiInfoName.replace(" ", "");
+            }
+
+            // . 제거
+            if (defiInfoName.indexOf(".") > 0) {
+                defiInfoName = defiInfoName.replace(".", "");
+            }
+
+            // defistation 에 리스팅됐는가? 
+            let listFlag = false;
+
+            switch (projectList[i].name) {
+                case "pancake":
+                case "PancakeSwap":    
+                    listFlag = true;
+                    defiIconArr.push(pancake);
+                    break;
+                case "Peach Swap":
+                    defiIconArr.push(peachswap);
+                    break;   
+                case "Streamity":
+                    defiIconArr.push(streamity);
+                    break;   
+                case "bscSwap":
+                case "BSC Swap":
+                    listFlag = true;
+                    defiIconArr.push(bscswap);
+                    break;   
+                case "Spartan Protocol":
+                    listFlag = true;
+                    defiIconArr.push(spartanprotocol);
+                    break;   
+                case "Burger Swap":
+                    listFlag = true;
+                    defiIconArr.push(burgerswap);
+                    break;   
+                case "Stakecow":
+                case "Milk Protocol":
+                    listFlag = true;
+                    defiIconArr.push(stakecow);
+                    break;   
+                case "Alpha Finance":
+                    defiIconArr.push(alphafinance);
+                    break;   
+                case "Cream Finance":
+                    listFlag = true;
+                    defiIconArr.push(creamfinance);
+                    break;   
+                case "Bakery Swap":
+                    listFlag = true;
+                    defiIconArr.push(bakeryswap);
+                    break;   
+                case "ForTube":
+                    listFlag = true;
+                    defiIconArr.push(fortube);
+                    break;   
+                case "FryWorld":
+                    listFlag = true;
+                    defiIconArr.push(fryworld);
+                    break;   
+                case "beefy.finance":
+                    listFlag = true;
+                    defiIconArr.push(beefyfinance);
+                    break;
+                case "Narwhalswap":
+                case "NarwhalSwap":
+                    listFlag = true;
+                    defiIconArr.push(narwhalswap);
+                    break;   
+                case "STORMSWAP":
+                case "Storm Swap":  
+                    listFlag = true;  
+                    defiIconArr.push(stormswap);
+                    break;       
+                case "BnEX":
+                    listFlag = true;
+                    defiIconArr.push(bnexchange);
+                    break;
+                case "7up.finance":
+                case "7UP Finance":    
+                    defiIconArr.push(sevenupfinance);
+                    break;
+                case "BFis.finance":
+                case "BFis.Finance":
+                    defiIconArr.push(bfisfinance);
+                    break;
+                case "bStable.finance":
+                case "bStable":
+                    defiIconArr.push(bstablefinance);
+                    break;
+                case "Dego":
+                case "Dego.finance":    
+                    defiIconArr.push(dego);
+                    break;
+                case "DODO":
+                    defiIconArr.push(dodo);
+                    break;
+                case "Equator.finance":
+                case "Equator.Finance":
+                    defiIconArr.push(equatorfinance);
+                    break;
+                case "StableXSwap":
+                    defiIconArr.push(stablexswap);
+                    break;
+                case "QIAN":
+                    listFlag = true;
+                    defiIconArr.push(qian);
+                    break;    
+                case "PancakeBunny":
+                    listFlag = true;
+                    defiIconArr.push(pancakebunny);
+                    break;
+                case "JulSwap":
+                case "Julswap":   
+                    listFlag = true; 
+                    defiIconArr.push(julswap);
+                    break;
+                case "JustLiquidity":
+                    defiIconArr.push(justliquidity);
+                    break;
+                case "AnySwap":
+                    listFlag = true;
+                    defiIconArr.push(anyswap);
+                    break;
+                case "CokeFinance":
+                    listFlag = true;
+                    defiIconArr.push(cokefinance);
+                    break;
+                case "renVM":
+                    defiIconArr.push(renvm);
+                    break;
+                case "UniFi":
+                    defiIconArr.push(unifiprotocol);
+                    break;
+                case "Venus":
+                    listFlag = true;
+                    defiIconArr.push(venus);
+                    break;   
+                case "Thugs":
+                    listFlag = true;
+                    defiIconArr.push(thugs);
+                    break; 
+                case "CBerry":
+                    listFlag = true;
+                    defiIconArr.push(cberry);
+                    break; 
+                case "Jetfuel.Finance":
+                    defiIconArr.push(jetfuel);
+                    break;  
+                case "ACryptoS":
+                    listFlag = true;
+                    defiIconArr.push(acryptos);
+                    break;   
+                case "SoftDrinkSwap":
+                    defiIconArr.push(softdrinkswap);
+                    break;    
+                case "Nyanswop":
+                    defiIconArr.push(nyanswap);
+                    break;
+                default:
+                    defiIconArr.push(defaultIcon);
+                    break;    
+            }
+
+            if (listFlag) {
+                codeArr.push(
+                    <li onClick={() => history.push("/" + defiInfoName)}>
+                        <img src={defiIconArr[i]} width="40px" /><br />
+                        <span className="theDefiListCardTitle">{projectList[i].name}</span><br />
+                        <span className="theDefiListCardText">{textEllipsis(projectList[i].description)}</span>
+                    </li>
+                );
+            } else {
+                let tempUrl = projectList[i].officialWebsite;
+                codeArr.push(
+                    <li onClick={() => window.open(tempUrl, "_blank")}>
+                        <img src={defiIconArr[i]} width="40px" /><br />
+                        <span className="theDefiListCardTitle">{projectList[i].name}</span><br />
+                        <span className="theDefiListCardText">{textEllipsis(projectList[i].description)}</span>
+                    </li>
+                );
+            }
+        }
+
+        setDefiListCode(codeArr);
+    }
+
     useEffect(() => {
-        
+        createDefiProjectCard();
+
         return () => {
             console.log('cleanup');
         };
@@ -93,150 +303,152 @@ const TheDefiList = observer(() => {
                     </ul>
                 </div>
                 <ul className="theDefiListUl">
-                    <li onClick={() => history.push("pancake")}>
-                        {/* icon */}
+                    {defiListCode}
+
+                    {/* <li onClick={() => history.push("pancake")}>
+                        
                         <img src={pancake} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Pancake Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("PancakeSwap is one of the top liquidity providers on BSC in terms of swap volume, active users, and gas fee contribution to the BSC ecosystem. Its unique gamification program sets PancakeSwap apart from other AMM protocols, bringing stronger incentive for user participation as well as more token use cases.")}</span>
                     </li>
                     <li onClick={() => window.open("https://peachswap.org/", "_blank")}>
-                        {/* icon */}
+                        
                         <img src={peachswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Peach Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("An evolution of Uniswap with Peach tokenomics on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("streamity")}>
-                        {/* icon */}
+                        
                         <img src={streamity} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Streamity</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Streamity is an autonomous company on the Binance Smart Chain to provide services in finance, education, healthcare, science and sports spheres.")}</span>
                     </li>
                     <li onClick={() => history.push("bscswap")}>
-                        {/* icon */}
+                        
                         <img src={bscswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">BSC Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Launched on 9 September 2020, BSCswap is a decentralized exchange and an Automated Market Making protocol for Binance Smart Chain. It supports multiple BEP20 tokens over BSC ecosystem to create liquidity and fetch price oracles via on-chain smart contracts. Users can also yield-farm BSCswap LP tokens from the supported projects from BSC ecosystem.")}</span>
                     </li>
                     <li onClick={() => history.push("spartanprotocol")}>
-                        {/* icon */}
+                        
                         <img src={spartanprotocol} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Spartan Protocol</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("A protocol for incentivised liquidity and synthetic assets on Binance Smart Chain. ")}</span>
                     </li>
                     <li onClick={() => history.push("burgerswap")}>
-                        {/* icon */}
+                        
                         <img src={burgerswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Burger Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Democratized DeFi platform on Binance Smart Chain. List and trade any BEP20 asset. Provide liquidity and participate in community governance to earn from tx fees and liquidity mining rewards.")}</span>
                     </li>
                     <li onClick={() => history.push("stakecow")}>
-                        {/* icon */}
+                        
                         <img src={stakecow} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">MILK Protocol</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">MILK Protocol is a yield farming project based on BSC. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </li>
                     <li onClick={() => window.open("https://alphafinance.io/", "_blank")}>
-                        {/* icon */}
+                        
                         <img src={alphafinance} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Alpha Finance</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Alpha Finance Lab is an ecosystem of DeFi products, starting on Binance Smart Chain and Ethereum. Alpha Finance Lab is focused on building an ecosystem of automated yield-maximizing Alpha products that interoperate to bring optimal alpha to users on a cross-chain level.")}</span>
                     </li>
                     <li onClick={() => history.push("creamfinance")}>
-                        {/* icon */}
+                        
                         <img src={creamfinance} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Cream Finance</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("C.R.E.A.M. is a peer to peer lending and exchange platform on Ethereum and BSC.")}</span>
                     </li>
                     <li onClick={() => history.push("bakeryswap")}>
-                        {/* icon */}
+                        
                         <img src={bakeryswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Bakery Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Bakery Swap is the first AMM and NFT platform on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("fortube")}>
-                        {/* icon */}
+                        
                         <img src={fortube} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">ForTube</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Based on The Force Protocol, ForTube is committed to providing decentralized lending services for cryptoasset enthusiasts around the world.")}</span>
                     </li>
                     <li onClick={() => history.push("fryworld")}>
-                        {/* icon */}
+                        
                         <img src={fryworld} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">FryWorld</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Automated Market Maker built on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("narwhalswap")}>
-                        {/* icon */}
+                        
                         <img src={narwhalswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Narwhal Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Narwhalswap is an AMM protocol but is on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("stormswap")}>
-                        {/* icon */}
+                        
                         <img src={stormswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Storm Swap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Aumomated Market Maker built on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("bnex")}>
-                        {/* icon */}
+                        
                         <img src={bnexchange} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Bn Exchange</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Decentralized exchange for automated market making built on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => window.open("https://www.softdrinkswap.org/#/home", "_blank")}>
-                        {/* icon */}
+                        
                         <img src={softdrinkswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">SoftDrinkSwap</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Decentrazlied finance automated market maker built on Binance Smart Chain")}</span>
                     </li>
                     <li onClick={() => window.open("https://nyanswop.org/#/swap", "_blank")}>
-                        {/* icon */}
+                        
                         <img src={nyanswap} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">Nyanswop</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("Nyanswop is a decentralized protocol for automated liquidity provision on Binance Smart Chain.")}</span>
                     </li>
                     <li onClick={() => history.push("beefyfinance")}>
-                        {/* icon */}
+                        
                         <img src={beefyfinance} width="40px" /><br />
-                        {/* 이름 */}
+                        
                         <span className="theDefiListCardTitle">beefy.finance</span><br />
-                        {/* 설명 */}
+                        
                         <span className="theDefiListCardText">{textEllipsis("beefy.finance is a yield farming optimizer on Binance Smart Chain.")}</span>
-                    </li>
+                    </li> */}
                 </ul>
                 <Footer />
             </div>

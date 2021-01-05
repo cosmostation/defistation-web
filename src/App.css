@@ -1567,7 +1567,8 @@ hr.sideMenuLine {
 }
 
 .theDefiListUl li {
-  display: inline-block;
+  /* display: inline-block; */
+  display: -webkit-inline-box;
   margin-left: 10px;
   margin-top: 10px;
   width: 338px;
@@ -1584,7 +1585,7 @@ hr.sideMenuLine {
 }
 
 /* 1,4,7,10 */
-.theDefiListUl li:nth-child(1) {
+/* .theDefiListUl li:nth-child(1) {
   margin-left: 0px;
 }
 
@@ -1617,6 +1618,10 @@ hr.sideMenuLine {
 }
 
 .theDefiListUl li:nth-child(25) {
+  margin-left: 0px;
+} */
+
+.theDefiListUl li:nth-child(3n+1) {
   margin-left: 0px;
 }
 

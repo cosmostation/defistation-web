@@ -348,18 +348,6 @@
       "blog": "-"
     },
     {
-      "name": "Just Liquidity",
-      "category": "",
-      "description": "20.12.24 리스트 삭제 Julswap으로 변경됨.",
-      "descriptionDetail": "-",
-      "officialWebsite": "https://justliquidity.org/",
-      "github": "https://github.com/JustLiquidity",
-      "docs": "-",
-      "twitter": "https://twitter.com/JustLiquidity",
-      "telegram": "https://t.me/justliquidity",
-      "blog": "-"
-    },
-    {
       "name": "Peach Swap",
       "category": "DEX(AMM)",
       "description": "An evolution of Uniswap with Peach tokenomics on Binance Smart Chain.",
