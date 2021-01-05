@@ -10,6 +10,8 @@ import '../../App.css';
 import TopBar from '../topBar/TopBar';
 import Footer from '../footer/Footer';
 
+import projectList from '../../../projectList.json';
+
 import yellowArrow from "../../assets/images/arrowic@2x.png";
 // 프로젝트 아이콘
 import alphafinance from "../../assets/images/defiLogo/alphafinance@2x.png";
