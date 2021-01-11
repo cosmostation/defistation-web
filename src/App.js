@@ -2,14 +2,6 @@ import React, { Component, Fragment, Suspense, useState, useEffect } from 'react
 import { observer, inject } from 'mobx-react';
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from './useStores';
-
-// import TopBar from './components/topBar/TopBar';
-// import TotalValue from './components/totalValue/TotalValue';
-// import MiniCards from './components/miniCards/MiniCards';
-// import Banner from './components/banner/Banner';
-// import DefiList from './components/defiList/DefiList';
-// import Footer from './components/footer/Footer';
 
 import Main from './components/main/Main';
 import DefiDetail from './components/defiDetail/DefiDetail';
@@ -17,11 +9,9 @@ import About from './components/about/About';
 import TheDefiList from './components/theDefiList/TheDefiList';
 import Apply from './components/apply/Apply';
 
-// require('typeface-montserrat');
+// Font
 import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
 import 'typeface-roboto';       // $ npm install --save typeface-roboto
-
-// import 
 
 import './App.css';
 
@@ -31,18 +21,11 @@ if (process.env.NODE_ENV === "production") {
     ReactGA.initialize('UA-181754248-1');
 }
 
-
-
 const App = observer(() => {
-    // inject 이름
-    // const { global, account } = useStores();
-
     const location = useLocation();
     const history = useHistory();
 
     useEffect(() => {
-        // console.log('렌더링이 완료되었습니다!');
-
         return () => {
             console.log('cleanup');
         };
@@ -55,7 +38,6 @@ const App = observer(() => {
                     <Route exact path="/" component={Main} />
                     <Route path="/about" component={About} />
                     <Route path="/projects" component={TheDefiList} />
-                    {/* <Route path="/apply" component={Apply} /> */}
                     <Route path="/:defiName" component={DefiDetail} />
                 </Switch>
             </Suspense>

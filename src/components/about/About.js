@@ -1,16 +1,12 @@
 import React, { Component, Suspense, useState, useEffect } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-// import useStores from '../../useStores';
-
-import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
 
 import '../../App.css';
 
 import TopBar from '../topBar/TopBar';
 import Footer from '../footer/Footer';
 
-import cosmostationLogoWhite from "../../assets/images/cosmostationlogowhite@2x.png";
 import cosmostationLogo from "../../assets/images/cosmostationlogo.svg";
 import linkIcon from "../../assets/images/official_ic.svg";
 
@@ -24,13 +20,6 @@ const About = observer(() => {
     function movePage(path) {
         history.push(path);
     }
-
-    // useEffect(() => {
-        
-    //     return () => {
-    //         console.log('cleanup');
-    //     };
-    // }, [])
 
     return (
         <>
