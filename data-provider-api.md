@@ -30,12 +30,12 @@ The base URL for our API: `https://api.defistation.io/dataProvider`.
 To enter tvl using the Data Provider API, you can use the API key in the following two ways. You can use project's ID and api_key. The second method can be encoded in Base64.
 
 1. You can use CURL command using as 
-```
+```sh
 curl -u your_id:api_key https://api.defistation.io/dataProvider/tvl
 ```
 
 2. Also you can do it with Basic auth template encoded on Base64:
-```
+```sh
 curl -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX'
 ```
 
@@ -45,7 +45,7 @@ Below is an example of encoding ID and API key with javascript.
 var clientId = "YOUR_ID";
 var clientSecret = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 
-var authorizationBasic = window.btoa(clientId + ':' + clientSecret);
+var authorizationBasic = window.btoa(clientId + ":" + clientSecret);
 console.log("authorizationBasic: ", authorizationBasic);
 ```
 
@@ -59,8 +59,8 @@ There are no restrictions on the structure of “data” contents. The example b
 1. Calculate your TVL and make a json file using your tvl, locked bnb, and data.
 2. Send a tvl json as a POST type.
 
-```
-// Request (LP)
+```sh
+# Request (LP)
 curl -X POST \
   https://api.defistation.io/dataProvider/tvl \
   -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
@@ -93,7 +93,7 @@ curl -X POST \
     "test": false
 }'
 
-// Request (Vault)
+# Request (Vault)
 curl -X POST \
   https://api.defistation.io/dataProvider/tvl \
   -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
@@ -109,9 +109,8 @@ curl -X POST \
     },
     "test": false
 }'
-```
 
-// Request (Lending)
+# Request (Lending)
 curl -X POST \
   https://api.defistation.io/dataProvider/tvl \
   -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX' \
@@ -137,13 +136,12 @@ curl -X POST \
     },
     "test": false
 }'
-
-
+```
 
 Defistation updates project TVLs every hour. You must post your TVL/locked BNB/json data 10 minutes before each hour (ex. 00:50, 01:50, 02:50, 03:50, ….., 23:50) - 24 times every day. Projects that fail to post their hourly up-to-date information for a prolonged period of time will be delisted from Defistation. Please keep your data up-to-date at all times. (i.e. The data you post at 01:50 will be displayed on Defistation at 02:00)
 
-```
-// Response
+```sh
+# Response
 Status 200 OK
 
 {
@@ -178,15 +176,15 @@ Status 200 OK
 
 You can check the TVL data entered in Defistation with GET TVL API. If you do not enter from, to timestamp values, the latest 24-hour data is displayed by default.
 
-```
-// Request
+```sh
+# Request
 curl -X GET \
   'https://api.defistation.io/dataProvider/tvl?from=1502766805&to=1606803480' \
   -H 'Authorization: Basic Ym9veW91bjE6ZjI0OWJkMjAtMzM5My0xMWViLWJlZmQtMjM0Yjg4ZDIzXXXX'
 ```
 
-```
-// Response
+```sh
+# Response
 Status 200 OK
 
 [
