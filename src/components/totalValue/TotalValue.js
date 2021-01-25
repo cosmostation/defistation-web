@@ -9,6 +9,8 @@ import TvlLink from './tvlLink/TvlLink';
 
 import Chart from "react-google-charts";
 
+import loading from "../../assets/images/loading.gif";
+
 import bscLogo from "../../assets/images/bsc_logo@2x.png";
 import bscScanLogo from "../../assets/images/bscscan_logo@2x.png";
 import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
@@ -52,6 +54,10 @@ import thugs from "../../assets/images/defiLogo/thugs@2x.png";
 import cberry from "../../assets/images/defiLogo/cberry@2x.png";
 import jetfuel from "../../assets/images/defiLogo/jetfuel@2x.png";
 import acryptos from "../../assets/images/defiLogo/acryptos@2x.png";
+import autofarm from "../../assets/images/defiLogo/autofarm@2x.png";
+import basddollar from "../../assets/images/defiLogo/basddollar@2x.png";
+import bdollar from "../../assets/images/defiLogo/bdollar@2x.png";
+import bscfarm from "../../assets/images/defiLogo/bscfarm@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -396,7 +402,19 @@ const TotalValue = observer((props) => {
                 break;  
             case "ACryptoS":
                 setDefiIcon(acryptos);
-                break;                    
+                break; 
+            case "BSC Farm":
+                setDefiIcon(bscfarm);
+                break;   
+            case "bDollar Protocol":
+                setDefiIcon(bdollar);
+                break;   
+            case "Autofarm":
+                setDefiIcon(autofarm);
+                break;   
+            case "Binance Agile Set Dollar":
+                setDefiIcon(basddollar);
+                break;
             default:
                 setLinkTag("");
                 break;    
@@ -508,7 +526,7 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px" }}></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -546,7 +564,7 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px" }}></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     // options={{
                                     //     backgroundColor: "#171a20",
@@ -948,6 +966,42 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/acryptosx")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/acryptos9")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://acryptos.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* BSC Farm */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "BSC Farm" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bsc.farm")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bscfarm")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/BscFarm")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://discord.com/invite/NKXMQ48Mfx")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://link.medium.com/pigGHyKkMab")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* bDollar Protocol */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "bDollar Protocol" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bdollar.fi/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bearn-defi/bdollar-smartcontracts")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/bDollar_Fi")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/Bearn_Fi")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bearn-defi.medium.com/introducing-bdollar-f6152aeae737")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Autofarm */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Autofarm" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm.network")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/autofarm-network/autofarmV2")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.acryptos.com/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/autofarmnetwork")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/autofarm_network")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm-network.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Binance Agile Set Dollar */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Binance Agile Set Dollar" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://basd.finance/#/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/basdollar")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/agilesetdollar")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://discord.gg/TVcyNVsFXD")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://basdollar.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

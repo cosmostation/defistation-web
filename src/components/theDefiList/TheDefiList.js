@@ -53,6 +53,10 @@ import thugs from "../../assets/images/defiLogo/thugs@2x.png";
 import cberry from "../../assets/images/defiLogo/cberry@2x.png";
 import jetfuel from "../../assets/images/defiLogo/jetfuel@2x.png";
 import acryptos from "../../assets/images/defiLogo/acryptos@2x.png";
+import autofarm from "../../assets/images/defiLogo/autofarm@2x.png";
+import basddollar from "../../assets/images/defiLogo/basddollar@2x.png";
+import bdollar from "../../assets/images/defiLogo/bdollar@2x.png";
+import bscfarm from "../../assets/images/defiLogo/bscfarm@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -249,6 +253,18 @@ const TheDefiList = observer(() => {
                     break;    
                 case "Nyanswop":
                     defiIconArr.push(nyanswap);
+                    break;
+                case "BSC Farm":
+                    defiIconArr.push(bscfarm);    
+                    break;   
+                case "bDollar Protocol":
+                    defiIconArr.push(bdollar);    
+                    break;   
+                case "Autofarm":
+                    defiIconArr.push(autofarm);    
+                    break;   
+                case "Binance Agile Set Dollar":
+                    defiIconArr.push(basddollar);    
                     break;
                 default:
                     defiIconArr.push(defaultIcon);

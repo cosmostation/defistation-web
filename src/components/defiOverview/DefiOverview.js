@@ -352,7 +352,53 @@ The latest public audit reports (<a href="https://github.com/anyswap/Anyswap-Aud
                         </span>
                     </div>
                 );
-                break;                            
+                break;
+            case "BSC Farm":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        BSC.Farm to be the pioneering step on the Binance Smart Chain (BSC), with a mission to be the leader in listing Yield Farms projects. Countless yield farms surface on the Binance Smart Chain (BSC) daily; the difficult part is sorting through this information efficiently and effectively. Between the rise in rug-pulls and the increasing number of farms, the research begins to create a diminishing return vs. time. This is where BSC Farm proposes their solution. The BSC.Farm team aims to create a platform to track and research farms so users can make more informed investment decisions. The platform allows users to efficiently search for projects, investments, opportunities and avoid scams.<br /><br />
+
+Yield Farmers who incorporate BSC.Farm could save hours and even days of research through their aggregated list of BSC farms. BSC.Farm reduces the diminished reward lost due to excessive research, users’ time.
+                        </span>
+                    </div>
+                );
+                break;    
+            case "bDollar Protocol":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        bDollar is the first algorithmic stablecoin on Binance Smart Chain with an innovative solution that can adjust its supply deterministically to move the price of the token in the direction of a target price to bring programmability and interoperability to DeFi. Inspired by Basis and its predecessors, bDollar is a multi-token protocol that consists of three tokens: BDO (the algorithmic stablecoin), bDollar Shares (or sBDO, which holders can claim BDO inflation when the network expands), and bDollar Bonds (or bBDO, which can be purchased at a discount rate when the network is in contraction and can be redeemed for BDO when the network comes to its deflationary phase and price goes below 1$).<br /><br />
+
+Audit report: <a href="https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist" target="_blank">https://github.com/bearn-defi/bdollar-smartcontracts#audit</a>
+                        </span>
+                    </div>
+                );
+                break;    
+            case "Autofarm":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        AutoFarm aggregates the best vaults on BSC and implements the most optimal strategies to maximize users’ yields. The AUTO token is the platform’s native token, with a max supply of 80,000. AUTO holders benefit from a small fee on profits from Autofarm vaults. To be distributed to platform users till approximately Nov 2021. There was no pre-sale, no pre-farm. AUTO holders will also benefit from the expansion of the autofarm ecosystem. Expansion plans include a highly efficient DEX aggregator.<br /><br />
+
+Audit report - <a href="https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist" target="_blank">https://autofarm.network/audit_vidar_autofarm_v2.pdf</a>
+                        </span>
+                    </div>
+                );
+                break;     
+            case "Binance Agile Set Dollar":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        BASD is as an algorithmic stable coin pegged to BUSD. It's creation was inspired by the Empty Set Squad and utilizes the metrics from Dynamic Set Dollar with some alterations to the epoch length, coupon expiry and epoch advance rewards. The protocol is designed to be an agile reserve for the growing BSC DeFi ecosystem and a decentralized alternative to BUSD.<br /><br />
+
+The ESD metrics were initially worked on and improved for the DSD model and similarly; the BASD team have made further improvements to these metrics. The epoch time has been reduced to 1 hour, the coupon expiry to 15 days and the epoch advance reward has been reduced. Utilizing the Binance Smart Chain has allowed us to lower the reward from 50 native tokens to just 1.5 BASD due to the transaction costing as little a $0.30 to run.<br /><br />
+
+Audit is underway by Vidar the Auditor.
+                        </span>
+                    </div>
+                );
+                break;                                           
             default:
                 setOverviewTag(
                     <div className="defiOverview">
