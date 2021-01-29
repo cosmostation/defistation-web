@@ -6,6 +6,7 @@ export default class GlobalStore {
   }
 
   @observable defistationApiUrl = "https://api.defistation.io";
+  @observable auth = "Basic OmMyNDVhNGEyLTYxZjgtMTFlYi1hZTkzLTAyNDJhYzEzMDAwMg==";
 
   // 메인에서 차트 데이터 가져올 때 details 저장용(홈화면 하단 1 Day Change 보여주기 위해...)
   @observable chartDataDetails = null;

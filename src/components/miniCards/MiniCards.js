@@ -39,7 +39,7 @@ const MiniCards = observer((props) => {
         const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr, {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res
@@ -77,7 +77,7 @@ const MiniCards = observer((props) => {
         const res = await fetch(global.defistationApiUrl + "/defiNames", {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res

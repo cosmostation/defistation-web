@@ -26,8 +26,6 @@ const DefiDetailList = observer((props) => {
 
     const [defiListTableCode, setDefiListTableCode] = useState();
 
-    const defistationApiUrl = "https://api.defistation.io";
-
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     function getMonthAndDay(date) {
         let monthName = monthNames[date.getMonth()];
@@ -37,18 +35,10 @@ const DefiDetailList = observer((props) => {
 
     async function getBnbLockedList(defiName) {
         return new Promise(async function(resolve, reject) {
-            // let bnbLockedListFullUrl;
-            // if (chartPeriod == 7) {
-            //     // default
-            //     bnbLockedListFullUrl = "/bnblockedList/" + defiName;
-            // } else {
-            //     bnbLockedListFullUrl = "/bnblockedList/" + defiName + "?days=" + chartPeriod;
-            // }
-            
             const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=30", {
                 method: 'GET',
                 headers: {
-                    Authorization: 'Basic Og=='
+                    Authorization: global.auth
                 }
             });
             res
@@ -91,7 +81,7 @@ const DefiDetailList = observer((props) => {
         const res = await fetch(global.defistationApiUrl + chartFullUrl, {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res
@@ -122,6 +112,10 @@ const DefiDetailList = observer((props) => {
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
+                    }
+
+                    if (resultArr[i][1] == 0) {
+                        continue;
                     }
 
                     // console.log("resultArr[i][0]: ", resultArr[i][0]);

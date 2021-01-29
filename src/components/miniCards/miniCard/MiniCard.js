@@ -1,13 +1,10 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../../useStores';
 
 import '../../../App.css';
 
 const MiniCard = observer((props) => {
-    // const { global } = useStores();
-    
     useEffect(() => {
 
         return () => {

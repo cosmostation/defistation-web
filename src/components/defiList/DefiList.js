@@ -27,17 +27,15 @@ const DefiList = observer((props) => {
 
     const [defiListTableCode, setDefiListTableCode] = useState();
 
-    const defistationApiUrl = "https://api.defistation.io";
-
     async function getDefiList() {
         console.count("getDefiListCall");
         // if (global.chartDataDetails == null) return;
         // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
-        const res = await fetch(defistationApiUrl + "/defiTvlList", {
+        const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res
@@ -70,46 +68,6 @@ const DefiList = observer((props) => {
                     } else {
                         chainName = res[i].chain;
                     }
-
-                    // let change24hValue = global.chartDataDetails[res[i].name][1603274430];
-                    // for (var j = 0; j < global.chartDataDetails[res[i].name].length; j++) {
-
-                    // }
-
-                    // let detailsObj = global.chartDataDetails[res[i].name];
-                    // var detailsArr = Object.keys(detailsObj).map((key) => [Number(key), detailsObj[key]]);
-
-                    // for (var j = 0; j < detailsArr.length; j++) {
-                        
-                    // }
-
-
-                    // Chart 기준 변화량
-                    // const target = global.chartDataDetails;
-                    // const ret = {};
-                    // _.each(_.keys(global.chartDataDetails), key => {
-                    //     try {
-                    //         const values = _.keys(target[key]);
-                    //         const lastTwo = [values.pop(), values.pop()];
-                    //         ret[key] = (1 - target[key][lastTwo[1]] / target[key][lastTwo[0]]);
-                    //     } catch {
-                    //         ret[key] = 0;
-                    //     }
-                    // });
-
-                    // // let change24hValue = res[i].tvlPercentChange24h;
-                    // let change24hValue = ret[res[i].name];
-                    // let change24hTag;
-                    // if (change24hValue > 0) {
-                    //     // +
-                    //     change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
-                    // } else if (change24hValue == 0) {
-                    //     change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
-                    // } else if (change24hValue < 0) {
-                    //     change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
-                    // }
-
-                    // console.log("res[i].tvlPercentChange24h: ", res[i].tvlPercentChange24h);
 
                     // 현재 기준 변화량
                     let change24hValue = res[i].tvlPercentChange24h;
@@ -151,20 +109,20 @@ const DefiList = observer((props) => {
                     let currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
 
                     if (res[i].contractNum == 0) {
-                        tableCodeArr.push(
-                            <tr key={i}>
-                                <td>{rankNum}</td>
-                                <td>{verifiedTag}</td>
-                                <td>{getOfficialDefiName(res[i].name)}</td>
-                                <td>{chainName}</td>
-                                <td>{getOfficialCategoryName(res[i].category)}</td>
-                                {/* <td></td> */}
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><span className="comingSoon">Coming Soon</span></td>
-                            </tr>
-                        );
+                        // tableCodeArr.push(
+                        //     <tr key={i}>
+                        //         <td>{rankNum}</td>
+                        //         <td>{verifiedTag}</td>
+                        //         <td>{getOfficialDefiName(res[i].name)}</td>
+                        //         <td>{chainName}</td>
+                        //         <td>{getOfficialCategoryName(res[i].category)}</td>
+                        //         {/* <td></td> */}
+                        //         <td></td>
+                        //         <td></td>
+                        //         <td></td>
+                        //         <td><span className="comingSoon">Coming Soon</span></td>
+                        //     </tr>
+                        // );
                     } else {
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>

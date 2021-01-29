@@ -1,7 +1,6 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import useStores from '../../../useStores';
 
 import { getOfficialDefiName } from '../../util/Util';
 
@@ -20,20 +19,6 @@ const DefiOverview = observer((props) => {
         switch (props.defiName) {
             case "pancake":
                 setOverviewTag(
-            //         <div className="defiOverview">
-            //             <span className="defiOverviewTitle">What is pancake Swap?</span><br /><br />
-            //             <span className="defiOverviewContent">
-            //             BscSwap is a fully decentralized on-chain protocol for token exchange on Binance Smart Chain that uses liquidity pools instead of order books.
-            // Anyone can quickly swap between BNB and any BEP20 token or earn fees by supplying any amount of liquidity. And anyone can create a market 
-            // (i.e., liquidity pool) by supplying an equal value of BNB and an BEP20 token. BscSwap allows only one market per BEP20 token. 
-            //             </span><br /><br />
-            //             <span className="defiOverviewTitle">How to use BSC Swap?</span><br /><br />
-            //             <span className="defiOverviewContent">
-            //             BscSwap is a fully decentralized on-chain protocol for token exchange on Binance Smart Chain that uses liquidity pools instead of order books.
-            // Anyone can quickly swap between BNB and any BEP20 token or earn fees by supplying any amount of liquidity. And anyone can create a market 
-            // (i.e., liquidity pool) by supplying an equal value of BNB and an BEP20 token. BscSwap allows only one market per BEP20 token. 
-            //             </span>
-            //         </div>
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
                         <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>

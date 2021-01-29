@@ -2,7 +2,7 @@ import React, { Component, Suspense, useState, useEffect } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import ReactGA from "react-ga";
-// import useStores from '../../useStores';
+import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
 
@@ -16,28 +16,21 @@ import DefiDetailList from '../defiDetailList/DefiDetailList';
 import Footer from '../footer/Footer';
 
 const DefiDetail = observer(() => {
-    // const { global } = useStores();
+    const { global } = useStores();
 
     const location = useLocation();
     const history = useHistory();
 
     const [responseError, setResponseError] = useState();
-    const [response, setResponse] = useState({});
 
     const [urlPathName, setUrlPathName] = useState();
     const [defiName, setDefiName] = useState("");
-    // const [invalidNameFlag, setInvalidNameFlag] = useState(false);
-
-
-    const defistationApiUrl = "https://api.defistation.io";
 
     async function checkValidDefiName() {
-        // console.log("checkValidDefiName 함수 시작");
-
-        const res = await fetch(defistationApiUrl + "/defiNames", {
+        const res = await fetch(global.defistationApiUrl + "/defiNames", {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res
@@ -70,20 +63,7 @@ const DefiDetail = observer(() => {
     }
 
     useEffect(() => {
-        //   console.log('렌더링이 완료되었습니다!');
         checkValidDefiName();
-
-        // 현재 페이지 url 이름 파악하기 defiName
-
-        // if ((location.pathname).includes("pancake")) {
-        //     setDefiName("pancake");
-        // } else if ((location.pathname).includes("bscswap")) {
-        //     setDefiName("bscswap");
-        // } else if ((location.pathname).includes("beefyfinance")) {
-        //     setDefiName("beefyfinance");
-        // }
-
-        // DB에 있는 defiName 에 해당하는지 체크
 
         // Google Analytics
         if (process.env.NODE_ENV === "production") ReactGA.pageview(window.location.pathname + window.location.search);
@@ -97,7 +77,6 @@ const DefiDetail = observer(() => {
         <>
             <div className="wrapper" style={defiName != "" ? undefined : {display: "none"}}>
                 <TopBar />
-                {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">{defiName}</span></div> */}
                 <TotalValue defiName={defiName} />
                 <MiniCards defiName={defiName} />
                 <DefiOverview defiName={defiName} />

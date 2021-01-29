@@ -126,7 +126,7 @@ const TotalValue = observer((props) => {
         const res = await fetch(global.defistationApiUrl + chartFullUrl, {
             method: 'GET',
             headers: {
-                Authorization: 'Basic Og=='
+                Authorization: global.auth
             }
         });
         res
@@ -449,7 +449,7 @@ const TotalValue = observer((props) => {
 
             if (window.innerWidth != width) {
                 clearTimeout(doit);
-                doit = setTimeout(resizedw, 100);
+                doit = setTimeout(resizedw, 300);
             }
         };
     }

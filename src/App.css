@@ -1183,7 +1183,7 @@ hr.sideMenuLine {
   background-color: #171a20;
   padding: 15px;
   box-sizing: border-box;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .defiOverviewTitle {
