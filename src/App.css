@@ -989,11 +989,11 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiListTableHead {
-    font-size: 11.7px;
+    font-size: 11.5px;
   }
   
   .defiListTableBody {
-    font-size: 11.7px;
+    font-size: 11.5px;
     letter-spacing: -0.3px;
   }
 }
