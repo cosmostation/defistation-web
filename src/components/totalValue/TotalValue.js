@@ -169,15 +169,19 @@ const TotalValue = observer((props) => {
                 let digit;
                 let currencyUnit;
                 let tempCurrencyFullName;
-                if (resultArr[0][1] > 0) {
-                    digit = getCurrencyDigit(resultArr[0][1]);
-                    currencyUnit = getCurrencyUnit(resultArr[0][1]);
-                    tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
-                } else {
-                    digit = getCurrencyDigit(resultArr[resultArr.length - 1][1]);
-                    currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
-                    tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
-                }
+                // if (resultArr[0][1] > 0) {
+                //     digit = getCurrencyDigit(resultArr[0][1]);
+                //     currencyUnit = getCurrencyUnit(resultArr[0][1]);
+                //     tempCurrencyFullName = getCurrencyUnitFullName(resultArr[0][1]);
+                // } else {
+                //     digit = getCurrencyDigit(resultArr[resultArr.length - 1][1]);
+                //     currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
+                //     tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
+                // }
+                // Billion!
+                digit = getCurrencyDigit(resultArr[resultArr.length - 1][1]);
+                currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
+                tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
                 setCurrencyFullName(tempCurrencyFullName);
                 
                 for (var i = 0; i < resultArr.length; i++) {
