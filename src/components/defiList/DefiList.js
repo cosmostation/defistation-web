@@ -45,9 +45,13 @@ const DefiList = observer((props) => {
 
                 let tableCodeArr = [];
 
+                let rankingCount = 1;
+
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
-                    let rankNum = i + 1;
+                    // let rankNum = i + 1;
+                    
+                    let rankNum = rankingCount;
                     let defiName = res[i].name;
 
                     // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
@@ -124,6 +128,8 @@ const DefiList = observer((props) => {
                         //     </tr>
                         // );
                     } else {
+                        rankingCount++;
+                        
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
