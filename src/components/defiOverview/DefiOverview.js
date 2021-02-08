@@ -354,8 +354,6 @@ Yield Farmers who incorporate BSC.Farm could save hours and even days of researc
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
                         bDollar is the first algorithmic stablecoin on Binance Smart Chain with an innovative solution that can adjust its supply deterministically to move the price of the token in the direction of a target price to bring programmability and interoperability to DeFi. Inspired by Basis and its predecessors, bDollar is a multi-token protocol that consists of three tokens: BDO (the algorithmic stablecoin), bDollar Shares (or sBDO, which holders can claim BDO inflation when the network expands), and bDollar Bonds (or bBDO, which can be purchased at a discount rate when the network is in contraction and can be redeemed for BDO when the network comes to its deflationary phase and price goes below 1$).<br /><br />
-
-Audit report: <a href="https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist" target="_blank">https://github.com/bearn-defi/bdollar-smartcontracts#audit</a>
                         </span>
                     </div>
                 );
