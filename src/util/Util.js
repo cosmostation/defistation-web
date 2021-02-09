@@ -144,6 +144,7 @@ export function getOfficialCategoryName(category) {
             convertedName = "Earn";
             break;
         case "YieldOptimization":
+        case "Yield Optimization":    
             convertedName = "Earn";
             break;  
         case "lending":

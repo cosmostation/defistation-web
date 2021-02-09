@@ -27,7 +27,12 @@ const DefiList = observer((props) => {
 
     const [defiListTableCode, setDefiListTableCode] = useState();
 
+    const [urlFlag1, setUrlFlag1] = useState(false);
+
     async function getDefiList() {
+        if (urlFlag1) return;
+        setUrlFlag1(true);
+
         console.count("getDefiListCall");
         // if (global.chartDataDetails == null) return;
         // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);

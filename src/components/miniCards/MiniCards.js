@@ -24,18 +24,32 @@ const MiniCards = observer((props) => {
 
     const [tvl1DayPercentTag, setTvl1DayPercentTag] = useState();
 
+    const [urlFlag1, setUrlFlag1] = useState(false);
+    const [urlFlagDetail, setUrlFlagDetail] = useState("");
+    
     async function getTotalBnbLocked(defiName) {
+        if (defiName == "DeFi") {
+            if (urlFlag1) return;
+        }
+        setUrlFlag1(true);
+
         // console.log("getTotalBnbLocked 함수 시작");
 
         let urlStr = "";
         if (defiName == "DeFi") {
-            urlStr = "all";
+            // urlStr = "all";
+            urlStr = "all?days=30";
         } else {
-            urlStr = defiName;
+            // urlStr = defiName;
+            urlStr = defiName + "?days=30";
         }
 
+        // detail
+        if (urlFlagDetail == urlStr) return;
+        setUrlFlagDetail(urlStr);
+
         // console.log("urlStr: ", urlStr);
-        if (urlStr == "") return;
+        if (urlStr == "" || urlStr == "?days=30") return;
         const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr, {
             method: 'GET',
             headers: {
@@ -63,7 +77,12 @@ const MiniCards = observer((props) => {
             .catch(err => setResponseError(err));
     }
 
+    const [urlFlag2, setUrlFlag2] = useState(false);
+
     async function getProjectNumOnHome(defiName) {
+        if (urlFlag2) return;
+        setUrlFlag2(true);
+
         // console.log("getProjectNum 함수 시작");
 
         let urlStr = "";

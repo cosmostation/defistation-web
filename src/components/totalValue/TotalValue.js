@@ -98,7 +98,14 @@ const TotalValue = observer((props) => {
         return monthName + " " + day;
     }
 
+    const [urlFlag1, setUrlFlag1] = useState(false);
+
     async function getChart(defiName) {
+        if (defiName == "DeFi") {
+            if (urlFlag1) return;
+        }
+        setUrlFlag1(true);
+        
         // console.log("getChart 함수 시작");
 
         let urlStr = "";
@@ -118,7 +125,7 @@ const TotalValue = observer((props) => {
         let chartFullUrl;
         if (chartPeriod == 7) {
             // default
-            chartFullUrl = "/chart/" + urlStr;
+            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
         } else {
             chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
         }
@@ -453,7 +460,7 @@ const TotalValue = observer((props) => {
 
             if (window.innerWidth != width) {
                 clearTimeout(doit);
-                doit = setTimeout(resizedw, 300);
+                doit = setTimeout(resizedw, 500);
             }
         };
     }
