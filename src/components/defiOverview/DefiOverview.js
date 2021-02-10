@@ -364,7 +364,7 @@ Yield Farmers who incorporate BSC.Farm could save hours and even days of researc
                         <span className="defiOverviewContent">
                         AutoFarm aggregates the best vaults on BSC and implements the most optimal strategies to maximize users’ yields. The AUTO token is the platform’s native token, with a max supply of 80,000. AUTO holders benefit from a small fee on profits from Autofarm vaults. To be distributed to platform users till approximately Nov 2021. There was no pre-sale, no pre-farm. AUTO holders will also benefit from the expansion of the autofarm ecosystem. Expansion plans include a highly efficient DEX aggregator.<br /><br />
 
-Audit report - <a href="https://github.com/anyswap/Anyswap-Audit/tree/master/SlowMist" target="_blank">https://autofarm.network/audit_vidar_autofarm_v2.pdf</a>
+Audit report - <a href="https://beta.autofarm.network/audit_vidar_autofarm_v2.pdf" target="_blank">https://beta.autofarm.network/audit_vidar_autofarm_v2.pdf</a>
                         </span>
                     </div>
                 );
