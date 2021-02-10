@@ -98,13 +98,14 @@ const TotalValue = observer((props) => {
         return monthName + " " + day;
     }
 
-    const [urlFlag1, setUrlFlag1] = useState(false);
+    // const [urlFlag1, setUrlFlag1] = useState(false);
+    const [urlFlagDetail, setUrlFlagDetail] = useState("");
 
     async function getChart(defiName) {
-        if (defiName == "DeFi") {
-            if (urlFlag1) return;
-        }
-        setUrlFlag1(true);
+        // if (defiName == "DeFi") {
+        //     if (urlFlag1) return;
+        // }
+        // setUrlFlag1(true);
         
         // console.log("getChart 함수 시작");
 
@@ -129,6 +130,10 @@ const TotalValue = observer((props) => {
         } else {
             chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
         }
+
+        // detail
+        if (urlFlagDetail == chartFullUrl) return;
+        setUrlFlagDetail(chartFullUrl);
 
         const res = await fetch(global.defistationApiUrl + chartFullUrl, {
             method: 'GET',
