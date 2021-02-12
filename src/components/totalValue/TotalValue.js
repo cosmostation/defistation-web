@@ -218,6 +218,19 @@ const TotalValue = observer((props) => {
                         }
                     }
 
+                    // 이전 연속 2개의 값이 0이 아니라면 직전 값으로 보정한다. (미싱 데이터 보정)
+                    if (currencyNum == 0) {
+                        // 이전 2개의 값이 0인가?
+                        if (i > 2) {
+                            let prevCurrentNum1 = (resultArr[i - 1][1] / digit).toFixed(3) * 1;
+                            let prevCurrentNum2 = (resultArr[i - 2][1] / digit).toFixed(3) * 1;
+
+                            if (prevCurrentNum1 > 0 && prevCurrentNum2 > 0) {
+                                currencyNum = prevCurrentNum1;
+                            }
+                        }
+                    }
+
                     tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
 
                     if (i == resultArr.length - 1) {
