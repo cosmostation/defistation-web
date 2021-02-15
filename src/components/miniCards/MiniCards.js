@@ -73,40 +73,54 @@ const MiniCards = observer((props) => {
                     // 유통량: 147883948
                     setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 147883948 * 100).toFixed(4) * 1) + "%");
                 }
+
+                // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
+                let tempDate;
+                console.log("resultArr[resultArr.length - 1][0]: ", resultArr[resultArr.length - 1][0]); 
+                if (resultArr[resultArr.length - 1][0] == 0) {
+                    tempDate = "-";
+                } else {
+                    tempDate = new Date(resultArr[resultArr.length - 1][0] * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                    tempDate = tempDate.substring(0, tempDate.length - 3);
+                }
+
+                // Last updated(UTC)
+                setMiniCardData3(tempDate);
+
             })
             .catch(err => setResponseError(err));
     }
 
     const [urlFlag2, setUrlFlag2] = useState(false);
 
-    async function getProjectNumOnHome(defiName) {
-        if (urlFlag2) return;
-        setUrlFlag2(true);
+    // async function getProjectNumOnHome(defiName) {
+    //     if (urlFlag2) return;
+    //     setUrlFlag2(true);
 
-        // console.log("getProjectNum 함수 시작");
+    //     // console.log("getProjectNum 함수 시작");
 
-        let urlStr = "";
-        if (defiName == "DeFi") {
-            urlStr = "all";
-        } else {
-            urlStr = defiName;
-        }
+    //     let urlStr = "";
+    //     if (defiName == "DeFi") {
+    //         urlStr = "all";
+    //     } else {
+    //         urlStr = defiName;
+    //     }
 
-        // console.log("urlStr: ", urlStr);
-        const res = await fetch(global.defistationApiUrl + "/defiNames", {
-            method: 'GET',
-            headers: {
-                Authorization: global.auth
-            }
-        });
-        res
-            .json()
-            .then(res => {
-                // console.log("res: ", res);
-                setMiniCardData3(numberWithCommas(res.length));
-            })
-            .catch(err => setResponseError(err));
-    }
+    //     // console.log("urlStr: ", urlStr);
+    //     const res = await fetch(global.defistationApiUrl + "/defiNames", {
+    //         method: 'GET',
+    //         headers: {
+    //             Authorization: global.auth
+    //         }
+    //     });
+    //     res
+    //         .json()
+    //         .then(res => {
+    //             // console.log("res: ", res);
+    //             setMiniCardData3(numberWithCommas(res.length));
+    //         })
+    //         .catch(err => setResponseError(err));
+    // }
 
     function showTvl1Day() {
         // console.log("showTvl1Day 함수 시작");
@@ -126,9 +140,10 @@ const MiniCards = observer((props) => {
         
         if (props.defiName == "DeFi") {
             // 메인에서 프로젝트 숫자 보여주기
-            getProjectNumOnHome();
+            // getProjectNumOnHome();
 
-            setMiniCardTitle3("Projects");
+
+            setMiniCardTitle3("Last updated(UTC)");
             // setMiniCardData3(3);
         } else {
             setMiniCardTitle3("Supply Locked");
@@ -153,9 +168,9 @@ const MiniCards = observer((props) => {
         <div className="miniCards">
             <ul className="miniCardUl">
                 <MiniCard title="Total Value Locked" dataNum={global.totalValueLockedUsd} />
+                <MiniCard title="TVL Change 24h" dataNum={tvl1DayPercentTag} />
                 <MiniCard title="Total BNB Locked" dataNum={totalBnbLockedNum} symbol="BNB" />
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} />
-                <MiniCard title="TVL Change 24h" dataNum={tvl1DayPercentTag} />
             </ul>
         </div>
     );

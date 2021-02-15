@@ -836,10 +836,11 @@ hr.sideMenuLine {
 }
 
 .defiListTable th:nth-child(2) {
-  text-align: center;
+  text-align: right;
 }
 .defiListTable td:nth-child(2) {
-  text-align: center;
+  text-align: right;
+  padding-right: 0;
 }
 
 .defiListTable th:nth-child(3) {
@@ -864,10 +865,10 @@ hr.sideMenuLine {
 }
 
 .defiListTable th:nth-child(6) {
-  text-align: right;
+  text-align: left;
 }
 .defiListTable td:nth-child(6) {
-  text-align: right;
+  text-align: left;
 }
 
 .defiListTable th:nth-child(7) {
@@ -891,12 +892,19 @@ hr.sideMenuLine {
   text-align: right;
 }
 
+.defiListTable th:nth-child(10) {
+  text-align: right;
+}
+.defiListTable td:nth-child(10) {
+  text-align: right;
+}
+
 /* Mobile Locked */
 @media (min-width:1035px) {
-  .defiListTable th:nth-child(7) {
+  .defiListTable th:nth-child(8) {
     display: none;
   }
-  .defiListTable td:nth-child(7) {
+  .defiListTable td:nth-child(8) {
     display: none;
   }
 }

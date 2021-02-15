@@ -18,14 +18,125 @@ import noVerifiedIcon from "../../assets/images/verifiedic_none.svg";
 
 import questionIcon from "../../assets/images/question_ic.svg";
 
+// coin image
+import acryptos from "../../assets/images/coins/acryptos.png";
+import anyswap from "../../assets/images/coins/anyswap.png";
+import autofarm from "../../assets/images/coins/auto.png";
+import bakeryswap from "../../assets/images/coins/bakery.png";
+import bdollar from "../../assets/images/coins/bdollar.png";
+import beefyfinance from "../../assets/images/coins/beefy-finance.png";
+import bnexchange from "../../assets/images/coins/bnex.svg";
+import bscswap from "../../assets/images/coins/bscswap.png";
+import bstablefinance from "../../assets/images/coins/bstable.png";
+import burgerswap from "../../assets/images/coins/burger-swap.png";
+import cberry from "../../assets/images/coins/cberry.png";
+import creamfinance from "../../assets/images/coins/cream-finance.png";
+import fortube from "../../assets/images/coins/fortube.png";
+import fryworld from "../../assets/images/coins/fryworld.png";
+import jetfuel from "../../assets/images/coins/jetfuel.png";
+import julswap from "../../assets/images/coins/julswap.png";
+import milk from "../../assets/images/coins/milk.png";
+import narwhalswap from "../../assets/images/coins/narwhalswap.png";
+import pancakebunny from "../../assets/images/coins/pancakebunny.png";
+import pancake from "../../assets/images/coins/pancakeswap.png";
+import qian from "../../assets/images/coins/qian-kun.png";
+import spartanprotocol from "../../assets/images/coins/spartan-protocol.png";
+import stormswap from "../../assets/images/coins/storm.png";
+import thugs from "../../assets/images/coins/thugs.png";
+import venus from "../../assets/images/coins/venus.png";
+
 const DefiList = observer((props) => {
     const { global } = useStores();
-
     const history = useHistory();
-
     const [responseError, setResponseError] = useState();
-
     const [defiListTableCode, setDefiListTableCode] = useState();
+
+    function selectCoinImg(defiName) {
+        let resultImg;
+
+        switch (defiName) {
+            case "pancake":
+                resultImg = pancake;
+                break; 
+            case "bscSwap":
+                resultImg = bscswap;
+                break;   
+            case "Spartan Protocol":
+                resultImg = spartanprotocol;
+                break;   
+            case "Burger Swap":
+                resultImg = burgerswap;
+                break;   
+            case "Stakecow":
+                resultImg = milk;
+                break;
+            case "Cream Finance":
+                resultImg = creamfinance;
+                break;   
+            case "Bakery Swap":
+                resultImg = bakeryswap;
+                break;   
+            case "ForTube":
+                resultImg = fortube;
+                break;   
+            case "FryWorld":
+                resultImg = fryworld;
+                break;   
+            case "beefy.finance":
+                resultImg = beefyfinance;
+                break;
+            case "Narwhalswap":
+                resultImg = narwhalswap;
+                break;   
+            case "STORMSWAP":
+                resultImg = stormswap;
+                break;       
+            case "BnEX":
+                resultImg = bnexchange;
+                break;
+            case "bStable.finance":
+                resultImg = bstablefinance;
+                break;
+            case "QIAN":
+                resultImg = qian;
+                break;    
+            case "PancakeBunny":
+                resultImg = pancakebunny;
+                break;
+            case "JulSwap":
+                resultImg = julswap;
+                break;
+            case "AnySwap":
+                resultImg = anyswap;
+                break;
+            case "Venus":
+                resultImg = venus;
+                break;   
+            case "Thugs":
+                resultImg = thugs;
+                break; 
+            case "CBerry":
+                resultImg = cberry;
+                break; 
+            case "Jetfuel.Finance":
+                resultImg = jetfuel;
+                break;  
+            case "ACryptoS":
+                resultImg = acryptos;
+                break;
+            case "bDollar Protocol":
+                resultImg = bdollar;
+                break;   
+            case "Autofarm":
+                resultImg = autofarm;
+                break;
+            default:
+                resultImg = "";
+                break;    
+        }
+
+        return resultImg;
+    }
 
     const [urlFlag1, setUrlFlag1] = useState(false);
 
@@ -49,7 +160,6 @@ const DefiList = observer((props) => {
                 // console.log("res: ", res);
 
                 let tableCodeArr = [];
-
                 let rankingCount = 1;
 
                 for (var i = 0; i < res.length; i++) {
@@ -58,6 +168,7 @@ const DefiList = observer((props) => {
                     
                     let rankNum = rankingCount;
                     let defiName = res[i].name;
+                    let coinImg = selectCoinImg(res[i].name);
 
                     // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
                     defiName = replaceAll(defiName, ".", "");
@@ -105,7 +216,7 @@ const DefiList = observer((props) => {
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
                     let tempDate;
-                    console.log("res[i].lastUpdated: ", res[i].lastUpdated); 
+                    // console.log("res[i].lastUpdated: ", res[i].lastUpdated); 
                     if (res[i].lastUpdated == 0) {
                         tempDate = "-";
                     } else {
@@ -134,24 +245,30 @@ const DefiList = observer((props) => {
                         // );
                     } else {
                         rankingCount++;
-                        
+
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
-                                <td>{verifiedTag}</td>
+                                <td><img key={i} src={coinImg} style={{"width":"20px"}} /></td>
+                                {/* <td>{coinImg}</td> */}
                                 <td>{getOfficialDefiName(res[i].name)}</td>
+                                <td>{verifiedTag}</td>
                                 <td>{chainName}</td>
                                 <td>{getOfficialCategoryName(res[i].category)}</td>
                                 {/* <td>{res[i].contractNum}</td> */}
+                                <td>-</td>
                                 <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
                                 <td>$ {currencyNum + currencyUnit}</td>
                                 <td>{change24hTag}</td>
-                                <td>{tempDate}</td>
+                                {/* <td>{tempDate}</td> */}
                             </tr>
                         );
                     }
                 }
                 console.count("DefiList Call");
+
+                // console.log("tableCodeArr: ", tableCodeArr);
+
                 setDefiListTableCode(tableCodeArr);
             })
             .catch(err => setResponseError(err));
@@ -175,16 +292,18 @@ const DefiList = observer((props) => {
                 <thead className="defiListTableHead">
                     <tr>
                         <th>Rank</th>
+                        <th></th>
+                        <th>Name</th>
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
                                 {/* <li><img src={questionIcon} onClick={() => movePage("/about")} /></li> */}
                             </ul>
                         </th>
-                        <th>Name</th>
                         <th>Chain</th>
                         <th>Category</th>
                         {/* <th>Contract(#)</th> */}
+                        <th>Volume 24h</th>
                         <th>Locked</th>
                         <th>Locked</th>
                         <th>
@@ -193,7 +312,7 @@ const DefiList = observer((props) => {
                                 <li className="change24h"><img src={questionIcon} onClick={() => movePage("/about")} /></li>
                             </ul>
                         </th>
-                        <th>Last updated(UTC)</th>
+                        {/* <th>Last updated(UTC)</th> */}
                     </tr>
                 </thead>
                 <tbody className="defiListTableBody">
