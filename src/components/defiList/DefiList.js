@@ -1,12 +1,13 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import useStores from '../../useStores';
 import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2 } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom } from '../../util/Util';
 
 // table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
@@ -50,6 +51,8 @@ const DefiList = observer((props) => {
     const history = useHistory();
     const [responseError, setResponseError] = useState();
     const [defiListTableCode, setDefiListTableCode] = useState();
+
+    const [volumeTag, setVolumeTag] = useState();
 
     function selectCoinImg(defiName) {
         let resultImg;
@@ -162,6 +165,9 @@ const DefiList = observer((props) => {
                 let tableCodeArr = [];
                 let rankingCount = 1;
 
+                // AD random
+                let adNum = generateRandom(0, res.length);
+
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
                     // let rankNum = i + 1;
@@ -224,9 +230,28 @@ const DefiList = observer((props) => {
                         tempDate = tempDate.substring(0, tempDate.length - 3);
                     }
 
+                    // tvl
                     let digit = getCurrencyDigit(res[i].lockedUsd);
                     let currencyUnit = getCurrencyUnit(res[i].lockedUsd);
-                    let currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
+                    let currencyNum;
+                    // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
+                    if (digit <= 1000000) {
+                        currencyNum = (res[i].lockedUsd / digit).toFixed(1) * 1;
+                    } else {
+                        currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
+                    }
+
+                    // volume
+                    let digit2 = getCurrencyDigit(res[i].volume);
+                    let currencyUnitForVolume = getCurrencyUnit(res[i].volume);
+                    let currencyVolume = (res[i].volume / digit2).toFixed(2) * 1;
+
+                    let volumeStr;
+                    if (res[i].volume > 0) {
+                        volumeStr = "$ " + currencyVolume + currencyUnitForVolume;
+                    } else {
+                        volumeStr = "-";
+                    }
 
                     if (res[i].contractNum == 0) {
                         // tableCodeArr.push(
@@ -246,17 +271,41 @@ const DefiList = observer((props) => {
                     } else {
                         rankingCount++;
 
+                        // if (i == adNum) {
+                        if (getOfficialDefiName(res[i].name) == "BakerySwap") {
+                            // AD: 가장 앞에
+                            tableCodeArr.unshift(
+                                <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                                    <td>AD</td>
+                                    <td><img class="tokenImg" src={coinImg} /></td>
+                                    {/* <td>{coinImg}</td> */}
+                                    <td>{getOfficialDefiName(res[i].name)}</td>
+                                    <td>{verifiedTag}</td>
+                                    <td>{chainName}</td>
+                                    <td>{getOfficialCategoryName(res[i].category)}</td>
+                                    {/* <td>{res[i].contractNum}</td> */}
+                                    <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
+                                    <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
+                                    <td>$ {currencyNum + currencyUnit}</td>
+                                    <td>{change24hTag}</td>
+                                    {/* <td>{tempDate}</td> */}
+                                </tr>
+                            );
+                        }
+
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
-                                <td><img key={i} src={coinImg} style={{"width":"20px"}} /></td>
+                                <td><img class="tokenImg" key={i} src={coinImg} /></td>
                                 {/* <td>{coinImg}</td> */}
                                 <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{verifiedTag}</td>
                                 <td>{chainName}</td>
                                 <td>{getOfficialCategoryName(res[i].category)}</td>
                                 {/* <td>{res[i].contractNum}</td> */}
-                                <td>-</td>
+                                <td>
+                                    {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}
+                                </td>
                                 <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
                                 <td>$ {currencyNum + currencyUnit}</td>
                                 <td>{change24hTag}</td>

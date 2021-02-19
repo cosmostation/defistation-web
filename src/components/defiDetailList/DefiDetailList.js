@@ -124,7 +124,7 @@ const DefiDetailList = observer((props) => {
                     // let digit = getCurrencyDigit(resultArr[i][1]);
                     // console.log("digit: ", digit);
 
-                    let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
+                    // let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
 
                     // if (i == 0) {
                     //     tempMinTvl = currencyNum;
@@ -152,37 +152,48 @@ const DefiDetailList = observer((props) => {
                     let bnbChange = 0;
                     if (i > 0) {
                         bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
+                        // if (bnbChange > 0) {
+                        //     // +
+                        //     bnbChangeTag = <span className="textGreen">+{numberWithCommas(Math.floor(bnbChange))}</span>;
+                        // } else if (bnbChange == 0) {
+                        //     bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
+                        // } else if (bnbChange < 0) {
+                        //     bnbChangeTag = <span className="textRed">{numberWithCommas(Math.floor(bnbChange))}</span>;
+                        // }
+
                         if (bnbChange > 0) {
                             // +
-                            bnbChangeTag = <span className="textGreen">+{numberWithCommas(Math.floor(bnbChange))}</span>;
+                            bnbChangeTag = <span>+{numberWithCommas(Math.floor(bnbChange))}</span>;
                         } else if (bnbChange == 0) {
                             bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
                         } else if (bnbChange < 0) {
-                            bnbChangeTag = <span className="textRed">{numberWithCommas(Math.floor(bnbChange))}</span>;
+                            bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
                         }
                     }
 
+                    // tvl
+                    let digit = getCurrencyDigit(resultArr[i][1]);
+                    let currencyUnit = getCurrencyUnit(resultArr[i][1]);
+                    let currencyNum;
+                    // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
+                    if (digit <= 1000000) {
+                        currencyNum = (resultArr[i][1] / digit).toFixed(1) * 1;
+                    } else {
+                        currencyNum = (resultArr[i][1] / digit).toFixed(2) * 1;
+                    }
 
-                    // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
-
-                    // let tempDate = new Date(resultArr[i][0] * 1000);
-                    // console.log("getMonthAndDay(new Date(resultArr[i][0] * 1000)): ", getMonthAndDay(new Date(resultArr[i][0] * 1000)));
-
-                    // console.log("2: ", numberWithCommas(resultArr[i][1]));
-                    // console.log("3: ", tvlChangeTag);
-                    // console.log("4: ", numberWithCommas(Math.floor(lockedBnbArr[i][1])));
-                    // console.log("5: ", bnbChangeTag);
-
-                    defiDataTagArr.unshift(<tr key={i}>
-                        <td>{convertDateFormat(new Date(resultArr[i][0] * 1000))}</td>
-                        <td>$ {numberWithCommas(resultArr[i][1])}</td>
-                        <td>{tvlChangeTag}</td>
-                        <td>{numberWithCommas(Math.floor(lockedBnbArr[i][1]))} <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td>{bnbChangeTag}</td>
-                    </tr>);
+                    // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
+                    if (tvlChangeTag != null) {
+                        defiDataTagArr.unshift(<tr key={i}>
+                            <td>{convertDateFormat(new Date(resultArr[i][0] * 1000))}</td>
+                            <td>$ {numberWithCommas(resultArr[i][1])}</td>
+                            <td>$ {currencyNum + currencyUnit}</td>
+                            <td>{tvlChangeTag}</td>
+                            <td>{numberWithCommas(Math.floor(lockedBnbArr[i][1]))} <span style={{"color":"#f0b923"}}>BNB</span></td>
+                            <td>{bnbChangeTag} <span style={{"color":"#f0b923"}}>BNB</span></td>
+                        </tr>);
+                    }
                 }
-
-                
 
                 setDefiDataTag(defiDataTagArr);
                 
@@ -220,7 +231,7 @@ const DefiDetailList = observer((props) => {
             <table className="defiDetailListTable">
                 <thead className="defiDetailListTableHead">
                     <tr>
-                        <th>Date</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th>
+                        <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th>
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">

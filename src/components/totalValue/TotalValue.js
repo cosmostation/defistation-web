@@ -704,9 +704,9 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscswap.com/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/bscswap/contracts")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/BSCswapProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bscswap")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscswapprotocol.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/bSWAPDAO")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bscswapgroup")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/bswap")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                         {/* Spartan Protocol */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Spartan Protocol" ? undefined : { display: "none" } }>
