@@ -73,7 +73,7 @@ li {
 }
 
 .topBarUl li:nth-child(1) { 
-  width: 76%;
+  width: 64%;
 }
 
 .topBarUl li:nth-child(2) { 
@@ -86,8 +86,13 @@ li {
   text-align: right;
 }
 
+.topBarUl li:nth-child(4) { 
+  width: 12%;
+  text-align: right;
+}
+
 @media (min-width:1034px) {
-  .topBarUl li:nth-child(4) { 
+  .topBarUl li:nth-child(5) { 
     display: none;
   }
 }
@@ -102,8 +107,12 @@ li {
   }
   
   .topBarUl li:nth-child(4) { 
+    display: none;
+  }
+  
+  .topBarUl li:nth-child(5) { 
     /* display: none; */
-    width: 24%;
+    width: 36%;
     text-align: right;
     color: #fff;
   }
