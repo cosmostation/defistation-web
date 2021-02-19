@@ -964,11 +964,11 @@ hr.sideMenuLine {
   }
 
   .defiListTable th:nth-child(9) {
-    width: 30%;
+    white-space:nowrap;
     /* display: none; */
   }
   .defiListTable td:nth-child(9) {
-    width: 30%;
+    white-space:nowrap;
     /* display: none; */
   }
 
