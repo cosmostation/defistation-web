@@ -381,7 +381,16 @@ Audit is underway by Vidar the Auditor.
                         </span>
                     </div>
                 );
-                break;                                           
+                break;    
+            case "JulSwap":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                            Audit: <a href="https://github.com/JustLiquidity/audits" target="_blank">https://github.com/JustLiquidity/audits</a>
+                        </span>
+                    </div>
+                );
+                break;                                          
             default:
                 setOverviewTag(
                     <div className="defiOverview">
