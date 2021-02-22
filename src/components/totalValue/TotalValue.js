@@ -225,8 +225,13 @@ const TotalValue = observer((props) => {
                             let prevCurrentNum1 = (resultArr[i - 1][1] / digit).toFixed(3) * 1;
                             let prevCurrentNum2 = (resultArr[i - 2][1] / digit).toFixed(3) * 1;
 
-                            if (prevCurrentNum1 > 0 && prevCurrentNum2 > 0) {
+                            // if (prevCurrentNum1 > 0 && prevCurrentNum2 > 0) {
+                            //     currencyNum = prevCurrentNum1;
+                            // }
+                            if (prevCurrentNum1 > 0) {
                                 currencyNum = prevCurrentNum1;
+                            } else if (prevCurrentNum2 > 0) {
+                                currencyNum = prevCurrentNum2;
                             }
                         }
                     }
