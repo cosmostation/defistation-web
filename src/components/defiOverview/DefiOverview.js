@@ -134,7 +134,8 @@ ForTube has a bug bounty program <a href="https://for.tube/bounty" target="_blan
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
                             <span className="defiOverviewTitle">What is {getOfficialDefiName(props.defiName)}?</span><br /><div className="defiOverviewBr"></div>
-                        Automated Market Maker built on Binance Smart Chain
+                        Automated Market Maker built on Binance Smart Chain<br />
+                        FRIES Audit: <a href="https://defiyield.info/assets/pdf/FryWorld.pdf" target="_blank">https://defiyield.info/assets/pdf/FryWorld.pdf</a>
                         </span>
                     </div>
                 );
@@ -390,7 +391,91 @@ Audit is underway by Vidar the Auditor.
                         </span>
                     </div>
                 );
-                break;                                          
+                break;
+            case "Kebab Finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        Kebab Finance is a Decentralized Exchange (DEX) that leverages Automated Market Making (AMM) technology. These types of DEX's first appeared on the Ethereum network, such as Uniswap and Sushiswap. In Kebab's case, it is specifically a PancakeSwap fork on the Binance Smart Chain (BSC), which attributes most of its features to SushiSwap on the ETH network.<br />
+This exchange model creates seamless token swaps, which are both decentralized and permissionless. This is achieved through using AMM technology coupled with the fundamental aspects of blockchains. Kebab is explicitly focused on providing liquidity in BUSD pairs, creating more liquidity for users who denominate in BUSD.<br />
+All the contracts are verified, and Audit by Certik <a href="https://certik.org/projects/kebab" target="_blank">https://certik.org/projects/kebab</a>
+                        </span>
+                    </div>
+                );
+                break;  
+            case "KEEP3R BSC NETWORK":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        A Keeper is the term used to refer to an external person and/or team that executes a job. This can be as simplistic as calling a transaction, or as complex as requiring extensive off-chain logic. The scope of Keep3rb network is not to manage these jobs themselves, but to allow contracts to register as jobs for keepers, and keepers to register themselves as available to perform jobs. It is up to the individual keeper to set up their devops and infrastructure and create their own rules based on what transactions they deem profitable.<br />
+A Job is the term used to refer to a smart contract that wishes an external entity to perform an action. They would like the action to be performed in "good will" and not have a malicious result. For this reason they register as a job, and keepers can then execute on their contract.
+                        </span>
+                    </div>
+                );
+                break;  
+            case "CheeseSwap":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        A reliable, systematic and fast Automated Market Maker (AMM) for the Binance Smart Chain (BSC) network which has the lowest gas fee for every transaction made.
+                        </span>
+                    </div>
+                );
+                break;          
+            case "Midas Dollar":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        An algo stablecoin on Binance Smart Chain. Non-anon team, fast growing, built from Basis Cash & bDollar.<br />
+Midas Dollar has an elastic epoch time (longer when expansion, shorter when contraction), stronger DAO Fund to stabilize price better. Established team, non anonymous, solid eco-system for the Dollar utilization.<br />
+Midas Dollar ($MDO) is a fork from Basis Cash & bDollar which both have been audited.<br />
+More info on $MDO audit: <a href="https://github.com/MidasCore/midasdollar-protocol#audit" target="_blank">https://github.com/MidasCore/midasdollar-protocol#audit</a>
+                        </span>
+                    </div>
+                );
+                break;  
+            case "CrowFinance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        CrowFinance an Evolution Yield Farming and Yield Optimizer on Binance Smart Chain with daytime and nighttime burn mechanism.<br />
+Audit Report: <a href="https://github.com/crowfinance/crow-smartcontract/blob/main/Crowfinance_Review.pdf" target="_blank">https://github.com/crowfinance/crow-smartcontract/blob/main/Crowfinance_Review.pdf</a>
+                        </span>
+                    </div>
+                );
+                break;  
+            case "Goose Finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        If you are familiar with BSC yield farming, you must have heard of the famous food farm like Pancake, Kebab, or even the rug pulled Popcorn swap. All these platforms launched without a proper system like burning mechanism and timelock, and hope people will jump into the pool. We are taking this to the next level. We are now proposing a 2nd Generation yield farming mechanism that allows perpetual price increase with a sustainable and profitable farming yield with timelock contract at launch.<br />
+Removed the migrator code that all rug-pull project has: <a href="https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code" target="_blank">https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code</a>
+                        </span>
+                    </div>
+                );
+                break;  
+            case "BSCex":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        BSCex is a decentralized non-custodial cryptocurrency exchange-centered ecosystem that runs on Binance Smart Chain (BSC). BSCex’s mission is to make Binance’s off-chain services available on the blockchain, develop the applications on BSC, and promote the features of decentralized finance that let our users earn tokens and gain many other economic benefits.<br />
+The technology of BSCex focuses on the unique technology that is called Cross Liquidity Layer 2. This technology utilizes the liquidity of the popular AMMs on BSC such as Pancakeswap, BakerySwap, BurgerSwap to provide even better liquidity and yield-farming services for crypto traders and yield farmers. The depositors provide liquidity to the market to earn a passive income in the form of our BSCX token. <br />
+BSCX token is minted by Liquidity Mining. It is the governance and equity token of the BSCex ecosystem. Users holding BSCX can participate in liquidity farming, IDO (LaunchpadX), LaunchpoolX, and many other on-chain activities of the BSCex ecosystem that warrant the economic benefits of our token holders. BSCX contract adopts a completely fair distribution mechanism to make sure that no one can interrupt the fairness of our ecosystem.<br />
+Audit report: <a href="https://github.com/Bscex/bscex-media/blob/main/BSCEX-LaunchpoolX-VeriChains_Report_Final.pdf" target="_blank">https://github.com/Bscex/bscex-media/blob/main/BSCEX-LaunchpoolX-VeriChains_Report_Final.pdf</a>
+                        </span>
+                    </div>
+                );
+                break;  
+            case "Linear Finance":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        Linear Finance (“Linear”) is a non-custodial, cross-chain compatible, delta-one asset protocol. Linear’s long term DeFi vision is to increase inclusiveness and democratize access to investment assets (digital and traditional). Tremendous value exists in the ability for investors to easily and quickly invest, save fees, and secure assets at fair market value. Linear combines substantial technical experience from numerous crypto projects with extensive financial experience in exotic and structured assets from traditional global asset management firms to bring to market one of the first DeFi projects built upon Ethereum with cross-chain compatibility. Linear will allow users to build and manage spot or portfolio exposures with a slew of innovative digital and traditional financial products. Linear is backed by our Ethereum-based Linear Token (LINA) with synthetic assets built on other EVM compatible chains first and other prominent blockchains in the long run, making the staking, investing, and redemption process easier, quicker and with substantially lower transaction fees whilst maintaining access to the Ethereum DeFi ecosystem.<br />
+All of our smart contracts have been submitted to Slowmist for code auditing. The latest audit report number is 0X002101260001, audited by Slowmist audit team, the report is in pdf format please contact us for more information. However, you can find our name under their customer section at <a href="https://www.slowmist.com/" target="_blank">https://www.slowmist.com/</a>.
+                        </span>
+                    </div>
+                );
+                break;
             default:
                 setOverviewTag(
                     <div className="defiOverview">

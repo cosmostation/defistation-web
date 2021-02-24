@@ -58,6 +58,14 @@ import autofarm from "../../assets/images/defiLogo/autofarm@2x.png";
 import basddollar from "../../assets/images/defiLogo/basddollar@2x.png";
 import bdollar from "../../assets/images/defiLogo/bdollar@2x.png";
 import bscfarm from "../../assets/images/defiLogo/bscfarm@2x.png";
+import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
+import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
+import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
+import kebab from "../../assets/images/defiLogo/kebab@2x.png";
+import goosefinance from "../../assets/images/defiLogo/goosefinance@2x.png";
+import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
+import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
+import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -449,6 +457,30 @@ const TotalValue = observer((props) => {
             case "Binance Agile Set Dollar":
                 setDefiIcon(basddollar);
                 break;
+            case "Kebab Finance":
+                setDefiIcon(kebab);
+                break;
+            case "KEEP3R BSC NETWORK":
+                setDefiIcon(KEEP3RBSC);
+                break;
+            case "CheeseSwap":
+                setDefiIcon(CheeseSwap);
+                break;
+            case "Midas Dollar":
+                setDefiIcon(MidasDollar);
+                break;
+            case "CrowFinance":
+                setDefiIcon(CrowFinance);
+                break;
+            case "Goose Finance":
+                setDefiIcon(goosefinance);
+                break;
+            case "BSCex":
+                setDefiIcon(bscex);
+                break;
+            case "Linear Finance":
+                setDefiIcon(LinearFinance);
+                break;
             default:
                 setLinkTag("");
                 break;    
@@ -565,12 +597,13 @@ const TotalValue = observer((props) => {
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
+                                        animation : { duration:500, easing:'out'},
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
                                                 fontSize: 11,
                                             },
-                                            // slantedText: true,
+                                            slantedText: true,
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
@@ -1036,6 +1069,82 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/agilesetdollar")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://discord.gg/TVcyNVsFXD")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://basdollar.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+
+
+
+
+                        {/* Kebab Finance */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Kebab Finance" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://kebabfinance.com/#/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/kebabfinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* KEEP3R BSC NETWORK */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "KEEP3R BSC NETWORK" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://keep3rb.network/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/kp3rb")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* CheeseSwap */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "CheeseSwap" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://cheeseswap.app/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/cheeseswapbsc")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Midas Dollar */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Midas Dollar" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://midasdollar.fi/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/MidasCore/midasdollar-protocol")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://docs.midasdollar.fi/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/MidasDollar")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/midasprotocolglobal")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* CrowFinance */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "CrowFinance" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://www.crowfinance.net/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/crowfinance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/crowfinance")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/CrowFinance")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@crowfinance")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Goose Finance */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Goose Finance" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://www.goosedefi.com")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/goosedefi/")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/FinanceGoose")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/goosedefi")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://goosefinance.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* BSCex */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "BSCex" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscex.org/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://bscex.org/docs/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/bscexofficial")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/bscextalk")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Linear Finance */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Linear Finance" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://linear.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/Linear-finance")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>
