@@ -58,6 +58,7 @@ import autofarm from "../../assets/images/defiLogo/autofarm@2x.png";
 import basddollar from "../../assets/images/defiLogo/basddollar@2x.png";
 import bdollar from "../../assets/images/defiLogo/bdollar@2x.png";
 import bscfarm from "../../assets/images/defiLogo/bscfarm@2x.png";
+// new
 import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
 import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
 import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
@@ -66,6 +67,7 @@ import goosefinance from "../../assets/images/defiLogo/goosefinance@2x.png";
 import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
 import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
 import bscex from "../../assets/images/defiLogo/bscex@2x.png";
+import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -480,6 +482,9 @@ const TotalValue = observer((props) => {
                 break;
             case "Linear Finance":
                 setDefiIcon(LinearFinance);
+                break;
+            case "Deri Protocol":
+                setDefiIcon(derifinance);
                 break;
             default:
                 setLinkTag("");
@@ -1070,10 +1075,6 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://discord.gg/TVcyNVsFXD")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://basdollar.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
-
-
-
-
                         {/* Kebab Finance */}
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Kebab Finance" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://kebabfinance.com/#/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
@@ -1145,6 +1146,15 @@ const TotalValue = observer((props) => {
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                        </div>
+                        {/* Deri Protocol */}
+                        <div className="defiDetailPageLink noDrag" style={props.defiName == "Deri Protocol" ? undefined : { display: "none" } }>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://deri.finance/")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                            <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/DeriProtocol")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/DeriProtocol")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://medium.com/@deri_protocol")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                         </div>
                     </div>
                 </li>

@@ -476,6 +476,16 @@ All of our smart contracts have been submitted to Slowmist for code auditing. Th
                     </div>
                 );
                 break;
+            case "Deri Protocol":
+                setOverviewTag(
+                    <div className="defiOverview">
+                        <span className="defiOverviewContent">
+                        Deri is a decentralized protocol for users to exchange risk exposures precisely and capital-efficiently. It is the DeFi way to trade derivatives: to hedge, to speculate, to arbitrage, all on chain. This is achieved by liquidity pools playing the roles of counterparties for users. With Deri protocol, risk exposures are tokenized as NFTs so that they can be imported into other DeFi projects for their own financial purposes. Having provided an effective on-chian mechanism to exchange and hold risks, Deri protocol has minted one of the most important blocks of the DeFi infrastructure.<br />
+Audit info: <a href="https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Deri-v1.0.pdf" target="_blank">https://github.com/peckshield/publications/blob/master/audit_reports/PeckShield-Audit-Report-Deri-v1.0.pdf</a>
+                        </span>
+                    </div>
+                );
+                break;    
             default:
                 setOverviewTag(
                     <div className="defiOverview">

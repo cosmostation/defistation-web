@@ -45,6 +45,16 @@ import spartanprotocol from "../../assets/images/coins/spartan-protocol.png";
 import stormswap from "../../assets/images/coins/storm.png";
 import thugs from "../../assets/images/coins/thugs.png";
 import venus from "../../assets/images/coins/venus.png";
+// new
+import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
+import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
+import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
+import kebab from "../../assets/images/defiLogo/kebab@2x.png";
+import goosefinance from "../../assets/images/defiLogo/goosefinance@2x.png";
+import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
+import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
+import bscex from "../../assets/images/defiLogo/bscex@2x.png";
+import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -132,6 +142,33 @@ const DefiList = observer((props) => {
                 break;   
             case "Autofarm":
                 resultImg = autofarm;
+                break;
+            case "Kebab Finance":
+                resultImg = kebab;
+                break;
+            case "KEEP3R BSC NETWORK":
+                resultImg = KEEP3RBSC;
+                break;
+            case "CheeseSwap":
+                resultImg = CheeseSwap;
+                break;
+            case "Midas Dollar":
+                resultImg = MidasDollar;
+                break;
+            case "CrowFinance":
+                resultImg = CrowFinance;
+                break;
+            case "Goose Finance":
+                resultImg = goosefinance;
+                break;
+            case "BSCex":
+                resultImg = bscex;
+                break;
+            case "Linear Finance":
+                resultImg = LinearFinance;
+                break;
+            case "Deri Protocol":
+                resultImg = derifinance;
                 break;
             default:
                 resultImg = "";
