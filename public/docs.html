@@ -1,0 +1,439 @@
+<!--
+ API Documentation HTML Template  - 1.0.1
+ Copyright © 2016 Florian Nicolas
+ Licensed under the MIT license.
+ https://github.com/ticlekiwi/API-Documentation-HTML-Template
+ !-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Defistation API - Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500|Source+Code+Pro:300" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+<div class="left-menu">
+    <div class="content-logo">
+        <img src="logo192.png" height="32" />
+        <span>Defistation API</span>
+    </div>
+    <div class="content-menu">
+        <ul>
+            <li class="scroll-to-link active" data-target="get-started">
+                <a>GET STARTED</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-defiNames">
+                <a>Get defiNames</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-chart">
+                <a>Get chart</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-defiTvlList">
+                <a>Get defiTvlList</a>
+            </li>
+            <li class="scroll-to-link" data-target="get-bnblockedList">
+                <a>Get bnblockedList</a>
+            </li>
+            <li class="scroll-to-link" data-target="errors">
+                <a>Errors</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="content-page">
+    <div class="content-code"></div>
+    <div class="content">
+        <div class="overflow-hidden content-section" id="content-get-started">
+            <h1 id="get-started">Get started</h1>
+            <pre>
+    API Endpoint
+
+        https://api.defistation.io/
+                </pre>
+            <p>
+                The Defistation API provides access to read TVL data of defi project listing on defistation.io. 
+            </p>
+            <p>
+                To use this API, you need an <strong>user name</strong> and <strong>API key</strong>. Please contact us at <a href="mailto:david@stamper.network">david@stamper.network</a> to get your own API key.
+            </p>
+        </div>
+        
+        <div class="overflow-hidden content-section" id="content-get-defiNames">
+            <h2 id="get-defiNames">get defiNames</h2>
+            <pre><code class="bash">
+# Here is a curl example
+curl -X GET \
+  https://api.defistation.io/defiNames \
+  -H 'Authorization: Basic XxXxXxXxXxpmMjQ5YmQyMC0zMzkzLTExZWItYmVmZC0yMzRiODhkMjNhMWE='
+
+                </code></pre>
+            <p>
+                To get definames you need to make a GET call to the following url :<br>
+                <code class="higlighted">https://api.defistation.io/defiNames</code>
+            </p>
+            <br>
+            <pre><code class="json">
+Result example :
+
+[
+    "pancake",
+    "bscSwap",
+    "beefy.finance",
+    "Spartan Protocol",
+    "Stakecow",
+    "Bakery Swap",
+    "Cream Finance",
+    "Narwhalswap",
+    "STORMSWAP",
+    "BnEX",
+    "ForTube",
+    "FryWorld",
+    "Burger Swap",
+    "7up.finance",
+    "BFis.finance",
+    "Dego",
+    "DODO",
+    "Equator.finance",
+    "PancakeBunny",
+    "bStable.finance",
+    "QIAN",
+    "AnySwap",
+    "CokeFinance",
+    "renVM",
+    "Unifi Protocol",
+    "JulSwap",
+    "Venus",
+    "Thugs",
+    "CBerry",
+    "Jetfuel.Finance",
+    "ACryptoS",
+    "BSC Farm",
+    "bDollar Protocol",
+    "Autofarm",
+    "Binance Agile Set Dollar",
+    "Kebab Finance",
+    "KEEP3R BSC NETWORK",
+    "CheeseSwap",
+    "Midas Dollar",
+    "CrowFinance",
+    "Goose Finance",
+    "BSCex",
+    "Linear Finance",
+    "Deri Protocol"
+]
+                </code></pre>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="overflow-hidden content-section" id="content-get-chart">
+            <h2 id="get-chart">get chart</h2>
+            <pre><code class="bash">
+# Here is a curl example
+curl -X GET \
+https://api.defistation.io/chart/pancake?days=30 \
+  -H 'Authorization: Basic XxXxXxXxXxpmMjQ5YmQyMC0zMzkzLTExZWItYmVmZC0yMzRiODhkMjNhMWE='
+
+                </code></pre>
+            <p>
+                To get chart you need to make a GET call to the following url :<br>
+                <code class="higlighted">https://api.defistation.io/chart/pancake?days=30</code>
+            </p>
+            <br>
+            <pre><code class="json">
+Result example :
+
+{
+    "defiName": "pancake",
+    "result": {
+        "1611745231": 165696734,
+        "1611835231": 178574255,
+        "1611928831": 176592880,
+        "1612015231": 188101357,
+        "1612101631": 198799696,
+        "1612188031": 219212055,
+        "1612274431": 223138075,
+        "1612364431": 230084284,
+        "1612450831": 253188907,
+        "1612537231": 275934340,
+        "1612623631": 720094129,
+        "1612710031": 716830955,
+        "1612796431": 912057703,
+        "1612882831": 1231592508,
+        "1612976431": 1379659605,
+        "1613062831": 1343566367,
+        "1613152831": 1589202938,
+        "1613242831": 1611077542,
+        "1613329231": 1675250559,
+        "1613415631": 1677362993,
+        "1613502031": 1818508762,
+        "1613592031": 2458191664,
+        "1613689231": 3067367918,
+        "1613775631": 3653306784,
+        "1613865631": 3503165641,
+        "1613952031": 3721938877,
+        "1614042031": 3408633278,
+        "1614128431": 2914932291,
+        "1614218431": 3458199660,
+        "1614304831": 2960314005
+    }
+}
+                </code></pre>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>defiName</td>
+                    <td>String</td>
+                    <td>
+                        a name of defi project listing on defistation.io:<br>
+                        all: get total chart<br>
+                        pancake: get pancake swap chart
+                    </td>
+                </tr>
+                <tr>
+                    <td>days</td>
+                    <td>Integer</td>
+                    <td>
+                        days of chart period<br>
+                        7: get chart of 7 days<br>
+                        30: get chart of 30 days
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="overflow-hidden content-section" id="content-get-defiTvlList">
+            <h2 id="get-defiTvlList">get defiTvlList</h2>
+            <pre><code class="bash">
+# Here is a curl example
+curl -X GET \
+https://api.defistation.io/defiTvlList \
+  -H 'Authorization: Basic XxXxXxXxXxpmMjQ5YmQyMC0zMzkzLTExZWItYmVmZC0yMzRiODhkMjNhMWE='
+
+                </code></pre>
+            <p>
+                To get all defi project in detail you need to make a GET call to the following url :<br>
+                <code class="higlighted">https://api.defistation.io/defiTvlList</code>
+            </p>
+            <br>
+            <pre><code class="json">
+Result example :
+
+[
+    {
+        "name": "Venus",
+        "chain": "bsc",
+        "category": "lending",
+        "volume": 80640342191,
+        "lockedUsd": 3707970017,
+        "tvlPercentChange24h": -0.0689,
+        "verified": 1,
+        "contractNum": 1,
+        "lastUpdated": 1614312031
+    },
+    {
+        "name": "pancake",
+        "chain": "bsc",
+        "category": "dex",
+        "volume": 1753831276,
+        "lockedUsd": 3043382604,
+        "tvlPercentChange24h": -0.1083,
+        "verified": 1,
+        "contractNum": 1,
+        "lastUpdated": 1614312031
+    },
+    {
+        "name": "Autofarm",
+        "chain": "bsc",
+        "category": "YieldOptimization",
+        "volume": 0,
+        "lockedUsd": 1368911406,
+        "tvlPercentChange24h": -0.095,
+        "verified": 1,
+        "contractNum": 1,
+        "lastUpdated": 1614312031
+    },
+    {
+        "name": "ForTube",
+        "chain": "bsc",
+        "category": "lending",
+        "volume": 0,
+        "lockedUsd": 25621495,
+        "tvlPercentChange24h": -0.0855,
+        "verified": 1,
+        "contractNum": 1,
+        "lastUpdated": 1614312031
+    }
+]
+                </code></pre>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="overflow-hidden content-section" id="content-get-bnblockedList">
+            <h2 id="get-bnblockedList">get bnblockedList</h2>
+            <pre><code class="bash">
+# Here is a curl example
+curl -X GET \
+https://api.defistation.io/bnblockedList/all?days=30 \
+  -H 'Authorization: Basic XxXxXxXxXxpmMjQ5YmQyMC0zMzkzLTExZWItYmVmZC0yMzRiODhkMjNhMWE='
+
+                </code></pre>
+            <p>
+                The result has pairs of timestamp and BNB amount locked. To get locked BNB data you need to make a GET call to the following url :<br>
+                <code class="higlighted">https://api.defistation.io/bnblockedList/all?days=30</code>
+            </p>
+            <br>
+            <pre><code class="json">
+Result example :
+
+{
+    "defiName": "all",
+    "result": {
+        "1611752431": 14411536.101704193,
+        "1611842431": 14487874.022047926,
+        "1611936031": 14496684.16799251,
+        "1612022431": 14521142.636820182,
+        "1612108831": 15234928.388045054,
+        "1612195231": 14788088.821097357,
+        "1612281631": 15728957.268789357,
+        "1612371631": 16826071.81851353,
+        "1612458031": 16909016.65191634,
+        "1612544431": 16547642.591874657,
+        "1612630831": 16715844.92842242,
+        "1612717231": 18410295.404355574,
+        "1612803631": 22672921.42314956,
+        "1612897231": 20553672.373214412,
+        "1612983631": 21187669.661455464,
+        "1613070031": 22341057.9114847,
+        "1613160031": 22198729.627634056,
+        "1613250031": 22779252.116975818,
+        "1613336431": 24282466.35261468,
+        "1613422831": 26866610.168144006,
+        "1613512831": 29565786.484699212,
+        "1613599231": 28698850.853574958,
+        "1613696431": 27378973.55512747,
+        "1613782831": 20744628.116181143,
+        "1613872831": 22935660.310420662,
+        "1613959231": 22790567.412592404,
+        "1614049231": 23474720.09478104,
+        "1614135631": 21586886.521066844,
+        "1614225631": 22022696.583334535,
+        "1614312031": 22328979.30627766
+    }
+}
+                </code></pre>
+            <h4>QUERY PARAMETERS</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>defiName</td>
+                    <td>String</td>
+                    <td>
+                        a name of defi project listing on defistation.io:<br>
+                        all: get total BNB locked<br>
+                        pancake: get pancake swap BNB locked
+                    </td>
+                </tr>
+                <tr>
+                    <td>days</td>
+                    <td>Integer</td>
+                    <td>
+                        days of chart period<br>
+                        30: get chart of 30 days
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="overflow-hidden content-section" id="content-errors">
+            <h2 id="errors">Errors</h2>
+            <p>
+                The Defistation API uses the following error Messages:
+            </p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Error Messages</th>
+                    <th>Meaning</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>[Unauthorized] ...</td>
+                    <td>
+                        Unvalid <code class="higlighted">Authorization key</code> for the api. This error appears if you didn't input proper Authorization key.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-code"></div>
+</div>
+<!-- Github Corner Ribbon - to remove (Ribbon created with : http://tholman.com/github-corners/ )-->
+<a href="https://github.com/cosmostation/defistation-web" class="github-corner" aria-label="View source on Github" title="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="z-index:99999; fill:#70B7FD; color:#fff; position: fixed; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<!-- END Github Corner Ribbon - to remove -->
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 import React, { Component, Fragment, Suspense, useState, useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useHistory, useLocation } from 'react-router-dom';
 
 import Main from './components/main/Main';
@@ -39,6 +40,9 @@ const App = observer(() => {
                     <Route path="/about" component={About} />
                     <Route path="/projects" component={TheDefiList} />
                     <Route path="/:defiName" component={DefiDetail} />
+                    <Route exact path="/docs.html">
+                        <Redirect push to={"/docs.html"} />
+                    </Route> 
                 </Switch>
             </Suspense>
         </>
