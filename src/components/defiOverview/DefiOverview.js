@@ -449,7 +449,9 @@ Audit Report: <a href="https://github.com/crowfinance/crow-smartcontract/blob/ma
                     <div className="defiOverview">
                         <span className="defiOverviewContent">
                         If you are familiar with BSC yield farming, you must have heard of the famous food farm like Pancake, Kebab, or even the rug pulled Popcorn swap. All these platforms launched without a proper system like burning mechanism and timelock, and hope people will jump into the pool. We are taking this to the next level. We are now proposing a 2nd Generation yield farming mechanism that allows perpetual price increase with a sustainable and profitable farming yield with timelock contract at launch.<br />
-Removed the migrator code that all rug-pull project has: <a href="https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code" target="_blank">https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code</a>
+Removed the migrator code that all rug-pull project has: <a href="https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code" target="_blank">https://goosedefi.gitbook.io/goose-finance/security/rugpull-migrator-code</a><br />
+PROJECT INTRODUCTION on Certik: <a href="https://certik.org/projects/goose-finance" target="_blank">https://certik.org/projects/goose-finance</a><br />
+Audit report: <a href="https://www.goosedefi.com/files/hackenAudit.pdf" target="_blank">https://www.goosedefi.com/files/hackenAudit.pdf</a>
                         </span>
                     </div>
                 );
