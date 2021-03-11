@@ -56,7 +56,7 @@ In “data”, please include all contract addresses that contain tokens, their 
 There are no restrictions on the structure of “data” contents. The example below shows a json example using data.pairEntities key.
  If "test" value is set to true, it is not calculated.
 
-1. Calculate your TVL and make a json file using your tvl, trading volume, locked bnb, and data.
+1. Calculate your TVL and make a json file using your tvl, trading volume(24h), locked bnb, and data.
 2. Send a tvl json as a POST type.
 
 ```sh
