@@ -1061,7 +1061,7 @@ const TotalValue = observer((props) => {
                         <div className="defiDetailPageLink noDrag" style={props.defiName == "Autofarm" ? undefined : { display: "none" } }>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm.network")}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://github.com/autofarm-network/autofarmV2")}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
-                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm-network.gitbook.io/autofarm-network/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                            <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm.gitbook.io/autofarm-network/")}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://twitter.com/autofarmnetwork")}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://t.me/autofarm_network")}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                             <div className="subPageDefiLinkBox" onClick={() => openWindow("https://autofarm-network.medium.com/")}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
