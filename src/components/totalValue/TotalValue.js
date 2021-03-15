@@ -205,6 +205,8 @@ const TotalValue = observer((props) => {
                 currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
                 tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
                 setCurrencyFullName(tempCurrencyFullName);
+
+                console.log("resultArr.length: ", resultArr.length);
                 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
@@ -256,15 +258,15 @@ const TotalValue = observer((props) => {
                 }
                 
                 // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
-                if (chartPeriod - resultArr.length > 0) {
-                    let createEmptyDataLength = chartPeriod - resultArr.length;
-                    // console.log("createEmptyDataLength: ", createEmptyDataLength);
-                    for (var i = 0; i < createEmptyDataLength; i++) {
-                        let calTimestamp = initTimestamp - (86400 * (i + 1));
-                        // tempChartData 의 제일 앞에 넣어야함
-                        tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
-                    }
-                }
+                // if (chartPeriod - resultArr.length > 0) {
+                //     let createEmptyDataLength = chartPeriod - resultArr.length;
+                //     // console.log("createEmptyDataLength: ", createEmptyDataLength);
+                //     for (var i = 0; i < createEmptyDataLength; i++) {
+                //         let calTimestamp = initTimestamp - (86400 * (i + 1));
+                //         // tempChartData 의 제일 앞에 넣어야함
+                //         tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
+                //     }
+                // }
 
                 // 차트: 7d
                 if (tempChartData.length > chartPeriod) {
