@@ -672,7 +672,7 @@ const TotalValue = observer((props) => {
                                                 color: '#757f8e',
                                                 fontSize: 11,
                                             },
-                                            // slantedText: true,
+                                            slantedText: true,
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
