@@ -5,11 +5,9 @@ import useStores from '../../useStores';
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat } from '../../util/Util';
+import defistationApplicationList from "../../defistationApplicationList.json";
 
-import rankIcon1 from "../../assets/images/rank1@2x.png";
-import rankIcon2 from "../../assets/images/rank2@2x.png";
-import rankIcon3 from "../../assets/images/rank3@2x.png";
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat } from '../../util/Util';
 
 const DefiDetailList = observer((props) => {
     const { global } = useStores();

@@ -7,6 +7,8 @@ import _ from "lodash";
 
 import '../../App.css';
 
+import defistationApplicationList from "../../defistationApplicationList.json";
+
 import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom } from '../../util/Util';
 
 // table icon
@@ -46,7 +48,6 @@ import spartanprotocol from "../../assets/images/coins/spartan-protocol.png";
 import stormswap from "../../assets/images/coins/storm.png";
 import thugs from "../../assets/images/coins/thugs.png";
 import venus from "../../assets/images/coins/venus.png";
-// new
 import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
 import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
 import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
@@ -56,6 +57,9 @@ import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
 import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
 import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
+// new
+import beltfinance from "../../assets/images/defiLogo/bififinance@2x.png";
+import bifi from "../../assets/images/defiLogo/belt@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -65,8 +69,26 @@ const DefiList = observer((props) => {
 
     const [volumeTag, setVolumeTag] = useState();
 
+    function findLogoUrl(defiName) {
+        // defistationApplicationList 에서 Official Project Name 이 defiName와 일치하는 것 찾기
+
+        // 예외처리
+        if (defiName == "pancake") {
+            defiName = "PancakeSwap";
+        }
+        
+        let logoUrl = "";
+        for (var i = 0; i < defistationApplicationList.length; i++) {
+            if (defistationApplicationList[i]["Official Project Name"] == defiName) {
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"];
+                break;
+            }
+        }
+        return logoUrl;
+    }
+
     function selectCoinImg(defiName) {
-        let resultImg;
+        let resultImg = "";
 
         switch (defiName) {
             case "pancake":
@@ -171,8 +193,14 @@ const DefiList = observer((props) => {
             case "Deri Protocol":
                 resultImg = derifinance;
                 break;
+            case "Belt Finance":
+                resultImg = beltfinance;
+                break;
+            case "BiFi":
+                resultImg = bifi;
+                break;    
             default:
-                resultImg = "";
+                resultImg = findLogoUrl(defiName);
                 break;    
         }
 

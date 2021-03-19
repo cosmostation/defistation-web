@@ -10,7 +10,8 @@ import '../../App.css';
 import TopBar from '../topBar/TopBar';
 import Footer from '../footer/Footer';
 
-import projectList from '../../projectList.json';
+import projectList from '../../projectList.json';   // old
+import defistationApplicationList from "../../defistationApplicationList.json";
 
 import yellowArrow from "../../assets/images/arrowic@2x.png";
 // 프로젝트 아이콘
@@ -78,15 +79,21 @@ const TheDefiList = observer(() => {
     }
 
     function createDefiProjectCard() {
-        // projectList 에 있는 전체 리스트 다 보여주기
-        console.log("projectList: ", projectList);
 
         let codeArr = [];
         let defiIconArr = [];
 
-        for (var i = 0; i < projectList.length; i++) {
+        // https://s2.coinmarketcap.com/static/img/coins/64x64/1.png
 
-            let defiInfoName = (projectList[i].name).toLowerCase();
+        // "Timestamp":"11/26/2020 21:25:11","Is your project operating on BSC?":"Yes","Official Project Name":"PARSIQ","Project Logo URL (68px*68px png ONLY)":"","Project Category":"Reverse Oracle","When did the project launch?":"","Do you have a governance token?":"","If yes, please provide the contract address for your governance token.":"","Project Official Website (URL)":"https://parsiq.net/","Github URL":"https://twitter.com/parsiq_net\nhttps://t.me/parsiq_group\nhttps://medium.com/parsiq","Developer Docs URL":"","Twitter URL":"","Telegram(EN) URL":"","Medium Blog URL":"","Discord(EN) URL":"","Brief Project Description":"PARSIQ is a universal middleware monitoring and automation layer that turns data into actions by providing a seamless bridge between blockchains and the real world.","Detailed Project Description":"PARSIQ in DeFI\n\nPARSIQ empower players in the DeFi and blockchain ecosystem to easily build monitoring and automation solutions (integrated with a variety of off-chain data providers, web services and apps) on our platform and as a result, save valuable time, save money and avoid complexities of monitoring events on the blockchain at scale, while providing real-time actionable data solutions for superior decision-making. PARSIQ is blockchain-agnostic and primed for blockchain interoperability.\n \nWhat is PARSIQ?\n \nPARSIQ is a monitoring and automation platform that bridges blockchains and off-chain, helping users make blockchain data easily consumable and actionable. We allow anyone to monitor blockchain events in real time  and set up triggers that if a type of event happens on the blockchain, the data is processed, transformed according to user’s conditional logic, enriched with off-chain data (if relevant) and then delivered to an app or device of choice for further actions. Essentially, IFTTT (if-this-then-that) for blockchains, allowing to apply if-this-then-that logic for real-time blockchain transactions at scale, with programmable off-chain reactions to those events.\n","Security Information":"NA" },
+        
+        // defistationApplicationList
+        for (var i = 0; i < defistationApplicationList.length; i++) {
+            // console.log(defistationApplicationList[i]["Email Address"]);
+
+            // defistationApplicationList[i]["Official Project Name"]
+
+            let defiInfoName = (defistationApplicationList[i]["Official Project Name"]).toLowerCase();
 
             // 예외처리
             if (defiInfoName == "pancakeswap") {
@@ -106,7 +113,13 @@ const TheDefiList = observer(() => {
             // defistation 에 리스팅됐는가? 
             let listFlag = false;
 
-            switch (projectList[i].name) {
+            // 리스팅 된거 체크
+
+            // 아이콘 지금까지 저장한거 체크. 이후로는 defistationApplicationList.json 에 있는 코인 이미지 url로 사용
+            
+            console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
+
+            switch (defistationApplicationList[i]["Official Project Name"]) {
                 case "pancake":
                 case "PancakeSwap":    
                     listFlag = true;
@@ -258,16 +271,23 @@ const TheDefiList = observer(() => {
                     defiIconArr.push(bscfarm);    
                     break;   
                 case "bDollar Protocol":
+                    listFlag = true;
                     defiIconArr.push(bdollar);    
                     break;   
                 case "Autofarm":
+                    listFlag = true;
                     defiIconArr.push(autofarm);    
                     break;   
                 case "Binance Agile Set Dollar":
                     defiIconArr.push(basddollar);    
                     break;
                 default:
-                    defiIconArr.push(defaultIcon);
+                    // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
+                    if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"] != "") {
+                        defiIconArr.push(defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"]);
+                    } else {
+                        defiIconArr.push(defaultIcon);
+                    }
                     break;    
             }
 
@@ -275,17 +295,17 @@ const TheDefiList = observer(() => {
                 codeArr.push(
                     <li onClick={() => history.push("/" + defiInfoName)}>
                         <img src={defiIconArr[i]} width="40px" /><br />
-                        <span className="theDefiListCardTitle">{projectList[i].name}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(projectList[i].description)}</span>
+                        <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Brief Project Description"])}</span>
                     </li>
                 );
             } else {
-                let tempUrl = projectList[i].officialWebsite;
+                let tempUrl = defistationApplicationList[i]["Project Official Website (URL)"];
                 codeArr.push(
                     <li onClick={() => window.open(tempUrl, "_blank")}>
                         <img src={defiIconArr[i]} width="40px" /><br />
-                        <span className="theDefiListCardTitle">{projectList[i].name}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(projectList[i].description)}</span>
+                        <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Brief Project Description"])}</span>
                     </li>
                 );
             }
