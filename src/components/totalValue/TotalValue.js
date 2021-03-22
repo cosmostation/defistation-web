@@ -70,8 +70,8 @@ import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
 import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
 // new
-import beltfinance from "../../assets/images/defiLogo/bififinance@2x.png";
-import bifi from "../../assets/images/defiLogo/belt@2x.png";
+import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
+import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -564,33 +564,33 @@ const TotalValue = observer((props) => {
         setProjectBtnLink(
             <div className="defiDetailPageLink noDrag">
                 {
-                    defistationApplicationList[index]["Project Official Website (URL)"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Project Official Website (URL)"])}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                    defistationApplicationList[index]["Official Website"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Official Website"])}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Github URL"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Github URL"])}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                    defistationApplicationList[index]["Github"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Github"])}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Developer Docs URL"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Developer Docs URL"])}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                    defistationApplicationList[index]["Developer Docs"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Developer Docs"])}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Twitter URL"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Twitter URL"])}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                    defistationApplicationList[index]["Twitter"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Twitter"])}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Telegram(EN) URL"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Telegram(EN) URL"])}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                    defistationApplicationList[index]["Telegram(EN)"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Telegram(EN)"])}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Medium Blog URL"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Medium Blog URL"])}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                    defistationApplicationList[index]["Medium Blog"].length > 1
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Medium Blog"])}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                 }
             </div>

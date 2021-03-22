@@ -58,8 +58,8 @@ import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
 import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
 // new
-import beltfinance from "../../assets/images/defiLogo/bififinance@2x.png";
-import bifi from "../../assets/images/defiLogo/belt@2x.png";
+import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
+import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
