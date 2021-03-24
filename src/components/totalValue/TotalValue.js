@@ -375,7 +375,7 @@ const TotalValue = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"];
+                logoUrl = defistationApplicationList[i]["Logo(68px*68px png)"];
                 break;
             }
         }
@@ -546,6 +546,8 @@ const TotalValue = observer((props) => {
                 break;
             default:
                 let logoUrl = findLogoUrl(defiName);
+
+                console.log("logoUrl: ", logoUrl);
 
                 if (logoUrl != "") {
                     setDefiIcon(logoUrl);
