@@ -13,6 +13,7 @@ import defistationApplicationList from "../../defistationApplicationList.json";
 
 import loading from "../../assets/images/loading.gif";
 
+import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
 import bscLogo from "../../assets/images/bsc_logo@2x.png";
 import bscScanLogo from "../../assets/images/bscscan_logo@2x.png";
 import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
@@ -71,9 +72,11 @@ import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
 import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
 import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
-// new
 import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
+import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
+// new
+import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -544,6 +547,12 @@ const TotalValue = observer((props) => {
             case "BlackHoleSwap":
                 setDefiIcon(blackholeswap);    
                 break;
+            case "Pika Finance":
+                setDefiIcon(pikafinance);    
+                break;  
+            case "Bscrunner":
+                setDefiIcon(bscrunner);    
+                break;           
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -684,7 +693,7 @@ const TotalValue = observer((props) => {
                 <ul className="tvlTitleBox" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>
                     <li>
                         <ul className="tvlSubPageTitleIconLabel">
-                            <li><img src={defiIcon} /></li>
+                            <li><img src={defiIcon} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></li>
                             <li><span>{getOfficialDefiName(props.defiName)}</span></li>
                         </ul>
                     </li>

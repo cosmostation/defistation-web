@@ -59,9 +59,11 @@ import basddollar from "../../assets/images/defiLogo/basddollar@2x.png";
 import bdollar from "../../assets/images/defiLogo/bdollar@2x.png";
 import bscfarm from "../../assets/images/defiLogo/bscfarm@2x.png";
 import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
-// new
 import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
+import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
+// new
+import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -297,6 +299,14 @@ const TheDefiList = observer(() => {
                     listFlag = true;
                     defiIconArr.push(blackholeswap);    
                     break;
+                case "Pika Finance":
+                    listFlag = true;
+                    defiIconArr.push(pikafinance);    
+                    break;  
+                case "Bscrunner":
+                    listFlag = true;
+                    defiIconArr.push(bscrunner);
+                    break;           
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Logo(68px*68px png)"] != "") {
@@ -314,7 +324,11 @@ const TheDefiList = observer(() => {
             if (listFlag) {
                 codeArr.push(
                     <li onClick={() => history.push("/" + defiInfoName)}>
-                        <img src={defiIconArr[i]} width="40px" /><br />
+                        <img 
+                            src={defiIconArr[i]} 
+                            width="40px" 
+                            onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                        /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
                         <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detail"])}</span>
                     </li>
@@ -323,7 +337,11 @@ const TheDefiList = observer(() => {
                 let tempUrl = defistationApplicationList[i]["Official Website"];
                 codeArr.push(
                     <li onClick={() => window.open(tempUrl, "_blank")}>
-                        <img src={defiIconArr[i]} width="40px" /><br />
+                        <img 
+                            src={defiIconArr[i]} 
+                            width="40px" 
+                            onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                        /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
                         <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detail"])}</span>
                     </li>

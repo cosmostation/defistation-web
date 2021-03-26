@@ -2,6 +2,21 @@ html {
   width: 100%;
 }
 
+body {
+  font-family: Montserrat;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  /* font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #757f8e; */
+}
+
 .hidden {height:100%; min-height:100%; overflow:hidden !important; touch-action:none;}
 
 ul {
