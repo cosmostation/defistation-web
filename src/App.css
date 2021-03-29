@@ -41,11 +41,7 @@ li {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -193,11 +189,7 @@ li {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   .sideMenuBox {
     width: 40%;
   }
@@ -375,11 +367,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -534,11 +522,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   .tvlLink0 {
     display: none;
   }
@@ -652,11 +636,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -791,11 +771,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -926,11 +902,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -1119,11 +1091,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -1226,11 +1194,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -1505,11 +1469,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -2372,11 +2332,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
@@ -2619,11 +2575,7 @@ hr.sideMenuLine {
 }
 
 /* iPad */
-@media all and (device-width: 768px), (width:812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:844px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:926px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)
-, (width:896px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
+@media all and (device-width: 768px) {
   /* .wrapper {
     width: 738px;
     margin-left: -369px;
