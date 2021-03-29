@@ -110,6 +110,9 @@ const TotalValue = observer((props) => {
 
     const [currencyFullName, setCurrencyFullName] = useState("");
 
+    // PC에서는 Total Value Locked, mobile에서는 TVL
+    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
+
     const [viewWidth, setViewWidth] = useState("740px");
     const [chartWidth, setChartWidth] = useState("93.6%");
 
@@ -677,6 +680,7 @@ const TotalValue = observer((props) => {
         if (window.innerWidth <= 1034) {
             setViewWidth("290px");
             setChartWidth("88%");
+            setTvlChartCardTitleValue("TVL");
         }
 
         checkWindowWidth();
@@ -715,7 +719,8 @@ const TotalValue = observer((props) => {
                     <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
                         <ul className="tvlChartCardUl">
                             <li>
-                                <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
+                                {/* Total Value Locked in ... */}
+                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 {/* <p className="tvlChartUnitY">({currencyFullName} USD)</p> */}
 
