@@ -22,6 +22,7 @@ import noVerifiedIcon from "../../assets/images/verifiedic_none.svg";
 import questionIcon from "../../assets/images/question_ic.svg";
 
 // coin image
+import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
 import acryptos from "../../assets/images/coins/acryptos.png";
 import anyswap from "../../assets/images/coins/anyswap.png";
 import autofarm from "../../assets/images/coins/auto.png";
@@ -57,9 +58,14 @@ import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
 import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
 import bscex from "../../assets/images/defiLogo/bscex@2x.png";
 import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
-// new
 import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
 import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
+import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
+import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
+import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
+import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
+// new
+import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -199,6 +205,22 @@ const DefiList = observer((props) => {
             case "BiFi":
                 resultImg = bifi;
                 break;    
+            // new    
+            case "Multi-Chain Lend (MCL)":
+                resultImg = multiplier;    
+                break;    
+            case "BlackHoleSwap":
+                resultImg = blackholeswap;    
+                break;
+            case "Pika Finance":
+                resultImg = pikafinance;    
+                break;  
+            case "Bscrunner":
+                resultImg = bscrunner;
+                break;
+            case "Ellipsis Finance":
+                resultImg = ellipsisfinance;
+                break;              
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
@@ -343,7 +365,7 @@ const DefiList = observer((props) => {
                             tableCodeArr.unshift(
                                 <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                     <td>AD</td>
-                                    <td><img class="tokenImg" src={coinImg} /></td>
+                                    <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
                                     {/* <td>{coinImg}</td> */}
                                     <td>{getOfficialDefiName(res[i].name)}</td>
                                     <td>{verifiedTag}</td>
@@ -362,7 +384,7 @@ const DefiList = observer((props) => {
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
-                                <td><img class="tokenImg" key={i} src={coinImg} /></td>
+                                <td><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
                                 {/* <td>{coinImg}</td> */}
                                 <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{verifiedTag}</td>

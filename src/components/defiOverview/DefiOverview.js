@@ -25,7 +25,7 @@ const DefiOverview = observer((props) => {
         let result = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                result = defistationApplicationList[i]["Detail"];
+                result = defistationApplicationList[i]["Detailed Project Description"];
                 // Audit 정보에 https 가 포함 있으면 Description 아래에 추가
                 if (defistationApplicationList[i]["Security Information"].indexOf("https://") != -1) {
                     result += "\n\n" + defistationApplicationList[i]["Security Information"];
