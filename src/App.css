@@ -3,10 +3,16 @@ html {
 }
 
 body {
-  font-family: Rubik-Regular;
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
+  /* font-family: 'Source Sans Pro', sans-serif; font-weight:400; font-style:normal;
+  letter-spacing: normal; */
+
+
+  
+
+
   /* font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -62,7 +68,8 @@ li {
   width: 100%;
   /* height: 200px; */
   /* font-family: Rubik-Regular; */
-  font-family: Rubik-Regular;
+
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -228,7 +235,8 @@ hr.sideMenuLine {
   display: table-cell;
   vertical-align: middle;
   color: #fff;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -299,6 +307,7 @@ hr.sideMenuLine {
 .tvlChartCard p {
   margin-left: 5px;
   font-weight: 700;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -394,7 +403,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -406,7 +416,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxSubTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 10.5px;
   font-weight: 600;
   font-stretch: normal;
@@ -419,7 +430,7 @@ hr.sideMenuLine {
 
 .tvlChartCardTitle {
   /* font-family: Rubik-Regular; */
-  font-family: Rubik-Regular;
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -507,7 +518,8 @@ hr.sideMenuLine {
 
 .subPageDefiLinkBoxTitle {
   margin: 2px 0 1px 8px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -528,7 +540,8 @@ hr.sideMenuLine {
 .tvlValueUsd {
   margin: auto 0;
   height: 29px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -539,7 +552,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartUnitY {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 10px;
   font-weight: 600;
   font-stretch: normal;
@@ -592,7 +606,8 @@ hr.sideMenuLine {
   background-color: #f0b923;
   border: 0;
   outline: 0;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -630,7 +645,8 @@ hr.sideMenuLine {
   border-color: transparent;
   border: 0;
   outline: 0;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -673,7 +689,8 @@ hr.sideMenuLine {
 }
 
 .miniCardTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -687,7 +704,8 @@ hr.sideMenuLine {
 .miniCardDataNum {
   margin: auto 0;
   margin-top: 12px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -761,7 +779,7 @@ hr.sideMenuLine {
 }
 
 .bannerTitle {
-  font-family: Roboto;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
@@ -776,7 +794,8 @@ hr.sideMenuLine {
 .bannerContent {
   margin: auto 0;
   margin-top: 5px;
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -862,6 +881,7 @@ hr.sideMenuLine {
   height: 38px;
   border-bottom: 1px solid #404752;
   padding: 10px;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -1096,7 +1116,8 @@ hr.sideMenuLine {
 }
 
 .textGreen {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -1107,7 +1128,8 @@ hr.sideMenuLine {
 }
 
 .textRed {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -1129,7 +1151,8 @@ hr.sideMenuLine {
 .footer {
   width: 100%;
   height: 100px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1145,7 +1168,8 @@ hr.sideMenuLine {
 /* -------------------------------- Detail Page -------------------------------- */
 
 .navBox {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1157,7 +1181,8 @@ hr.sideMenuLine {
 }
 
 .navHome {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1170,7 +1195,8 @@ hr.sideMenuLine {
 }
 
 .navDefiName {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1239,7 +1265,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -1252,7 +1279,8 @@ hr.sideMenuLine {
 
 .defiOverviewContent {
   opacity: 1;
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -1288,7 +1316,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewWebsiteLink {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -1323,7 +1352,8 @@ hr.sideMenuLine {
 
 .notFound {
   margin-top: 50px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1378,6 +1408,7 @@ hr.sideMenuLine {
   height: 38px;
   border-bottom: 1px solid #404752;
   padding: 10px;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
 .defiDetailListTable th:nth-child(1) {
@@ -1570,7 +1601,8 @@ hr.sideMenuLine {
 }
 
 .productOnAbout {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1586,7 +1618,8 @@ hr.sideMenuLine {
 }
 
 .productListBox span {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
