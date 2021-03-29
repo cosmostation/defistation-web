@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-stretch: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -61,7 +61,8 @@ li {
   /* width: 1200px; */
   width: 100%;
   /* height: 200px; */
-  font-family: Montserrat;
+  /* font-family: Rubik-Regular; */
+  font-family: Rubik-Regular;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -227,7 +228,7 @@ hr.sideMenuLine {
   display: table-cell;
   vertical-align: middle;
   color: #fff;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -273,7 +274,7 @@ hr.sideMenuLine {
 
 .totalValueUl li:nth-child(1) { 
   /* width: 75%; */
-  width: 732px;
+  width: 722px;
 }
 
 .totalValueUl li:nth-child(2) { 
@@ -287,7 +288,17 @@ hr.sideMenuLine {
   border-radius: 5px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #262932;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 20px 25px 20px 25px;
+}
+
+.tvlChartCard span {
+  margin-left: 5px;
+}
+
+.tvlChartCard p {
+  margin-left: 5px;
+  font-weight: 700;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -383,7 +394,7 @@ hr.sideMenuLine {
 }
 
 .linkBoxTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -395,7 +406,7 @@ hr.sideMenuLine {
 }
 
 .linkBoxSubTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 10.5px;
   font-weight: 600;
   font-stretch: normal;
@@ -407,7 +418,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartCardTitle {
-  font-family: Montserrat;
+  /* font-family: Rubik-Regular; */
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -495,7 +507,7 @@ hr.sideMenuLine {
 
 .subPageDefiLinkBoxTitle {
   margin: 2px 0 1px 8px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -515,9 +527,8 @@ hr.sideMenuLine {
 
 .tvlValueUsd {
   margin: auto 0;
-  margin-top: 10px;
   height: 29px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -528,7 +539,7 @@ hr.sideMenuLine {
 }
 
 .tvlChartUnitY {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 10px;
   font-weight: 600;
   font-stretch: normal;
@@ -569,7 +580,7 @@ hr.sideMenuLine {
   .tvlChartCardUl li:nth-child(2) {
     /* display: none; */
     position: absolute;
-    right: 20px;
+    right: 25px;
   }
 }
 
@@ -581,7 +592,7 @@ hr.sideMenuLine {
   background-color: #f0b923;
   border: 0;
   outline: 0;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -619,7 +630,7 @@ hr.sideMenuLine {
   border-color: transparent;
   border: 0;
   outline: 0;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -662,7 +673,7 @@ hr.sideMenuLine {
 }
 
 .miniCardTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -676,7 +687,7 @@ hr.sideMenuLine {
 .miniCardDataNum {
   margin: auto 0;
   margin-top: 12px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -1118,7 +1129,7 @@ hr.sideMenuLine {
 .footer {
   width: 100%;
   height: 100px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1134,7 +1145,7 @@ hr.sideMenuLine {
 /* -------------------------------- Detail Page -------------------------------- */
 
 .navBox {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1146,7 +1157,7 @@ hr.sideMenuLine {
 }
 
 .navHome {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1159,7 +1170,7 @@ hr.sideMenuLine {
 }
 
 .navDefiName {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1203,7 +1214,7 @@ hr.sideMenuLine {
 
 .ecoSystemLinkTitle {
   margin-top: 25px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1228,7 +1239,7 @@ hr.sideMenuLine {
 }
 
 .defiOverviewTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -1277,7 +1288,7 @@ hr.sideMenuLine {
 }
 
 .defiOverviewWebsiteLink {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -1312,7 +1323,7 @@ hr.sideMenuLine {
 
 .notFound {
   margin-top: 50px;
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1559,7 +1570,7 @@ hr.sideMenuLine {
 }
 
 .productOnAbout {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1575,7 +1586,7 @@ hr.sideMenuLine {
 }
 
 .productListBox span {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1630,7 +1641,7 @@ hr.sideMenuLine {
 }
 
 .applyBtnTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -1727,7 +1738,7 @@ hr.sideMenuLine {
 }
 
 .theDefiListCardTitle {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1739,7 +1750,7 @@ hr.sideMenuLine {
 }
 
 .theDefiListCardText {
-  font-family: Montserrat;
+  font-family: Rubik-Regular;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;

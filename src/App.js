@@ -14,6 +14,8 @@ import Apply from './components/apply/Apply';
 // import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
 // import 'typeface-roboto';       // $ npm install --save typeface-roboto
 
+require('typeface-rubik')   // npm install --save typeface-rubik
+
 import './App.css';
 
 // Google Analytics

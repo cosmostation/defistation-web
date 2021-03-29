@@ -62,8 +62,9 @@ import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
 import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
-// new
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
+// new
+import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -306,7 +307,11 @@ const TheDefiList = observer(() => {
                 case "Bscrunner":
                     listFlag = true;
                     defiIconArr.push(bscrunner);
-                    break;           
+                    break;  
+                case "Ellipsis Finance":
+                    listFlag = true;
+                    defiIconArr.push(ellipsisfinance);
+                    break;             
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Logo(68px*68px png)"] != "") {

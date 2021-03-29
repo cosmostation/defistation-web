@@ -63,8 +63,9 @@ import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
 import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
-// new
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
+// new
+import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -85,7 +86,7 @@ const DefiList = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Logo(68px*68px png)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"];
                 break;
             }
         }
@@ -216,7 +217,10 @@ const DefiList = observer((props) => {
                 break;  
             case "Bscrunner":
                 resultImg = bscrunner;
-                break;          
+                break;
+            case "Ellipsis Finance":
+                resultImg = ellipsisfinance;
+                break;              
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

@@ -75,8 +75,9 @@ import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
 import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
-// new
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
+// new
+import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -109,7 +110,8 @@ const TotalValue = observer((props) => {
 
     const [currencyFullName, setCurrencyFullName] = useState("");
 
-    const [viewWidth, setViewWidth] = useState("750px");
+    const [viewWidth, setViewWidth] = useState("740px");
+    const [chartWidth, setChartWidth] = useState("93.6%");
 
     // const defistationApiUrl = "https://api.defistation.io";
 
@@ -552,7 +554,10 @@ const TotalValue = observer((props) => {
                 break;  
             case "Bscrunner":
                 setDefiIcon(bscrunner);    
-                break;           
+                break;    
+            case "Ellipsis Finance":
+                setDefiIcon(ellipsisfinance);    
+                break;
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -583,33 +588,33 @@ const TotalValue = observer((props) => {
         setProjectBtnLink(
             <div className="defiDetailPageLink noDrag">
                 {
-                    defistationApplicationList[index]["Official Website"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Official Website"])}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
+                    defistationApplicationList[index]["Project Official Website (URL)"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Project Official Website (URL)"])}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Github"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Github"])}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
+                    defistationApplicationList[index]["Github URL"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Github URL"])}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Developer Docs"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Developer Docs"])}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
+                    defistationApplicationList[index]["Developer Docs URL"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Developer Docs URL"])}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Twitter"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Twitter"])}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
+                    defistationApplicationList[index]["Twitter URL"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Twitter URL"])}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Telegram(EN)"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Telegram(EN)"])}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
+                    defistationApplicationList[index]["Telegram(EN) URL"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Telegram(EN) URL"])}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Medium Blog"].length > 1
-                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Medium Blog"])}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
+                    defistationApplicationList[index]["Medium Blog URL"] != undefined
+                    ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Medium Blog URL"])}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                 }
             </div>
@@ -670,7 +675,8 @@ const TotalValue = observer((props) => {
 
         {/* PC: 750px, Mobile: 300px */}
         if (window.innerWidth <= 1034) {
-            setViewWidth("300px");
+            setViewWidth("290px");
+            setChartWidth("88%");
         }
 
         checkWindowWidth();
@@ -711,7 +717,7 @@ const TotalValue = observer((props) => {
                             <li>
                                 <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
-                                <p className="tvlChartUnitY">({currencyFullName} USD)</p>
+                                {/* <p className="tvlChartUnitY">({currencyFullName} USD)</p> */}
 
                                 {/* Main Chart */}
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
@@ -720,6 +726,7 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
+                                    // left={'30px'}
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
@@ -748,7 +755,7 @@ const TotalValue = observer((props) => {
                                         // 0: { curveType: 'function' },
                                         },
                                         colors: ['#f0b923'],
-                                        chartArea: { width: '86%', height: '70%' },
+                                        chartArea: { width: chartWidth, height: '70%' },
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
@@ -759,6 +766,7 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
+                                    // left={'30px'}
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
@@ -810,7 +818,7 @@ const TotalValue = observer((props) => {
                                         // 0: { curveType: 'function' },
                                         },
                                         colors: ['#f0b923'],
-                                        chartArea: { width: '86%', height: '70%' },
+                                        chartArea: { width: chartWidth, height: '70%' },
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
