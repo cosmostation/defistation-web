@@ -113,8 +113,15 @@ const TotalValue = observer((props) => {
     // PC에서는 Total Value Locked, mobile에서는 TVL
     const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
 
+    // 1) 1034px 이상
     const [viewWidth, setViewWidth] = useState("740px");
     const [chartWidth, setChartWidth] = useState("93.6%");
+
+    // 2) 1024px: 270px, 88%
+    // 3) 768px: 270px, 88%
+    // 4) 414px ~ 767px: 374px, 88%
+    // 5) 360px ~ 413px: 290px, 88%
+    // 6) 1px ~ 359px: 270px, 88%
 
     // const defistationApiUrl = "https://api.defistation.io";
 
@@ -676,9 +683,50 @@ const TotalValue = observer((props) => {
     useEffect(() => {
         getChart(props.defiName);
 
-        {/* PC: 750px, Mobile: 300px */}
-        if (window.innerWidth <= 1034) {
+        // 2) 414px ~ 1034px: 374px, 88%
+        // 3) 360px ~ 413px: 290px, 88%
+        // 4) 1px ~ 359px: 270px, 88%
+
+        // if (window.innerWidth >= 414 && window.innerWidth <= 1034) {
+        //     setViewWidth("374px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (window.innerWidth >= 360 && window.innerWidth < 414) {
+        //     setViewWidth("290px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (window.innerWidth >= 0 && window.innerWidth < 360) {
+        //     setViewWidth("270px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // }
+
+        console.log("screen.width: ", screen.width);
+
+        // 2) 1024px: 970px, 94%
+        // 3) 768px: 708px, 94%
+        // 4) 414px ~ 767px: 374px, 88%
+        // 5) 360px ~ 413px: 290px, 88%
+        // 6) 1px ~ 359px: 270px, 88%
+
+        if (screen.width >= 1024 && screen.width < 1034) {
+            setViewWidth("970px");
+            setChartWidth("94%");
+            setTvlChartCardTitleValue("TVL");
+        } else if (screen.width >= 768 && screen.width < 1024) {
+            setViewWidth("708px");
+            setChartWidth("94%");
+            setTvlChartCardTitleValue("TVL");
+        } else if (screen.width >= 414 && screen.width < 768) {
+            setViewWidth("364px");
+            setChartWidth("88%");
+            setTvlChartCardTitleValue("TVL");
+        } else if (screen.width >= 360 && screen.width < 414) {
             setViewWidth("290px");
+            setChartWidth("88%");
+            setTvlChartCardTitleValue("TVL");
+        } else if (screen.width >= 1 && screen.width < 360) {
+            setViewWidth("270px");
             setChartWidth("88%");
             setTvlChartCardTitleValue("TVL");
         }
