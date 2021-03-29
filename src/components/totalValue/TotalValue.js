@@ -380,7 +380,7 @@ const TotalValue = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Logo(68px*68px png)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"];
                 break;
             }
         }
