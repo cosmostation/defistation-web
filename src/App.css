@@ -2449,7 +2449,7 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .applyBtn {
-    height: 115px;
+    height: 105px;
   }
 }
 
@@ -2473,7 +2473,8 @@ hr.sideMenuLine {
 }
 
 .applyBtnTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -2485,7 +2486,8 @@ hr.sideMenuLine {
 }
 
 .applyBtnText {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -2663,7 +2665,8 @@ hr.sideMenuLine {
 } */
 
 .theDefiListCardTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -2675,7 +2678,8 @@ hr.sideMenuLine {
 }
 
 .theDefiListCardText {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
