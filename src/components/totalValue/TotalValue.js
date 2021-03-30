@@ -293,6 +293,8 @@ const TotalValue = observer((props) => {
                     
                     if (initProjectTvlIndex == -1) {
                         tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                    } else {
+                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
                     }
                     
                     if (i == resultArr.length - 1) {
@@ -314,14 +316,14 @@ const TotalValue = observer((props) => {
                 // }
 
                 // 차트 데이터가 7개 또는 30개가 안채워졌으면 뒤에 채워넣기
-                let chartGap = resultArr.length - tempChartData.length;
-                if (chartGap > 0) {
-                    let lastTimestamp = resultArr[resultArr.length - 1][0];
-                    for (var i = 0; i < chartGap; i++) {
-                        let calTimestamp = lastTimestamp + (86400 * (i + 1));
-                        tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
-                    }
-                }
+                // let chartGap = resultArr.length - tempChartData.length;
+                // if (chartGap > 0) {
+                //     let lastTimestamp = resultArr[resultArr.length - 1][0];
+                //     for (var i = 0; i < chartGap; i++) {
+                //         let calTimestamp = lastTimestamp + (86400 * (i + 1));
+                //         tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
+                //     }
+                // }
 
                 // 차트: 7d, 30d
                 if (tempChartData.length > chartPeriod) {
