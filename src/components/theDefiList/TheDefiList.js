@@ -63,9 +63,9 @@ import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
 import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
-// new
 import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
+import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -318,6 +318,10 @@ const TheDefiList = observer(() => {
                     listFlag = true;
                     defiIconArr.push(demex);
                     break;
+                case "Helmet":
+                    listFlag = true;
+                    defiIconArr.push(helmet);
+                    break;    
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"] != "") {
