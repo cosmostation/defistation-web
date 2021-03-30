@@ -64,8 +64,10 @@ import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
-// new
 import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
+// new
+import demex from "../../assets/images/defiLogo/demex@2x.png";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -204,8 +206,7 @@ const DefiList = observer((props) => {
                 break;
             case "BiFi":
                 resultImg = bifi;
-                break;    
-            // new    
+                break;
             case "Multi-Chain Lend (MCL)":
                 resultImg = multiplier;    
                 break;    
@@ -220,7 +221,13 @@ const DefiList = observer((props) => {
                 break;
             case "Ellipsis Finance":
                 resultImg = ellipsisfinance;
-                break;              
+                break;
+            case "DODO":
+                resultImg = dodo;
+                break;
+            case "Demex":
+                resultImg = demex;
+                break;
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

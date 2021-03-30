@@ -38,7 +38,6 @@ import sevenupfinance from "../../assets/images/defiLogo/7upfinance@2x.png";
 import bfisfinance from "../../assets/images/defiLogo/bfisfinance@2x.png";
 import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
 import dego from "../../assets/images/defiLogo/dego@2x.png";
-import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
 import qian from "../../assets/images/defiLogo/qian@2x.png";
@@ -63,8 +62,10 @@ import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
-// new
 import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
+// new
+import demex from "../../assets/images/defiLogo/demex@2x.png";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -209,9 +210,6 @@ const TheDefiList = observer(() => {
                 case "Dego.finance":    
                     defiIconArr.push(dego);
                     break;
-                case "DODO":
-                    defiIconArr.push(dodo);
-                    break;
                 case "Equator.finance":
                 case "Equator.Finance":
                     defiIconArr.push(equatorfinance);
@@ -311,7 +309,15 @@ const TheDefiList = observer(() => {
                 case "Ellipsis Finance":
                     listFlag = true;
                     defiIconArr.push(ellipsisfinance);
-                    break;             
+                    break;
+                case "DODO":
+                    listFlag = true;
+                    defiIconArr.push(dodo);
+                    break;
+                case "Demex":
+                    listFlag = true;
+                    defiIconArr.push(demex);
+                    break;
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"] != "") {
