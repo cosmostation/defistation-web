@@ -195,6 +195,7 @@ const TotalValue = observer((props) => {
                 // let tempChartData = [['x', 'TVL(USD)']];
 
                 let tempChartData = [];
+                let initProjectTvlIndex = -1;
 
                 if (res.result == null) {
                     setMinTvl(0);
@@ -231,7 +232,7 @@ const TotalValue = observer((props) => {
                 tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
                 setCurrencyFullName(tempCurrencyFullName);
 
-                console.log("resultArr.length: ", resultArr.length);
+                // console.log("resultArr.length: ", resultArr.length);
                 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
@@ -273,8 +274,27 @@ const TotalValue = observer((props) => {
                         }
                     }
 
-                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                    // 신규 프로젝트인 경우 7d, 30d 일 때 앞에 tvl 값이 0이 연속으로 오는 경우 해당 배열 요소 제거
+                    // tempChartData[0][1] 이 0인가?
+                    // 연속으로 0인가? -> 차트 추가 안함
+                    if (i == 0) {
+                        if (currencyNum == 0) {
+                            initProjectTvlIndex = 0;
+                        }
+                    }
 
+                    if (initProjectTvlIndex > -1) {
+                        if (currencyNum == 0) {
+                            initProjectTvlIndex = i;
+                        } else {
+                            initProjectTvlIndex = -1;
+                        }
+                    }
+                    
+                    if (initProjectTvlIndex == -1) {
+                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                    }
+                    
                     if (i == resultArr.length - 1) {
                         setTotalValueLockedUsd(currencyNum + " " + currencyUnit);
                         // global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
@@ -293,7 +313,17 @@ const TotalValue = observer((props) => {
                 //     }
                 // }
 
-                // 차트: 7d
+                // 차트 데이터가 7개 또는 30개가 안채워졌으면 뒤에 채워넣기
+                let chartGap = resultArr.length - tempChartData.length;
+                if (chartGap > 0) {
+                    let lastTimestamp = resultArr[resultArr.length - 1][0];
+                    for (var i = 0; i < chartGap; i++) {
+                        let calTimestamp = lastTimestamp + (86400 * (i + 1));
+                        tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
+                    }
+                }
+
+                // 차트: 7d, 30d
                 if (tempChartData.length > chartPeriod) {
                     let remainDataLength = tempChartData.length - chartPeriod;
                     for (var i = 0; i < remainDataLength; i++) {
