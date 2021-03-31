@@ -1055,6 +1055,44 @@ hr.sideMenuLine {
   cursor: pointer;
 }
 
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
+@media (min-width:1px) and (max-width:767px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
 /* -------------------------------- MiniCard -------------------------------- */
 
 .miniCards {
