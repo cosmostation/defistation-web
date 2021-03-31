@@ -158,13 +158,15 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        let chartFullUrl;
-        if (chartPeriod == 7) {
-            // default
-            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        } else {
-            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        }
+        // let chartFullUrl;
+        // if (chartPeriod == 7) {
+        //     // default
+        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        // } else {
+        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        // }
+
+        let chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
 
         // detail
         if (urlFlagDetail == chartFullUrl) return;
@@ -968,6 +970,9 @@ const TotalValue = observer((props) => {
 
                                 <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">30d</button>
                                 <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button>
+
+                                <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">90d</button>
+                                <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>90d</button>
                             </li>
                         </ul>
                     </div>

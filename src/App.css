@@ -994,11 +994,11 @@ hr.sideMenuLine {
 }
 
 .tvlChartCardUl li:nth-child(1) {
-  width: 55%;
+  width: 45%;
 }
 
 .tvlChartCardUl li:nth-child(2) {
-  width: 45%;
+  width: 55%;
   text-align: right;
 }
 
@@ -1015,7 +1015,7 @@ hr.sideMenuLine {
 }
 
 .periodBtnSelected {
-  margin-left: 20px;
+  margin-left: 18px;
   /* width: 32px; */
   height: 18px;
   border-radius: 5px;
@@ -1035,25 +1035,7 @@ hr.sideMenuLine {
 }
 
 .periodBtn {
-  /* margin-left: 20px;
-  width: 72px;
-  height: 17px;
-  font-family: OpenSans;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.42;
-  letter-spacing: normal;
-  color: #757f8e;
-  border: 0;
-  outline: 0;
-  background-color: transparent !important;
-  background-image: none !important;
-  border-color: transparent;
-  cursor: pointer; */
-  margin-left: 20px;
-  /* width: 32px; */
+  margin-left: 18px;
   height: 18px;
   border-radius: 5px;
   background-color: transparent !important;
