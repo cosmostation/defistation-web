@@ -210,7 +210,7 @@ const TotalValue = observer((props) => {
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
                 let initTimestamp = 0;
-                let tempMinTvl = 0;
+                let tempMinTvl;
 
                 // K, M, B 기준은 최초 0번째 데이터(단, 0번째가 0이 아닐때)
                 // let digit = getCurrencyDigit(resultArr[0][1]);
@@ -249,14 +249,24 @@ const TotalValue = observer((props) => {
 
                     let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
 
+                    console.log("currencyNum: ", currencyNum);
+
                     if (i == 0) {
-                        tempMinTvl = currencyNum;
+                        // tempMinTvl = currencyNum;
+                        if (currencyNum > 0) {
+                            tempMinTvl = currencyNum;
+                        }
                     } else {
                         // 가장 작은 값 찾기(vAxis 최솟값)
                         if (tempMinTvl > currencyNum) {
-                            tempMinTvl = currencyNum;
+                            // tempMinTvl = currencyNum;
+                            if (currencyNum > 0) {
+                                tempMinTvl = currencyNum;
+                            }
                         }
                     }
+
+                    console.log("tempMinTvl: ", tempMinTvl);
 
                     // 이전 연속 2개의 값이 0이 아니라면 직전 값으로 보정한다. (미싱 데이터 보정)
                     if (currencyNum == 0) {
