@@ -91,40 +91,7 @@ const MiniCards = observer((props) => {
             .catch(err => setResponseError(err));
     }
 
-    const [urlFlag2, setUrlFlag2] = useState(false);
-
-    // async function getProjectNumOnHome(defiName) {
-    //     if (urlFlag2) return;
-    //     setUrlFlag2(true);
-
-    //     // console.log("getProjectNum 함수 시작");
-
-    //     let urlStr = "";
-    //     if (defiName == "DeFi") {
-    //         urlStr = "all";
-    //     } else {
-    //         urlStr = defiName;
-    //     }
-
-    //     // console.log("urlStr: ", urlStr);
-    //     const res = await fetch(global.defistationApiUrl + "/defiNames", {
-    //         method: 'GET',
-    //         headers: {
-    //             Authorization: global.auth
-    //         }
-    //     });
-    //     res
-    //         .json()
-    //         .then(res => {
-    //             // console.log("res: ", res);
-    //             setMiniCardData3(numberWithCommas(res.length));
-    //         })
-    //         .catch(err => setResponseError(err));
-    // }
-
     function showTvl1Day() {
-        // console.log("showTvl1Day 함수 시작");
-        // console.log("global.tvl1DayPercent: ", global.tvl1DayPercent);
         if (global.tvl1DayPercent > 0) { 
             setTvl1DayPercentTag("+" + global.tvl1DayPercent + "%");
         } else {
@@ -133,22 +100,9 @@ const MiniCards = observer((props) => {
     }
 
     useEffect(() => {
-        // console.log("props.defiName: ", props.defiName);
-
         getTotalBnbLocked(props.defiName);
         showTvl1Day();
-        
-        if (props.defiName == "DeFi") {
-            // 메인에서 프로젝트 숫자 보여주기
-            // getProjectNumOnHome();
-
-
-            setMiniCardTitle3("Last updated(UTC)");
-            // setMiniCardData3(3);
-        } else {
-            setMiniCardTitle3("Supply Locked");
-            //props.defiName 에 따라 다른 데이터 넣으면 됨
-        }
+        setMiniCardTitle3("Last updated(UTC)");
 
         // minicard 0 으로 보이는 현상 임시
         if (tvl1DayPercentTag == "0%") {

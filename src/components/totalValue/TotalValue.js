@@ -41,7 +41,6 @@ import sevenupfinance from "../../assets/images/defiLogo/7upfinance@2x.png";
 import bfisfinance from "../../assets/images/defiLogo/bfisfinance@2x.png";
 import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
 import dego from "../../assets/images/defiLogo/dego@2x.png";
-import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
 import qian from "../../assets/images/defiLogo/qian@2x.png";
@@ -76,8 +75,10 @@ import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
-// new
 import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
+import demex from "../../assets/images/defiLogo/demex@2x.png";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
+import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -110,8 +111,18 @@ const TotalValue = observer((props) => {
 
     const [currencyFullName, setCurrencyFullName] = useState("");
 
+    // PC에서는 Total Value Locked, mobile에서는 TVL
+    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
+
+    // 1) 1034px 이상
     const [viewWidth, setViewWidth] = useState("740px");
     const [chartWidth, setChartWidth] = useState("93.6%");
+
+    // 2) 1024px: 270px, 88%
+    // 3) 768px: 270px, 88%
+    // 4) 414px ~ 767px: 374px, 88%
+    // 5) 360px ~ 413px: 290px, 88%
+    // 6) 1px ~ 359px: 270px, 88%
 
     // const defistationApiUrl = "https://api.defistation.io";
 
@@ -147,13 +158,15 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        let chartFullUrl;
-        if (chartPeriod == 7) {
-            // default
-            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        } else {
-            chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        }
+        // let chartFullUrl;
+        // if (chartPeriod == 7) {
+        //     // default
+        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        // } else {
+        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        // }
+
+        let chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
 
         // detail
         if (urlFlagDetail == chartFullUrl) return;
@@ -184,6 +197,7 @@ const TotalValue = observer((props) => {
                 // let tempChartData = [['x', 'TVL(USD)']];
 
                 let tempChartData = [];
+                let initProjectTvlIndex = -1;
 
                 if (res.result == null) {
                     setMinTvl(0);
@@ -196,7 +210,7 @@ const TotalValue = observer((props) => {
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
                 let initTimestamp = 0;
-                let tempMinTvl = 0;
+                let tempMinTvl;
 
                 // K, M, B 기준은 최초 0번째 데이터(단, 0번째가 0이 아닐때)
                 // let digit = getCurrencyDigit(resultArr[0][1]);
@@ -220,7 +234,7 @@ const TotalValue = observer((props) => {
                 tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
                 setCurrencyFullName(tempCurrencyFullName);
 
-                console.log("resultArr.length: ", resultArr.length);
+                // console.log("resultArr.length: ", resultArr.length);
                 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
@@ -235,14 +249,24 @@ const TotalValue = observer((props) => {
 
                     let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
 
+                    console.log("currencyNum: ", currencyNum);
+
                     if (i == 0) {
-                        tempMinTvl = currencyNum;
+                        // tempMinTvl = currencyNum;
+                        if (currencyNum > 0) {
+                            tempMinTvl = currencyNum;
+                        }
                     } else {
                         // 가장 작은 값 찾기(vAxis 최솟값)
                         if (tempMinTvl > currencyNum) {
-                            tempMinTvl = currencyNum;
+                            // tempMinTvl = currencyNum;
+                            if (currencyNum > 0) {
+                                tempMinTvl = currencyNum;
+                            }
                         }
                     }
+
+                    console.log("tempMinTvl: ", tempMinTvl);
 
                     // 이전 연속 2개의 값이 0이 아니라면 직전 값으로 보정한다. (미싱 데이터 보정)
                     if (currencyNum == 0) {
@@ -262,8 +286,29 @@ const TotalValue = observer((props) => {
                         }
                     }
 
-                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                    // 신규 프로젝트인 경우 7d, 30d 일 때 앞에 tvl 값이 0이 연속으로 오는 경우 해당 배열 요소 제거
+                    // tempChartData[0][1] 이 0인가?
+                    // 연속으로 0인가? -> 차트 추가 안함
+                    if (i == 0) {
+                        if (currencyNum == 0) {
+                            initProjectTvlIndex = 0;
+                        }
+                    }
 
+                    if (initProjectTvlIndex > -1) {
+                        if (currencyNum == 0) {
+                            initProjectTvlIndex = i;
+                        } else {
+                            initProjectTvlIndex = -1;
+                        }
+                    }
+                    
+                    if (initProjectTvlIndex == -1) {
+                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                    } else {
+                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
+                    }
+                    
                     if (i == resultArr.length - 1) {
                         setTotalValueLockedUsd(currencyNum + " " + currencyUnit);
                         // global.changeTotalValueLockedUsd("$ " + currencyNum + " " + currencyUnit);
@@ -282,7 +327,17 @@ const TotalValue = observer((props) => {
                 //     }
                 // }
 
-                // 차트: 7d
+                // 차트 데이터가 7개 또는 30개가 안채워졌으면 뒤에 채워넣기
+                // let chartGap = resultArr.length - tempChartData.length;
+                // if (chartGap > 0) {
+                //     let lastTimestamp = resultArr[resultArr.length - 1][0];
+                //     for (var i = 0; i < chartGap; i++) {
+                //         let calTimestamp = lastTimestamp + (86400 * (i + 1));
+                //         tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
+                //     }
+                // }
+
+                // 차트: 7d, 30d
                 if (tempChartData.length > chartPeriod) {
                     let remainDataLength = tempChartData.length - chartPeriod;
                     for (var i = 0; i < remainDataLength; i++) {
@@ -380,7 +435,7 @@ const TotalValue = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Logo(68px*68px png)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"];
                 break;
             }
         }
@@ -448,9 +503,6 @@ const TotalValue = observer((props) => {
                 break;
             case "Dego":
                 setDefiIcon(dego);
-                break;
-            case "DODO":
-                setDefiIcon(dodo);
                 break;
             case "Equator.finance":
                 setDefiIcon(equatorfinance);
@@ -542,7 +594,6 @@ const TotalValue = observer((props) => {
             case "BiFi":
                 setDefiIcon(bifi);
                 break;
-            // new    
             case "Multi-Chain Lend (MCL)":
                 setDefiIcon(multiplier);    
                 break;    
@@ -558,6 +609,15 @@ const TotalValue = observer((props) => {
             case "Ellipsis Finance":
                 setDefiIcon(ellipsisfinance);    
                 break;
+            case "DODO":
+                setDefiIcon(dodo);
+                break;
+            case "Demex":
+                setDefiIcon(demex);
+                break;
+            case "Helmet":
+                setDefiIcon(helmet);
+                break;    
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -673,11 +733,97 @@ const TotalValue = observer((props) => {
     useEffect(() => {
         getChart(props.defiName);
 
-        {/* PC: 750px, Mobile: 300px */}
-        if (window.innerWidth <= 1034) {
-            setViewWidth("290px");
-            setChartWidth("88%");
+        // 2) 414px ~ 1034px: 374px, 88%
+        // 3) 360px ~ 413px: 290px, 88%
+        // 4) 1px ~ 359px: 270px, 88%
+
+        // if (window.innerWidth >= 414 && window.innerWidth <= 1034) {
+        //     setViewWidth("374px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (window.innerWidth >= 360 && window.innerWidth < 414) {
+        //     setViewWidth("290px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (window.innerWidth >= 0 && window.innerWidth < 360) {
+        //     setViewWidth("270px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // }
+
+        console.log("screen.width: ", screen.width);
+
+        // 2) 1024px: 970px, 94%
+        // 3) 768px: 708px, 94%
+        // 4) 414px ~ 767px: 374px, 88%
+        // 5) 360px ~ 413px: 290px, 88%
+        // 6) 1px ~ 359px: 270px, 88%
+
+        var isMobile = false; //initiate as false
+        // device detection
+        if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+            || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) { 
+            isMobile = true;
         }
+
+        console.log("window.screen.orientation: ", window.screen.orientation);
+        if (isMobile && String(window.screen.orientation).indexOf("landscape") != -1 && screen.height >= 768) {
+            setViewWidth("708px");
+            setChartWidth("94%");
+            setTvlChartCardTitleValue("TVL");
+        } else {
+            if (!isMobile && window.innerWidth <= 1034) {
+                setViewWidth("364px");
+                setChartWidth("88%");
+                setTvlChartCardTitleValue("TVL");
+            } else {
+                if (screen.width >= 1024 && screen.width < 1034) {
+                    setViewWidth("970px");
+                    setChartWidth("94%");
+                    setTvlChartCardTitleValue("TVL");
+                } else if (screen.width >= 768 && screen.width < 1024) {
+                    setViewWidth("708px");
+                    setChartWidth("94%");
+                    setTvlChartCardTitleValue("TVL");
+                } else if (screen.width >= 414 && screen.width < 768) {
+                    setViewWidth("364px");
+                    setChartWidth("88%");
+                    setTvlChartCardTitleValue("TVL");
+                } else if (screen.width >= 360 && screen.width < 414) {
+                    setViewWidth("290px");
+                    setChartWidth("88%");
+                    setTvlChartCardTitleValue("TVL");
+                } else if (screen.width >= 1 && screen.width < 360) {
+                    setViewWidth("270px");
+                    setChartWidth("88%");
+                    setTvlChartCardTitleValue("TVL");
+                }
+            }
+
+            
+        }
+
+        // if (screen.width >= 1024 && screen.width < 1034) {
+        //     setViewWidth("970px");
+        //     setChartWidth("94%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (screen.width >= 768 && screen.width < 1024) {
+        //     setViewWidth("708px");
+        //     setChartWidth("94%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (screen.width >= 414 && screen.width < 768) {
+        //     setViewWidth("364px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (screen.width >= 360 && screen.width < 414) {
+        //     setViewWidth("290px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // } else if (screen.width >= 1 && screen.width < 360) {
+        //     setViewWidth("270px");
+        //     setChartWidth("88%");
+        //     setTvlChartCardTitleValue("TVL");
+        // }
 
         checkWindowWidth();
 
@@ -715,7 +861,8 @@ const TotalValue = observer((props) => {
                     <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
                         <ul className="tvlChartCardUl">
                             <li>
-                                <span className="tvlChartCardTitle">Total Value Locked in {getOfficialDefiName(props.defiName)}</span>
+                                {/* Total Value Locked in ... */}
+                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 {/* <p className="tvlChartUnitY">({currencyFullName} USD)</p> */}
 
@@ -833,6 +980,9 @@ const TotalValue = observer((props) => {
 
                                 <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">30d</button>
                                 <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button>
+
+                                <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">90d</button>
+                                <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>90d</button>
                             </li>
                         </ul>
                     </div>

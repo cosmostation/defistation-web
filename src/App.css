@@ -3,18 +3,9 @@ html {
 }
 
 body {
-  font-family: Rubik-Regular;
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-stretch: normal;
   font-style: normal;
-  letter-spacing: normal;
-  /* font-size: 13px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: left;
-  color: #757f8e; */
 }
 
 .hidden {height:100%; min-height:100%; overflow:hidden !important; touch-action:none;}
@@ -39,21 +30,52 @@ li {
   height: 100%;
   margin-left: -517px;
   margin-top: 0px;
-  /* background-color: aqua; */
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
   .wrapper {
-    position: absolute;
-    left: 50%;
-    border: solid 0px;
-    width: 320px;
-    height: 100%;
-    margin-left: -160px;
-    margin-top: 0px;
-    /* background-color: aqua; */
+    width: 1000px;
+    margin-left: -500px;
   }
 }
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  }
+}
+
+@media (min-width:1px) and (max-width:359px) {
+  .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  }
+}
+
+/* 예외처리 */
+/* @media (min-width:768px) and (orientation: landscape)  {
+  .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  }
+} */
 
 /* -------------------------------- topBar -------------------------------- */
 
@@ -62,7 +84,8 @@ li {
   width: 100%;
   /* height: 200px; */
   /* font-family: Rubik-Regular; */
-  font-family: Rubik-Regular;
+
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -158,6 +181,20 @@ li {
   z-index: 1001;
 }
 
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  .sideMenuBox {
+    width: 40%;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .sideMenuBox {
+    width: 40%;
+  }
+}
+
 .closeBtn {
   float: right;
   right: 0;
@@ -228,7 +265,8 @@ hr.sideMenuLine {
   display: table-cell;
   vertical-align: middle;
   color: #fff;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -299,13 +337,91 @@ hr.sideMenuLine {
 .tvlChartCard p {
   margin-left: 5px;
   font-weight: 700;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
-  #tvlGoogleChart {
-    /* display: none; */
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .tvlChartCard {
+    width: 1000px;
+    height: 310px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
   }
+  
+  .totalValueUl {
+    display: list-item;
+  }
+  
+  .totalValueUl li:nth-child(1) {
+    width: 354px;
+  }
+  
+  .totalValueUl li:nth-child(2) {
+    width: 354px;
+  }
+}
 
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .tvlChartCard {
+    width: 738px;
+    height: 310px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .totalValueUl {
+    display: list-item;
+  }
+  
+  .totalValueUl li:nth-child(1) {
+    width: 354px;
+  }
+  
+  .totalValueUl li:nth-child(2) {
+    width: 354px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .tvlChartCard {
+    width: 394px;
+    height: 310px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .totalValueUl {
+    display: list-item;
+  }
+  
+  .totalValueUl li:nth-child(1) {
+    width: 354px;
+  }
+  
+  .totalValueUl li:nth-child(2) {
+    width: 354px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .tvlChartCard {
     width: 320px;
     height: 310px;
@@ -315,21 +431,62 @@ hr.sideMenuLine {
   
   .totalValueUl {
     display: list-item;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* justify-content: space-around; */
   }
   
-  .totalValueUl li:nth-child(1) { 
-    /* width: 75%; */
+  .totalValueUl li:nth-child(1) {
     width: 280px;
   }
   
-  .totalValueUl li:nth-child(2) { 
-    /* width: 25%; */
+  .totalValueUl li:nth-child(2) {
     width: 280px;
   }
 }
+
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .tvlChartCard {
+    width: 300px;
+    height: 310px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .totalValueUl {
+    display: list-item;
+  }
+  
+  .totalValueUl li:nth-child(1) {
+    width: 240px;
+  }
+  
+  .totalValueUl li:nth-child(2) {
+    width: 240px;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
+  .tvlChartCard {
+    width: 320px;
+    height: 310px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  .totalValueUl {
+    display: list-item;
+  }
+  
+  .totalValueUl li:nth-child(1) {
+    width: 280px;
+  }
+  
+  .totalValueUl li:nth-child(2) {
+    width: 280px;
+  }
+} */
 
 /* Link Button */
 .tvlLink0 {
@@ -352,7 +509,31 @@ hr.sideMenuLine {
   box-sizing: border-box;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  .tvlLink0 {
+    display: none;
+  }
+  
+  .tvlLink {
+    /* display: none; */
+    height: 68px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .tvlLink0 {
+    display: none;
+  }
+  
+  .tvlLink {
+    /* display: none; */
+    height: 166px;
+  }
+}
+
+@media (min-width:1px) and (max-width:767px) {
   .tvlLink0 {
     display: none;
   }
@@ -394,7 +575,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -406,7 +588,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxSubTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 10.5px;
   font-weight: 600;
   font-stretch: normal;
@@ -419,9 +602,9 @@ hr.sideMenuLine {
 
 .tvlChartCardTitle {
   /* font-family: Rubik-Regular; */
-  font-family: Rubik-Regular;
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.25;
@@ -430,7 +613,76 @@ hr.sideMenuLine {
   color: #757f8e;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .tvlLink {
+    width: 1000px;
+    box-sizing: border-box;
+  }
+
+  .tvlLinkBox {
+    width: 980px;
+    height: 62px;
+    box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 11px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .tvlLink {
+    width: 738px;
+    box-sizing: border-box;
+  }
+
+  .tvlLinkBox {
+    width: 718px;
+    height: 62px;
+    box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 11px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .tvlLink {
+    width: 394px;
+    box-sizing: border-box;
+  }
+
+  .tvlLinkBox {
+    width: 374px;
+    height: 62px;
+    box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 11px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .tvlLink {
     width: 320px;
     box-sizing: border-box;
@@ -446,6 +698,44 @@ hr.sideMenuLine {
     font-size: 11px;
   }
 }
+
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .tvlLink {
+    width: 300px;
+    box-sizing: border-box;
+  }
+
+  .tvlLinkBox {
+    width: 290px;
+    height: 62px;
+    box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 11px;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
+  .tvlLink {
+    width: 320px;
+    box-sizing: border-box;
+  }
+
+  .tvlLinkBox {
+    width: 290px;
+    height: 62px;
+    box-sizing: border-box;
+  }
+
+  .tvlChartCardTitle {
+    font-size: 11px;
+  }
+} */
 
 .defiDetailPageLink {
   display: list-item;
@@ -463,7 +753,59 @@ hr.sideMenuLine {
   cursor: pointer;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .defiDetailPageLink {
+    display: inline-flex;
+    /* grid-template-columns: 150px 150px; */
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .defiDetailPageLink {
+    display: grid;
+    grid-template-columns: 360px 360px;
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .defiDetailPageLink {
+    display: grid;
+    grid-template-columns: 187px 187px;
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .defiDetailPageLink {
     display: grid;
     grid-template-columns: 150px 150px;
@@ -473,6 +815,32 @@ hr.sideMenuLine {
     margin: 9px 0 0 0;
   }
 }
+
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .defiDetailPageLink {
+    display: grid;
+    grid-template-columns: 140px 140px;
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
+  .defiDetailPageLink {
+    display: grid;
+    grid-template-columns: 150px 150px;
+  }
+
+  .subPageDefiLinkBox {
+    margin: 9px 0 0 0;
+  }
+} */
 
 /* 이미지 가운데 맞추기 */
 .subPageDefiLinkBox img {
@@ -507,7 +875,8 @@ hr.sideMenuLine {
 
 .subPageDefiLinkBoxTitle {
   margin: 2px 0 1px 8px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -518,17 +887,77 @@ hr.sideMenuLine {
   color: #fff;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .subPageDefiLinkBox {
+    width: 153px;
+    height: 40px;
+    margin-right: 10px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .subPageDefiLinkBox {
+    width: 350px;
+    height: 40px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .subPageDefiLinkBox {
+    width: 177px;
+    height: 40px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .subPageDefiLinkBox {
     width: 140px;
     height: 40px;
   }
 }
 
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .subPageDefiLinkBox {
+    width: 130px;
+    height: 40px;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
+  .subPageDefiLinkBox {
+    width: 140px;
+    height: 40px;
+  }
+} */
+
 .tvlValueUsd {
   margin: auto 0;
   height: 29px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -539,7 +968,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartUnitY {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 10px;
   font-weight: 600;
   font-stretch: normal;
@@ -564,11 +994,11 @@ hr.sideMenuLine {
 }
 
 .tvlChartCardUl li:nth-child(1) {
-  width: 55%;
+  width: 45%;
 }
 
 .tvlChartCardUl li:nth-child(2) {
-  width: 45%;
+  width: 55%;
   text-align: right;
 }
 
@@ -585,14 +1015,15 @@ hr.sideMenuLine {
 }
 
 .periodBtnSelected {
-  margin-left: 20px;
-  width: 32px;
+  margin-left: 18px;
+  /* width: 32px; */
   height: 18px;
   border-radius: 5px;
   background-color: #f0b923;
   border: 0;
   outline: 0;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -604,25 +1035,7 @@ hr.sideMenuLine {
 }
 
 .periodBtn {
-  /* margin-left: 20px;
-  width: 72px;
-  height: 17px;
-  font-family: OpenSans;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.42;
-  letter-spacing: normal;
-  color: #757f8e;
-  border: 0;
-  outline: 0;
-  background-color: transparent !important;
-  background-image: none !important;
-  border-color: transparent;
-  cursor: pointer; */
-  margin-left: 20px;
-  width: 32px;
+  margin-left: 18px;
   height: 18px;
   border-radius: 5px;
   background-color: transparent !important;
@@ -630,7 +1043,8 @@ hr.sideMenuLine {
   border-color: transparent;
   border: 0;
   outline: 0;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -641,13 +1055,73 @@ hr.sideMenuLine {
   cursor: pointer;
 }
 
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
+@media (min-width:1px) and (max-width:767px) {
+  .periodBtnSelected {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+
+  .periodBtn {
+    margin-top: 26px; 
+    margin-left: 3px;
+  }
+}
+
 /* -------------------------------- MiniCard -------------------------------- */
 
 .miniCards {
   margin-top: -3px;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .miniCards {
+    margin-top: -22px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .miniCards {
+    margin-top: -6px;
+  }
+}
+
+@media (min-width:1px) and (max-width:767px) {
   .miniCards {
     margin-top: -6px;
   }
@@ -673,7 +1147,8 @@ hr.sideMenuLine {
 }
 
 .miniCardTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -687,7 +1162,8 @@ hr.sideMenuLine {
 .miniCardDataNum {
   margin: auto 0;
   margin-top: 12px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -698,7 +1174,139 @@ hr.sideMenuLine {
   color: #ffffff;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+
+
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .miniCardUl {
+    display: inline-flex;
+  }
+  
+  .miniCardUl li {
+    width: 242.2px;
+    height: 70px;
+    margin-bottom: -4px;
+    box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .miniCardUl li {
+    margin-right: 10px;
+  }
+
+  .miniCardTitle {
+    font-size: 11px;
+  }
+
+  .miniCardDataNum {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .miniCardUl {
+    display: list-item;
+  }
+  
+  .miniCardUl li {
+    width: 364px;
+    height: 70px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .miniCardUl li:nth-child(2) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(4) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(3) {
+    clear: both;
+  }
+
+  .miniCardTitle {
+    font-size: 11px;
+  }
+
+  .miniCardDataNum {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .miniCardUl {
+    display: list-item;
+  }
+  
+  .miniCardUl li {
+    width: 192px;
+    height: 70px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .miniCardUl li:nth-child(2) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(4) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(3) {
+    clear: both;
+  }
+
+  .miniCardTitle {
+    font-size: 11px;
+  }
+
+  .miniCardDataNum {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .miniCardUl {
     display: list-item;
   }
@@ -738,6 +1346,90 @@ hr.sideMenuLine {
   }
 }
 
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .miniCardUl {
+    display: list-item;
+  }
+  
+  .miniCardUl li {
+    width: 145px;
+    height: 70px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .miniCardUl li:nth-child(2) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(4) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(3) {
+    clear: both;
+  }
+
+  .miniCardTitle {
+    font-size: 11px;
+  }
+
+  .miniCardDataNum {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
+  .miniCardUl {
+    display: list-item;
+  }
+  
+  .miniCardUl li {
+    width: 155px;
+    height: 70px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .miniCardList {
+    float: left; 
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+  }
+
+  .miniCardUl li:nth-child(2) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(4) {
+    margin-left: 10px;
+  }
+
+  .miniCardUl li:nth-child(3) {
+    clear: both;
+  }
+
+  .miniCardTitle {
+    font-size: 11px;
+  }
+
+  .miniCardDataNum {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+} */
+
 /* -------------------------------- Banner -------------------------------- */
 
 .banner {
@@ -749,19 +1441,24 @@ hr.sideMenuLine {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   /* background-color: #262932; */
   background-image: linear-gradient(to left, #1b2027, #252932);
-  padding: 20px;
+  /* padding: 20px; */
   cursor: pointer;
   overflow: hidden;
 }
 
 .banner img {
-  width: 21%;
+  /* width: 21%;
   margin-left: 760px;
-  margin-top: -130px;
+  margin-top: -130px; */
+  /* position:  */
+  top:0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .bannerTitle {
-  font-family: Roboto;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
   font-stretch: normal;
@@ -776,7 +1473,8 @@ hr.sideMenuLine {
 .bannerContent {
   margin: auto 0;
   margin-top: 5px;
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -787,7 +1485,141 @@ hr.sideMenuLine {
   color: #ffffff;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+.bannerAdTextRect {
+  position: absolute;
+  margin-right: 0;
+  width: 30px;
+  /* height: 30px; */
+  border-radius: 5px;
+  /* border: solid 1px #ffffff; */
+  text-align: center;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  /* opacity: 0.6; */
+  background-color: #000;
+}
+
+.bannerAdText {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.65;
+  letter-spacing: normal;
+  color: rgb(240, 185, 35);
+}
+
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  }
+
+  .banner {
+    height: 57.1px;
+  }
+
+  .banner img {
+    height: 57.1px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .banner {
+    width: 394px;
+    height: 61.5625px;
+
+    /* height: 90px; */
+    /* padding: 15px; */
+  }
+
+  .bannerTitle {
+    font-size: 14px;
+  }
+  
+  .bannerContent {
+    font-size: 11px;
+  }
+
+  .banner img {
+    /* display: none; */
+    top:0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* height: 100%; */
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
+  .banner {
+    width: 320px;
+    height: 50px;
+    /* height: 80px; */
+    /* padding: 15px; */
+  }
+
+  .bannerTitle {
+    font-size: 14px;
+  }
+  
+  .bannerContent {
+    font-size: 11px;
+  }
+
+  .banner img {
+    top:0; 
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    /* display: none; */
+  }
+}
+
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .banner {
+    width: 300px;
+    height: 46.875px;
+    /* padding: 15px; */
+  }
+
+  .bannerTitle {
+    font-size: 14px;
+  }
+  
+  .bannerContent {
+    font-size: 11px;
+  }
+
+  .banner img {
+    /* display: none; */
+  }
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
   .banner {
     width: 320px;
     height: 90px;
@@ -805,7 +1637,7 @@ hr.sideMenuLine {
   .banner img {
     display: none;
   }
-}
+} */
 
 /* -------------------------------- Main Table -------------------------------- */
 
@@ -862,6 +1694,7 @@ hr.sideMenuLine {
   height: 38px;
   border-bottom: 1px solid #404752;
   padding: 10px;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -1096,7 +1929,8 @@ hr.sideMenuLine {
 }
 
 .textGreen {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -1107,7 +1941,8 @@ hr.sideMenuLine {
 }
 
 .textRed {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -1129,7 +1964,8 @@ hr.sideMenuLine {
 .footer {
   width: 100%;
   height: 100px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1145,7 +1981,8 @@ hr.sideMenuLine {
 /* -------------------------------- Detail Page -------------------------------- */
 
 .navBox {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1157,7 +1994,8 @@ hr.sideMenuLine {
 }
 
 .navHome {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1170,7 +2008,8 @@ hr.sideMenuLine {
 }
 
 .navDefiName {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1239,7 +2078,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -1252,7 +2092,8 @@ hr.sideMenuLine {
 
 .defiOverviewContent {
   opacity: 1;
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -1288,7 +2129,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewWebsiteLink {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -1323,7 +2165,8 @@ hr.sideMenuLine {
 
 .notFound {
   margin-top: 50px;
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1378,6 +2221,7 @@ hr.sideMenuLine {
   height: 38px;
   border-bottom: 1px solid #404752;
   padding: 10px;
+  font-family: "Rubik-Regular", Arial, sans-serif;
 }
 
 .defiDetailListTable th:nth-child(1) {
@@ -1546,12 +2390,69 @@ hr.sideMenuLine {
   box-sizing: border-box;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .aboutBox {
+    width: 1000px;
+    padding: 30px;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .aboutBox {
+    width: 738px;
+    padding: 30px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .aboutBox {
+    width: 394px;
+    padding: 30px;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .aboutBox {
     width: 320px;
     padding: 30px;
   }
 }
+
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .aboutBox {
+    width: 300px;
+    padding: 30px;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:767px) {
+  .aboutBox {
+    width: 320px;
+    padding: 30px;
+  }
+} */
 
 .cosmostationLogoOnAbout {
   width: 20%;
@@ -1570,7 +2471,8 @@ hr.sideMenuLine {
 }
 
 .productOnAbout {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1586,7 +2488,8 @@ hr.sideMenuLine {
 }
 
 .productListBox span {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -1617,7 +2520,7 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .applyBtn {
-    height: 115px;
+    height: 105px;
   }
 }
 
@@ -1641,7 +2544,8 @@ hr.sideMenuLine {
 }
 
 .applyBtnTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -1653,7 +2557,8 @@ hr.sideMenuLine {
 }
 
 .applyBtnText {
-  font-family: Roboto;
+  /* font-family: Roboto; */
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   font-stretch: normal;
@@ -1723,7 +2628,68 @@ hr.sideMenuLine {
   margin-left: 0px;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* iPad Pro */
+@media all and (device-width: 1024px) {
+  /* .wrapper {
+    width: 1000px;
+    margin-left: -500px;
+  } */
+  .theDefiListUl li {
+    /* display: inline-block; */
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 323px;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* iPad */
+@media all and (device-width: 768px) {
+  /* .wrapper {
+    width: 738px;
+    margin-left: -369px;
+  } */
+  .theDefiListUl li {
+    /* display: inline-block; */
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 236px;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 11px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  /* .wrapper {
+    width: 394px;
+    margin-left: -197px;
+  } */
+  .theDefiListUl li {
+    display: inline-block;
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 394px;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width:360px) and (max-width:413px) {
+  /* .wrapper {
+    width: 320px;
+    margin-left: -160px;
+  } */
   .theDefiListUl li {
     display: inline-block;
     margin-left: 0px;
@@ -1737,8 +2703,41 @@ hr.sideMenuLine {
   }
 }
 
+@media (min-width:1px) and (max-width:359px) {
+  /* .wrapper {
+    width: 300px;
+    margin-left: -150px;
+  } */
+  .theDefiListUl li {
+    display: inline-block;
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 300px;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* @media (min-width:1px) and (max-width:767px) {
+  .theDefiListUl li {
+    display: inline-block;
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 320px;
+    height: 140px;
+    border-radius: 5px;
+    background-color: #20232b;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+} */
+
 .theDefiListCardTitle {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -1750,7 +2749,8 @@ hr.sideMenuLine {
 }
 
 .theDefiListCardText {
-  font-family: Rubik-Regular;
+  /* font-family: Rubik-Regular; */
+  font-family: "Rubik-Regular", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;

@@ -38,7 +38,6 @@ import sevenupfinance from "../../assets/images/defiLogo/7upfinance@2x.png";
 import bfisfinance from "../../assets/images/defiLogo/bfisfinance@2x.png";
 import bstablefinance from "../../assets/images/defiLogo/bstablefinance@2x.png";
 import dego from "../../assets/images/defiLogo/dego@2x.png";
-import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
 import qian from "../../assets/images/defiLogo/qian@2x.png";
@@ -63,8 +62,10 @@ import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
 import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
-// new
 import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
+import demex from "../../assets/images/defiLogo/demex@2x.png";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
+import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -92,7 +93,7 @@ const TheDefiList = observer(() => {
 
         // https://s2.coinmarketcap.com/static/img/coins/64x64/1.png
 
-        // "Timestamp":"11/26/2020 21:25:11","Is your project operating on BSC?":"Yes","Official Project Name":"PARSIQ","Logo(68px*68px png)":"","Project Category":"Reverse Oracle","When did the project launch?":"","Do you have a governance token?":"","If yes, please provide the contract address for your governance token.":"","Official Website":"https://parsiq.net/","Github URL":"https://twitter.com/parsiq_net\nhttps://t.me/parsiq_group\nhttps://medium.com/parsiq","Developer Docs URL":"","Twitter URL":"","Telegram(EN) URL":"","Medium Blog URL":"","Discord(EN) URL":"","Detail":"PARSIQ is a universal middleware monitoring and automation layer that turns data into actions by providing a seamless bridge between blockchains and the real world.","Detailed Project Description":"PARSIQ in DeFI\n\nPARSIQ empower players in the DeFi and blockchain ecosystem to easily build monitoring and automation solutions (integrated with a variety of off-chain data providers, web services and apps) on our platform and as a result, save valuable time, save money and avoid complexities of monitoring events on the blockchain at scale, while providing real-time actionable data solutions for superior decision-making. PARSIQ is blockchain-agnostic and primed for blockchain interoperability.\n \nWhat is PARSIQ?\n \nPARSIQ is a monitoring and automation platform that bridges blockchains and off-chain, helping users make blockchain data easily consumable and actionable. We allow anyone to monitor blockchain events in real time  and set up triggers that if a type of event happens on the blockchain, the data is processed, transformed according to user’s conditional logic, enriched with off-chain data (if relevant) and then delivered to an app or device of choice for further actions. Essentially, IFTTT (if-this-then-that) for blockchains, allowing to apply if-this-then-that logic for real-time blockchain transactions at scale, with programmable off-chain reactions to those events.\n","Security Information":"NA" },
+        // "Timestamp":"11/26/2020 21:25:11","Is your project operating on BSC?":"Yes","Official Project Name":"PARSIQ","Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)":"","Project Category":"Reverse Oracle","When did the project launch?":"","Do you have a governance token?":"","If yes, please provide the contract address for your governance token.":"","Official Website":"https://parsiq.net/","Github URL":"https://twitter.com/parsiq_net\nhttps://t.me/parsiq_group\nhttps://medium.com/parsiq","Developer Docs URL":"","Twitter URL":"","Telegram(EN) URL":"","Medium Blog URL":"","Discord(EN) URL":"","Detail":"PARSIQ is a universal middleware monitoring and automation layer that turns data into actions by providing a seamless bridge between blockchains and the real world.","Detailed Project Description":"PARSIQ in DeFI\n\nPARSIQ empower players in the DeFi and blockchain ecosystem to easily build monitoring and automation solutions (integrated with a variety of off-chain data providers, web services and apps) on our platform and as a result, save valuable time, save money and avoid complexities of monitoring events on the blockchain at scale, while providing real-time actionable data solutions for superior decision-making. PARSIQ is blockchain-agnostic and primed for blockchain interoperability.\n \nWhat is PARSIQ?\n \nPARSIQ is a monitoring and automation platform that bridges blockchains and off-chain, helping users make blockchain data easily consumable and actionable. We allow anyone to monitor blockchain events in real time  and set up triggers that if a type of event happens on the blockchain, the data is processed, transformed according to user’s conditional logic, enriched with off-chain data (if relevant) and then delivered to an app or device of choice for further actions. Essentially, IFTTT (if-this-then-that) for blockchains, allowing to apply if-this-then-that logic for real-time blockchain transactions at scale, with programmable off-chain reactions to those events.\n","Security Information":"NA" },
         
         // defistationApplicationList
         for (var i = 0; i < defistationApplicationList.length; i++) {
@@ -209,9 +210,6 @@ const TheDefiList = observer(() => {
                 case "Dego.finance":    
                     defiIconArr.push(dego);
                     break;
-                case "DODO":
-                    defiIconArr.push(dodo);
-                    break;
                 case "Equator.finance":
                 case "Equator.Finance":
                     defiIconArr.push(equatorfinance);
@@ -311,14 +309,26 @@ const TheDefiList = observer(() => {
                 case "Ellipsis Finance":
                     listFlag = true;
                     defiIconArr.push(ellipsisfinance);
-                    break;             
+                    break;
+                case "DODO":
+                    listFlag = true;
+                    defiIconArr.push(dodo);
+                    break;
+                case "Demex":
+                    listFlag = true;
+                    defiIconArr.push(demex);
+                    break;
+                case "Helmet":
+                    listFlag = true;
+                    defiIconArr.push(helmet);
+                    break;    
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
-                    if (defistationApplicationList[i]["Logo(68px*68px png)"] != "") {
-                        if (defistationApplicationList[i]["Logo(68px*68px png)"].indexOf("https://drive.google.com") > -1) {
+                    if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"] != "") {
+                        if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"].indexOf("https://drive.google.com") > -1) {
                             defiIconArr.push(defaultIcon);
                         } else {
-                            defiIconArr.push(defistationApplicationList[i]["Logo(68px*68px png)"]);
+                            defiIconArr.push(defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"]);
                         }
                     } else {
                         defiIconArr.push(defaultIcon);
@@ -335,7 +345,7 @@ const TheDefiList = observer(() => {
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detail"])}</span>
+                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
                     </li>
                 );
             } else {
@@ -345,10 +355,11 @@ const TheDefiList = observer(() => {
                         <img 
                             src={defiIconArr[i]} 
                             width="40px" 
+                            style={{"min-height":"40px"}}
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detail"])}</span>
+                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
                     </li>
                 );
             }
