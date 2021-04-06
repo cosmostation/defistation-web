@@ -88,11 +88,29 @@ const DefiList = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"];
                 break;
             }
         }
         return logoUrl;
+    }
+
+    function findCategoryName(defiName) {
+        // defistationApplicationList 에서 Official Project Name 이 defiName와 일치하는 것 찾기
+
+        // 예외처리
+        if (defiName == "pancake") {
+            defiName = "PancakeSwap";
+        }
+        
+        let categoryName = "";
+        for (var i = 0; i < defistationApplicationList.length; i++) {
+            if (defistationApplicationList[i]["Official Project Name"] == defiName) {
+                categoryName = defistationApplicationList[i]["Project Category"];
+                break;
+            }
+        }
+        return categoryName;
     }
 
     function selectCoinImg(defiName) {
@@ -369,18 +387,26 @@ const DefiList = observer((props) => {
                     } else {
                         rankingCount++;
 
+                        // 괄호 안 내용 제거
+                        let tempCategory = findCategoryName(res[i].name);
+                        tempCategory = tempCategory.replace(/\(.*\)/gi, '');
+                        if (tempCategory == "") {
+                            tempCategory = "Other";
+                        }
+
                         // if (i == adNum) {
                         if (getOfficialDefiName(res[i].name) == "BakerySwap") {
                             // AD: 가장 앞에
                             tableCodeArr.unshift(
                                 <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
-                                    <td>AD</td>
+                                    <td>Ad</td>
                                     <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
                                     {/* <td>{coinImg}</td> */}
                                     <td>{getOfficialDefiName(res[i].name)}</td>
                                     <td>{verifiedTag}</td>
                                     <td>{chainName}</td>
-                                    <td>{getOfficialCategoryName(res[i].category)}</td>
+                                    {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
+                                    <td>{tempCategory}</td>
                                     {/* <td>{res[i].contractNum}</td> */}
                                     <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
                                     <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
@@ -399,7 +425,8 @@ const DefiList = observer((props) => {
                                 <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{verifiedTag}</td>
                                 <td>{chainName}</td>
-                                <td>{getOfficialCategoryName(res[i].category)}</td>
+                                {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
+                                <td>{tempCategory}</td>
                                 {/* <td>{res[i].contractNum}</td> */}
                                 <td>
                                     {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}

@@ -1441,15 +1441,20 @@ hr.sideMenuLine {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
   /* background-color: #262932; */
   background-image: linear-gradient(to left, #1b2027, #252932);
-  padding: 20px;
+  /* padding: 20px; */
   cursor: pointer;
   overflow: hidden;
 }
 
 .banner img {
-  width: 21%;
+  /* width: 21%;
   margin-left: 760px;
-  margin-top: -130px;
+  margin-top: -130px; */
+  /* position:  */
+  top:0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .bannerTitle {
@@ -1480,6 +1485,32 @@ hr.sideMenuLine {
   color: #ffffff;
 }
 
+.bannerAdTextRect {
+  position: absolute;
+  margin-right: 0;
+  width: 30px;
+  /* height: 30px; */
+  border-radius: 5px;
+  /* border: solid 1px #ffffff; */
+  text-align: center;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  /* opacity: 0.6; */
+  background-color: #000;
+}
+
+.bannerAdText {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.65;
+  letter-spacing: normal;
+  color: rgb(240, 185, 35);
+}
+
 /* iPad Pro */
 @media all and (device-width: 1024px) {
   .wrapper {
@@ -1494,6 +1525,14 @@ hr.sideMenuLine {
     width: 738px;
     margin-left: -369px;
   }
+
+  .banner {
+    height: 57.1px;
+  }
+
+  .banner img {
+    height: 57.1px;
+  }
 }
 
 @media (min-width:414px) and (max-width:767px) {
@@ -1503,8 +1542,10 @@ hr.sideMenuLine {
   } */
   .banner {
     width: 394px;
-    height: 90px;
-    padding: 15px;
+    height: 61.5625px;
+
+    /* height: 90px; */
+    /* padding: 15px; */
   }
 
   .bannerTitle {
@@ -1516,7 +1557,12 @@ hr.sideMenuLine {
   }
 
   .banner img {
-    display: none;
+    /* display: none; */
+    top:0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* height: 100%; */
   }
 }
 
@@ -1527,8 +1573,9 @@ hr.sideMenuLine {
   } */
   .banner {
     width: 320px;
-    height: 90px;
-    padding: 15px;
+    height: 50px;
+    /* height: 80px; */
+    /* padding: 15px; */
   }
 
   .bannerTitle {
@@ -1540,7 +1587,11 @@ hr.sideMenuLine {
   }
 
   .banner img {
-    display: none;
+    top:0; 
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    /* display: none; */
   }
 }
 
@@ -1551,8 +1602,8 @@ hr.sideMenuLine {
   } */
   .banner {
     width: 300px;
-    height: 90px;
-    padding: 15px;
+    height: 46.875px;
+    /* padding: 15px; */
   }
 
   .bannerTitle {
@@ -1564,7 +1615,7 @@ hr.sideMenuLine {
   }
 
   .banner img {
-    display: none;
+    /* display: none; */
   }
 }
 
