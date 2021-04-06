@@ -63,7 +63,7 @@ const Banner = observer((props) => {
         //     <img className="noDragImg" src={binanceImg1} />
         // </div>
         <div className="banner" onClick={() => openBannerWindow("https://app.btcst.finance/")}>
-            <div className="bannerAdTextRect">
+            <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
                 <span className="bannerAdText">Ad</span>
             </div>
             <img src={bannerImg}  />
