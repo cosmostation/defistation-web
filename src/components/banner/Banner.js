@@ -16,17 +16,17 @@ const Banner = observer((props) => {
 
     const [bannerImg, setBannerImg] = useState(btcst);
 
-    function openBannerWindow(path) {
-        if (process.env.NODE_ENV === "production") {
-            ReactGA.ga("click", "banner", "BTC Standard Hashrate Token");
-        }
-        window.open(path, "_blank");
-    }
+    // function openBannerWindow(path) {
+    //     if (process.env.NODE_ENV === "production") {
+    //         ReactGA.ga("click", "banner", "BTC Standard Hashrate Token");
+    //     }
+    //     window.open(path, "_blank");
+    // }
 
     useEffect(() => {
-        if (process.env.NODE_ENV === "production") {
-            ReactGA.ga("pageView", "banner", "BTC Standard Hashrate Token");
-        }
+        // if (process.env.NODE_ENV === "production") {
+        //     ReactGA.ga("pageView", "banner", "BTC Standard Hashrate Token");
+        // }
 
         var isMobile = false; //initiate as false
         // device detection
@@ -62,11 +62,28 @@ const Banner = observer((props) => {
         //     <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism</p>
         //     <img className="noDragImg" src={binanceImg1} />
         // </div>
-        <div className="banner" onClick={() => openBannerWindow("https://app.btcst.finance/")}>
-            <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
-                <span className="bannerAdText">Ad</span>
-            </div>
-            <img src={bannerImg}  />
+
+        // <div className="banner" onClick={() => openBannerWindow("https://app.btcst.finance/")}>
+        //     <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
+        //         <span className="bannerAdText">Ad</span>
+        //     </div>
+        //     <img src={bannerImg}  />
+        // </div>
+
+        <div>
+            <ReactGA.OutboundLink
+                eventLabel="bannerClick"
+                to="https://app.btcst.finance/"
+                target="_blank"
+                trackerNames={['BTC Standard Hashrate Token']}
+            >
+                <div className="banner">
+                    <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
+                        <span className="bannerAdText">Ad</span>
+                    </div>
+                    <img src={bannerImg}  />
+                </div>
+            </ReactGA.OutboundLink>
         </div>
     );
 })
