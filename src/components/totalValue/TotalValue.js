@@ -885,7 +885,7 @@ const TotalValue = observer((props) => {
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
-                                        animation : { duration:500, easing:'out'},
+                                        animation : { duration:400, easing:'out'},
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
@@ -949,6 +949,7 @@ const TotalValue = observer((props) => {
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
+                                        animation : { duration:400, easing:'out'},
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
