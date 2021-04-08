@@ -67,6 +67,8 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 
+import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
+
 const TheDefiList = observer(() => {
     // const { global } = useStores();
 
@@ -321,7 +323,11 @@ const TheDefiList = observer(() => {
                 case "Helmet":
                     listFlag = true;
                     defiIconArr.push(helmet);
-                    break;    
+                    break;
+                case "ARIES FINANCIAL":
+                    listFlag = true;
+                    defiIconArr.push(ariesfinancial);
+                    break;
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"] != "") {

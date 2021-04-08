@@ -80,6 +80,8 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 
+import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
+
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
 import defiGithubIcon from "../../assets/images/defiLink/github.svg";
@@ -617,7 +619,10 @@ const TotalValue = observer((props) => {
                 break;
             case "Helmet":
                 setDefiIcon(helmet);
-                break;    
+                break;  
+            case "ARIES FINANCIAL":
+                setDefiIcon(ariesfinancial);
+                break;        
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -880,7 +885,7 @@ const TotalValue = observer((props) => {
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
-                                        animation : { duration:500, easing:'out'},
+                                        animation : { duration:400, easing:'out'},
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
@@ -944,6 +949,7 @@ const TotalValue = observer((props) => {
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
+                                        animation : { duration:400, easing:'out'},
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
