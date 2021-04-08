@@ -251,7 +251,7 @@ const TotalValue = observer((props) => {
 
                     let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
 
-                    console.log("currencyNum: ", currencyNum);
+                    // console.log("currencyNum: ", currencyNum);
 
                     if (i == 0) {
                         // tempMinTvl = currencyNum;
@@ -268,7 +268,7 @@ const TotalValue = observer((props) => {
                         }
                     }
 
-                    console.log("tempMinTvl: ", tempMinTvl);
+                    // console.log("tempMinTvl: ", tempMinTvl);
 
                     // 이전 연속 2개의 값이 0이 아니라면 직전 값으로 보정한다. (미싱 데이터 보정)
                     if (currencyNum == 0) {

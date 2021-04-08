@@ -1678,13 +1678,42 @@ hr.sideMenuLine {
   background-color: #1f232b;
 } */
 
-.defiListTableTr {
-  cursor: pointer;
+.__react_component_tooltip { 
+  pointer-events: auto !important; 
 }
 
-.defiListTableTr:hover {
-  background-color: #1f232b;
+.__react_component_tooltip.show { 
+  opacity: 1 !important;
 }
+
+#auditGreen {
+  color: #37cc6e;
+}
+
+#auditGray {
+  color: #454B57;
+}
+
+#auditTitle {
+  color: #fff;
+}
+
+#tooltipAuditTooltipBox span {
+  font-weight: 600;
+}
+
+#tooltipAuditTooltipBox a {
+  color: rgb(202, 202, 202);
+  text-decoration: underline;
+}
+
+/* .defiListTableTr {
+  cursor: pointer;
+} */
+
+/* .defiListTableTr:hover {
+  background-color: #1f232b;
+} */
 
 .comingSoon {
   color: #757F8E;
@@ -1720,13 +1749,20 @@ hr.sideMenuLine {
 }
 .defiListTable td:nth-child(3) {
   text-align: left;
+  cursor: pointer;
+}
+.defiListTable td:nth-child(3):hover {
+  /* background-color: #1f232b; */
+  color: rgb(200, 200, 200);
 }
 
+/* Audit */
 .defiListTable th:nth-child(4) {
-  text-align: left;
+  text-align: center;
 }
 .defiListTable td:nth-child(4) {
-  text-align: left;
+  text-align: center;
+  cursor: default;
 }
 
 .defiListTable th:nth-child(5) {
