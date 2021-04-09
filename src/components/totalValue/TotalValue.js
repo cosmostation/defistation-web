@@ -911,6 +911,59 @@ const TotalValue = observer((props) => {
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
+
+                                    {/* Dual Y Chart 테스트 */}
+
+                                    {/* <Chart
+                                    id="tvlGoogleChart"
+                                    width={viewWidth}
+                                    height={'220px'}
+                                    // left={'30px'}
+                                    chartType="LineChart"
+                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    data={[
+                                        ["Month", "CTC", "Gross Salary", "Variation of CTC", "Total No of Employes"],
+                                        ["Jan", 35000, 27000, 10000, 3],
+                                        ["feb", 30000, 24000, 8000, 4],
+                                        ["Mar", 50000, 37000, 7000, 5],
+                                        ["May", 20000, 17000, 5000, 6],
+                                        ["June", 20000, 17000, 5000, 5],
+                                        ["July", 20000, 17000, 5000, 10],
+                                        ["August", 20000, 17000, 5000, 7],
+                                        ["Sep", 20000, 17000, 5000, 5],
+                                        ["Nov", 20000, 17000, 5000, 5],
+                                        ["Dec", 20000, 17000, 5000, 9]
+                                      ]}
+                                    options={{
+                                        backgroundColor: "#262932",
+                                        legend: "none",
+                                        animation : { duration:400, easing:'out'},
+                                        hAxis: {
+                                            textStyle: {
+                                                color: '#757f8e',
+                                                fontSize: 11,
+                                            },
+                                            slantedText: true,
+                                            baselineColor: '#fff',
+                                            gridlineColor: '#3D424D',
+                                        },
+                                        vAxis: {
+                                            minValue: minTvl,
+                                            textStyle: {
+                                                color: '#757f8e',
+                                            },
+                                            baselineColor: '#fff',
+                                            gridlineColor: '#3D424D',
+                                        },
+                                        series: {
+                                        // 0: { curveType: 'function' },
+                                        3: { targetAxisIndex: 1 }
+                                        },
+                                        colors: ['#f0b923', '#fff', '#aaa', '#000'],
+                                        chartArea: { width: '88%', height: '70%' },
+                                    }}
+                                    rootProps={{ 'data-testid': '2' }}
+                                    /> */}
                                 </div>
                                 {/* Subpage Chart */}
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>
