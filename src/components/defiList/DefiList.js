@@ -69,8 +69,9 @@ import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png
 import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
-
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
+
+import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -318,6 +319,9 @@ const DefiList = observer((props) => {
             case "ARIES FINANCIAL":
                 resultImg = ariesfinancial;
                 break;
+            case "Alpha Homora":
+                resultImg = alphahomora;
+                break;    
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
