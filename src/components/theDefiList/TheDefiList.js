@@ -66,8 +66,11 @@ import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png
 import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
-
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
+
+import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
+import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
+import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -327,6 +330,18 @@ const TheDefiList = observer(() => {
                 case "ARIES FINANCIAL":
                     listFlag = true;
                     defiIconArr.push(ariesfinancial);
+                    break;
+                case "Alpha Homora":
+                    listFlag = true;
+                    defiIconArr.push(alphahomora);
+                    break;    
+                case "Cobalt.finance":
+                    listFlag = true;
+                    defiIconArr.push(cobaltfinance);
+                    break;
+                case "SwampFinance":
+                    listFlag = true;
+                    defiIconArr.push(swampfinance);
                     break;
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
