@@ -357,7 +357,7 @@ const TotalValue = observer((props) => {
                             tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null, null]);
                         } else {
                             // 서브 페이지
-                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
+                            // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
                         }
                     }
                     
@@ -442,30 +442,6 @@ const TotalValue = observer((props) => {
                 console.log("res.details: ", res.details);  // undefined
                 let resultDetailsObj = res.details;
                 global.changeChartDataDetails(resultDetailsObj);
-
-
-
-                // // tvl1DayChangeArr["pancake"] 이렇게 사용하도록 형식 변경
-                // let resultDetailsObj = res.details;
-                // var resultDetailsArr = Object.keys(resultDetailsObj).map((key) => [key, resultDetailsObj[key]]);
-
-                // console.log("resultDetailsArr: ", resultDetailsArr);
-
-                // let tvl1DayChangesArr = new Object;
-                // for (var i = 0; i < resultDetailsArr.length; i++) {
-                //     tvl1DayChangesArr[resultDetailsArr[i][0]] = resultDetailsArr[i][1];
-                // }
-
-                // console.log("tvl1DayChangesArr: ", tvl1DayChangesArr);
-
-                
-                
-
-
-
-                // res.result 를 배열로 바꾸기 
-                // let dailyTxObj = res.dailyTx;
-                // var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
             })
             .catch(err => setResponseError(err));
     }
