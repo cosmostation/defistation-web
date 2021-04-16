@@ -82,6 +82,8 @@ import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
 
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
+import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
+import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -102,7 +104,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("30");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 365
 
     const [chartData, setChartData] = useState(['x', 'TVL(USD)']);
     const [totalValueLockedUsd, setTotalValueLockedUsd] = useState(0);
@@ -115,11 +117,12 @@ const TotalValue = observer((props) => {
     const [currencyFullName, setCurrencyFullName] = useState("");
 
     // PC에서는 Total Value Locked, mobile에서는 TVL
-    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
+    // const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
+    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("TVL & TXs in BSC");
 
     // 1) 1034px 이상
     const [viewWidth, setViewWidth] = useState("740px");
-    const [chartWidth, setChartWidth] = useState("93.6%");
+    const [chartWidth, setChartWidth] = useState("89%");
 
     // 2) 1024px: 270px, 88%
     // 3) 768px: 270px, 88%
@@ -150,8 +153,10 @@ const TotalValue = observer((props) => {
         let urlStr = "";
         if (defiName == "DeFi") {
             urlStr = "all";
+            setChartData(['x', 'TVL(USD)', 'TXs in BSC']);
         } else {
             urlStr = defiName;
+            setChartData(['x', 'TVL(USD)']);
         }
 
         // console.log("urlStr: ", urlStr);
@@ -199,6 +204,7 @@ const TotalValue = observer((props) => {
                 // ]}
                 // let tempChartData = [['x', 'TVL(USD)']];
 
+                // ------------ 메인 페이지 TVL ------------
                 let tempChartData = [];
                 let initProjectTvlIndex = -1;
 
@@ -211,6 +217,32 @@ const TotalValue = observer((props) => {
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
+
+                // ------------ 메인 페이지 TXs ------------
+                if (defiName == "DeFi") {
+                    let dailyTxObj = res.dailyTx;
+                    var dailyTxArr = Object.keys(dailyTxObj).map((key) => [Number(key), dailyTxObj[key]]);
+
+                    console.log("dailyTxArr: ", dailyTxArr);
+
+                    // 최신 TXs 값 구하기. 최신 TXs 변화 % 계산하기
+                    let latestTxVal = 0;
+                    let latestTxChange = 0;
+                    for (var j = 0; j < dailyTxArr.length; j++) {
+                        if (j > 0) {
+                            if (dailyTxArr[j][1] > 0) latestTxVal = dailyTxArr[j][1];
+                            if (dailyTxArr[j - 1][1] > 0 && dailyTxArr[j][1] > 0) latestTxChange = (dailyTxArr[j][1] - dailyTxArr[j - 1][1]) / dailyTxArr[j][1] * 100;
+                        }
+                    }
+                    
+                    console.log("latestTxVal: ", latestTxVal);
+                    console.log("latestTxChange: ", latestTxChange);
+
+                    global.changeTransactions24h(latestTxVal);
+                    global.changeTransactions24hPercent(latestTxChange + "%");
+                }
+
+                // console.log("dailyTxArr: ", dailyTxArr);
 
                 let initTimestamp = 0;
                 let tempMinTvl;
@@ -306,10 +338,27 @@ const TotalValue = observer((props) => {
                         }
                     }
                     
+                    // dailyTxArr
                     if (initProjectTvlIndex == -1) {
-                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                        if (defiName == "DeFi") {
+                            // 메인 페이지
+                            let tempDailyTx = dailyTxArr[i][1];
+                            if (tempDailyTx == 0) {
+                                tempDailyTx = null;
+                            }
+                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempDailyTx]);
+                        } else {
+                            // 서브 페이지
+                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
+                        }
                     } else {
-                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
+                        if (defiName == "DeFi") {
+                            // 메인 페이지
+                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null, null]);
+                        } else {
+                            // 서브 페이지
+                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
+                        }
                     }
                     
                     if (i == resultArr.length - 1) {
@@ -352,7 +401,14 @@ const TotalValue = observer((props) => {
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
                 // 차트 데이터 적용
-                tempChartData.unshift(['x', 'TVL(USD)']);
+                if (defiName == "DeFi") {
+                    // 메인 페이지
+                    tempChartData.unshift(['x', 'TVL(USD)', 'TXs in BSC']);
+                } else {
+                    // 서브 페이지
+                    // tempChartData.unshift(['x', 'TVL(USD)', 'Token Prices']);
+                    tempChartData.unshift(['x', 'TVL(USD)']);
+                }
                 setChartData(tempChartData);
 
                 // TVL 1 DAY(%)
@@ -387,6 +443,8 @@ const TotalValue = observer((props) => {
                 let resultDetailsObj = res.details;
                 global.changeChartDataDetails(resultDetailsObj);
 
+
+
                 // // tvl1DayChangeArr["pancake"] 이렇게 사용하도록 형식 변경
                 // let resultDetailsObj = res.details;
                 // var resultDetailsArr = Object.keys(resultDetailsObj).map((key) => [key, resultDetailsObj[key]]);
@@ -399,6 +457,15 @@ const TotalValue = observer((props) => {
                 // }
 
                 // console.log("tvl1DayChangesArr: ", tvl1DayChangesArr);
+
+                
+                
+
+
+
+                // res.result 를 배열로 바꾸기 
+                // let dailyTxObj = res.dailyTx;
+                // var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
             })
             .catch(err => setResponseError(err));
     }
@@ -623,9 +690,15 @@ const TotalValue = observer((props) => {
                 break;  
             case "ARIES FINANCIAL":
                 setDefiIcon(ariesfinancial);
-                break;  
+                break; 
             case "Alpha Homora":
                 setDefiIcon(alphahomora);
+                break;    
+            case "Cobalt.finance":
+                setDefiIcon(cobaltfinance);
+                break;
+            case "SwampFinance":
+                setDefiIcon(swampfinance);
                 break;
             default:
                 let logoUrl = findLogoUrl(defiName);
@@ -870,14 +943,16 @@ const TotalValue = observer((props) => {
                     <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
                         <ul className="tvlChartCardUl">
                             <li>
+                                <p className="tvlChartLegend"><span className="circleYellow">⦁</span> TVL <span className="circleGray">⦁</span> TXs in BSC</p>
+
                                 {/* Total Value Locked in ... */}
                                 <span className="tvlChartCardTitle">{tvlChartCardTitleValue} in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
-                                {/* <p className="tvlChartUnitY">({currencyFullName} USD)</p> */}
+                                <p className="tvlChartUnitY">({currencyFullName} USD)</p>
+                                <p className="tvlChartUnitYRight">(TXs)</p>
 
                                 {/* Main Chart */}
-                                <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
-                                    {/* PC: 750px, Mobile: 300px */}
+                                {/* <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
                                     <Chart
                                     id="tvlGoogleChart"
                                     width={viewWidth}
@@ -915,33 +990,26 @@ const TotalValue = observer((props) => {
                                     }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
-
-                                    {/* Dual Y Chart 테스트 */}
-
-                                    {/* <Chart
+                                </div> */}
+                                {/* dual Y 차트 테스트 */}
+                                <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
+                                    <Chart
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
-                                    // left={'30px'}
+                                    style={{"margin-left":"-5px"}}
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
-                                    data={[
-                                        ["Month", "CTC", "Gross Salary", "Variation of CTC", "Total No of Employes"],
-                                        ["Jan", 35000, 27000, 10000, 3],
-                                        ["feb", 30000, 24000, 8000, 4],
-                                        ["Mar", 50000, 37000, 7000, 5],
-                                        ["May", 20000, 17000, 5000, 6],
-                                        ["June", 20000, 17000, 5000, 5],
-                                        ["July", 20000, 17000, 5000, 10],
-                                        ["August", 20000, 17000, 5000, 7],
-                                        ["Sep", 20000, 17000, 5000, 5],
-                                        ["Nov", 20000, 17000, 5000, 5],
-                                        ["Dec", 20000, 17000, 5000, 9]
-                                      ]}
+                                    data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
                                         legend: "none",
-                                        animation : { duration:400, easing:'out'},
+                                        // animation : { duration:400, easing:'out'},
+                                        // Gives each series an axis that matches the vAxes number below.
+                                        series: {
+                                            0: {targetAxisIndex: 0},
+                                            1: {targetAxisIndex: 1}
+                                        },
                                         hAxis: {
                                             textStyle: {
                                                 color: '#757f8e',
@@ -959,15 +1027,11 @@ const TotalValue = observer((props) => {
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
-                                        series: {
-                                        // 0: { curveType: 'function' },
-                                        3: { targetAxisIndex: 1 }
-                                        },
-                                        colors: ['#f0b923', '#fff', '#aaa', '#000'],
-                                        chartArea: { width: '88%', height: '70%' },
-                                    }}
+                                        colors: ["#f0b923", "#888A8F"],
+                                        chartArea: { width: chartWidth, height: '70%' },
+                                        }}
                                     rootProps={{ 'data-testid': '2' }}
-                                    /> */}
+                                    />
                                 </div>
                                 {/* Subpage Chart */}
                                 <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>

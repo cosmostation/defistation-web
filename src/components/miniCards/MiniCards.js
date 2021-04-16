@@ -14,6 +14,14 @@ const MiniCards = observer((props) => {
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
 
+    const [changeVal0, setChangeVal0] = useState("");     // 0%
+    const [changeVal1, setChangeVal1] = useState("");     // 0%
+    const [changeVal2, setChangeVal2] = useState("");     // 0%
+    const [changeVal3, setChangeVal3] = useState("");     // 0%
+
+    const [miniCardTitle0, setMiniCardTitle0] = useState();
+    const [miniCardTitle1, setMiniCardTitle1] = useState();
+    const [miniCardTitle2, setMiniCardTitle2] = useState();
     const [miniCardTitle3, setMiniCardTitle3] = useState();
     const [miniCardData3, setMiniCardData3] = useState("");
 
@@ -22,7 +30,9 @@ const MiniCards = observer((props) => {
 
     const [lockedBnbAmount, setLockedBnbAmount] = useState();
 
-    const [tvl1DayPercentTag, setTvl1DayPercentTag] = useState();
+    const [miniCardData1, setMiniCardData1] = useState();
+
+    
 
     const [urlFlag1, setUrlFlag1] = useState(false);
     const [urlFlagDetail, setUrlFlagDetail] = useState("");
@@ -93,38 +103,64 @@ const MiniCards = observer((props) => {
 
     function showTvl1Day() {
         if (global.tvl1DayPercent > 0) { 
-            setTvl1DayPercentTag("+" + global.tvl1DayPercent + "%");
+            setMiniCardData1("+" + global.tvl1DayPercent + "%");
         } else {
-            setTvl1DayPercentTag(global.tvl1DayPercent + "%");
+            setMiniCardData1(global.tvl1DayPercent + "%");
         }
     }
 
     useEffect(() => {
         getTotalBnbLocked(props.defiName);
         showTvl1Day();
-        setMiniCardTitle3("Last updated(UTC)");
 
+        // 메인 페이지 or 서브 페이지?
+        if (props.defiName == "DeFi") {
+            // 메인 페이지
+            setMiniCardTitle0("Total Value Locked");
+            setMiniCardTitle1("TXs 24h");
+            setMiniCardTitle2("Total BNB Locked");
+            setMiniCardTitle3("Trending");
+            
+        } else {
+            // 서브 페이지
+            setMiniCardTitle0("Total Value Locked");
+            setMiniCardTitle1("TVL Change 24h");
+            setMiniCardTitle2("Total BNB Locked");
+            setMiniCardTitle3("Last updated(UTC)");
+        }
+        
         // minicard 0 으로 보이는 현상 임시
-        if (tvl1DayPercentTag == "0%") {
+        if (miniCardData1 == "0%") {
             setTimeout(function() {
-                if (tvl1DayPercentTag != "0%") return;
+                if (miniCardData1 != "0%") return;
                 console.log("global.totalValueLockedUsd: ", global.totalValueLockedUsd);
                 showTvl1Day();
             }, 3000);
         }
+
+        // Total Value Locked 변화량(%) 값
+        if (String(miniCardData1).indexOf("+") != -1) {
+            setChangeVal0(<span className="miniCardChange textGreen">{miniCardData1}</span>);
+        } else if (String(miniCardData1).indexOf("-") != -1) {
+            setChangeVal0(<span className="miniCardChange textRed">{miniCardData1}</span>);
+        } else {
+            setChangeVal0(<span className="miniCardChange">{miniCardData1}</span>);
+        }
+
+        // 
         
         return () => {
 
         };
-    }, [props.defiName, global.totalValueLockedUsd, tvl1DayPercentTag])
+    }, [props.defiName, global.totalValueLockedUsd, miniCardData1])
 
     return (
         <div className="miniCards">
             <ul className="miniCardUl">
-                <MiniCard title="Total Value Locked" dataNum={global.totalValueLockedUsd} />
-                <MiniCard title="TVL Change 24h" dataNum={tvl1DayPercentTag} />
-                <MiniCard title="Total BNB Locked" dataNum={totalBnbLockedNum} symbol="BNB" />
-                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} />
+                <MiniCard title={miniCardTitle0} dataNum={global.totalValueLockedUsd} data24hChange={changeVal0} />
+                <MiniCard title={miniCardTitle1} dataNum={miniCardData1} data24hChange={changeVal1} />
+                <MiniCard title={miniCardTitle2} dataNum={totalBnbLockedNum} symbol="BNB" data24hChange={changeVal2} />
+                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} />
             </ul>
         </div>
     );

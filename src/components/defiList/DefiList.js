@@ -3,7 +3,6 @@ import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import useStores from '../../useStores';
-
 import _ from "lodash";
 
 import '../../App.css';
@@ -72,6 +71,8 @@ import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
 
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
+import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
+import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -115,69 +116,6 @@ const DefiList = observer((props) => {
             }
         }
         return categoryName;
-    }
-
-    function onClickTooltipContent(e) {
-        // do not hide tooltip when clicking inside tooltip content area
-        e.stopPropagation()
-    }
-
-    function getAuditInfo(defiName) {
-        console.log("getAuditInfo 시작");
-
-        let resultArr = [false, []];
-        // [true, [["업체명", "http://..."],["업체명", "http://..."],["업체명", "http://..."] ... ]]
-        // [true, []]]
-        // [false, []]]
-
-        // 예외처리
-        if (defiName == "pancake") {
-            defiName = "PancakeSwap";
-        }
-        
-        let categoryName = "";
-        for (var i = 0; i < defistationApplicationList.length; i++) {
-            if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-
-                // defistationApplicationList[i]["Security Information"]
-                
-                let auditStr = defistationApplicationList[i]["Security Information"].trim();
-
-                if (auditStr != "") {
-                    if (auditStr.toUpperCase() == "YES") {
-                        resultArr[0] = true;
-                    } else {
-                        // 업체명: https://.... , 업체명: https://.... 형태인가?
-                        if (auditStr.indexOf(": http") != -1 || auditStr.indexOf(":http") != -1) {
-                            // 형식이 맞다
-                            resultArr[0] = true;
-
-                            // parsing
-                            // 먼저 , 기준으로 split
-                            let auditArr = auditStr.split(",");
-
-                            for (var i = 0; i < auditArr.length; i++) {
-                                let tempStr = (auditArr[i]).trim();
-                                let auditArr2 = tempStr.split(":");
-                                resultArr[1].push(auditArr2);
-                            }
-                        }
-                    }
-                }
-
-
-                // if ((defistationApplicationList[i]["Security Information"]).indexOf("http") != -1) {
-
-                //     let testStr = 
-                //     `CertiK: https://www.certik.org/projects/autofarm,
-                //     Vidar the Community Auditor: https://autofarm.network/audit_vidar_autofarm_v2.pdf`;
-
-                //     categoryName = defistationApplicationList[i]["Security Information"];
-                //     break;
-                // }
-            }
-        }
-        return resultArr;
     }
 
     function selectCoinImg(defiName) {
@@ -322,6 +260,12 @@ const DefiList = observer((props) => {
             case "Alpha Homora":
                 resultImg = alphahomora;
                 break;    
+            case "Cobalt.finance":
+                resultImg = cobaltfinance;
+                break;
+            case "SwampFinance":
+                resultImg = swampfinance;
+                break;    
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
@@ -363,7 +307,6 @@ const DefiList = observer((props) => {
                     
                     let rankNum = rankingCount;
                     let defiName = res[i].name;
-                    let defiName0 = defiName;
                     let coinImg = selectCoinImg(res[i].name);
 
                     // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
@@ -403,97 +346,12 @@ const DefiList = observer((props) => {
                         }
                     }
 
-                    // ------------------------------------- Audit Mark START -------------------------------------
-                    // let verifiedTag;
-                    // if (res[i].verified) {
-                    //     verifiedTag = <img src={verifiedIcon} />
-                    // } else {
-                    //     verifiedTag = <img src={noVerifiedIcon} />
-                    // }
-                    
-                    if (defiName0 == "pancake") {
-                        defiName0 = "PancakeSwap";
-                    }
-                    
-                    var listIndex = defistationApplicationList.map(function(o) { return o["Official Project Name"]; }).indexOf(defiName0);
-
-                    let auditStr = "";
-                    if (listIndex != -1) {
-                        let tempAuditStr = defistationApplicationList[listIndex]["Security Information"];
-                        let auditArr = tempAuditStr.split(";");
-
-                        for (var j = 0; j < auditArr.length; j++) {
-                            let auditName = "";
-                            let auditUrl = "";
-                            
-                            let detailAuditArr = ((auditArr[j]).trim()).split(":");
-                            
-                            if (detailAuditArr[0] != undefined) {
-                                auditName = detailAuditArr[0];
-                            }
-
-                            if (detailAuditArr[1] != undefined && detailAuditArr[2] != undefined) {
-                                // https: 때문에 2개로 나눠지는 거 다시 합치기
-                                auditUrl = detailAuditArr[1] + ":" + detailAuditArr[2];
-                                if (auditUrl.length > 0) {
-                                    auditUrl = (auditUrl).trim();
-                                }
-                            }
-
-                            if (j == 0) {
-                                auditStr = "<p id='tooltipAuditTooltipBox' style='text-align:left;'><span id='auditGreen'>⦁ </span><span id='auditGreen'>Audited</span><br />";
-                            }
-
-                            if (defiName0 == "Jetfuel.Finance") {
-                                console.log("auditName: ", auditName);
-                            }
-
-                            if (auditName != "YES" && auditName != "https" && auditName != "http" && tempAuditStr != "") {
-                                auditStr += "<span>" + auditName + ": </span><a href='javascript:window.open(`" + auditUrl +  "`, `_blank`);'>" + auditUrl +  "</a><br />";
-                            }
-
-                            if (j == auditArr.length - 1) {
-                                auditStr += "</p>";
-                            }
-                        }
-                    }
-
                     let verifiedTag;
                     if (res[i].verified) {
-                        verifiedTag = 
-                        <div>
-                            <p
-                                className="tooltipRect"
-                                data-place = "right"
-                                data-arrow-color = "#0d1015"
-                                data-background-color = "#0d1015"
-                                data-delay-hide = "500"
-                                // data-tip="<p id='tooltipAuditTooltipBox' style='text-align:left;'><span id='auditGreen'>⦁ </span><span id='auditGreen'>Audited</span><br /><span>Certik: </span><a href='javascript:window.open(`https://github.com/JustLiquidity/audits`, `_blank`);'>https://github.com/JustLiquidity/audits</a></p>"
-                                data-tip={auditStr}
-                                data-html={true}
-                                data-effect="solid"
-                            >
-                                <span id='auditGreen'>⦁</span>
-                            </p>
-                        </div>
+                        verifiedTag = <img src={verifiedIcon} />
                     } else {
-                        verifiedTag = 
-                        <div>
-                            <p
-                                className="tooltipRect"
-                                data-place = "right"
-                                data-arrow-color = "#0d1015"
-                                data-background-color = "#0d1015"
-                                data-delay-hide = "500"
-                                data-tip="<p id='tooltipAuditTooltipBox' style='text-align:left;'><span id='auditGray'>⦁ </span><span id='auditGray'>Not Audited</span></p>"
-                                data-html={true}
-                                data-effect="solid"
-                            >
-                                <span id='auditGray'>⦁</span>
-                            </p>
-                        </div>
+                        verifiedTag = <img src={noVerifiedIcon} />
                     }
-                    // ------------------------------------- Audit Mark END -------------------------------------
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
                     let tempDate;
@@ -557,29 +415,12 @@ const DefiList = observer((props) => {
                         if (getOfficialDefiName(res[i].name) == "BakerySwap") {
                             // AD: 가장 앞에
                             tableCodeArr.unshift(
-                                // <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
-                                <tr className="defiListTableTr">
+                                <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                     <td>Ad</td>
-                                    <td onClick={() => movePage("/" + defiName)}><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                                    <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
                                     {/* <td>{coinImg}</td> */}
-                                    <td onClick={() => movePage("/" + defiName)}>{getOfficialDefiName(res[i].name)}</td>
-                                    <td>
-                                        {/* <div style={getAuditInfo(res[i].name)[0] == true ? undefined : { display: "none" } }>
-                                            <p
-                                                data-place = "bottom"
-                                                data-arrow-color = "#000"
-                                                data-background-color = "#000"
-                                                data-delay-hide = "500"
-                                                data-tip="<p id='tooltipAuditTooltipBox' style='text-align:left;'><span id='auditGreen'>⦁ </span><span id='auditGreen'>Audited</span><br /><span>Certik: </span><a href='javascript:window.open(`https://github.com/JustLiquidity/audits`, `_blank`);'>https://github.com/JustLiquidity/audits</a></p>"
-                                                data-html={true}
-                                            >
-                                                {verifiedTag}
-                                            </p>
-                                            <ReactTooltip clickable = {true} />
-                                        </div> */}
-
-                                        {verifiedTag}
-                                    </td>
+                                    <td>{getOfficialDefiName(res[i].name)}</td>
+                                    <td>{verifiedTag}</td>
                                     <td>{chainName}</td>
                                     {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
                                     <td>{tempCategory}</td>
@@ -594,11 +435,11 @@ const DefiList = observer((props) => {
                         }
 
                         tableCodeArr.push(
-                            <tr key={i} className="defiListTableTr">
+                            <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
-                                <td onClick={() => movePage("/" + defiName)}><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                                <td><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
                                 {/* <td>{coinImg}</td> */}
-                                <td onClick={() => movePage("/" + defiName)}>{getOfficialDefiName(res[i].name)}</td>
+                                <td>{getOfficialDefiName(res[i].name)}</td>
                                 <td>{verifiedTag}</td>
                                 <td>{chainName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
@@ -667,7 +508,6 @@ const DefiList = observer((props) => {
                 </thead>
                 <tbody className="defiListTableBody">
                     {defiListTableCode}
-                    <ReactTooltip clickable = {true} />
                 </tbody>
             </table>
             <br />
