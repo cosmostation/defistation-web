@@ -23,16 +23,18 @@ const MiniCards = observer((props) => {
     const [miniCardTitle1, setMiniCardTitle1] = useState();
     const [miniCardTitle2, setMiniCardTitle2] = useState();
     const [miniCardTitle3, setMiniCardTitle3] = useState();
+
+    const [miniCardData0, setMiniCardData0] = useState("0%");
+    const [miniCardData1, setMiniCardData1] = useState("0%");
+    const [miniCardData2, setMiniCardData2] = useState("");
     const [miniCardData3, setMiniCardData3] = useState("");
+
+    const [miniCardData3b, setMiniCardData3b] = useState("");
 
     const [totalBnbLockedNum, setTotalBnbLockedNum] = useState(0);
     const [projectNum, setProjectNum] = useState(0);
 
     const [lockedBnbAmount, setLockedBnbAmount] = useState();
-
-    const [miniCardData1, setMiniCardData1] = useState();
-
-    
 
     const [urlFlag1, setUrlFlag1] = useState(false);
     const [urlFlagDetail, setUrlFlagDetail] = useState("");
@@ -80,8 +82,22 @@ const MiniCards = observer((props) => {
                 // setLockedBnbAmount(resultArr[resultArr.length - 1][1]);
                 // 해당 Defi BNB와 전체 BNB 유통량 비율
                 if (props.defiName != "DeFi") {
+                    // 서브 페이지
                     // 유통량: 147883948
                     setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 147883948 * 100).toFixed(4) * 1) + "%");
+                } else {
+                    // 메인 페이지
+                    
+                    // ---------------------------- BNB locked change ----------------------------
+                    let bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 1][1] * 100;
+
+                    if (bnbChange24hPercent > 0) {
+                        setChangeVal2(<span className="miniCardChange textGreen">+{bnbChange24hPercent.toFixed(2)}%</span>);
+                    } else if (bnbChange24hPercent < 0) {
+                        setChangeVal2(<span className="miniCardChange textRed">-{bnbChange24hPercent.toFixed(2)}%</span>);
+                    } else {
+                        setChangeVal2(<span className="miniCardChange">{bnbChange24hPercent.toFixed(2)}</span>);
+                    }
                 }
 
                 // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
@@ -95,23 +111,27 @@ const MiniCards = observer((props) => {
                 }
 
                 // Last updated(UTC)
-                setMiniCardData3(tempDate);
-
+                if (props.defiName != "DeFi") {
+                    // 서브 페이지
+                    setMiniCardData3(tempDate);
+                }
             })
             .catch(err => setResponseError(err));
     }
 
-    function showTvl1Day() {
-        if (global.tvl1DayPercent > 0) { 
-            setMiniCardData1("+" + global.tvl1DayPercent + "%");
-        } else {
-            setMiniCardData1(global.tvl1DayPercent + "%");
-        }
-    }
+    // function showTvl1Day() {
+    //     if (global.tvl1DayPercent > 0) { 
+    //         setMiniCardData1("+" + global.tvl1DayPercent + "%");
+    //     } else {
+    //         setMiniCardData1(global.tvl1DayPercent + "%");
+    //     }
+    // }
+
+    const [trendingDefiName, setTrendingDefiName] = useState("");
 
     useEffect(() => {
         getTotalBnbLocked(props.defiName);
-        showTvl1Day();
+        // showTvl1Day();
 
         // 메인 페이지 or 서브 페이지?
         if (props.defiName == "DeFi") {
@@ -120,39 +140,111 @@ const MiniCards = observer((props) => {
             setMiniCardTitle1("TXs 24h");
             setMiniCardTitle2("Total BNB Locked");
             setMiniCardTitle3("Trending");
-            
+
+            // change0
+            if (global.tvl1DayPercent > 0) { 
+                setMiniCardData0("+" + global.tvl1DayPercent + "%");
+            } else {
+                setMiniCardData0(global.tvl1DayPercent + "%");
+            }
+
+            // minicard 0 으로 보이는 현상 임시
+            if (miniCardData0 == "0%") {
+                setTimeout(function() {
+                    if (miniCardData0 != "0%") return;
+                    console.log("global.totalValueLockedUsd: ", global.totalValueLockedUsd);
+                    // showTvl1Day();
+                    if (global.tvl1DayPercent > 0) { 
+                        setMiniCardData1("+" + global.tvl1DayPercent + "%");
+                    } else {
+                        setMiniCardData1(global.tvl1DayPercent + "%");
+                    }
+                }, 3000);
+            }
+
+            // Total Value Locked 변화량(%) 값
+            if (String(miniCardData0).indexOf("+") != -1) {
+                setChangeVal0(<span className="miniCardChange textGreen">{miniCardData0}</span>);
+            } else if (String(miniCardData0).indexOf("-") != -1) {
+                setChangeVal0(<span className="miniCardChange textRed">{miniCardData0}</span>);
+            } else {
+                setChangeVal0(<span className="miniCardChange">{miniCardData0}</span>);
+            }
+
+            // ---------------------------- TXs ----------------------------
+            setMiniCardData1(global.transactions24h);
+            if (String(global.transactions24hPercent).indexOf("+") != -1) {
+                setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
+            } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
+                setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
+            } else {
+                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
+            }
+
+            // ---------------------------- Trending ----------------------------
+            // random(1~3위)
+            let randomNum = Math.floor(Math.random() * 3) * 3;
+
+            //     if (urlFlagDetail == chartFullUrl) return;
+            // setUrlFlagDetail(chartFullUrl);
+
+            let trendingArr = global.trending;
+            // defiName0, tvl0, change0
+            setMiniCardData3b(<span className="trendingDefiName">{trendingArr[randomNum + 0]}</span>);
+            setMiniCardData3(trendingArr[randomNum + 1]);
+            setMiniCardData1(global.transactions24h);
+            if (String(global.transactions24hPercent).indexOf("+") != -1) {
+                setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
+            } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
+                setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
+            } else {
+                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
+            }
+
+            // change
+            if (trendingArr[randomNum + 2] > 0) {
+                setChangeVal3(<span className="miniCardChange textGreen">+{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
+            } else if (trendingArr[randomNum + 2] < 0) {
+                setChangeVal3(<span className="miniCardChange textRed">-{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
+            } else {
+                setChangeVal3(<span className="miniCardChange">{(trendingArr[randomNum + 2] * 100).toFixed(2)}</span>);
+            }
+
+            setTrendingDefiName(trendingArr[randomNum + 0]);
         } else {
             // 서브 페이지
             setMiniCardTitle0("Total Value Locked");
             setMiniCardTitle1("TVL Change 24h");
             setMiniCardTitle2("Total BNB Locked");
             setMiniCardTitle3("Last updated(UTC)");
-        }
-        
-        // minicard 0 으로 보이는 현상 임시
-        if (miniCardData1 == "0%") {
-            setTimeout(function() {
-                if (miniCardData1 != "0%") return;
-                console.log("global.totalValueLockedUsd: ", global.totalValueLockedUsd);
-                showTvl1Day();
-            }, 3000);
-        }
 
-        // Total Value Locked 변화량(%) 값
-        if (String(miniCardData1).indexOf("+") != -1) {
-            setChangeVal0(<span className="miniCardChange textGreen">{miniCardData1}</span>);
-        } else if (String(miniCardData1).indexOf("-") != -1) {
-            setChangeVal0(<span className="miniCardChange textRed">{miniCardData1}</span>);
-        } else {
-            setChangeVal0(<span className="miniCardChange">{miniCardData1}</span>);
-        }
+            // TVL Change 24h
+            // minicard 0 으로 보이는 현상 임시
+            if (miniCardData0 == "0%") {
+                setTimeout(function() {
+                    if (miniCardData0 != "0%") return;
+                    // showTvl1Day();
+                    if (global.tvl1DayPercent > 0) { 
+                        setMiniCardData1("+" + global.tvl1DayPercent + "%");
+                    } else {
+                        setMiniCardData1(global.tvl1DayPercent + "%");
+                    }
+                }, 3000);
+            }
 
-        // 
+            // // TVL Change 24h
+            // if (global.tvl1DayPercent > 0) { 
+            //     setMiniCardData1("+" + global.tvl1DayPercent + "%");
+            // } else {
+            //     setMiniCardData1(global.tvl1DayPercent + "%");
+            // }
+        }
         
         return () => {
 
         };
-    }, [props.defiName, global.totalValueLockedUsd, miniCardData1])
+        // global.totalValueLockedUsd 삭제
+    }, [props.defiName, miniCardData1])
 
     return (
         <div className="miniCards">
@@ -160,7 +252,7 @@ const MiniCards = observer((props) => {
                 <MiniCard title={miniCardTitle0} dataNum={global.totalValueLockedUsd} data24hChange={changeVal0} />
                 <MiniCard title={miniCardTitle1} dataNum={miniCardData1} data24hChange={changeVal1} />
                 <MiniCard title={miniCardTitle2} dataNum={totalBnbLockedNum} symbol="BNB" data24hChange={changeVal2} />
-                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} />
+                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} />
             </ul>
         </div>
     );

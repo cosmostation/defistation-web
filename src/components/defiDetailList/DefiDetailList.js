@@ -66,7 +66,7 @@ const DefiDetailList = observer((props) => {
         if (urlStr == "") return;
 
         let lockedBnbArr = await getBnbLockedList(defiName);
-        console.log("lockedBnbArr: ", lockedBnbArr);
+        // console.log("lockedBnbArr: ", lockedBnbArr);
 
         let chartFullUrl;
         if (chartPeriod == 7) {

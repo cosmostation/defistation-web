@@ -16,6 +16,7 @@ const MiniCard = observer((props) => {
         <li className="miniCardList">
             <span className="miniCardTitle">{props.title}</span>
             {props.data24hChange}
+            {props.trendingDefiName}
             <p style={props.symbol == "BNB" ? undefined : { display: "none" } }  className="miniCardDataNum">{props.dataNum} <span style={{"color":"#f0b923"}}>BNB</span></p>
             <p style={props.symbol == "BNB" ? { display: "none" } : undefined }  className="miniCardDataNum">{props.dataNum}</p>
         </li>

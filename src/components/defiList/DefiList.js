@@ -93,7 +93,7 @@ const DefiList = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"];
                 break;
             }
         }
@@ -300,6 +300,7 @@ const DefiList = observer((props) => {
 
                 // AD random
                 let adNum = generateRandom(0, res.length);
+                let rankInfoArr = [];
 
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
@@ -454,9 +455,25 @@ const DefiList = observer((props) => {
                                 {/* <td>{tempDate}</td> */}
                             </tr>
                         );
+
+                        // 랭킹 1,2,3위 보관
+                        let tempDefiName = res[i].name;
+                        if (tempDefiName == "pancake") {
+                            tempDefiName = "PancakeSwap"
+                        }
+                        rankInfoArr.push(tempDefiName, currencyNum + currencyUnit, change24hValue);
                     }
                 }
-                console.count("DefiList Call");
+                // console.count("DefiList Call");
+
+                // 1, 2, 3위는 Trending 목록에 보관
+                // defiName0, tvl0, change0
+                // global.changeTrending([
+                //     res[0].name, res[0].lockedUsd, res[0].tvlPercentChange24h, 
+                //     res[1].name, res[1].lockedUsd, res[1].tvlPercentChange24h, 
+                //     res[2].name, res[2].lockedUsd, res[2].tvlPercentChange24h
+                // ]);
+                global.changeTrending(rankInfoArr);
 
                 // console.log("tableCodeArr: ", tableCodeArr);
 

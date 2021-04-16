@@ -1021,6 +1021,10 @@ hr.sideMenuLine {
   color: #f0b923;
 }
 
+.circleGreen {
+  color: #33ad5f;
+}
+
 .circleGray {
   color: #888A8F;
 }
@@ -1235,6 +1239,25 @@ hr.sideMenuLine {
   letter-spacing: normal;
   text-align: right;
   color: #ffffff;
+}
+
+.trendingDefiName {
+  font-family: "Rubik-Regular", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+    /* left: 0; */
+    float: left;
+    /* bottom: 0; */
+    position: absolute;
+    /* margin-bottom: 0; */
+    margin-top: 29px;
+    margin-left: -54px;
 }
 
 

@@ -37,13 +37,13 @@ export default class GlobalStore {
   };
 
   // Trending
-  @observable trending = 0;
+  @observable trending = [];
   @action changeTrending = (value) => {
     this.trending = value;
   };
 
   // Trending 24h 변화(%)
-  @observable trending24hPercent = 0;
+  @observable trending24hPercent = [];
   @action changeTrending24hPercent = (value) => {
     this.trending24hPercent = value;
   };
