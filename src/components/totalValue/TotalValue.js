@@ -254,7 +254,7 @@ const TotalValue = observer((props) => {
 
                     let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
 
-                    console.log("currencyNum: ", currencyNum);
+                    // console.log("currencyNum: ", currencyNum);
 
                     if (i == 0) {
                         // tempMinTvl = currencyNum;
@@ -271,7 +271,7 @@ const TotalValue = observer((props) => {
                         }
                     }
 
-                    console.log("tempMinTvl: ", tempMinTvl);
+                    // console.log("tempMinTvl: ", tempMinTvl);
 
                     // 이전 연속 2개의 값이 0이 아니라면 직전 값으로 보정한다. (미싱 데이터 보정)
                     if (currencyNum == 0) {
@@ -290,6 +290,8 @@ const TotalValue = observer((props) => {
                             }
                         }
                     }
+
+                    console.log(i + "번째: " + currencyNum);
 
                     // 신규 프로젝트인 경우 7d, 30d 일 때 앞에 tvl 값이 0이 연속으로 오는 경우 해당 배열 요소 제거
                     // tempChartData[0][1] 이 0인가?
@@ -311,7 +313,7 @@ const TotalValue = observer((props) => {
                     if (initProjectTvlIndex == -1) {
                         tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
                     } else {
-                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
+                        // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), null]);
                     }
                     
                     if (i == resultArr.length - 1) {
@@ -320,6 +322,8 @@ const TotalValue = observer((props) => {
                         global.changeTotalValueLockedUsd("$ " + numberWithCommas(resultArr[i][1]));
                     }
                 }
+
+                console.log("tempChartData: ", tempChartData);
                 
                 // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
                 // if (chartPeriod - resultArr.length > 0) {
@@ -388,19 +392,6 @@ const TotalValue = observer((props) => {
                 console.log("res.details: ", res.details);  // undefined
                 let resultDetailsObj = res.details;
                 global.changeChartDataDetails(resultDetailsObj);
-
-                // // tvl1DayChangeArr["pancake"] 이렇게 사용하도록 형식 변경
-                // let resultDetailsObj = res.details;
-                // var resultDetailsArr = Object.keys(resultDetailsObj).map((key) => [key, resultDetailsObj[key]]);
-
-                // console.log("resultDetailsArr: ", resultDetailsArr);
-
-                // let tvl1DayChangesArr = new Object;
-                // for (var i = 0; i < resultDetailsArr.length; i++) {
-                //     tvl1DayChangesArr[resultDetailsArr[i][0]] = resultDetailsArr[i][1];
-                // }
-
-                // console.log("tvl1DayChangesArr: ", tvl1DayChangesArr);
             })
             .catch(err => setResponseError(err));
     }
@@ -440,7 +431,7 @@ const TotalValue = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"];
                 break;
             }
         }

@@ -93,7 +93,7 @@ const DefiList = observer((props) => {
         let logoUrl = "";
         for (var i = 0; i < defistationApplicationList.length; i++) {
             if (defistationApplicationList[i]["Official Project Name"] == defiName) {
-                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Link should directly DISPLAY Logo image. Google drive link is NOT accepted.)"];
+                logoUrl = defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"];
                 break;
             }
         }
@@ -409,6 +409,10 @@ const DefiList = observer((props) => {
                         tempCategory = tempCategory.replace(/\(.*\)/gi, '');
                         if (tempCategory == "") {
                             tempCategory = "Other";
+                        }
+
+                        if (res[i].name == "Autofarm") {
+                            console.log("tempCategory: ", tempCategory);
                         }
 
                         // if (i == adNum) {
