@@ -304,6 +304,7 @@ const DefiList = observer((props) => {
 
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
+                    let tokenName;
                     // let rankNum = i + 1;
                     
                     let rankNum = rankingCount;
@@ -315,19 +316,31 @@ const DefiList = observer((props) => {
                     defiName = replaceAll(defiName, " ", "");
                     defiName = defiName.toLowerCase();
 
-                    if (i == 0) {
-                        rankNum = <img src={rankIcon1} style={{ "width": "24px", marginTop: "4px" }} />;
-                    } else if (i == 1) {
-                        rankNum = <img src={rankIcon2} style={{ "width": "24px", marginTop: "4px" }} />;
-                    } else if (i == 2) {
-                        rankNum = <img src={rankIcon3} style={{ "width": "24px", marginTop: "4px" }} />;
-                    }
+                    // rank 메달 이미지
+                    // if (i == 0) {
+                    //     rankNum = <img src={rankIcon1} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // } else if (i == 1) {
+                    //     rankNum = <img src={rankIcon2} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // } else if (i == 2) {
+                    //     rankNum = <img src={rankIcon3} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // }
 
-                    if (res[i].chain == "bsc") {
-                        chainName = "BSC";
-                    } else {
-                        chainName = res[i].chain;
-                    }
+                    // if (res[i].chain == "bsc") {
+                    //     chainName = "BSC";
+                    // } else {
+                    //     chainName = res[i].chain;
+                    // }
+
+                    // Token 이름
+                    // tokenName
+                    
+
+
+
+
+
+
+
 
                     // 현재 기준 변화량
                     let change24hValue = res[i].tvlPercentChange24h;
@@ -368,12 +381,14 @@ const DefiList = observer((props) => {
                     let digit = getCurrencyDigit(res[i].lockedUsd);
                     let currencyUnit = getCurrencyUnit(res[i].lockedUsd);
                     let currencyNum;
-                    // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
-                    if (digit <= 1000000) {
-                        currencyNum = (res[i].lockedUsd / digit).toFixed(1) * 1;
-                    } else {
-                        currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
-                    }
+                    // // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
+                    // if (digit <= 1000000) {
+                    //     currencyNum = (res[i].lockedUsd / digit).toFixed(1) * 1;
+                    // } else {
+                    //     currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
+                    // }
+                    // 소숫점 2자리로 표현
+                    currencyNum = (res[i].lockedUsd / digit).toFixed(2);
 
                     // volume
                     let digit2 = getCurrencyDigit(res[i].volume);
@@ -385,6 +400,56 @@ const DefiList = observer((props) => {
                         volumeStr = "$ " + currencyVolume + currencyUnitForVolume;
                     } else {
                         volumeStr = "-";
+                    }
+
+                    // token symbol name
+                    // let tokenSymbolName = "CAKE";
+                    // let tokenPrice = "$ 99.99";
+                    // let tokenMarketCap = "$ 9.99B";
+                    // let tokenHolders = "999,999";
+                    let tokenSymbolName = res[i].token;
+                    let tokenPrice = "$ " + res[i].price;
+                    let tokenMarketCap = res[i].marketCap;
+                    let tokenHolders = res[i].holders;
+
+                    // marketCap K M B 단위로 표시
+                    let digitForMarketCap = getCurrencyDigit(tokenMarketCap);
+                    let currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
+                    // 소숫점 2자리로 표현
+                    let tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
+
+                    // 변화율
+                    let tokenPriceChange24h = res[i].priceChange24h;
+                    let tokenPriceChange24hTag;
+                    if (tokenPriceChange24h > 0) {
+                        // +
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenPriceChange24h == 0) {
+                        tokenPriceChange24hTag = <span className="defiListTableSubText">{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenPriceChange24h < 0) {
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                    }
+
+                    let tokenMarketCapChange24h = res[i].marketCapChange24h;
+                    let tokenMarketCapChange24hTag;
+                    if (tokenMarketCapChange24h > 0) {
+                        // +
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenMarketCapChange24h == 0) {
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText">{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenMarketCapChange24h < 0) {
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                    }
+
+                    let tokenHoldersChange24h = res[i].holdersChange24h;
+                    let tokenHoldersChange24hTag;
+                    if (tokenHoldersChange24h > 0) {
+                        // +
+                        tokenHoldersChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenHoldersChange24h == 0) {
+                        tokenHoldersChange24hTag = <span className="defiListTableSubText">{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
+                    } else if (tokenHoldersChange24h < 0) {
+                        tokenHoldersChange24hTag = <span className="defiListTableSubText textRed">{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
                     }
 
                     if (res[i].contractNum == 0) {
@@ -412,46 +477,69 @@ const DefiList = observer((props) => {
                             tempCategory = "Other";
                         }
 
-                        // if (i == adNum) {
-                        if (getOfficialDefiName(res[i].name) == "BakerySwap") {
-                            // AD: 가장 앞에
-                            tableCodeArr.unshift(
-                                <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
-                                    <td>Ad</td>
-                                    <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
-                                    {/* <td>{coinImg}</td> */}
-                                    <td>{getOfficialDefiName(res[i].name)}</td>
-                                    <td>{verifiedTag}</td>
-                                    <td>{chainName}</td>
-                                    {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                    <td>{tempCategory}</td>
-                                    {/* <td>{res[i].contractNum}</td> */}
-                                    <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
-                                    <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
-                                    <td>$ {currencyNum + currencyUnit}</td>
-                                    <td>{change24hTag}</td>
-                                    {/* <td>{tempDate}</td> */}
-                                </tr>
-                            );
-                        }
+                        // if (getOfficialDefiName(res[i].name) == "BakerySwap") {
+                        //     // AD: 가장 앞에
+                        //     tableCodeArr.unshift(
+                        //         <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                        //             <td>Ad</td>
+                        //             <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                        //             {/* <td>{coinImg}</td> */}
+                        //             <td>
+                        //                 {getOfficialDefiName(res[i].name)}<br />
+                        //                 <span className="defiListTableCategory">{tempCategory}</span>
+                        //             </td>
+                        //             <td>{verifiedTag}</td>
+                        //             <td>{tokenSymbolName}</td>
+                        //             {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
+                        //             <td>{tokenPrice}</td>
+                        //             <td>{tokenMarketCap}</td>
+                        //             <td>{tokenHolders}</td>
+                        //             {/* <td>{res[i].contractNum}</td> */}
+                        //             <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
+                        //             {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
+                        //             <td>$ {currencyNum + currencyUnit}</td>
+                        //             {/* <td>{change24hTag}</td> */}
+                        //             {/* <td>{tempDate}</td> */}
+                        //         </tr>
+                        //     );
+                        // }
 
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
                                 <td>{rankNum}</td>
-                                <td><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                                <td><div className="tokeImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
-                                <td>{getOfficialDefiName(res[i].name)}</td>
-                                <td>{verifiedTag}</td>
-                                <td>{chainName}</td>
+                                <td>
+                                    {getOfficialDefiName(res[i].name)}<br />
+                                    <span className="defiListTableCategory">{tempCategory}</span>
+                                </td>
+                                <td>
+                                    <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li>
+                                </td>
+                                <td>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                <td>{tempCategory}</td>
+                                <td>
+                                    {tokenPrice}<br />
+                                    {tokenPriceChange24hTag}
+                                </td>
+                                <td>
+                                    $ {tokenMarketCapNum + currencyUnitForMarketCap}<br />
+                                    {tokenMarketCapChange24hTag}
+                                </td>
+                                <td>
+                                    {numberWithCommas(tokenHolders)}<br />
+                                    {tokenHoldersChange24hTag}
+                                </td>
                                 {/* <td>{res[i].contractNum}</td> */}
                                 <td>
                                     {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}
                                 </td>
-                                <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
-                                <td>$ {currencyNum + currencyUnit}</td>
-                                <td>{change24hTag}</td>
+                                {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
+                                <td>
+                                    $ {currencyNum + currencyUnit}<br />
+                                    {change24hTag}
+                                </td>
+                                {/* <td>{change24hTag}</td> */}
                                 {/* <td>{tempDate}</td> */}
                             </tr>
                         );
@@ -499,27 +587,43 @@ const DefiList = observer((props) => {
             <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>Rank</th>
+                        <th>#</th>
                         <th></th>
-                        <th>Name</th>
+                        <th></th>
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
-                                {/* <li><img src={questionIcon} onClick={() => movePage("/about")} /></li> */}
+                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul>
                         </th>
-                        <th>Chain</th>
-                        <th>Category</th>
+                        <th>Token</th>
+                        <th>Price</th>
                         {/* <th>Contract(#)</th> */}
-                        <th>Volume 24h</th>
-                        <th>Locked</th>
-                        <th>Locked</th>
                         <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Mkt Cap</li>
+                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Holders</li>
+                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        <th>TVL</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>TVL</li>
+                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        {/* <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Change 24h</li>
                                 <li className="change24h"><img src={questionIcon} onClick={() => movePage("/about")} /></li>
                             </ul>
-                        </th>
+                        </th> */}
                         {/* <th>Last updated(UTC)</th> */}
                     </tr>
                 </thead>

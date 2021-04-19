@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
   font-stretch: normal;
   font-style: normal;
 }
@@ -83,9 +83,9 @@ li {
   /* width: 1200px; */
   width: 100%;
   /* height: 200px; */
-  /* font-family: Rubik-Regular; */
+  /* font-family: Heebo-Regular; */
 
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -265,8 +265,8 @@ hr.sideMenuLine {
   display: table-cell;
   vertical-align: middle;
   color: #fff;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -337,7 +337,7 @@ hr.sideMenuLine {
 .tvlChartCard p {
   margin-left: 5px;
   font-weight: 700;
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
 }
 
 /* iPad Pro */
@@ -575,8 +575,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -588,8 +588,8 @@ hr.sideMenuLine {
 }
 
 .linkBoxSubTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 10.5px;
   font-weight: 600;
   font-stretch: normal;
@@ -601,8 +601,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartCardTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -875,8 +875,8 @@ hr.sideMenuLine {
 
 .subPageDefiLinkBoxTitle {
   margin: 2px 0 1px 8px;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -956,8 +956,8 @@ hr.sideMenuLine {
 .tvlValueUsd {
   margin: auto 0;
   height: 29px;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 24px;
   font-weight: 500;
   font-stretch: normal;
@@ -968,8 +968,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartUnitY {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 10px;
   font-weight: 600;
   font-stretch: normal;
@@ -984,8 +984,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartUnitYRight {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 10px;
   font-weight: 600;
   font-stretch: normal;
@@ -1001,8 +1001,8 @@ hr.sideMenuLine {
 }
 
 .tvlChartLegend {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -1076,8 +1076,8 @@ hr.sideMenuLine {
   background-color: #f0b923;
   border: 0;
   outline: 0;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -1097,8 +1097,8 @@ hr.sideMenuLine {
   border-color: transparent;
   border: 0;
   outline: 0;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
@@ -1201,8 +1201,8 @@ hr.sideMenuLine {
 }
 
 .miniCardTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -1214,7 +1214,7 @@ hr.sideMenuLine {
 }
 
 .miniCardChange {
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 13px;
   font-weight: 600;
   font-stretch: normal;
@@ -1229,8 +1229,8 @@ hr.sideMenuLine {
 .miniCardDataNum {
   margin: auto 0;
   margin-top: 12px;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
@@ -1242,7 +1242,7 @@ hr.sideMenuLine {
 }
 
 .trendingDefiName {
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
     font-size: 17px;
     font-weight: 600;
     font-stretch: normal;
@@ -1748,6 +1748,11 @@ hr.sideMenuLine {
   }
 }
 
+/* Tooltip: allow HTML  */
+.__react_component_tooltip {
+  pointer-events: auto !important;
+}
+
 .defiListTable {
   /* padding: 15px;
   box-sizing: border-box; */
@@ -1777,10 +1782,16 @@ hr.sideMenuLine {
 }
 
 .defiListTable th, td {
-  height: 38px;
-  border-bottom: 1px solid #404752;
-  padding: 10px;
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  height: 47.21px;
+  /* border-bottom: 1px solid #404752; */
+  border-bottom: 1px solid #2a2f36;
+  /* padding: 10px; */
+  padding: 10px 0 7px 10px;
+  font-family: "Heebo-Regular", sans-serif;
+}
+
+.defiListTable th {
+  /* border-bottom: 1px solid #404752; */
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -1789,23 +1800,57 @@ hr.sideMenuLine {
   }
 }
 
+.tokeImgCircleMask {
+  /* width:10%; */
+  overflow:hidden;
+  position:relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+/* img{
+  position:absolute;
+  top:50%;
+  left:50%;
+  min-width:100%;
+  height:100%;
+  transform:translate(-50%,-50%);
+  transition: 1s ease;
+}
+img:hover{
+  height:110%;
+} */
+
 .tokenImg {
-  width: 20px;
+  width: 30px;
+}
+
+.defiListTableCategory {
+  color: #757f8e;
+  font-size: 12px;
+}
+
+.defiListTableSubText {
+  font-size: 12px;
 }
 
 .defiListTable th:nth-child(2) {
   text-align: right;
+  padding-left: 10px;
 }
 .defiListTable td:nth-child(2) {
   text-align: right;
-  padding-right: 0;
+  padding-left: 10px;
 }
 
 .defiListTable th:nth-child(3) {
   text-align: left;
+  padding-left: 0px;
 }
 .defiListTable td:nth-child(3) {
   text-align: left;
+  padding-left: 0px;
 }
 
 .defiListTable th:nth-child(4) {
@@ -1823,10 +1868,10 @@ hr.sideMenuLine {
 }
 
 .defiListTable th:nth-child(6) {
-  text-align: left;
+  text-align: right;
 }
 .defiListTable td:nth-child(6) {
-  text-align: left;
+  text-align: right;
 }
 
 .defiListTable th:nth-child(7) {
@@ -1845,9 +1890,11 @@ hr.sideMenuLine {
 
 .defiListTable th:nth-child(9) {
   text-align: right;
+  display: none;
 }
 .defiListTable td:nth-child(9) {
   text-align: right;
+  display: none;
 }
 
 .defiListTable th:nth-child(10) {
@@ -1860,10 +1907,10 @@ hr.sideMenuLine {
 /* Mobile Locked */
 @media (min-width:1035px) {
   .defiListTable th:nth-child(8) {
-    display: none;
+    /* display: none; */
   }
   .defiListTable td:nth-child(8) {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -1980,7 +2027,7 @@ hr.sideMenuLine {
 
 .defiListTableHeadCell li img {
   display: table-cell;
-  margin-left: 3px;
+  margin-left: 2px;
   cursor: pointer;
 }
 
@@ -2000,7 +2047,7 @@ hr.sideMenuLine {
 
 .defiListTableHeadCellRight li img {
   display: table-cell;
-  margin-left: 3px;
+  margin-left: 2px;
   cursor: pointer;
 }
 
@@ -2023,7 +2070,7 @@ hr.sideMenuLine {
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #37cc6e;
+  color: #33ad5f;
 }
 
 .textRed {
@@ -2035,7 +2082,7 @@ hr.sideMenuLine {
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #ff2745;
+  color: #DD6238;
 }
 
 .applyBtnOnTable {
@@ -2050,8 +2097,8 @@ hr.sideMenuLine {
 .footer {
   width: 100%;
   height: 100px;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -2067,8 +2114,8 @@ hr.sideMenuLine {
 /* -------------------------------- Detail Page -------------------------------- */
 
 .navBox {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -2080,8 +2127,8 @@ hr.sideMenuLine {
 }
 
 .navHome {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -2094,8 +2141,8 @@ hr.sideMenuLine {
 }
 
 .navDefiName {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 600;
   font-stretch: normal;
@@ -2139,7 +2186,7 @@ hr.sideMenuLine {
 
 .ecoSystemLinkTitle {
   margin-top: 25px;
-  font-family: Rubik-Regular;
+  font-family: Heebo-Regular;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -2164,8 +2211,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
@@ -2179,7 +2226,7 @@ hr.sideMenuLine {
 .defiOverviewContent {
   opacity: 1;
   /* font-family: Roboto; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -2215,8 +2262,8 @@ hr.sideMenuLine {
 }
 
 .defiOverviewWebsiteLink {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
@@ -2251,8 +2298,8 @@ hr.sideMenuLine {
 
 .notFound {
   margin-top: 50px;
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -2304,10 +2351,10 @@ hr.sideMenuLine {
 } */
 
 .defiDetailListTable th, td {
-  height: 38px;
-  border-bottom: 1px solid #404752;
-  padding: 10px;
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  height: 47.21px;
+  /* border-bottom: 1px solid #404752; */
+  /* padding: 10px; */
+  font-family: "Heebo-Regular", sans-serif;
 }
 
 .defiDetailListTable th:nth-child(1) {
@@ -2557,8 +2604,8 @@ hr.sideMenuLine {
 }
 
 .productOnAbout {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -2574,8 +2621,8 @@ hr.sideMenuLine {
 }
 
 .productListBox span {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
   font-weight: 500;
   font-stretch: normal;
@@ -2630,8 +2677,8 @@ hr.sideMenuLine {
 }
 
 .applyBtnTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 16px;
   font-weight: 600;
   font-stretch: normal;
@@ -2822,8 +2869,8 @@ hr.sideMenuLine {
 } */
 
 .theDefiListCardTitle {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 14px;
   font-weight: 600;
   font-stretch: normal;
@@ -2835,8 +2882,8 @@ hr.sideMenuLine {
 }
 
 .theDefiListCardText {
-  /* font-family: Rubik-Regular; */
-  font-family: "Rubik-Regular", Arial, sans-serif;
+  /* font-family: Heebo-Regular; */
+  font-family: "Heebo-Regular", sans-serif;
   font-size: 11px;
   font-weight: 600;
   font-stretch: normal;
