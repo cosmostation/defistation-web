@@ -1886,13 +1886,28 @@ img:hover{
   font-size: 12px;
 }
 
+.defiListTable th:nth-child(1) {
+  text-align: left;
+  width: 1%;
+  white-space: nowrap;
+}
+.defiListTable td:nth-child(1) {
+  text-align: left;
+  width: 1%;
+  white-space: nowrap;
+}
+
 .defiListTable th:nth-child(2) {
   text-align: right;
-  padding-left: 10px;
+  padding-right: 10px;
+  width: 1%;
+  white-space: nowrap;
 }
 .defiListTable td:nth-child(2) {
   text-align: right;
-  padding-left: 10px;
+  padding-right: 10px;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .defiListTable th:nth-child(3) {

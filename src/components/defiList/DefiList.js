@@ -741,7 +741,7 @@ const DefiList = observer((props) => {
                     <tr>
                         <th>#</th>
                         <th></th>
-                        <th></th>
+                        <th>Projects</th>
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
