@@ -244,7 +244,7 @@ const TotalValue = observer((props) => {
                     console.log("latestTxChange: ", latestTxChange.toFixed(2));
 
                     global.changeTransactions24h(numberWithCommas(latestTxVal));
-                    global.changeTransactions24hPercent(latestTxChange.toFixed(2) + "%");
+                    global.changeTransactions24hPercent(latestTxChange.toFixed(2));
                 } else {
                     // 서브 페이지
                     let index = findDefiIndexNum(defiName);

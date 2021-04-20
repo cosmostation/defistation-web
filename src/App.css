@@ -2070,7 +2070,7 @@ img:hover{
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #33ad5f;
+  color: #33ad5f !important;
 }
 
 .textRed {
@@ -2082,7 +2082,7 @@ img:hover{
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #DD6238;
+  color: #DD6238 !important;
 }
 
 .applyBtnOnTable {

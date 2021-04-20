@@ -173,12 +173,13 @@ const MiniCards = observer((props) => {
 
             // ---------------------------- TXs ----------------------------
             setMiniCardData1(global.transactions24h);
-            if (String(global.transactions24hPercent).indexOf("+") != -1) {
-                setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
-            } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
-                setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
+            console.log("global.transactions24hPercent: ", global.transactions24hPercent);
+            if (global.transactions24hPercent * 1 > 0) {
+                setChangeVal1(<span className="miniCardChange textGreen">+{global.transactions24hPercent}%</span>);
+            } else if (global.transactions24hPercent * 1 < 0) {
+                setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
             } else {
-                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
+                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
             }
 
             // ---------------------------- Trending ----------------------------
@@ -192,20 +193,20 @@ const MiniCards = observer((props) => {
             // defiName0, tvl0, change0
             setMiniCardData3b(<span className="trendingDefiName">{trendingArr[randomNum + 0]}</span>);
             setMiniCardData3(trendingArr[randomNum + 1]);
-            setMiniCardData1(global.transactions24h);
-            if (String(global.transactions24hPercent).indexOf("+") != -1) {
-                setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
-            } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
-                setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
-            } else {
-                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
-            }
+            // setMiniCardData1(global.transactions24h);
+            // if (String(global.transactions24hPercent).indexOf("+") != -1) {
+            //     setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
+            // } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
+            //     setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
+            // } else {
+            //     setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
+            // }
 
             // change
             if (trendingArr[randomNum + 2] > 0) {
                 setChangeVal3(<span className="miniCardChange textGreen">+{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
             } else if (trendingArr[randomNum + 2] < 0) {
-                setChangeVal3(<span className="miniCardChange textRed">-{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
+                setChangeVal3(<span className="miniCardChange textRed">{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
             } else {
                 setChangeVal3(<span className="miniCardChange">{(trendingArr[randomNum + 2] * 100).toFixed(2)}</span>);
             }
