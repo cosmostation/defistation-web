@@ -409,12 +409,27 @@ const DefiList = observer((props) => {
                         let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
 
                         if (auditInfoStr.indexOf("YES") != -1) {
-                            verifiedTag = <span className='noAudit'>⦁</span>;
+                            verifiedTag = 
+                            <>
+                                <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
+                                <ReactTooltip 
+                                id={'global' + i} 
+                                aria-haspopup='true'
+                                place="right"
+                                delayHide={200}
+                                >
+                                <div>
+                                    <span className='auditVerified'>⦁</span> Audited
+                                    <ul className="auditListUl">
+                                    </ul>
+                                </div>
+                                </ReactTooltip>
+                            </>;
                         } else {
                             if (auditInfoStr == "") {
                                 verifiedTag = 
                                 <>
-                                    <span className="auditVerified" data-tip data-for={'global' + i}> ⦁ </span>
+                                    <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -446,7 +461,7 @@ const DefiList = observer((props) => {
 
                                 verifiedTag = 
                                 <>
-                                    <span className="auditVerified" data-tip data-for={'global' + i}> ⦁ </span>
+                                    <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -464,7 +479,7 @@ const DefiList = observer((props) => {
                             }
                         }
                     } else {
-
+                        verifiedTag = <span className='noAudit' style={{"margin-left":"14px"}}>⦁</span>;
                     }
 
 

@@ -1026,7 +1026,7 @@ hr.sideMenuLine {
 }
 
 .circleGreen {
-  color: #33ad5f;
+  color: #34ab62;
 }
 
 .circleGray {
@@ -1758,7 +1758,7 @@ hr.sideMenuLine {
   border-radius: 10px !important;
   /* padding-top: 15px !important;
   padding-bottom: 15px !important; */
-  padding: 20px 20px 15px 20px !important;
+  padding: 20px 20px 15px 15px !important;
 }
 
 .__react_component_tooltip.show {
@@ -2075,7 +2075,7 @@ img:hover{
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.33;
+  line-height: 1.2;
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
@@ -2146,7 +2146,7 @@ img:hover{
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #33ad5f !important;
+  color: #34ab62 !important;
 }
 
 .textRed {
@@ -2158,7 +2158,7 @@ img:hover{
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #DD6238 !important;
+  color: #ce4747 !important;
 }
 
 .applyBtnOnTable {

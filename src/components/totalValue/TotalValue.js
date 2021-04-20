@@ -1130,7 +1130,7 @@ const TotalValue = observer((props) => {
                                             baselineColor: '#fff',
                                             gridlineColor: '#3D424D',
                                         },
-                                        colors: ["#f0b923", "#33ad5f"],
+                                        colors: ["#f0b923", "#34ab62"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         }}
                                     rootProps={{ 'data-testid': '2' }}
