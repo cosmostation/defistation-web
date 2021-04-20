@@ -408,48 +408,75 @@ const DefiList = observer((props) => {
                     // let tokenMarketCap = "$ 9.99B";
                     // let tokenHolders = "999,999";
                     let tokenSymbolName = res[i].token;
-                    let tokenPrice = "$ " + res[i].price;
-                    let tokenMarketCap = res[i].marketCap;
-                    let tokenHolders = res[i].holders;
+                    if (tokenSymbolName == "" || tokenSymbolName == null) {
+                        tokenSymbolName = "-";
+                    }
 
-                    // marketCap K M B 단위로 표시
-                    let digitForMarketCap = getCurrencyDigit(tokenMarketCap);
-                    let currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
-                    // 소숫점 2자리로 표현
-                    let tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
+                    let tokenPrice;
+                    let tokenMarketCap;
+                    let digitForMarketCap;
+                    let currencyUnitForMarketCap;
+                    let tokenMarketCapNum;
+                    let tokenMarketCapTag;
+                    if (res[i].price == 0 || res[i].price == null) {
+                        tokenPrice = "-";
+                        tokenMarketCapTag = "-";
+                    } else {
+                        tokenPrice = "$ " + numberWithCommas(res[i].price, false);
+                        tokenMarketCap = res[i].marketCap;
+                        // K M B 단위로 표시
+                        digitForMarketCap = getCurrencyDigit(tokenMarketCap);
+                        currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
+                        tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
+                        tokenMarketCapTag = "$ " + tokenMarketCapNum + currencyUnitForMarketCap;
+                    }
+
+                    let tokenHolders = res[i].holders;
+                    let tokenHoldersTag;
+                    if (tokenHolders == 0 || tokenHolders == null) {
+                        tokenHoldersTag = "-";
+                    } else {
+                        tokenHoldersTag = numberWithCommas(tokenHolders);
+                    }
 
                     // 변화율
                     let tokenPriceChange24h = res[i].priceChange24h;
                     let tokenPriceChange24hTag;
                     if (tokenPriceChange24h > 0) {
                         // +
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenPriceChange24h == 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText">{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                        tokenPriceChange24hTag = <span className="defiListTableSubText">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenPriceChange24h < 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 1).toFixed(2)}%</span>;
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     }
 
                     let tokenMarketCapChange24h = res[i].marketCapChange24h;
                     let tokenMarketCapChange24hTag;
                     if (tokenMarketCapChange24h > 0) {
                         // +
-                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenMarketCapChange24h == 0) {
-                        tokenMarketCapChange24hTag = <span className="defiListTableSubText">{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenMarketCapChange24h < 0) {
-                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 1).toFixed(2)}%</span>;
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     }
 
-                    let tokenHoldersChange24h = res[i].holdersChange24h;
-                    let tokenHoldersChange24hTag;
-                    if (tokenHoldersChange24h > 0) {
+                    // let tokenHoldersChange24hNum = res[i].holdersChange24hNum;
+                    let tokenHoldersChange24hNum = 99999;
+                    let tokenHoldersChange24hNumTag;
+                    if (tokenHoldersChange24hNum > 0) {
                         // +
-                        tokenHoldersChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
-                    } else if (tokenHoldersChange24h == 0) {
-                        tokenHoldersChange24hTag = <span className="defiListTableSubText">{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
-                    } else if (tokenHoldersChange24h < 0) {
-                        tokenHoldersChange24hTag = <span className="defiListTableSubText textRed">{(tokenHoldersChange24h * 1).toFixed(2)}%</span>;
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGreen">+{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                    } else if (tokenHoldersChange24hNum == 0) {
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText">{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                    } else if (tokenHoldersChange24hNum < 0) {
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textRed">{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                    }
+
+                    // holders 변화량은 holder 가 0이거나 null 이면 표기하지 않는다
+                    if (tokenHolders == 0 || tokenHolders == null) {
+                        tokenHoldersChange24hNumTag = "";
                     }
 
                     if (res[i].contractNum == 0) {
@@ -523,12 +550,12 @@ const DefiList = observer((props) => {
                                     {tokenPriceChange24hTag}
                                 </td>
                                 <td>
-                                    $ {tokenMarketCapNum + currencyUnitForMarketCap}<br />
+                                    {tokenMarketCapTag}<br />
                                     {tokenMarketCapChange24hTag}
                                 </td>
                                 <td>
-                                    {numberWithCommas(tokenHolders)}<br />
-                                    {tokenHoldersChange24hTag}
+                                    {tokenHoldersTag}<br />
+                                    {tokenHoldersChange24hNumTag}
                                 </td>
                                 {/* <td>{res[i].contractNum}</td> */}
                                 <td>
@@ -537,7 +564,7 @@ const DefiList = observer((props) => {
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
                                 <td>
                                     $ {currencyNum + currencyUnit}<br />
-                                    {change24hTag}
+                                    <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
                                 {/* <td>{change24hTag}</td> */}
                                 {/* <td>{tempDate}</td> */}
