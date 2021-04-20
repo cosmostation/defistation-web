@@ -8,6 +8,10 @@ body {
   font-style: normal;
 }
 
+a, u {
+  text-decoration: none;
+}
+
 .hidden {height:100%; min-height:100%; overflow:hidden !important; touch-action:none;}
 
 ul {
@@ -1751,6 +1755,48 @@ hr.sideMenuLine {
 /* Tooltip: allow HTML  */
 .__react_component_tooltip {
   pointer-events: auto !important;
+  border-radius: 10px !important;
+  padding-top: 20px !important;
+}
+
+.__react_component_tooltip.show {
+  opacity: 1 !important;
+}
+
+.react-tooltip-clickable-link {
+  pointer-events: auto
+}
+
+.auditLink {
+  color: #fff;
+  text-decoration: underline !important;
+}
+
+.auditVerified {
+  color: #297ee2;
+  font-size: 18px;
+}
+
+.noAudit {
+  color: #454b57;
+  font-size: 18px;
+  /* cursor: pointer; */
+}
+
+.auditListUl {
+  font-family: Heebo;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  margin-top: 0px;
+}
+
+.auditListUl li {
+  line-height: 24px;
 }
 
 .defiListTable {
@@ -1769,11 +1815,16 @@ hr.sideMenuLine {
   background-color: #1f232b;
 } */
 
-.defiListTableTr {
+/* .defiListTableTr {
   cursor: pointer;
-}
+} */
 
-.defiListTableTr:hover {
+/* .defiListTableTr:hover {
+  background-color: #1f232b;
+} */
+
+.defiNameClickArea:hover {
+  cursor: pointer;
   background-color: #1f232b;
 }
 

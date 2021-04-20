@@ -82,6 +82,21 @@ const DefiList = observer((props) => {
 
     const [volumeTag, setVolumeTag] = useState();
 
+    function findDefiIndexNum(defiName) {
+        // 예외처리
+        if (defiName == "pancake") {
+            defiName = "PancakeSwap";
+        }
+        let index = 0;
+        for (var i = 0; i < defistationApplicationList.length; i++) {
+            if (defistationApplicationList[i]["Official Project Name"] == defiName) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
     function findLogoUrl(defiName) {
         // defistationApplicationList 에서 Official Project Name 이 defiName와 일치하는 것 찾기
 
@@ -361,11 +376,97 @@ const DefiList = observer((props) => {
                     }
 
                     let verifiedTag;
+                    // if (res[i].verified) {
+                    //     verifiedTag = <img src={verifiedIcon} />
+                    // } else {
+                    //     verifiedTag = <img src={noVerifiedIcon} />
+                    // }
+                    // 0420 수정중
+                    // <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
+                    // if (res[i].verified) {
+                    //     let index = findDefiIndexNum(res[i].name);
+                    //     let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                    //     console.log("auditInfoStr: ", auditInfoStr);
+
+                    //     if (auditInfoStr.indexOf("YES") != -1) {
+
+                    //     } else {
+                    //         // auditInfoStr 파싱: 첫번째 : 을 기준으로 나누기
+                    //         let auditLinkArr = auditInfoStr.split(":");
+                    //         let auditProvider = auditLinkArr[0];
+                    //         let auditLink = auditLinkArr[1] + ":" + auditLinkArr[2];
+                    //         let tempTag = `<span className='auditVerified'>⦁</span><span> Audited</span><br />` + auditProvider + `: <a className='auditLink' href='` + auditLink + `' target='_blank'>` + auditLink + `</a>`;
+                    //         verifiedTag = <div className="customTooltip" data-tip={tempTag}><span className='auditVerified'>⦁</span></div>;
+                    //     }
+
+                        
+                    // } else {
+                    //     verifiedTag = <span className='noAudit'>⦁</span>;
+                    // }
                     if (res[i].verified) {
-                        verifiedTag = <img src={verifiedIcon} />
+                        let index = findDefiIndexNum(res[i].name);
+                        let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                        if (auditInfoStr.indexOf("YES") != -1) {
+                            verifiedTag = <span className='noAudit'>⦁</span>;
+                        } else {
+                            if (auditInfoStr == "") {
+                                verifiedTag = 
+                                <>
+                                    <span className="auditVerified" data-tip data-for={'global' + i}> ⦁ </span>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    >
+                                    <div>
+                                        <span className='auditVerified'>⦁</span> Audited
+                                        <ul className="auditListUl">
+                                        </ul>
+                                    </div>
+                                    </ReactTooltip>
+                                </>;
+                            } else {
+                                let resultAuditTag = [];
+
+                                // auditInfoStr 파싱 
+                                // 1) ; 기준으로 쪼개기
+                                let auditLinkArr1 = auditInfoStr.split(";");
+                                for (var k = 0; k < auditLinkArr1.length; k++) {
+                                    // 2) : 기준으로 쪼개기
+                                    let auditLinkArr2 = (auditLinkArr1[k]).split(":");
+
+                                    let auditName = auditLinkArr2[0];
+                                    let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
+
+                                    resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                }
+
+                                verifiedTag = 
+                                <>
+                                    <span className="auditVerified" data-tip data-for={'global' + i}> ⦁ </span>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    >
+                                    <div>
+                                        <span className='auditVerified'>⦁</span> Audited
+                                        <ul className="auditListUl">
+                                            {resultAuditTag}
+                                        </ul>
+                                    </div>
+                                    </ReactTooltip>
+                                </>;
+                            }
+                        }
                     } else {
-                        verifiedTag = <img src={noVerifiedIcon} />
+
                     }
+
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
                     let tempDate;
@@ -462,8 +563,8 @@ const DefiList = observer((props) => {
                         tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     }
 
-                    // let tokenHoldersChange24hNum = res[i].holdersChange24hNum;
-                    let tokenHoldersChange24hNum = 99999;
+                    let tokenHoldersChange24hNum = res[i].holdersChange24hNum;
+                    // let tokenHoldersChange24hNum = 99999;
                     let tokenHoldersChange24hNumTag;
                     if (tokenHoldersChange24hNum > 0) {
                         // +
@@ -532,16 +633,40 @@ const DefiList = observer((props) => {
                         // }
 
                         tableCodeArr.push(
-                            <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                            <tr key={i} className="defiListTableTr">
                                 <td>{rankNum}</td>
                                 <td><div className="tokeImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
-                                <td>
+                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
                                     {getOfficialDefiName(res[i].name)}<br />
                                     <span className="defiListTableCategory">{tempCategory}</span>
                                 </td>
                                 <td>
-                                    <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li>
+                                    {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}
+                                    <li>
+                                        {/* <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
+                                        <ReactTooltip 
+                                        place="right"
+                                        html={true} 
+                                        className="react-tooltip-clickable-link" /> */}
+                                        {/* {verifiedTag} */}
+                                        {/* <ReactTooltip 
+                                        place="right"
+                                        html={true} 
+                                        type={'dark'}
+                                        className="react-tooltip-clickable-link" /> */}
+                                        {/* <a data-tip data-for='global'> (〃∀〃) </a>
+                                        <ReactTooltip id='global' aria-haspopup='true' >
+                                        <p>This is a global react component tooltip</p>
+                                        <p>You can put every thing here</p>
+                                        <ul>
+                                        <li>Word</li>
+                                        <li>Chart</li>
+                                        <li>Else</li>
+                                        </ul>
+                                        </ReactTooltip> */}
+                                        {verifiedTag}
+                                    </li>
                                 </td>
                                 <td>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
