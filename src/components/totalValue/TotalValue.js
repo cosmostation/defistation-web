@@ -873,64 +873,41 @@ const TotalValue = observer((props) => {
             isMobile = true;
         }
 
-        console.log("window.screen.orientation: ", window.screen.orientation);
-        if (isMobile && String(window.screen.orientation).indexOf("landscape") != -1 && screen.height >= 768) {
-            setViewWidth("708px");
-            setChartWidth("94%");
-            setTvlChartCardTitleValue("TVL");
-        } else {
-            if (!isMobile && window.innerWidth <= 1034) {
-                setViewWidth("364px");
-                setChartWidth("88%");
-                setTvlChartCardTitleValue("TVL");
-            } else {
-                if (screen.width >= 1024 && screen.width < 1034) {
-                    setViewWidth("970px");
-                    setChartWidth("94%");
-                    setTvlChartCardTitleValue("TVL");
-                } else if (screen.width >= 768 && screen.width < 1024) {
-                    setViewWidth("708px");
-                    setChartWidth("94%");
-                    setTvlChartCardTitleValue("TVL");
-                } else if (screen.width >= 414 && screen.width < 768) {
-                    setViewWidth("364px");
-                    setChartWidth("88%");
-                    setTvlChartCardTitleValue("TVL");
-                } else if (screen.width >= 360 && screen.width < 414) {
-                    setViewWidth("290px");
-                    setChartWidth("88%");
-                    setTvlChartCardTitleValue("TVL");
-                } else if (screen.width >= 1 && screen.width < 360) {
-                    setViewWidth("270px");
-                    setChartWidth("88%");
-                    setTvlChartCardTitleValue("TVL");
-                }
-            }
-
-            
-        }
-
-        // if (screen.width >= 1024 && screen.width < 1034) {
-        //     setViewWidth("970px");
-        //     setChartWidth("94%");
-        //     setTvlChartCardTitleValue("TVL");
-        // } else if (screen.width >= 768 && screen.width < 1024) {
+        // console.log("window.screen.orientation: ", window.screen.orientation);
+        // if (isMobile && String(window.screen.orientation).indexOf("landscape") != -1 && screen.height >= 768) {
         //     setViewWidth("708px");
         //     setChartWidth("94%");
         //     setTvlChartCardTitleValue("TVL");
-        // } else if (screen.width >= 414 && screen.width < 768) {
-        //     setViewWidth("364px");
-        //     setChartWidth("88%");
-        //     setTvlChartCardTitleValue("TVL");
-        // } else if (screen.width >= 360 && screen.width < 414) {
-        //     setViewWidth("290px");
-        //     setChartWidth("88%");
-        //     setTvlChartCardTitleValue("TVL");
-        // } else if (screen.width >= 1 && screen.width < 360) {
-        //     setViewWidth("270px");
-        //     setChartWidth("88%");
-        //     setTvlChartCardTitleValue("TVL");
+        // } else {
+        //     if (!isMobile && window.innerWidth <= 1034) {
+        //         setViewWidth("364px");
+        //         setChartWidth("88%");
+        //         setTvlChartCardTitleValue("TVL");
+        //     } else {
+        //         if (screen.width >= 1024 && screen.width < 1034) {
+        //             setViewWidth("970px");
+        //             setChartWidth("94%");
+        //             setTvlChartCardTitleValue("TVL");
+        //         } else if (screen.width >= 768 && screen.width < 1024) {
+        //             setViewWidth("708px");
+        //             setChartWidth("94%");
+        //             setTvlChartCardTitleValue("TVL");
+        //         } else if (screen.width >= 414 && screen.width < 768) {
+        //             setViewWidth("364px");
+        //             setChartWidth("88%");
+        //             setTvlChartCardTitleValue("TVL");
+        //         } else if (screen.width >= 360 && screen.width < 414) {
+        //             setViewWidth("290px");
+        //             setChartWidth("88%");
+        //             setTvlChartCardTitleValue("TVL");
+        //         } else if (screen.width >= 1 && screen.width < 360) {
+        //             setViewWidth("270px");
+        //             setChartWidth("88%");
+        //             setTvlChartCardTitleValue("TVL");
+        //         }
+        //     }
         // }
+
 
         checkWindowWidth();
 

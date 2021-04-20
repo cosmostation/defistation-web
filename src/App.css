@@ -1062,13 +1062,13 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .tvlChartCardUl li:nth-child(1) {
-    width: 100%;
+    /* width: 100%; */
   }
   
   .tvlChartCardUl li:nth-child(2) {
     /* display: none; */
-    position: absolute;
-    right: 25px;
+    /* position: absolute;
+    right: 25px; */
   }
 }
 
