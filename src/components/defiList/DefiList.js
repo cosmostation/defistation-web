@@ -684,7 +684,7 @@ const DefiList = observer((props) => {
                                 </td>
                                 {/* <td>{res[i].contractNum}</td> */}
                                 <td>
-                                    {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}
+                                    {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr}</p><ReactTooltip /></div>}
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
                                 <td>
@@ -745,7 +745,7 @@ const DefiList = observer((props) => {
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
-                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
                             </ul>
                         </th>
                         <th>Token</th>

@@ -1756,7 +1756,9 @@ hr.sideMenuLine {
 .__react_component_tooltip {
   pointer-events: auto !important;
   border-radius: 10px !important;
-  padding-top: 20px !important;
+  /* padding-top: 15px !important;
+  padding-bottom: 15px !important; */
+  padding: 20px 20px 15px 20px !important;
 }
 
 .__react_component_tooltip.show {
@@ -1789,7 +1791,7 @@ hr.sideMenuLine {
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: normal;
+  /* line-height: normal; */
   letter-spacing: normal;
   text-align: left;
   margin-top: 0px;
@@ -1935,23 +1937,29 @@ img:hover{
 
 .defiListTable th:nth-child(6) {
   text-align: right;
+  width: 15%;
 }
 .defiListTable td:nth-child(6) {
   text-align: right;
+  width: 15%;
 }
 
 .defiListTable th:nth-child(7) {
   text-align: right;
+  width: 15%;
 }
 .defiListTable td:nth-child(7) {
   text-align: right;
+  width: 15%;
 }
 
 .defiListTable th:nth-child(8) {
   text-align: right;
+  width: 15%;
 }
 .defiListTable td:nth-child(8) {
   text-align: right;
+  width: 15%;
 }
 
 .defiListTable th:nth-child(9) {
@@ -1965,9 +1973,11 @@ img:hover{
 
 .defiListTable th:nth-child(10) {
   text-align: right;
+  width: 15%;
 }
 .defiListTable td:nth-child(10) {
   text-align: right;
+  width: 15%;
 }
 
 /* Mobile Locked */
