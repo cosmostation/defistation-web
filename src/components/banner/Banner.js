@@ -58,23 +58,23 @@ const Banner = observer((props) => {
 
         if (isMobile) {
             setBannerImg(btcstMobile);
-            setBannerImg(bifiMobile);
+            setBannerImg2(bifiMobile);
         } else {
             if (window.innerWidth >= 1024 && window.innerWidth < 1034) {
                 setBannerImg(btcst);
-                setBannerImg(bifi);
+                setBannerImg2(bifi);
             } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
                 setBannerImg(btcst);
-                setBannerImg(bifi);
+                setBannerImg2(bifi);
             } else if (window.innerWidth >= 414 && window.innerWidth < 768) {
                 setBannerImg(btcstMobile);
-                setBannerImg(bifiMobile);
+                setBannerImg2(bifiMobile);
             } else if (window.innerWidth >= 360 && window.innerWidth < 414) {
                 setBannerImg(btcstMobile);
-                setBannerImg(bifiMobile);
+                setBannerImg2(bifiMobile);
             } else if (window.innerWidth >= 1 && window.innerWidth < 360) {
                 setBannerImg(btcstMobile);
-                setBannerImg(bifiMobile);
+                setBannerImg2(bifiMobile);
             }
         }
 
@@ -150,9 +150,7 @@ const Banner = observer((props) => {
                 target="_blank"
                 trackerNames={['BiFi']}
                 >
-                    <div className="banner">
-                        <img src={bannerImg2}  />
-                    </div>
+                    <div className="banner"><img src={bannerImg2} /></div>
                 </ReactGA.OutboundLink>
 
                 {/* Banner 5 */}
