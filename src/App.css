@@ -1511,6 +1511,7 @@ hr.sideMenuLine {
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 }
 
 #outbountBanner1 {
@@ -1549,7 +1550,7 @@ hr.sideMenuLine {
   transition: all 2s;
 }
 
-#outbountBanner1.move1 {
+/* #outbountBanner1.move1 {
   margin-top: -80px;
 }
 
@@ -1571,6 +1572,30 @@ hr.sideMenuLine {
 
 #outbountBanner1.move6 {
   margin-top: -480px;
+} */
+
+#outbountBanner1.move {
+  transform: translateY(-100%);
+}
+
+#outbountBanner2.move {
+  transform: translateY(-200%);
+}
+
+#outbountBanner3.move {
+  transform: translateY(-300%);
+}
+
+#outbountBanner4.move {
+  transform: translateY(-400%);
+}
+
+#outbountBanner5.move {
+  transform: translateY(-500%);
+}
+
+#outbountBanner6.move {
+  transform: translateY(-600%);
 }
 
 /* iPad Pro */
