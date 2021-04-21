@@ -2,32 +2,53 @@ import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 // import useStores from '../../../useStores';
+import { Animate } from 'react-move'
 
 import '../../App.css';
 
 import binanceImg1 from "../../assets/images/binanceimg.gif";
+
 import btcst from "../../assets/images/banner/Defistation Banner_BTCST.png";
 import btcstMobile from "../../assets/images/banner/Defistation Banner_BTCST_mobile.png";
+
+import bifi from "../../assets/images/banner/Defistation Banner_BiFi.png";
+import bifiMobile from "../../assets/images/banner/Defistation Banner_BiFi_mobile.jpg";
 
 // Google Analytics
 import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
 
 const Banner = observer((props) => {
 
+    // const [bannerTag, setBannerTag] = useState();
     const [bannerImg, setBannerImg] = useState(btcst);
+    const [bannerImg2, setBannerImg2] = useState(bifi);
 
-    // function openBannerWindow(path) {
-    //     if (process.env.NODE_ENV === "production") {
-    //         ReactGA.ga("click", "banner", "BTC Standard Hashrate Token");
-    //     }
-    //     window.open(path, "_blank");
-    // }
+    let bannerCount = 1;
+    let bannerFlag = false;
+    function changeBanner() {
+        if (!bannerFlag) {
+            var box = document.getElementById("outbountBanner1");
+            box.classList.add("move" + bannerCount);
+        } else {
+            var box = document.getElementById("outbountBanner1");
+            box.classList.remove("move" + (6 - bannerCount));
+        }
+        
+        if (bannerCount == 5) {
+            if (bannerFlag) {
+                bannerFlag = false;
+            } else {
+                bannerFlag = true;
+            }
+        }
+
+        bannerCount++;
+        if (bannerCount > 5) {
+            bannerCount = 1;
+        }
+    }
 
     useEffect(() => {
-        // if (process.env.NODE_ENV === "production") {
-        //     ReactGA.ga("pageView", "banner", "BTC Standard Hashrate Token");
-        // }
-
         var isMobile = false; //initiate as false
         // device detection
         if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -37,19 +58,29 @@ const Banner = observer((props) => {
 
         if (isMobile) {
             setBannerImg(btcstMobile);
+            setBannerImg(bifiMobile);
         } else {
             if (window.innerWidth >= 1024 && window.innerWidth < 1034) {
                 setBannerImg(btcst);
+                setBannerImg(bifi);
             } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
                 setBannerImg(btcst);
+                setBannerImg(bifi);
             } else if (window.innerWidth >= 414 && window.innerWidth < 768) {
                 setBannerImg(btcstMobile);
+                setBannerImg(bifiMobile);
             } else if (window.innerWidth >= 360 && window.innerWidth < 414) {
                 setBannerImg(btcstMobile);
+                setBannerImg(bifiMobile);
             } else if (window.innerWidth >= 1 && window.innerWidth < 360) {
                 setBannerImg(btcstMobile);
+                setBannerImg(bifiMobile);
             }
         }
+
+        setInterval(function() {
+            if (window.location.pathname == "/") changeBanner();
+        }, 7000);
         
         return () => {
 
@@ -71,19 +102,82 @@ const Banner = observer((props) => {
         // </div>
 
         <div>
-            <ReactGA.OutboundLink
+            <div className="bannerWrapper">
+                
+
+                <div className="bannerAdTextRect" style={bannerImg == btcst || bannerImg2 == bifi ? undefined : { display: "none" } }>
+                    <span className="bannerAdText">Ad</span>
+                </div>
+
+                {/* Banner 1 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner1"
                 eventLabel="bannerClick"
                 to="https://app.btcst.finance/"
                 target="_blank"
                 trackerNames={['BTC Standard Hashrate Token']}
-            >
-                <div className="banner">
-                    <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
-                        <span className="bannerAdText">Ad</span>
+                >
+                    <div className="banner"><img src={bannerImg} /></div>
+                </ReactGA.OutboundLink>
+
+                {/* Banner 2 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner2"
+                eventLabel="bannerClick(BiFi)"
+                to="http://bsc.bifi.finance/"
+                target="_blank"
+                trackerNames={['BiFi']}
+                >
+                    <div className="banner"><img src={bannerImg2} /></div>
+                </ReactGA.OutboundLink>
+
+                {/* Banner 3 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner3"
+                eventLabel="bannerClick"
+                to="https://app.btcst.finance/"
+                target="_blank"
+                trackerNames={['BTC Standard Hashrate Token']}
+                >
+                    <div className="banner"><img src={bannerImg} /></div>
+                </ReactGA.OutboundLink>
+                
+                {/* Banner 4 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner4"
+                eventLabel="bannerClick(BiFi)"
+                to="http://bsc.bifi.finance/"
+                target="_blank"
+                trackerNames={['BiFi']}
+                >
+                    <div className="banner">
+                        <img src={bannerImg2}  />
                     </div>
-                    <img src={bannerImg}  />
-                </div>
-            </ReactGA.OutboundLink>
+                </ReactGA.OutboundLink>
+
+                {/* Banner 5 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner5"
+                eventLabel="bannerClick"
+                to="https://app.btcst.finance/"
+                target="_blank"
+                trackerNames={['BTC Standard Hashrate Token']}
+                >
+                    <div className="banner"><img src={bannerImg} /></div>
+                </ReactGA.OutboundLink>
+
+                {/* Banner 6 */}
+                <ReactGA.OutboundLink
+                id="outbountBanner6"
+                eventLabel="bannerClick(BiFi)"
+                to="http://bsc.bifi.finance/"
+                target="_blank"
+                trackerNames={['BiFi']}
+                >
+                    <div className="banner"><img src={bannerImg2} /></div>
+                </ReactGA.OutboundLink>
+                
+            </div>
         </div>
     );
 })
