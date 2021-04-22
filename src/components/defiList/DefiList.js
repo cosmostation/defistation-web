@@ -417,6 +417,7 @@ const DefiList = observer((props) => {
                                 aria-haspopup='true'
                                 place="right"
                                 delayHide={200}
+                                effect="solid"
                                 >
                                 <div>
                                     <span className='auditVerified'>⦁</span> Audited
@@ -435,6 +436,7 @@ const DefiList = observer((props) => {
                                     aria-haspopup='true'
                                     place="right"
                                     delayHide={200}
+                                    effect="solid"
                                     >
                                     <div>
                                         <span className='auditVerified'>⦁</span> Audited
@@ -467,6 +469,7 @@ const DefiList = observer((props) => {
                                     aria-haspopup='true'
                                     place="right"
                                     delayHide={200}
+                                    effect="solid"
                                     >
                                     <div>
                                         <span className='auditVerified'>⦁</span> Audited
@@ -653,7 +656,7 @@ const DefiList = observer((props) => {
                                 <td><div className="tokeImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
                                 <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
-                                    {getOfficialDefiName(res[i].name)}<br />
+                                    <span className="projectName">{getOfficialDefiName(res[i].name)}</span><br />
                                     <span className="defiListTableCategory">{tempCategory}</span>
                                 </td>
                                 <td>

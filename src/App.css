@@ -989,7 +989,8 @@ hr.sideMenuLine {
   position: absolute;
   z-index: 10;
   /* margin-top: 3px; */
-  left: 716px;
+  /* left: 716px; */
+  left: 718px;
 }
 
 .tvlChartLegend {
@@ -2010,7 +2011,13 @@ hr.sideMenuLine {
 
 .defiNameClickArea:hover {
   cursor: pointer;
-  background-color: #1f232b;
+  /* background-color: #1f232b; */
+  /* text-decoration: underline; */
+  color: #bebebe;
+}
+
+.projectName {
+  font-weight: 700;
 }
 
 .comingSoon {
@@ -2020,7 +2027,7 @@ hr.sideMenuLine {
 .defiListTable th, td {
   height: 47.21px;
   /* border-bottom: 1px solid #404752; */
-  border-bottom: 1px solid #2a2f36;
+  border-bottom: 1px solid #32373E;
   /* padding: 10px; */
   padding: 10px 0 7px 10px;
   font-family: "Heebo-Regular", sans-serif;

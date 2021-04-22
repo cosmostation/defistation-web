@@ -114,6 +114,9 @@ const TotalValue = observer((props) => {
     const [linkTag, setLinkTag] = useState("");
     const [defiIcon, setDefiIcon] = useState();
 
+    // 차트 오른쪽 Unit: TXs or USD
+    const [dualYUnitText, setDualYUnitText] = useState("TXs");
+
     const [projectBtnLink, setProjectBtnLink] = useState();
 
     const [currencyFullName, setCurrencyFullName] = useState("");
@@ -916,6 +919,14 @@ const TotalValue = observer((props) => {
 
         selectOfficialLink(props.defiName);
 
+        if (props.defiName == "DeFi") {
+            // 메인 페이지
+            setDualYUnitText("TXs");
+        } else {
+            // 서브 페이지
+            setDualYUnitText("USD");
+        }
+
         return () => {
             // console.log('cleanup');
             // clearTimeout(timer);
@@ -951,7 +962,7 @@ const TotalValue = observer((props) => {
                                 <span className="tvlChartCardTitle">{tvlChartCardTitleValue} in {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 <p className="tvlChartUnitY">({currencyFullName} USD)</p>
-                                <p className="tvlChartUnitYRight">(TXs)</p>
+                                <p className="tvlChartUnitYRight">({dualYUnitText})</p>
 
                                 {/* Main Chart */}
                                 {/* <div id="tvlGoogleChart" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
