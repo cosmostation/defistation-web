@@ -7,6 +7,7 @@ import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyD
 import '../../App.css';
 
 import MiniCard from './miniCard/MiniCard';
+import MiniCardSlider from './miniCardSlider/MiniCardSlider';
 
 const MiniCards = observer((props) => {
     const { global } = useStores();
@@ -35,6 +36,8 @@ const MiniCards = observer((props) => {
     const [projectNum, setProjectNum] = useState(0);
 
     const [lockedBnbAmount, setLockedBnbAmount] = useState();
+
+    const [miniCard4thTag, setMiniCard4thTag] = useState();
 
     const [urlFlag1, setUrlFlag1] = useState(false);
     const [urlFlagDetail, setUrlFlagDetail] = useState("");
@@ -83,8 +86,8 @@ const MiniCards = observer((props) => {
                 // 해당 Defi BNB와 전체 BNB 유통량 비율
                 if (props.defiName != "DeFi") {
                     // 서브 페이지
-                    // 유통량: 147883948
-                    setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 147883948 * 100).toFixed(4) * 1) + "%");
+                    // 유통량: 147883948 -> 153432897
+                    setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 153432897 * 100).toFixed(4) * 1) + "%");
                 } else {
                     // 메인 페이지
                     
@@ -184,34 +187,46 @@ const MiniCards = observer((props) => {
 
             // ---------------------------- Trending ----------------------------
             // random(1~3위)
-            let randomNum = Math.floor(Math.random() * 3) * 3;
+            // let randomNum = Math.floor(Math.random() * 3) * 3;
 
-            //     if (urlFlagDetail == chartFullUrl) return;
-            // setUrlFlagDetail(chartFullUrl);
+            // //     if (urlFlagDetail == chartFullUrl) return;
+            // // setUrlFlagDetail(chartFullUrl);
 
-            let trendingArr = global.trending;
-            // defiName0, tvl0, change0
-            setMiniCardData3b(<span className="trendingDefiName">{trendingArr[randomNum + 0]}</span>);
-            setMiniCardData3(trendingArr[randomNum + 1]);
-            // setMiniCardData1(global.transactions24h);
-            // if (String(global.transactions24hPercent).indexOf("+") != -1) {
-            //     setChangeVal1(<span className="miniCardChange textGreen">{global.transactions24hPercent}</span>);
-            // } else if (String(global.transactions24hPercent).indexOf("-") != -1) {
-            //     setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}</span>);
+            // let trendingArr = global.trending;
+            // // defiName0, tvl0, change0
+            // setMiniCardData3b(<span className="trendingDefiName">{trendingArr[randomNum + 0]}</span>);
+            // setMiniCardData3(trendingArr[randomNum + 1]);
+
+            // // change
+            // if (trendingArr[randomNum + 2] > 0) {
+            //     setChangeVal3(<span className="miniCardChange textGreen">+{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
+            // } else if (trendingArr[randomNum + 2] < 0) {
+            //     setChangeVal3(<span className="miniCardChange textRed">{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
             // } else {
-            //     setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}</span>);
+            //     setChangeVal3(<span className="miniCardChange">{(trendingArr[randomNum + 2] * 100).toFixed(2)}</span>);
             // }
 
-            // change
-            if (trendingArr[randomNum + 2] > 0) {
-                setChangeVal3(<span className="miniCardChange textGreen">+{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
-            } else if (trendingArr[randomNum + 2] < 0) {
-                setChangeVal3(<span className="miniCardChange textRed">{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
-            } else {
-                setChangeVal3(<span className="miniCardChange">{(trendingArr[randomNum + 2] * 100).toFixed(2)}</span>);
-            }
+            // setTrendingDefiName(trendingArr[randomNum + 0]);
 
-            setTrendingDefiName(trendingArr[randomNum + 0]);
+
+
+            let trendingArr = global.trending;
+
+            // trending minicard 보여주기
+            // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+            setMiniCard4thTag(
+            <MiniCardSlider 
+            title0={"Trending (Price)"} defiName0={trendingArr[0]} dataNum0={trendingArr[1] * 1} data24hChange0={trendingArr[2]} 
+            title1={"Trending (Mkt Cap)"} defiName1={trendingArr[3]} dataNum1={trendingArr[4] * 1} data24hChange1={trendingArr[5]} 
+            title2={"Trending (Holders)"} defiName2={trendingArr[6]} dataNum2={trendingArr[7] * 1} data24hChange2={trendingArr[8]} 
+            title3={"Trending (TVL)"} defiName3={trendingArr[9]} dataNum3={trendingArr[10] * 1} data24hChange3={trendingArr[11]} 
+            // title0={"Trending (Price)"} defiName0={trendingArr[0]} dataNum0={trendingArr[1]} data24hChange0={trendingArr[2]} 
+            // title1={"Trending (Mkt Cap)"} defiName1={trendingArr[3]} dataNum1={trendingArr[4]} data24hChange1={trendingArr[5]} 
+            // title2={"Trending (Holders)"} defiName2={trendingArr[6]} dataNum2={trendingArr[7]} data24hChange2={trendingArr[8]} 
+            // title3={"Trending (TVL)"} defiName3={trendingArr[9]} dataNum3={trendingArr[10]} data24hChange3={trendingArr[11]} 
+            />
+            );
+
         } else {
             // 서브 페이지
             setMiniCardTitle0("Total Value Locked");
@@ -239,7 +254,14 @@ const MiniCards = observer((props) => {
             // } else {
             //     setMiniCardData1(global.tvl1DayPercent + "%");
             // }
+
+            // trending 이 아니라 일반 minicard 보여주기
+            setMiniCard4thTag(
+                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} />
+            );
         }
+
+        console.log("props.defiName: ", props.defiName);
         
         return () => {
 
@@ -253,7 +275,9 @@ const MiniCards = observer((props) => {
                 <MiniCard title={miniCardTitle0} dataNum={global.totalValueLockedUsd} data24hChange={changeVal0} />
                 <MiniCard title={miniCardTitle1} dataNum={miniCardData1} data24hChange={changeVal1} />
                 <MiniCard title={miniCardTitle2} dataNum={totalBnbLockedNum} symbol="BNB" data24hChange={changeVal2} />
-                <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} />
+                {/* <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} /> */}
+                {/* <MiniCardSlider style={props.defiName == "DeFi" ? undefined : { display: "none" } } /> */}
+                {miniCard4thTag}
             </ul>
         </div>
     );

@@ -1236,21 +1236,22 @@ hr.sideMenuLine {
 
 .trendingDefiName {
   font-family: "Heebo-Regular", sans-serif;
-    font-size: 17px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: left;
-    color: #fff;
-    /* left: 0; */
-    float: left;
-    /* bottom: 0; */
-    position: absolute;
-    /* margin-bottom: 0; */
-    margin-top: 29px;
-    margin-left: -49px;
+  font-size: 15px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  /* left: 0; */
+  /* float: left; */
+  /* bottom: 0; */
+  position: absolute;
+  /* margin-bottom: 0; */
+  margin-top: 15px;
+  /* margin-left: -120px; */
+  display: block;
 }
 
 

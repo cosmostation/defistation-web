@@ -36,7 +36,7 @@ const Banner = observer((props) => {
         speed: 2000,
         autoplaySpeed: 7000,
         vertical: true
-      };
+    };
 
     // const [bannerTag, setBannerTag] = useState();
     const [bannerImg, setBannerImg] = useState(btcst);
@@ -99,9 +99,9 @@ const Banner = observer((props) => {
             }
         }
 
-        setInterval(function() {
-            // if (window.location.pathname == "/") changeBanner();
-        }, 2000);
+        // setInterval(function() {
+        //     // if (window.location.pathname == "/") changeBanner();
+        // }, 2000);
         
         return () => {
 

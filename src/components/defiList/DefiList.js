@@ -316,6 +316,10 @@ const DefiList = observer((props) => {
                 // AD random
                 let adNum = generateRandom(0, res.length);
                 let rankInfoArr = [];
+                // Trending 에는 price, marketcap, hoders, TVL 데이터가 들어간다.(2개씩)
+                // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+                // let trendingInfoArr = ["", "", 0, "", "", 0, "", "", 0, "", "", 0];
+                let trendingInfoArr = ["", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0];
 
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
@@ -422,6 +426,7 @@ const DefiList = observer((props) => {
                                 <div>
                                     <span className='auditVerified'>⦁</span> Audited
                                     <ul className="auditListUl">
+                                        <li>Unknown source</li>
                                     </ul>
                                 </div>
                                 </ReactTooltip>
@@ -441,6 +446,7 @@ const DefiList = observer((props) => {
                                     <div>
                                         <span className='auditVerified'>⦁</span> Audited
                                         <ul className="auditListUl">
+                                            <li>Unknown source</li>
                                         </ul>
                                     </div>
                                     </ReactTooltip>
@@ -720,8 +726,47 @@ const DefiList = observer((props) => {
                             tempDefiName = "PancakeSwap"
                         }
                         rankInfoArr.push(tempDefiName, currencyNum + currencyUnit, change24hValue);
+
+                        // ----------------------------------- Trending -----------------------------------
+                        // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+                        // top price change 찾기
+                        if (tokenPriceChange24h > trendingInfoArr[2]) {
+                            trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[1] = tokenPrice;
+                            trendingInfoArr[1] = res[i].price;
+                            trendingInfoArr[0] = tokenSymbolName;
+                        }
+
+                        // top marketcap change 찾기
+                        if (tokenMarketCapChange24h > trendingInfoArr[5]) {
+                            trendingInfoArr[5] = tokenMarketCapChange24h.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[4] = tokenMarketCapTag;
+                            trendingInfoArr[4] = (res[i].marketCap).toFixed(0) * 1;
+                            trendingInfoArr[3] = tempDefiName;
+                        }
+
+                        // top holders change 찾기
+                        if (tokenHoldersChange24hNum > trendingInfoArr[8]) {
+                            trendingInfoArr[8] = tokenHoldersChange24hNum;
+                            // tag 보관
+                            // trendingInfoArr[7] = tokenHoldersTag;
+                            trendingInfoArr[7] = res[i].holders;
+                            trendingInfoArr[6] = tempDefiName;
+                        }
+
+                        // top TVL change 찾기
+                        if (change24hValue > trendingInfoArr[11]) {
+                            trendingInfoArr[11] = change24hValue.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[10] = "$" + currencyNum + currencyUnit;
+                            trendingInfoArr[10] = res[i].lockedUsd;
+                            trendingInfoArr[9] = tempDefiName;
+                        }
                     }
                 }
+
                 // console.count("DefiList Call");
 
                 // 1, 2, 3위는 Trending 목록에 보관
@@ -731,10 +776,12 @@ const DefiList = observer((props) => {
                 //     res[1].name, res[1].lockedUsd, res[1].tvlPercentChange24h, 
                 //     res[2].name, res[2].lockedUsd, res[2].tvlPercentChange24h
                 // ]);
-                global.changeTrending(rankInfoArr);
+                // global.changeTrending(rankInfoArr);
+
+                // 0422 수정
+                global.changeTrending(trendingInfoArr);
 
                 // console.log("tableCodeArr: ", tableCodeArr);
-
                 setDefiListTableCode(tableCodeArr);
             })
             .catch(err => setResponseError(err));

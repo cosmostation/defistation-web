@@ -386,10 +386,10 @@ const TotalValue = observer((props) => {
                             }
                             tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempDailyTx]);
                         } else {
-                            console.log("[0416] 테스트3333333");
+                            // console.log("[0416] 테스트3333333");
                             // 서브 페이지
                             let tempPrice = null;
-                            console.log("[0416] priceArr: ", priceArr);
+                            // console.log("[0416] priceArr: ", priceArr);
                             if (priceArr.length > 0) {
                                 tempPrice = priceArr[i][1];
                                 tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
