@@ -94,7 +94,7 @@ const MiniCards = observer((props) => {
                     if (bnbChange24hPercent > 0) {
                         setChangeVal2(<span className="miniCardChange textGreen">+{bnbChange24hPercent.toFixed(2)}%</span>);
                     } else if (bnbChange24hPercent < 0) {
-                        setChangeVal2(<span className="miniCardChange textRed">-{bnbChange24hPercent.toFixed(2)}%</span>);
+                        setChangeVal2(<span className="miniCardChange textRed">{bnbChange24hPercent.toFixed(2)}%</span>);
                     } else {
                         setChangeVal2(<span className="miniCardChange">{bnbChange24hPercent.toFixed(2)}</span>);
                     }

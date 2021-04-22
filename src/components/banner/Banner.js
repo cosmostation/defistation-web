@@ -16,10 +16,10 @@ import '../../App.css';
 import binanceImg1 from "../../assets/images/binanceimg.gif";
 
 import btcst from "../../assets/images/banner/Defistation Banner_BTCST.png";
-import btcstMobile from "../../assets/images/banner/Defistation Banner_BTCST_mobile.png";
+import btcstMobile from "../../assets/images/banner/banner_btcst_mobile.png";
 
 import bifi from "../../assets/images/banner/Defistation Banner_BiFi.png";
-import bifiMobile from "../../assets/images/banner/Defistation Banner_BiFi_mobile.jpg";
+import bifiMobile from "../../assets/images/banner/banner_bifi_mobile.png";
 
 // Google Analytics
 import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga

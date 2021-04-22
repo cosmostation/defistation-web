@@ -127,6 +127,9 @@ export function getOfficialDefiName(defiName) {
         case "STORMSWAP":
             convertedName = "Storm Swap";
             break;
+        case "BTC Standard Hashrate Token":
+            convertedName = "BTC Standard Hashrate";
+            break;    
         default:
             convertedName = defiName;
             break;                                                   
