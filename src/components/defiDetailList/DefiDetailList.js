@@ -7,7 +7,7 @@ import '../../App.css';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3 } from '../../util/Util';
 
 const DefiDetailList = observer((props) => {
     const { global } = useStores();
@@ -183,7 +183,7 @@ const DefiDetailList = observer((props) => {
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
                         defiDataTagArr.unshift(<tr key={i}>
-                            <td>{convertDateFormat(new Date(resultArr[i][0] * 1000))}</td>
+                            <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
                             <td>$ {numberWithCommas(resultArr[i][1])}</td>
                             <td>$ {currencyNum + currencyUnit}</td>
                             <td>{tvlChangeTag}</td>

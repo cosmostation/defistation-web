@@ -103,6 +103,16 @@ export function convertDateFormat2(d) {
     return s;  
 }
 
+export function convertDateFormat3(date) {
+    // return date.toISOString().substring(0, 10);
+    var year = date.getFullYear().toString().substr(-2);
+    var month = (1 + date.getMonth());
+    month = month >= 10 ? month : '0' + month;
+    var day = date.getDate();
+    day = day >= 10 ? day : '0' + day;
+    return year + '.' + month + '.' + day;
+}
+
 export function getOfficialDefiName(defiName) {
     let convertedName;
     switch (defiName) {
