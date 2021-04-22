@@ -90,13 +90,13 @@ li {
 
   font-family: "Heebo-Regular", sans-serif;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #757f8e;
+  color: #fff;
 }
 
 .topBarUl li {
@@ -2623,7 +2623,7 @@ img:hover{
 
 .defiDetailListTable th, td {
   height: 47.21px;
-  /* border-bottom: 1px solid #404752; */
+  border-bottom: 1px solid #32373E;
   /* padding: 10px; */
   font-family: "Heebo-Regular", sans-serif;
 }

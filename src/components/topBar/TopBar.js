@@ -67,7 +67,8 @@ const TopBar = observer((props) => {
                         >close</span>
                     </div>
                     <ul className="sideMenuUl">
-                        <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li>
+                        {/* <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li> */}
+                        <li><span onClick={() => openWindow("https://t.me/defistation")}>Community</span></li>
                         <li><span onClick={() => movePage("/about")}>About</span></li>
                         <li><span onClick={() => movePage("/projects")}>Projects</span></li>
                         <hr className="sideMenuLine" />
@@ -104,7 +105,8 @@ const TopBar = observer((props) => {
                 <li>
                     <img src={defistationLogoAlpha} style={{"width":"260px"}} onClick={() => movePage("/")} />
                 </li>
-                <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li>
+                {/* <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li> */}
+                <li><span onClick={() => openWindow("https://t.me/defistation")}>Community</span></li>
                 <li><span onClick={() => movePage("/about")}>About</span></li>
                 <li><span onClick={() => movePage("/projects")}>Projects</span></li>
                 <li>

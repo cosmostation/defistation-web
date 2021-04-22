@@ -70,7 +70,7 @@ const MiniCardSlider = observer((props) => {
             title3={"Trending(TVL)"} dataNum3={"$ 00.00B"} data24hChange3={-12.34} defiName3={"name3"} 
             */}
             
-            <Slider {...settingsMiniCard} >
+            <Slider {...settingsMiniCard}>
                 <div>
                     <span className="miniCardTitle">{props.title0}</span>
                     {/* {props.data24hChange0} */}

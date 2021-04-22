@@ -43,10 +43,8 @@ const DefiDetailList = observer((props) => {
                 .json()
                 .then(res => {
                     if (res.result == null) return;
-
                     let resultObj = res.result;
                     var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
-
                     resolve(resultArr);
                 });
         });    
@@ -218,7 +216,7 @@ const DefiDetailList = observer((props) => {
         // getDefiList();
         console.log("props.defiName22222: ", props.defiName);
         getChart(props.defiName);
-
+        
         return () => {
 
         };
