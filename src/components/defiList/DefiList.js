@@ -415,7 +415,8 @@ const DefiList = observer((props) => {
                         if (auditInfoStr.indexOf("YES") != -1) {
                             verifiedTag = 
                             <>
-                                <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
+                                {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
+                                <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
                                 <ReactTooltip 
                                 id={'global' + i} 
                                 aria-haspopup='true'
@@ -424,7 +425,7 @@ const DefiList = observer((props) => {
                                 effect="solid"
                                 >
                                 <div>
-                                    <span className='auditVerified'>⦁</span> Audited
+                                    <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
                                     <ul className="auditListUl">
                                         <li>Unknown source</li>
                                     </ul>
@@ -435,7 +436,7 @@ const DefiList = observer((props) => {
                             if (auditInfoStr == "") {
                                 verifiedTag = 
                                 <>
-                                    <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
+                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -444,7 +445,7 @@ const DefiList = observer((props) => {
                                     effect="solid"
                                     >
                                     <div>
-                                        <span className='auditVerified'>⦁</span> Audited
+                                        <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
                                         <ul className="auditListUl">
                                             <li>Unknown source</li>
                                         </ul>
@@ -469,7 +470,7 @@ const DefiList = observer((props) => {
 
                                 verifiedTag = 
                                 <>
-                                    <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span>
+                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -478,7 +479,7 @@ const DefiList = observer((props) => {
                                     effect="solid"
                                     >
                                     <div>
-                                        <span className='auditVerified'>⦁</span> Audited
+                                        <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
                                         <ul className="auditListUl">
                                             {resultAuditTag}
                                         </ul>
@@ -488,7 +489,7 @@ const DefiList = observer((props) => {
                             }
                         }
                     } else {
-                        verifiedTag = <span className='noAudit' style={{"margin-left":"14px"}}>⦁</span>;
+                        verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
                     }
 
 

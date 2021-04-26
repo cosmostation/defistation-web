@@ -227,7 +227,8 @@ const DefiDetailList = observer((props) => {
             <table className="defiDetailListTable">
                 <thead className="defiDetailListTableHead">
                     <tr>
-                        <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th>
+                        {/* <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th> */}
+                        <th>Date</th><th>Token Price</th><th>MarketCap</th><th>Holders</th><th>Total BNB Locked</th><th>TVL</th>
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">
