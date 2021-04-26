@@ -114,6 +114,10 @@ li {
   -webkit-tap-highlight-color : rgba(0,0,0,0);
 }
 
+.topBarUl li span:hover {
+  color: #A6B0BF;
+}
+
 .topBarUl li:nth-child(1) { 
   width: 64%;
 }
@@ -2014,7 +2018,7 @@ hr.sideMenuLine {
   cursor: pointer;
   /* background-color: #1f232b; */
   /* text-decoration: underline; */
-  color: #bebebe;
+  color: #A6B0BF;
 }
 
 .projectName {

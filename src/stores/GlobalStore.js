@@ -47,4 +47,16 @@ export default class GlobalStore {
   @action changeTrending24hPercent = (value) => {
     this.trending24hPercent = value;
   };
+
+  // // Token Price
+  // @observable tokenPrice = 0;
+  // @action changeTokenPrice = (value) => {
+  //   this.tokenPrice = value;
+  // };
+
+  // // Token Price 24h 변화(%)
+  // @observable tokenPrice24hPercent = 0;
+  // @action changeTokenPrice24hPercent = (value) => {
+  //   this.tokenPrice24hPercent = value;
+  // };
 }

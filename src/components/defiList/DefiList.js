@@ -319,7 +319,7 @@ const DefiList = observer((props) => {
                 // Trending 에는 price, marketcap, hoders, TVL 데이터가 들어간다.(2개씩)
                 // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
                 // let trendingInfoArr = ["", "", 0, "", "", 0, "", "", 0, "", "", 0];
-                let trendingInfoArr = ["", 0, 0, "", 0, 0, "", 0, 0, "", 0, 0];
+                let trendingInfoArr = ["", null, null, "", null, null, "", null, null, "", null, null];
 
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
@@ -577,6 +577,7 @@ const DefiList = observer((props) => {
                     }
 
                     let tokenMarketCapChange24h = res[i].marketCapChange24h;
+                    console.log("[0423] tokenMarketCapChange24h: ", tokenMarketCapChange24h);
                     let tokenMarketCapChange24hTag;
                     if (tokenMarketCapChange24h > 0) {
                         // +
@@ -730,6 +731,20 @@ const DefiList = observer((props) => {
                         // ----------------------------------- Trending -----------------------------------
                         // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
                         // top price change 찾기
+
+                        // if (i == 0) {
+                        //     console.log("[0423-0] trendingInfoArr[2]: ", trendingInfoArr[2]);
+
+                        //     if (trendingInfoArr[2] == null) {
+                        //         console.log("[0423] trendingInfoArr[2]: ", trendingInfoArr[2]);
+                        //         trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
+                        //         console.log("[0423] success@");
+                        //     }
+                        // } else {
+                        //     console.log("[0423-1] trendingInfoArr[2]: ", trendingInfoArr[2]);
+
+                        // }
+
                         if (tokenPriceChange24h > trendingInfoArr[2]) {
                             trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
                             // tag 보관

@@ -25,8 +25,8 @@ const MiniCards = observer((props) => {
     const [miniCardTitle2, setMiniCardTitle2] = useState();
     const [miniCardTitle3, setMiniCardTitle3] = useState();
 
-    const [miniCardData0, setMiniCardData0] = useState("0%");
-    const [miniCardData1, setMiniCardData1] = useState("0%");
+    const [miniCardData0, setMiniCardData0] = useState("");
+    const [miniCardData1, setMiniCardData1] = useState("");
     const [miniCardData2, setMiniCardData2] = useState("");
     const [miniCardData3, setMiniCardData3] = useState("");
 
@@ -39,9 +39,58 @@ const MiniCards = observer((props) => {
 
     const [miniCard4thTag, setMiniCard4thTag] = useState();
 
+    const [urlFlag2, setUrlFlag2] = useState(false);
+    async function getDefiList(defiName) {
+        if (urlFlag2) return;
+        setUrlFlag2(true);
+
+        console.count("getDefiListCall");
+
+        // if (defiName == "")
+
+        console.log("[0426] defiName: ", defiName);
+
+        const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
+            method: 'GET',
+            headers: {
+                Authorization: global.auth
+            }
+        });
+        res
+            .json()
+            .then(res => {
+                console.log("[0426 Test] res: ", res);
+
+                let tokenPrice = 0;
+                let tokenPriceChange24h = 0;
+                for (var i = 0; i < res.length; i++) {
+                    console.log();
+
+                    if (res[i]["name"] == defiName) {
+                        tokenPrice = res[i]["price"];
+                        tokenPriceChange24h = res[i]["priceChange24h"];
+                        break;
+                    }
+                }
+
+                console.log("[0426] tokenPrice: ", tokenPrice);
+
+                // minicard2 에 표현
+                // -------------------------------- Token Price --------------------------------
+                setMiniCardData1("$ " + tokenPrice);
+
+                if (tokenPriceChange24h * 1 > 0) {
+                    setChangeVal1(<span className="miniCardChange textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
+                } else if (tokenPriceChange24h * 1 < 0) {
+                    setChangeVal1(<span className="miniCardChange textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
+                } else {
+                    setChangeVal1(<span className="miniCardChange">{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
+                }
+            })
+    }
+
     const [urlFlag1, setUrlFlag1] = useState(false);
     const [urlFlagDetail, setUrlFlagDetail] = useState("");
-    
     async function getTotalBnbLocked(defiName) {
         if (defiName == "DeFi") {
             if (urlFlag1) return;
@@ -130,7 +179,7 @@ const MiniCards = observer((props) => {
     //     }
     // }
 
-    const [trendingDefiName, setTrendingDefiName] = useState("");
+    // const [trendingDefiName, setTrendingDefiName] = useState("");
 
     useEffect(() => {
         getTotalBnbLocked(props.defiName);
@@ -186,30 +235,6 @@ const MiniCards = observer((props) => {
             }
 
             // ---------------------------- Trending ----------------------------
-            // random(1~3위)
-            // let randomNum = Math.floor(Math.random() * 3) * 3;
-
-            // //     if (urlFlagDetail == chartFullUrl) return;
-            // // setUrlFlagDetail(chartFullUrl);
-
-            // let trendingArr = global.trending;
-            // // defiName0, tvl0, change0
-            // setMiniCardData3b(<span className="trendingDefiName">{trendingArr[randomNum + 0]}</span>);
-            // setMiniCardData3(trendingArr[randomNum + 1]);
-
-            // // change
-            // if (trendingArr[randomNum + 2] > 0) {
-            //     setChangeVal3(<span className="miniCardChange textGreen">+{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
-            // } else if (trendingArr[randomNum + 2] < 0) {
-            //     setChangeVal3(<span className="miniCardChange textRed">{(trendingArr[randomNum + 2] * 100).toFixed(2)}%</span>);
-            // } else {
-            //     setChangeVal3(<span className="miniCardChange">{(trendingArr[randomNum + 2] * 100).toFixed(2)}</span>);
-            // }
-
-            // setTrendingDefiName(trendingArr[randomNum + 0]);
-
-
-
             let trendingArr = global.trending;
 
             // trending minicard 보여주기
@@ -219,55 +244,87 @@ const MiniCards = observer((props) => {
             title0={"Trending (Price)"} defiName0={trendingArr[0]} dataNum0={trendingArr[1] * 1} data24hChange0={trendingArr[2]} 
             title1={"Trending (Mkt Cap)"} defiName1={trendingArr[3]} dataNum1={trendingArr[4] * 1} data24hChange1={trendingArr[5]} 
             title2={"Trending (Holders)"} defiName2={trendingArr[6]} dataNum2={trendingArr[7] * 1} data24hChange2={trendingArr[8]} 
-            title3={"Trending (TVL)"} defiName3={trendingArr[9]} dataNum3={trendingArr[10] * 1} data24hChange3={trendingArr[11]} 
-            // title0={"Trending (Price)"} defiName0={trendingArr[0]} dataNum0={trendingArr[1]} data24hChange0={trendingArr[2]} 
-            // title1={"Trending (Mkt Cap)"} defiName1={trendingArr[3]} dataNum1={trendingArr[4]} data24hChange1={trendingArr[5]} 
-            // title2={"Trending (Holders)"} defiName2={trendingArr[6]} dataNum2={trendingArr[7]} data24hChange2={trendingArr[8]} 
-            // title3={"Trending (TVL)"} defiName3={trendingArr[9]} dataNum3={trendingArr[10]} data24hChange3={trendingArr[11]} 
+            title3={"Trending (TVL)"} defiName3={trendingArr[9]} dataNum3={trendingArr[10] * 1} data24hChange3={trendingArr[11]}
             />
             );
 
         } else {
             // 서브 페이지
             setMiniCardTitle0("Total Value Locked");
-            setMiniCardTitle1("TVL Change 24h");
+            setMiniCardTitle1("Token Price");
             setMiniCardTitle2("Total BNB Locked");
             setMiniCardTitle3("Last updated(UTC)");
 
             // TVL Change 24h
             // minicard 0 으로 보이는 현상 임시
-            if (miniCardData0 == "0%") {
+            // if (miniCardData0 == "0%") {
+            //     setTimeout(function() {
+            //         if (miniCardData0 != "0%") return;
+            //         // showTvl1Day();
+            //         if (global.tvl1DayPercent > 0) { 
+            //             setMiniCardData1("+" + global.tvl1DayPercent + "%");
+            //         } else {
+            //             setMiniCardData1(global.tvl1DayPercent + "%");
+            //         }
+            //     }, 3000);
+            // }
+
+            // Total Value Locked 변화량(%) 값
+            console.log("changeVal0: ", changeVal0);
+            if (changeVal0 == "") {
                 setTimeout(function() {
-                    if (miniCardData0 != "0%") return;
-                    // showTvl1Day();
+                    if (changeVal0 != "") return;
                     if (global.tvl1DayPercent > 0) { 
-                        setMiniCardData1("+" + global.tvl1DayPercent + "%");
+                        setChangeVal0(<span className="miniCardChange textGreen">+{global.tvl1DayPercent}%</span>);
+                    } else if (global.tvl1DayPercent < 0) {
+                        setChangeVal0(<span className="miniCardChange textRed">{global.tvl1DayPercent}%</span>);
                     } else {
-                        setMiniCardData1(global.tvl1DayPercent + "%");
+                        setChangeVal0(<span className="miniCardChange">{global.tvl1DayPercent}%</span>);
                     }
                 }, 3000);
             }
 
-            // // TVL Change 24h
-            // if (global.tvl1DayPercent > 0) { 
-            //     setMiniCardData1("+" + global.tvl1DayPercent + "%");
+            // if (String(global.tvl1DayPercent).indexOf("+") != -1) {
+            //     setChangeVal0(<span className="miniCardChange textGreen">{global.tvl1DayPercent}</span>);
+            // } else if (String(global.tvl1DayPercent).indexOf("-") != -1) {
+            //     setChangeVal0(<span className="miniCardChange textRed">{global.tvl1DayPercent}</span>);
             // } else {
-            //     setMiniCardData1(global.tvl1DayPercent + "%");
+            //     setChangeVal0(<span className="miniCardChange">{global.tvl1DayPercent}</span>);
+            // }
+            
+            // ---------------------------- Token Price ----------------------------
+            // console.log("global.tokenPrice: ", global.tokenPrice);
+            // setMiniCardData1("$ " + global.tokenPrice);
+
+            // 서브페이지일 때 Token Price 랑 변화량 가져오기 -> minicard2 적용
+            if (props.defiName != "") getDefiList(props.defiName);
+
+
+            // console.log("global.transactions24hPercent: ", global.transactions24hPercent);
+            // if (global.transactions24hPercent * 1 > 0) {
+            //     setChangeVal1(<span className="miniCardChange textGreen">+{global.transactions24hPercent}%</span>);
+            // } else if (global.transactions24hPercent * 1 < 0) {
+            //     setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
+            // } else {
+            //     setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
             // }
 
-            // trending 이 아니라 일반 minicard 보여주기
+            // console.log("global.tokenPrice24hPercent: ", global.tokenPrice24hPercent);
+
+
+            // 서브페이지에서는 trending 이 아니라 일반 minicard 보여주기
             setMiniCard4thTag(
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} />
             );
         }
 
-        console.log("props.defiName: ", props.defiName);
+        console.log("[0426 test] props.defiName: ", props.defiName);
         
         return () => {
 
         };
-        // global.totalValueLockedUsd 삭제
-    }, [props.defiName, miniCardData1])
+        // global.totalValueLockedUsd 삭제  miniCardData1
+    }, [props.defiName, miniCardData1, miniCardData3])
 
     return (
         <div className="miniCards">

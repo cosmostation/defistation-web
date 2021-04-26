@@ -214,6 +214,8 @@ const TotalValue = observer((props) => {
                 let tempChartData = [];
                 let initProjectTvlIndex = -1;
 
+                let currentTokenPrice = 0;
+
                 if (res.result == null) {
                     setMinTvl(0);
                     global.changeTotalValueLockedUsd("$ 0");
@@ -389,10 +391,25 @@ const TotalValue = observer((props) => {
                             // console.log("[0416] 테스트3333333");
                             // 서브 페이지
                             let tempPrice = null;
+                            // let prevPrice = null;
                             // console.log("[0416] priceArr: ", priceArr);
                             if (priceArr.length > 0) {
                                 tempPrice = priceArr[i][1];
                                 tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+
+                                // 서브 페이지 miniCard 용
+                                // global.changeTokenPrice(tempPrice);
+
+                                // if (priceArr[i - 1] != undefined) {
+                                //     prevPrice = priceArr[i - 1][1];
+                                // }
+
+                                // let tempPriceChange24h = (tempPrice - prevPrice) / tempPrice;
+                                // if (tempPriceChange24h != 0) {
+                                //     console.log("[0423] tempPriceChange24h: ", tempPriceChange24h);
+                                //     global.changeTokenPrice24hPercent(tempPriceChange24h);
+                                // }
+                                
                             } else {
                                 tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
                             }
