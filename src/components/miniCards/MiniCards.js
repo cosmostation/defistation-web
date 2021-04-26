@@ -136,12 +136,26 @@ const MiniCards = observer((props) => {
                 if (props.defiName != "DeFi") {
                     // 서브 페이지
                     // 유통량: 147883948 -> 153432897
-                    setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 153432897 * 100).toFixed(4) * 1) + "%");
+                    // setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 153432897 * 100).toFixed(4) * 1) + "%");
+
+                    // ---------------------------- Total BNB locked change(%) ----------------------------
+                    console.log("resultArr[resultArr.length - 2][1]: ", resultArr[resultArr.length - 2][1]);
+
+                    let bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 2][1] * 100;
+
+                    if (bnbChange24hPercent > 0) {
+                        setChangeVal2(<span className="miniCardChange textGreen">+{bnbChange24hPercent.toFixed(2)}%</span>);
+                    } else if (bnbChange24hPercent < 0) {
+                        setChangeVal2(<span className="miniCardChange textRed">{bnbChange24hPercent.toFixed(2)}%</span>);
+                    } else {
+                        setChangeVal2(<span className="miniCardChange">{bnbChange24hPercent.toFixed(2)}</span>);
+                    }
+
                 } else {
                     // 메인 페이지
                     
-                    // ---------------------------- BNB locked change ----------------------------
-                    let bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 1][1] * 100;
+                    // ---------------------------- Total BNB locked change(%) ----------------------------
+                    let bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 2][1] * 100;
 
                     if (bnbChange24hPercent > 0) {
                         setChangeVal2(<span className="miniCardChange textGreen">+{bnbChange24hPercent.toFixed(2)}%</span>);
