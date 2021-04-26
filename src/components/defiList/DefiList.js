@@ -548,7 +548,7 @@ const DefiList = observer((props) => {
                         tokenPrice = "-";
                         tokenMarketCapTag = "-";
                     } else {
-                        tokenPrice = "$ " + numberWithCommas(res[i].price, false);
+                        tokenPrice = "$ " + numberWithCommas(res[i].price, false, true);
                         tokenMarketCap = res[i].marketCap;
                         // K M B 단위로 표시
                         digitForMarketCap = getCurrencyDigit(tokenMarketCap);

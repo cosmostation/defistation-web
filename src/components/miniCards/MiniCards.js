@@ -75,7 +75,7 @@ const MiniCards = observer((props) => {
 
                 // minicard2 에 표현
                 // -------------------------------- Token Price --------------------------------
-                if (tokenPrice != null) setMiniCardData1("$ " + numberWithCommas(tokenPrice, false));
+                if (tokenPrice != null) setMiniCardData1("$ " + numberWithCommas(tokenPrice, false, true));
 
                 if (tokenPriceChange24h * 1 > 0) {
                     setChangeVal1(<span className="miniCardChange textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>);

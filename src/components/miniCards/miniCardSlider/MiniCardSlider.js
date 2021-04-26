@@ -1,6 +1,6 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName } from '../../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName, convertToBMK } from '../../../util/Util';
 // import { useHistory, useLocation } from 'react-router-dom';
 
 import Slider from "react-slick";   // https://github.com/akiran/react-slick
@@ -73,7 +73,7 @@ const MiniCardSlider = observer((props) => {
             <Slider {...settingsMiniCard}>
                 <div>
                     <span className="miniCardTitle">{props.title0}</span>
-                    {/* {props.data24hChange0} */}
+                    {/* price */}
 
                     <span style={props.data24hChange0 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange0 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange0 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange0 * 100).toFixed(2)}%</span>
@@ -84,18 +84,18 @@ const MiniCardSlider = observer((props) => {
                 </div>
                 <div>
                     <span className="miniCardTitle">{props.title1}</span>
-                    {/* {props.data24hChange1} */}
+                    {/* Mkt Cap */}
 
                     <span style={props.data24hChange1 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange1 * 100).toFixed(2)}%</span>
 
                     <span className="trendingDefiName">{props.defiName1}</span>
-                    <p className="miniCardDataNum">$ {numberWithCommas(props.dataNum1, false)}</p>
+                    <p className="miniCardDataNum">$ {convertToBMK(props.dataNum1, false)}</p>
                 </div>
                 <div>
                     <span className="miniCardTitle">{props.title2}</span>
-                    {/* {props.data24hChange2} */}
+                    {/* Holders */}
 
                     <span style={props.data24hChange2 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{props.data24hChange2}</span>
                     <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange">{props.data24hChange2}</span>
@@ -106,14 +106,14 @@ const MiniCardSlider = observer((props) => {
                 </div>
                 <div>
                     <span className="miniCardTitle">{props.title3}</span>
-                    {/* {props.data24hChange3} */}
+                    {/* TVL */}
 
                     <span style={props.data24hChange3 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange3 * 100).toFixed(2)}%</span>
 
                     <span className="trendingDefiName">{props.defiName3}</span>
-                    <p className="miniCardDataNum">$ {numberWithCommas(props.dataNum3, false)}</p>
+                    <p className="miniCardDataNum">$ {convertToBMK(props.dataNum3, false)}</p>
                 </div>
             </Slider>
         </li>

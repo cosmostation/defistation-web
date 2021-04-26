@@ -12,10 +12,14 @@
 // 	}
 // }
 
-export const numberWithCommas = (n, pointSizeDownFlag = true) => {
+export const numberWithCommas = (n, pointSizeDownFlag = true, priceFlag = false) => {
     // 1보다 작은 수는 소숫점 4자리까지 표현
     if (n != 0 && n < 1) {
         n = (n).toFixed(4);
+    } else {
+        if (priceFlag) {
+            n = (n).toFixed(2);
+        }
     }
 
 	n = n + '';
