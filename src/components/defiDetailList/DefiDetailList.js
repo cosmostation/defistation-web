@@ -135,7 +135,8 @@ const DefiDetailList = observer((props) => {
 
                     let tvlChange = 0;
                     if (i > 0) {
-                        tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
+                        // tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
+                        tvlChange = (resultArr[i][1] / resultArr[i - 1][1] - 1);
                         if (tvlChange > 0) {
                             // +
                             tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
