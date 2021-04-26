@@ -71,11 +71,11 @@ const MiniCards = observer((props) => {
                     }
                 }
 
-                console.log("[0426] tokenPrice: ", tokenPrice);
+                // console.log("[0426] tokenPrice: ", tokenPrice);
 
                 // minicard2 에 표현
                 // -------------------------------- Token Price --------------------------------
-                if (tokenPrice != null) setMiniCardData1("$ " + tokenPrice.toFixed(2));
+                if (tokenPrice != null) setMiniCardData1("$ " + numberWithCommas(tokenPrice, false));
 
                 if (tokenPriceChange24h * 1 > 0) {
                     setChangeVal1(<span className="miniCardChange textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
@@ -127,7 +127,7 @@ const MiniCards = observer((props) => {
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
                 // console.log("res: ", res);
-                setTotalBnbLockedNum(numberWithCommas(Math.floor(resultArr[resultArr.length - 1][1])));
+                setTotalBnbLockedNum(numberWithCommas(Math.floor(resultArr[resultArr.length - 1][1]), false));
 
                 // setLockedBnbAmount(resultArr[resultArr.length - 1][1]);
                 // 해당 Defi BNB와 전체 BNB 유통량 비율
@@ -242,6 +242,24 @@ const MiniCards = observer((props) => {
 
             // ---------------------------- TXs ----------------------------
             setMiniCardData1(global.transactions24h);
+
+            if (miniCardData1 == "0") {
+                setTimeout(function() {
+                    if (miniCardData1 != "0") return;
+
+                    setMiniCardData1(global.transactions24h);
+
+                    console.log("global.transactions24hPercent: ", global.transactions24hPercent);
+                    if (global.transactions24hPercent * 1 > 0) {
+                        setChangeVal1(<span className="miniCardChange textGreen">+{global.transactions24hPercent}%</span>);
+                    } else if (global.transactions24hPercent * 1 < 0) {
+                        setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
+                    } else {
+                        setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
+                    }
+                }, 3000);
+            }
+
             console.log("global.transactions24hPercent: ", global.transactions24hPercent);
             if (global.transactions24hPercent * 1 > 0) {
                 setChangeVal1(<span className="miniCardChange textGreen">+{global.transactions24hPercent}%</span>);

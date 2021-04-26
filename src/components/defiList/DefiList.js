@@ -9,7 +9,7 @@ import '../../App.css';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK } from '../../util/Util';
 
 // table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
@@ -562,7 +562,7 @@ const DefiList = observer((props) => {
                     if (tokenHolders == 0 || tokenHolders == null) {
                         tokenHoldersTag = "-";
                     } else {
-                        tokenHoldersTag = numberWithCommas(tokenHolders);
+                        tokenHoldersTag = numberWithCommas(tokenHolders, false);
                     }
 
                     // 변화율
@@ -594,11 +594,11 @@ const DefiList = observer((props) => {
                     let tokenHoldersChange24hNumTag;
                     if (tokenHoldersChange24hNum > 0) {
                         // +
-                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGreen">+{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGreen">+{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     } else if (tokenHoldersChange24hNum == 0) {
-                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText">{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     } else if (tokenHoldersChange24hNum < 0) {
-                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textRed">{numberWithCommas(tokenHoldersChange24hNum)}</span>;
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textRed">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     }
 
                     // holders 변화량은 holder 가 0이거나 null 이면 표기하지 않는다

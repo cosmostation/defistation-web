@@ -8,7 +8,7 @@ import '../../App.css';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3 } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
 
 import questionIcon from "../../assets/images/question_ic.svg";
 
@@ -113,6 +113,13 @@ const DefiDetailList = observer((props) => {
                 let tvlChangeTag;
                 let bnbChangeTag;
 
+                let tokenPriceTag;
+                let tokenPriceChangeTag;
+                let marketCapTag;
+                let marketCapChangeTag;
+                let holdersTag;
+                let holdersChangeTag;
+
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
@@ -141,7 +148,8 @@ const DefiDetailList = observer((props) => {
 
                     let tvlChange = 0;
                     if (i > 0) {
-                        tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
+                        // tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
+                        tvlChange = (resultArr[i][1] / resultArr[i - 1][1] - 1);
                         if (tvlChange > 0) {
                             // +
                             tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
@@ -155,24 +163,21 @@ const DefiDetailList = observer((props) => {
                     // BNB locked 변화량(개수로 표현)
                     let bnbChange = 0;
                     if (i > 0) {
-                        bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
-                        if (bnbChange > 0) {
-                            // +
-                            bnbChangeTag = <span className="textGreen">+{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        } else if (bnbChange == 0) {
-                            bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        } else if (bnbChange < 0) {
-                            bnbChangeTag = <span className="textRed">{numberWithCommas(Math.floor(bnbChange))}</span>;
+                        // bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
+                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
+                        if (bnbChange == -1) {
+                            bnbChangeTag = "";
+                        } else if (bnbChange == "Infinity") {
+                            bnbChangeTag = "";
+                        } else {
+                            if (bnbChange > 0) {
+                                bnbChangeTag = <span className="textGreen">+{(bnbChange * 100).toFixed(2)}%</span>;
+                            } else if (bnbChange == 0) {
+                                bnbChangeTag = <span>{(bnbChange * 100).toFixed(2)}%</span>;
+                            } else if (bnbChange < 0) {
+                                bnbChangeTag = <span className="textRed">{(bnbChange * 100).toFixed(2)}%</span>;
+                            }
                         }
-
-                        // if (bnbChange > 0) {
-                        //     // +
-                        //     bnbChangeTag = <span>+{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange == 0) {
-                        //     bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange < 0) {
-                        //     bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // }
                     }
 
                     // tvl
@@ -188,32 +193,59 @@ const DefiDetailList = observer((props) => {
 
                     // Token Price
                     let tokenPrice = 0;
+                    let tokenPriceChange = 0;
                     let priceObj = resultBnblockedList.price;
                     if (i > 0) {
-                        // bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
-                        // if (bnbChange > 0) {
-                        //     // +
-                        //     bnbChangeTag = <span className="textGreen">+{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange == 0) {
-                        //     bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange < 0) {
-                        //     bnbChangeTag = <span className="textRed">{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // }
+                        tokenPrice = priceObj[Object.keys(priceObj)[i]];
+                        tokenPriceTag = "$ " + numberWithCommas((tokenPrice).toFixed(2), false);
 
-                        // priceObj[]
-
-                        // tokenPrice 
-
-
+                        tokenPriceChange = (priceObj[Object.keys(priceObj)[i]] / priceObj[Object.keys(priceObj)[i - 1]] - 1);
+                        if (tokenPriceChange > 0) {
+                            tokenPriceChangeTag = <span className="textGreen">+{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange == 0) {
+                            tokenPriceChangeTag = <span>{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange < 0) {
+                            tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                        }
                     }
 
                     // MarketCap
                     let marketCapObj = resultBnblockedList.marketCap;
+                    let marketCap = 0;
+                    let marketCapChange = 0;
+                    if (i > 0) {
+                        marketCap = marketCapObj[Object.keys(marketCapObj)[i]];
+                        // marketCapTag = "$ " + (marketCap).toFixed(0);
+                        marketCapTag = "$ " + convertToBMK(marketCap);
 
+                        marketCapChange = (marketCapObj[Object.keys(marketCapObj)[i]] / marketCapObj[Object.keys(marketCapObj)[i - 1]] - 1);
+                        if (marketCapChange > 0) {
+                            marketCapChangeTag = <span className="textGreen">+{(marketCapChange * 100).toFixed(2)}%</span>;
+                        } else if (marketCapChange == 0) {
+                            marketCapChangeTag = <span>{(marketCapChange * 100).toFixed(2)}%</span>;
+                        } else if (marketCapChange < 0) {
+                            marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
+                        }
+                    }
 
                     // Holders
                     let holdersObj = resultBnblockedList.holders;
+                    let holders = 0;
+                    let holdersChange = 0;
+                    if (i > 0) {
+                        holders = holdersObj[Object.keys(holdersObj)[i]];
+                        holdersTag = numberWithCommas(holders, false);
 
+                        // holders 변화는 % 가 아니라 변화 증가, 감소 숫자로 보여준다
+                        holdersChange = holdersObj[Object.keys(holdersObj)[i]] - holdersObj[Object.keys(holdersObj)[i - 1]];
+                        if (holdersChange > 0) {
+                            holdersChangeTag = <span className="textGreen">+{numberWithCommas(holdersChange, false)}</span>;
+                        } else if (holdersChange == 0) {
+                            holdersChangeTag = <span>{numberWithCommas(holdersChange, false)}</span>;
+                        } else if (holdersChange < 0) {
+                            holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
+                        }
+                    }
 
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
@@ -226,16 +258,25 @@ const DefiDetailList = observer((props) => {
                             <td>{bnbChangeTag} <span style={{"color":"#f0b923"}}>BNB</span></td> */}
                             
                             <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
-                            <td>$ 99.99</td>
-                            <td>$ 693,851,801</td>
-                            <td>999,999</td>
                             <td>
-                                {numberWithCommas(Math.floor(lockedBnbArr[i][1]))} <span style={{"color":"#f0b923"}}>BNB</span>
-                                {/* <br /><span className="defiListTableSubText">{bnbChangeTag}</span> */}
+                                {tokenPriceTag}
+                                <br /><span className="defiListTableSubText">{tokenPriceChangeTag}</span>
                             </td>
                             <td>
-                                $ {numberWithCommas(resultArr[i][1])}
-                                {/* <br /><span className="defiListTableSubText">{tvlChangeTag}</span> */}
+                                {marketCapTag}
+                                <br /><span className="defiListTableSubText">{marketCapChangeTag}</span>
+                            </td>
+                            <td>
+                                {holdersTag}
+                                <br /><span className="defiListTableSubText">{holdersChangeTag}</span>
+                            </td>
+                            <td>
+                                {numberWithCommas(Math.floor(lockedBnbArr[i][1]))}
+                                <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
+                            </td>
+                            <td>
+                                $ {convertToBMK(resultArr[i][1])}
+                                <br /><span className="defiListTableSubText">{tvlChangeTag}</span>
                             </td>
                         </tr>);
                     }
@@ -280,7 +321,7 @@ const DefiDetailList = observer((props) => {
                         {/* <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th> */}
                         <th>Date</th>
                         <th>Token Price</th>
-                        <th>MarketCap</th>
+                        <th>Mkt Cap	</th>
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
@@ -288,7 +329,12 @@ const DefiDetailList = observer((props) => {
                             </ul>
                         </th>
                         <th>Total BNB Locked</th>
-                        <th>TVL</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>TVL</li>
+                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">
