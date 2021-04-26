@@ -1972,7 +1972,7 @@ hr.sideMenuLine {
   /* font-size: 18px; */
   background-color:#297ee2;
   border:1px solid #297ee2;
-  width:10px; height:10px;
+  width:8px; height:8px;
   border-radius:75px;
   text-align:center;
   margin:0 auto;
@@ -1989,7 +1989,7 @@ hr.sideMenuLine {
 .noAudit {
   background-color:#454b57;
   border:1px solid #454b57;
-  width:10px; height:10px;
+  width:8px; height:8px;
   border-radius:75px;
   text-align:center;
   margin:0 auto;
@@ -2713,14 +2713,14 @@ img:hover{
 }
 
 /* Mobile Locked */
-@media (min-width:1035px) {
+/* @media (min-width:1035px) {
   .defiDetailListTable th:nth-child(3) {
     display: none;
   }
   .defiDetailListTable td:nth-child(3) {
     display: none;
   }
-}
+} */
 
 @media (min-width:1px) and (max-width:1034px) {
   /* .defiDetailListTable th:nth-child(2) {

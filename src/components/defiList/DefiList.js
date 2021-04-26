@@ -826,7 +826,7 @@ const DefiList = observer((props) => {
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
-                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
+                                <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
                             </ul>
                         </th>
                         <th>Token</th>
@@ -835,20 +835,20 @@ const DefiList = observer((props) => {
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Mkt Cap</li>
-                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                                {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li> */}
                             </ul>
                         </th>
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
-                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                                <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul>
                         </th>
                         <th>TVL</th>
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>
-                                <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li>
+                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul>
                         </th>
                         {/* <th>
