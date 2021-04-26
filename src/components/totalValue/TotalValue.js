@@ -233,7 +233,7 @@ const TotalValue = observer((props) => {
                     let dailyTxObj = res.dailyTx;
                     var dailyTxArr = Object.keys(dailyTxObj).map((key) => [Number(key), dailyTxObj[key]]);
 
-                    console.log("dailyTxArr: ", dailyTxArr);
+                    // console.log("dailyTxArr: ", dailyTxArr);
 
                     // 최신 TXs 값 구하기. 최신 TXs 변화 % 계산하기
                     let latestTxVal = 0;

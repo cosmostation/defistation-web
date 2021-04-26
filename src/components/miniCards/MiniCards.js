@@ -26,7 +26,7 @@ const MiniCards = observer((props) => {
     const [miniCardTitle3, setMiniCardTitle3] = useState();
 
     const [miniCardData0, setMiniCardData0] = useState("");
-    const [miniCardData1, setMiniCardData1] = useState("");
+    const [miniCardData1, setMiniCardData1] = useState("0");
     const [miniCardData2, setMiniCardData2] = useState("");
     const [miniCardData3, setMiniCardData3] = useState("");
 
@@ -59,13 +59,11 @@ const MiniCards = observer((props) => {
         res
             .json()
             .then(res => {
-                console.log("[0426 Test] res: ", res);
+                // console.log("[0426 Test] res: ", res);
 
                 let tokenPrice = 0;
                 let tokenPriceChange24h = 0;
                 for (var i = 0; i < res.length; i++) {
-                    console.log();
-
                     if (res[i]["name"] == defiName) {
                         tokenPrice = res[i]["price"];
                         tokenPriceChange24h = res[i]["priceChange24h"];
@@ -77,7 +75,7 @@ const MiniCards = observer((props) => {
 
                 // minicard2 에 표현
                 // -------------------------------- Token Price --------------------------------
-                setMiniCardData1("$ " + tokenPrice);
+                if (tokenPrice != null) setMiniCardData1("$ " + tokenPrice.toFixed(2));
 
                 if (tokenPriceChange24h * 1 > 0) {
                     setChangeVal1(<span className="miniCardChange textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
@@ -141,7 +139,12 @@ const MiniCards = observer((props) => {
                     // ---------------------------- Total BNB locked change(%) ----------------------------
                     console.log("resultArr[resultArr.length - 2][1]: ", resultArr[resultArr.length - 2][1]);
 
-                    let bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 2][1] * 100;
+                    let bnbChange24hPercent;
+                    if (resultArr[resultArr.length - 2][1] > 0) {
+                        bnbChange24hPercent = (resultArr[resultArr.length - 1][1] - resultArr[resultArr.length - 2][1]) / resultArr[resultArr.length - 2][1] * 100;
+                    } else {
+                        bnbChange24hPercent = 0;
+                    }
 
                     if (bnbChange24hPercent > 0) {
                         setChangeVal2(<span className="miniCardChange textGreen">+{bnbChange24hPercent.toFixed(2)}%</span>);

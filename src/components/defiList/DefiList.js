@@ -577,7 +577,7 @@ const DefiList = observer((props) => {
                     }
 
                     let tokenMarketCapChange24h = res[i].marketCapChange24h;
-                    console.log("[0423] tokenMarketCapChange24h: ", tokenMarketCapChange24h);
+                    // console.log("[0423] tokenMarketCapChange24h: ", tokenMarketCapChange24h);
                     let tokenMarketCapChange24hTag;
                     if (tokenMarketCapChange24h > 0) {
                         // +
