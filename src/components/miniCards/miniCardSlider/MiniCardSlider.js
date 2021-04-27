@@ -97,9 +97,9 @@ const MiniCardSlider = observer((props) => {
                     <span className="miniCardTitle">{props.title2}</span>
                     {/* Holders */}
 
-                    <span style={props.data24hChange2 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{props.data24hChange2}</span>
-                    <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange">{props.data24hChange2}</span>
-                    <span style={props.data24hChange2 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{props.data24hChange2}</span>
+                    <span style={props.data24hChange2 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{numberWithCommas(props.data24hChange2)}</span>
+                    <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange">{numberWithCommas(props.data24hChange2)}</span>
+                    <span style={props.data24hChange2 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{numberWithCommas(props.data24hChange2)}</span>
 
                     <span className="trendingDefiName">{props.defiName2}</span>
                     <p className="miniCardDataNum">{numberWithCommas(props.dataNum2, false)}</p>
