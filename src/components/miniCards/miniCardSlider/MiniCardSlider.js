@@ -1,5 +1,6 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName, convertToBMK } from '../../../util/Util';
 // import { useHistory, useLocation } from 'react-router-dom';
 
@@ -10,6 +11,10 @@ import Slider from "react-slick";   // https://github.com/akiran/react-slick
 import '../../../App.css';
 
 const MiniCardSlider = observer((props) => {
+
+    const history = useHistory();
+
+    const [responseError, setResponseError] = useState();
 
     // slider setting
     var settingsMiniCard = {
@@ -24,34 +29,25 @@ const MiniCardSlider = observer((props) => {
         arrows: false
     };
 
-    const [changeTag0, setChangeTag0] = useState();
-    const [changeTag1, setChangeTag1] = useState();
-    const [changeTag2, setChangeTag2] = useState();
-    const [changeTag3, setChangeTag3] = useState();
+    function movePage(path) {
+        history.push(path);
+    }
 
-    function convertChangeNumText(changeNum) {
-        let changeNumTag;
-        if (changeNum > 0) {
-            // +
-            changeNumTag = <span className="miniCardChange textGreen">+{(changeNum * 100).toFixed(2)}%</span>;
-        } else if (changeNum == 0) {
-            changeNumTag = <span className="miniCardChange">{(changeNum * 100).toFixed(2)}%</span>;
-        } else if (changeNum < 0) {
-            changeNumTag = <span className="miniCardChange textRed">{(changeNum * 100).toFixed(2)}%</span>;
+    async function goToTrendingDetailPage(defiName) {
+        if (defiName == "PancakeSwap") {
+            defiName = "pancake";
         }
-        setChangeTag0(changeNumTag);
+        console.log("defiName: ", defiName);
+        let tempDefiName = replaceAll(defiName, ".", "");
+        tempDefiName = replaceAll(tempDefiName, " ", "");
+        tempDefiName = tempDefiName.toLowerCase();
+        movePage("/" + tempDefiName);
     }
 
     useEffect(() => {
-        // setChangeTag0(convertChangeNumText(props.data24hChange0));
-        // setChangeTag1(convertChangeNumText(props.data24hChange1));
-        // setChangeTag2(convertChangeNumText(props.data24hChange2));
-        // setChangeTag3(convertChangeNumText(props.data24hChange3));
-
         return () => {
 
         };
-        //  props.dataNum
     }, [])
 
     return (
@@ -76,10 +72,10 @@ const MiniCardSlider = observer((props) => {
                     {/* price */}
 
                     <span style={props.data24hChange0 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange0 * 100).toFixed(2)}%</span>
-                    <span style={props.data24hChange0 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange0 * 100).toFixed(2)}%</span>
+                    <span style={props.data24hChange0 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange0 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange0 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange0 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName">{props.defiName0}</span>
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName0)}>{props.defiName0}</span>
                     <p className="miniCardDataNum">$ {numberWithCommas(props.dataNum0, false)}</p>
                 </div>
                 <div>
@@ -87,10 +83,10 @@ const MiniCardSlider = observer((props) => {
                     {/* Mkt Cap */}
 
                     <span style={props.data24hChange1 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange1 * 100).toFixed(2)}%</span>
-                    <span style={props.data24hChange1 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange1 * 100).toFixed(2)}%</span>
+                    <span style={props.data24hChange1 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange1 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName">{props.defiName1}</span>
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName1)}>{props.defiName1}</span>
                     <p className="miniCardDataNum">$ {convertToBMK(props.dataNum1, false)}</p>
                 </div>
                 <div>
@@ -98,10 +94,10 @@ const MiniCardSlider = observer((props) => {
                     {/* Holders */}
 
                     <span style={props.data24hChange2 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{numberWithCommas(props.data24hChange2)}</span>
-                    <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange">{numberWithCommas(props.data24hChange2)}</span>
+                    <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{numberWithCommas(props.data24hChange2)}</span>
                     <span style={props.data24hChange2 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{numberWithCommas(props.data24hChange2)}</span>
 
-                    <span className="trendingDefiName">{props.defiName2}</span>
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName2)}>{props.defiName2}</span>
                     <p className="miniCardDataNum">{numberWithCommas(props.dataNum2, false)}</p>
                 </div>
                 <div>
@@ -109,10 +105,10 @@ const MiniCardSlider = observer((props) => {
                     {/* TVL */}
 
                     <span style={props.data24hChange3 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange3 * 100).toFixed(2)}%</span>
-                    <span style={props.data24hChange3 == 0 ? undefined : { display: "none" }} className="miniCardChange">{(props.data24hChange3 * 100).toFixed(2)}%</span>
+                    <span style={props.data24hChange3 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange3 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName">{props.defiName3}</span>
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName3)}>{props.defiName3}</span>
                     <p className="miniCardDataNum">$ {convertToBMK(props.dataNum3, false)}</p>
                 </div>
             </Slider>

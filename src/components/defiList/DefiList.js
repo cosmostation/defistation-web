@@ -373,7 +373,7 @@ const DefiList = observer((props) => {
                             // +
                             change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
                         } else if (change24hValue == 0) {
-                            change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
+                            change24hTag = <span className="textGray">{(change24hValue * 100).toFixed(2)}%</span>;
                         } else if (change24hValue < 0) {
                             change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
                         }
@@ -425,7 +425,10 @@ const DefiList = observer((props) => {
                                 effect="solid"
                                 >
                                 <div>
-                                    <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
+                                    <ul className="auditUl">
+                                        <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                        <li>Audited</li>
+                                    </ul>
                                     <ul className="auditListUl">
                                         <li>Unknown source</li>
                                     </ul>
@@ -445,7 +448,10 @@ const DefiList = observer((props) => {
                                     effect="solid"
                                     >
                                     <div>
-                                        <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
+                                        <ul className="auditUl">
+                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                            <li>Audited</li>
+                                        </ul>
                                         <ul className="auditListUl">
                                             <li>Unknown source</li>
                                         </ul>
@@ -470,7 +476,7 @@ const DefiList = observer((props) => {
 
                                 verifiedTag = 
                                 <>
-                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -484,6 +490,24 @@ const DefiList = observer((props) => {
                                             {resultAuditTag}
                                         </ul>
                                     </div>
+                                    </ReactTooltip> */}
+                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    effect="solid"
+                                    >
+                                    <div>
+                                        <ul className="auditUl">
+                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                            <li>Audited</li>
+                                        </ul>
+                                        <ul className="auditListUl">
+                                            {resultAuditTag}
+                                        </ul>
+                                    </div>
                                     </ReactTooltip>
                                 </>;
                             }
@@ -491,7 +515,6 @@ const DefiList = observer((props) => {
                     } else {
                         verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
                     }
-
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
                     let tempDate;
@@ -572,7 +595,7 @@ const DefiList = observer((props) => {
                         // +
                         tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenPriceChange24h == 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenPriceChange24h < 0) {
                         tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
                     }
@@ -584,7 +607,7 @@ const DefiList = observer((props) => {
                         // +
                         tokenMarketCapChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenMarketCapChange24h == 0) {
-                        tokenMarketCapChange24hTag = <span className="defiListTableSubText">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGray">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     } else if (tokenMarketCapChange24h < 0) {
                         tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
                     }
@@ -596,7 +619,7 @@ const DefiList = observer((props) => {
                         // +
                         tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGreen">+{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     } else if (tokenHoldersChange24hNum == 0) {
-                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGray">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     } else if (tokenHoldersChange24hNum < 0) {
                         tokenHoldersChange24hNumTag = <span className="defiListTableSubText textRed">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
                     }

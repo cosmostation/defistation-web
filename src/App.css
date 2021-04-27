@@ -287,7 +287,7 @@ hr.sideMenuLine {
   display: table-cell;
   margin-right: 7px;
   vertical-align: middle;
-  width: 32px;
+  width: 28px;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -1290,6 +1290,11 @@ hr.sideMenuLine {
   margin-top: 15px;
   /* margin-left: -120px; */
   display: block;
+  cursor: pointer;
+}
+
+.trendingDefiName:hover {
+  color: #A6B0BF;
 }
 
 /* @media all and (device-width: 1024px) {
@@ -1656,10 +1661,10 @@ hr.sideMenuLine {
   border-radius: 5px;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+@media (min-width:768px) and (max-width:1034px) {
   .bannerWrapper {
     width: 95vw;
-    height: 15vw;
+    /* height: 15vw; */
     overflow: hidden;
   }
 
@@ -1667,10 +1672,19 @@ hr.sideMenuLine {
     display: none;
   }
 
-  /* .bannerWrapperMobile {
-    display: block;
+}
+
+@media (min-width:1px) and (max-width:768px) {
+  .bannerWrapper {
+    width: 95vw;
+    /* height: 15vw; */
     overflow: hidden;
-  } */
+    margin-top: -18px !important;
+  }
+
+  .bannerAdTextRect {
+    display: none;
+  }
 }
 
 #outbountBanner1 {
@@ -1953,9 +1967,16 @@ hr.sideMenuLine {
     padding: 0px 15px 0px 15px;
   }
 } */
-@media (min-width:1px) and (max-width:1034px) {
+@media (min-width:768px) and (max-width:1034px) {
   .defiList {
     /* margin-top: 1.8vw; */
+    padding: 0px 15px 0px 15px;
+  }
+}
+
+@media (min-width:1px) and (max-width:768px) {
+  .defiList {
+    margin-top: 6px;
     padding: 0px 15px 0px 15px;
   }
 }
@@ -1982,6 +2003,16 @@ hr.sideMenuLine {
   text-decoration: underline !important;
 }
 
+.auditUl {
+  padding: 0;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.auditUl li {
+  display: inline-block;
+}
+
 /* .auditVerified {
   color: #297ee2;
   font-size: 18px;
@@ -1997,7 +2028,8 @@ hr.sideMenuLine {
   margin:0 auto;
   font-size:12px; color:#fff;
   vertical-align:middle;
-  line-height:100px;
+  /* line-height:100px; */
+  line-height: 50px;
 }
 
 /* .noAudit {
@@ -2014,7 +2046,8 @@ hr.sideMenuLine {
   margin:0 auto;
   font-size:12px; color:#fff;
   vertical-align:middle;
-  line-height:100px;
+  /* line-height:100px; */
+  line-height: 50px;
 }
 
 .auditListUl {
@@ -2030,7 +2063,7 @@ hr.sideMenuLine {
 }
 
 .auditListUl li {
-  line-height: 24px;
+  line-height: 20px;
 }
 
 .defiListTable {
@@ -2424,6 +2457,17 @@ img:hover{
   letter-spacing: normal;
   text-align: center;
   color: #ce5f47 !important;
+}
+
+.textGray {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+  color: #757f8e !important;
 }
 
 .applyBtnOnTable {

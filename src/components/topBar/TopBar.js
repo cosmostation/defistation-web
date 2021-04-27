@@ -4,6 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import defistationLogo from "../../assets/images/defistation_logo@2x.png";
 import defistationLogoAlpha from "../../assets/images/defistation_logo_alpha.svg";
+import defistationLogoBeta from "../../assets/images/defistation_logo_beta.svg";
 
 import bscLogo from "../../assets/images/bsc_logo@2x.png";
 import bscScanLogo from "../../assets/images/bscscan_logo@2x.png";
@@ -103,7 +104,7 @@ const TopBar = observer((props) => {
             </div>
             <ul className="topBarUl">
                 <li>
-                    <img src={defistationLogoAlpha} style={{"width":"260px"}} onClick={() => movePage("/")} />
+                    <img src={defistationLogoBeta} style={{"width":"260px"}} onClick={() => movePage("/")} />
                 </li>
                 {/* <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li> */}
                 <li><span onClick={() => openWindow("https://t.me/defistation")}>Community</span></li>

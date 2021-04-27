@@ -14,7 +14,7 @@
 
 export const numberWithCommas = (n, pointSizeDownFlag = true, priceFlag = false) => {
     // 1보다 작은 수는 소숫점 4자리까지 표현
-    if (n != 0 && n < 1) {
+    if (n != 0 && n < 1 && n > 0) {
         n = (n).toFixed(4);
     } else {
         if (priceFlag) {
@@ -126,7 +126,8 @@ export function convertDateFormat2(d) {
 
 export function convertDateFormat3(date) {
     // return date.toISOString().substring(0, 10);
-    var year = date.getFullYear().toString().substr(-2);
+    // var year = date.getFullYear().toString().substr(-2);
+    var year = date.getFullYear().toString();
     var month = (1 + date.getMonth());
     month = month >= 10 ? month : '0' + month;
     var day = date.getDate();

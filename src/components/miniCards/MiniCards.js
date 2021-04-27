@@ -82,7 +82,7 @@ const MiniCards = observer((props) => {
                 } else if (tokenPriceChange24h * 1 < 0) {
                     setChangeVal1(<span className="miniCardChange textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
                 } else {
-                    setChangeVal1(<span className="miniCardChange">{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
+                    setChangeVal1(<span className="miniCardChange textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>);
                 }
             })
     }
@@ -151,7 +151,7 @@ const MiniCards = observer((props) => {
                     } else if (bnbChange24hPercent < 0) {
                         setChangeVal2(<span className="miniCardChange textRed">{bnbChange24hPercent.toFixed(2)}%</span>);
                     } else {
-                        setChangeVal2(<span className="miniCardChange">{bnbChange24hPercent.toFixed(2)}</span>);
+                        setChangeVal2(<span className="miniCardChange textGray">{bnbChange24hPercent.toFixed(2)}</span>);
                     }
 
                 } else {
@@ -165,7 +165,7 @@ const MiniCards = observer((props) => {
                     } else if (bnbChange24hPercent < 0) {
                         setChangeVal2(<span className="miniCardChange textRed">{bnbChange24hPercent.toFixed(2)}%</span>);
                     } else {
-                        setChangeVal2(<span className="miniCardChange">{bnbChange24hPercent.toFixed(2)}</span>);
+                        setChangeVal2(<span className="miniCardChange textGray">{bnbChange24hPercent.toFixed(2)}</span>);
                     }
                 }
 
@@ -237,7 +237,7 @@ const MiniCards = observer((props) => {
             } else if (String(miniCardData0).indexOf("-") != -1) {
                 setChangeVal0(<span className="miniCardChange textRed">{miniCardData0}</span>);
             } else {
-                setChangeVal0(<span className="miniCardChange">{miniCardData0}</span>);
+                setChangeVal0(<span className="miniCardChange textGray">{miniCardData0}</span>);
             }
 
             // ---------------------------- TXs ----------------------------
@@ -255,7 +255,7 @@ const MiniCards = observer((props) => {
                     } else if (global.transactions24hPercent * 1 < 0) {
                         setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
                     } else {
-                        setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
+                        setChangeVal1(<span className="miniCardChange textGray">{global.transactions24hPercent}%</span>);
                     }
                 }, 3000);
             }
@@ -266,7 +266,7 @@ const MiniCards = observer((props) => {
             } else if (global.transactions24hPercent * 1 < 0) {
                 setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
             } else {
-                setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
+                setChangeVal1(<span className="miniCardChange textGray">{global.transactions24hPercent}%</span>);
             }
 
             // ---------------------------- Trending ----------------------------
@@ -314,7 +314,7 @@ const MiniCards = observer((props) => {
                     } else if (global.tvl1DayPercent < 0) {
                         setChangeVal0(<span className="miniCardChange textRed">{global.tvl1DayPercent}%</span>);
                     } else {
-                        setChangeVal0(<span className="miniCardChange">{global.tvl1DayPercent}%</span>);
+                        setChangeVal0(<span className="miniCardChange textGray">{global.tvl1DayPercent}%</span>);
                     }
                 }, 3000);
             }

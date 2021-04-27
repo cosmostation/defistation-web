@@ -110,6 +110,8 @@ const DefiDetailList = observer((props) => {
 
                 // console.log("test111111111111");
 
+                let bnbLockedAmountTag;
+
                 let tvlChangeTag;
                 let bnbChangeTag;
 
@@ -129,51 +131,65 @@ const DefiDetailList = observer((props) => {
                         continue;
                     }
 
-                    // console.log("resultArr[i][0]: ", resultArr[i][0]);
-                    // console.log("resultArr[i][1]: ", resultArr[i][1]);
-
-                    // let digit = getCurrencyDigit(resultArr[i][1]);
-                    // console.log("digit: ", digit);
-
-                    // let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
-
-                    // if (i == 0) {
-                    //     tempMinTvl = currencyNum;
-                    // } else {
-                    //     // 가장 작은 값 찾기(vAxis 최솟값)
-                    //     if (tempMinTvl > currencyNum) {
-                    //         tempMinTvl = currencyNum;
-                    //     }
-                    // }
-
                     let tvlChange = 0;
                     if (i > 0) {
                         // tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
                         tvlChange = (resultArr[i][1] / resultArr[i - 1][1] - 1);
-                        if (tvlChange > 0) {
-                            // +
-                            tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
-                        } else if (tvlChange == 0) {
-                            tvlChangeTag = <span>{(tvlChange * 100).toFixed(2)}%</span>;
-                        } else if (tvlChange < 0) {
-                            tvlChangeTag = <span className="textRed">{(tvlChange * 100).toFixed(2)}%</span>;
+                        if (tvlChange == "Infinity") {
+                            tvlChange = "";
+                        } else {
+                            if (tvlChange > 0) {
+                                // +
+                                tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
+                            } else if (tvlChange == 0) {
+                                tvlChangeTag = <span className="textGray">{(tvlChange * 100).toFixed(2)}%</span>;
+                            } else if (tvlChange < 0) {
+                                tvlChangeTag = <span className="textRed">{(tvlChange * 100).toFixed(2)}%</span>;
+                            }
+                        }
+                    }
+
+                    // BNB locked 수량
+                    if (Math.floor(lockedBnbArr[i][1]) > 0) {
+                        bnbLockedAmountTag = numberWithCommas(Math.floor(lockedBnbArr[i][1]));
+                    } else {
+                        if (i > 0) {
+                            if (Math.floor(lockedBnbArr[i - 1][1]) > 0) {
+                                bnbLockedAmountTag = numberWithCommas(Math.floor(lockedBnbArr[i - 1][1]));
+                            }
                         }
                     }
 
                     // BNB locked 변화량(개수로 표현)
                     let bnbChange = 0;
                     if (i > 0) {
-                        // bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
-                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
-                        if (bnbChange == -1) {
-                            bnbChangeTag = "";
-                        } else if (bnbChange == "Infinity") {
+                        if (lockedBnbArr[i][1] > 0) {
+                            if (lockedBnbArr[i - 1][1] > 0) {
+                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
+                            } else {
+                                if (lockedBnbArr[i - 2][1] > 0) {
+                                    bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 2][1] - 1);
+                                } else {
+                                    if (lockedBnbArr[i - 3][1] > 0) {
+                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 3][1] - 1);
+                                    } else {
+                                        if (lockedBnbArr[i - 4][1] > 0) {
+                                            bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 4][1] - 1);
+                                        } else {
+                                            bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 5][1] - 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (bnbChange == "Infinity" || bnbLockedAmountTag == undefined) {
                             bnbChangeTag = "";
                         } else {
                             if (bnbChange > 0) {
                                 bnbChangeTag = <span className="textGreen">+{(bnbChange * 100).toFixed(2)}%</span>;
                             } else if (bnbChange == 0) {
-                                bnbChangeTag = <span>{(bnbChange * 100).toFixed(2)}%</span>;
+                                bnbChangeTag = <span className="textGray">{(bnbChange * 100).toFixed(2)}%</span>;
                             } else if (bnbChange < 0) {
                                 bnbChangeTag = <span className="textRed">{(bnbChange * 100).toFixed(2)}%</span>;
                             }
@@ -203,7 +219,7 @@ const DefiDetailList = observer((props) => {
                         if (tokenPriceChange > 0) {
                             tokenPriceChangeTag = <span className="textGreen">+{(tokenPriceChange * 100).toFixed(2)}%</span>;
                         } else if (tokenPriceChange == 0) {
-                            tokenPriceChangeTag = <span>{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            tokenPriceChangeTag = <span className="textGray">{(tokenPriceChange * 100).toFixed(2)}%</span>;
                         } else if (tokenPriceChange < 0) {
                             tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
                         }
@@ -222,7 +238,7 @@ const DefiDetailList = observer((props) => {
                         if (marketCapChange > 0) {
                             marketCapChangeTag = <span className="textGreen">+{(marketCapChange * 100).toFixed(2)}%</span>;
                         } else if (marketCapChange == 0) {
-                            marketCapChangeTag = <span>{(marketCapChange * 100).toFixed(2)}%</span>;
+                            marketCapChangeTag = <span className="textGray">{(marketCapChange * 100).toFixed(2)}%</span>;
                         } else if (marketCapChange < 0) {
                             marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
                         }
@@ -241,7 +257,7 @@ const DefiDetailList = observer((props) => {
                         if (holdersChange > 0) {
                             holdersChangeTag = <span className="textGreen">+{numberWithCommas(holdersChange, false)}</span>;
                         } else if (holdersChange == 0) {
-                            holdersChangeTag = <span>{numberWithCommas(holdersChange, false)}</span>;
+                            holdersChangeTag = <span className="textGray">{numberWithCommas(holdersChange, false)}</span>;
                         } else if (holdersChange < 0) {
                             holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
                         }
@@ -271,7 +287,11 @@ const DefiDetailList = observer((props) => {
                                 <br /><span className="defiListTableSubText">{holdersChangeTag}</span>
                             </td>
                             <td>
-                                {numberWithCommas(Math.floor(lockedBnbArr[i][1]))}
+                                {/* {numberWithCommas(Math.floor(lockedBnbArr[i][1]))} */}
+                                {/* {bnbLockedAmountTag} */}
+                                {
+                                    bnbLockedAmountTag == undefined ? "-" : bnbLockedAmountTag
+                                }
                                 <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
                             </td>
                             <td>
