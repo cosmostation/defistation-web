@@ -20,6 +20,7 @@
     "react-feather": "^2.0.8",
     "react-ga": "^3.2.0",
     "react-google-charts": "^3.0.15",
+    "react-responsive": "^8.2.0",
     "react-responsive-modal": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",

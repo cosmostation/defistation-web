@@ -661,7 +661,7 @@ const DefiList = observer((props) => {
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr">
                                 <td>{rankNum}</td>
-                                <td><div className="tokeImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
+                                <td><div className="tokenImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
                                 <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
                                     <span className="projectName">{getOfficialDefiName(res[i].name)}</span><br />
@@ -714,7 +714,7 @@ const DefiList = observer((props) => {
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
                                 <td>
-                                    $ {currencyNum + currencyUnit}<br />
+                                    <span className="tvlValueNoWrap">$ {currencyNum + currencyUnit}</span><br />
                                     <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
                                 {/* <td>{change24hTag}</td> */}
