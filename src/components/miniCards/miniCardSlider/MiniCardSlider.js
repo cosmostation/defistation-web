@@ -34,14 +34,15 @@ const MiniCardSlider = observer((props) => {
     }
 
     async function goToTrendingDetailPage(defiName) {
-        if (defiName == "PancakeSwap") {
-            defiName = "pancake";
-        }
-        console.log("defiName: ", defiName);
-        let tempDefiName = replaceAll(defiName, ".", "");
-        tempDefiName = replaceAll(tempDefiName, " ", "");
-        tempDefiName = tempDefiName.toLowerCase();
-        movePage("/" + tempDefiName);
+        // TODO
+        // if (defiName == "PancakeSwap") {
+        //     defiName = "pancake";
+        // }
+        // console.log("defiName: ", defiName);
+        // let tempDefiName = replaceAll(defiName, ".", "");
+        // tempDefiName = replaceAll(tempDefiName, " ", "");
+        // tempDefiName = tempDefiName.toLowerCase();
+        // movePage("/" + tempDefiName);
     }
 
     useEffect(() => {

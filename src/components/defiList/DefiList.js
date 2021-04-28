@@ -720,7 +720,7 @@ const DefiList = observer((props) => {
                                 <td>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
                                 <td>
-                                    {tokenPrice}<br />
+                                    <span className="noWrap">{tokenPrice}</span><br />
                                     {tokenPriceChange24hTag}
                                 </td>
                                 <td>
@@ -737,7 +737,7 @@ const DefiList = observer((props) => {
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
                                 <td>
-                                    <span className="tvlValueNoWrap">$ {currencyNum + currencyUnit}</span><br />
+                                    <span className="noWrap">$ {currencyNum + currencyUnit}</span><br />
                                     <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
                                 {/* <td>{change24hTag}</td> */}
@@ -853,7 +853,7 @@ const DefiList = observer((props) => {
                             </ul>
                         </th>
                         <th>Token</th>
-                        <th>Price</th>
+                        <th>Token Price</th>
                         {/* <th>Contract(#)</th> */}
                         <th>
                             <ul className="defiListTableHeadCellRight">

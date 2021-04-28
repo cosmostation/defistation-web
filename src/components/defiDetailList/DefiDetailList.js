@@ -348,7 +348,7 @@ const DefiDetailList = observer((props) => {
                                 <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul>
                         </th>
-                        <th>Total BNB Locked</th>
+                        <th>BNB Locked</th>
                         <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>

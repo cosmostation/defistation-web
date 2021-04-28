@@ -121,14 +121,15 @@ const TotalValue = observer((props) => {
     const [projectBtnLink, setProjectBtnLink] = useState();
 
     const [currencyFullName, setCurrencyFullName] = useState("");
+    const [txsUnitForDualY, setTxsUnitForDualY] = useState("");
 
     // PC에서는 Total Value Locked, mobile에서는 TVL
     // const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("Total Value Locked");
     // const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("TVL & TXs in BSC");
-    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("TVL");
+    const [tvlChartCardTitleValue, setTvlChartCardTitleValue] = useState("BSC");
 
     // 1) 1034px 이상
-    const [viewWidth, setViewWidth] = useState("740px");
+    const [viewWidth, setViewWidth] = useState("750px");
     // const [viewWidth, setViewWidth] = useState("80vw");
     const [chartWidth, setChartWidth] = useState("89%");
 
@@ -164,7 +165,7 @@ const TotalValue = observer((props) => {
         let urlStr = "";
         if (defiName == "DeFi") {
             urlStr = "all";
-            setChartData(['x', 'TVL(USD)', 'TXs in BSC']);
+            setChartData(['x', 'TVL(USD)', 'Transactions']);
         } else {
             urlStr = defiName;
             setChartData(['x', 'TVL(USD)', 'Token Price(USD)']);
@@ -231,9 +232,13 @@ const TotalValue = observer((props) => {
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
+                let digitForTx;
+                let currencyUnitForTx;
+                let tempCurrencyFullNameForTx;
+
                 // ------------ 메인 페이지 TXs ------------
                 if (defiName == "DeFi") {
-                    setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGray">⦁</span> TXs in BSC</>);
+                    setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGray">⦁</span> Transactions</>);
 
                     let dailyTxObj = res.dailyTx;
                     var dailyTxArr = Object.keys(dailyTxObj).map((key) => [Number(key), dailyTxObj[key]]);
@@ -255,6 +260,27 @@ const TotalValue = observer((props) => {
 
                     global.changeTransactions24h(numberWithCommas(latestTxVal));
                     global.changeTransactions24hPercent(latestTxChange.toFixed(2));
+
+                    // DualY 단위 계산
+                    // TXs 
+                    // dailyTxArr 에서 가장 마지막 값을 기준으로 단위 만들기
+                    // Billion! dailyTxArr[i][1]
+                    // let digitForTx;
+                    // let currencyUnitForTx;
+                    // let tempCurrencyFullNameForTx;
+                    console.log("[0428] 테스트 111111: ", latestTxVal);
+
+                    // 메인 페이지
+                    digitForTx = getCurrencyDigit(latestTxVal);
+                    currencyUnitForTx = getCurrencyUnit(latestTxVal);
+                    tempCurrencyFullNameForTx = getCurrencyUnitFullName(latestTxVal);
+                    setTxsUnitForDualY(tempCurrencyFullNameForTx);
+
+                    console.log("[0428] digitForTx: ", digitForTx);
+                    console.log("[0428] currencyUnitForTx: ", currencyUnitForTx);
+                    console.log("[0428] tempCurrencyFullNameForTx: ", tempCurrencyFullNameForTx);
+
+
                 } else {
                     // 서브 페이지
                     let index = findDefiIndexNum(defiName);
@@ -387,11 +413,19 @@ const TotalValue = observer((props) => {
                     if (initProjectTvlIndex == -1) {
                         if (defiName == "DeFi") {
                             // 메인 페이지
-                            let tempDailyTx = dailyTxArr[i][1];
+                            let tempDailyTx = dailyTxArr[i][1] / digitForTx;
                             if (tempDailyTx == 0) {
                                 tempDailyTx = null;
                             }
-                            tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempDailyTx]);
+
+                            // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempDailyTx]);
+                            if (i == resultArr.length - 1) {
+                                // 마지막에는 최신 TX 한번 더 넣기
+                                tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, dailyTxArr[i - 1][1] / digitForTx]);
+                            } else {
+                                tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempDailyTx]);
+                            }
+                            
                         } else {
                             // console.log("[0416] 테스트3333333");
                             // 서브 페이지
@@ -474,7 +508,7 @@ const TotalValue = observer((props) => {
                 // 차트 데이터 적용
                 if (defiName == "DeFi") {
                     // 메인 페이지
-                    tempChartData.unshift(['x', 'TVL(USD)', 'TXs in BSC']);
+                    tempChartData.unshift(['x', 'TVL(USD)', 'Transactions']);
                 } else {
                     // 서브 페이지
                     if (priceArr.length > 0) {
@@ -826,8 +860,9 @@ const TotalValue = observer((props) => {
 
         if (isMobile) {
             if (screen.width <= 320) {
-                if (viewWidth != "89vw") {
+                if (viewWidth != "86vw") {
                     setViewWidth("89vw");
+                    setChartWidth("85%");
                 }
             } else if (screen.width <= 1034) {
                 console.log("1034 이하");
@@ -836,14 +871,15 @@ const TotalValue = observer((props) => {
                 }
             } else {
                 console.log("1034 초과");
-                if (viewWidth != "740px") {
+                if (viewWidth != "750px") {
                     window.location.replace(location.pathname);
                 }
             }
         } else {
             if (window.innerWidth <= 320) {
-                if (viewWidth != "89vw") {
+                if (viewWidth != "86vw") {
                     setViewWidth("89vw");
+                    setChartWidth("85%");
                 }
             } else if (window.innerWidth <= 1034) {
                 console.log("1034 이하");
@@ -852,7 +888,7 @@ const TotalValue = observer((props) => {
                 }
             } else {
                 console.log("1034 초과");
-                if (viewWidth != "740px") {
+                if (viewWidth != "750px") {
                     window.location.replace(location.pathname);
                 }
             }
@@ -930,7 +966,7 @@ const TotalValue = observer((props) => {
         //     setViewWidth("870px");
         //     setChartWidth("89%");
         // } else {
-        //     setViewWidth("740px");
+        //     setViewWidth("750px");
         //     setChartWidth("89%");
         // }
 
@@ -990,7 +1026,7 @@ const TotalValue = observer((props) => {
         //     setViewWidth("91vw");
         // } else {
         //     console.log("1034 초과");
-        //     setViewWidth("740px");
+        //     setViewWidth("750px");
         // }
 
         if (isMobile) {
@@ -998,7 +1034,8 @@ const TotalValue = observer((props) => {
 
             if (screen.width > 1034) {
                 console.log("1034 초과");
-                setViewWidth("740px");
+                setViewWidth("750px");
+                setChartWidth("88%");
             } else if (screen.width <= 1034 && screen.width > 320) {
                 console.log("1034 이하");
                 // setViewWidth("91vw");
@@ -1006,26 +1043,32 @@ const TotalValue = observer((props) => {
                 if (props.defiName == "DeFi") {
                     // 메인 페이지
                     setViewWidth("91vw");
+                    setChartWidth("85%");
                 } else {
                     // 서브 페이지
-                    setViewWidth("88vw");
+                    setViewWidth("89vw");
+                    setChartWidth("85%");
                 }
 
 
             } else {
                 console.log("320 이하");
-                setViewWidth("87vw");
+                setViewWidth("89vw");
+                setChartWidth("85%");
             }
         } else {
             if (window.innerWidth > 1034) {
                 console.log("1034 초과");
-                setViewWidth("740px");
+                setViewWidth("750px");
+                setChartWidth("88%");
             } else if (window.innerWidth <= 1034 && window.innerWidth > 320) {
                 console.log("1034 이하");
                 setViewWidth("91vw");
+                setChartWidth("85%");
             } else {
                 console.log("320 이하");
-                setViewWidth("87vw");
+                setViewWidth("89vw");
+                setChartWidth("85%");
             }
         }
         
@@ -1076,10 +1119,11 @@ const TotalValue = observer((props) => {
                                 <p className="tvlChartLegend">{chartLegendLabel}</p>
 
                                 {/* Total Value Locked in ... */}
-                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} in {getOfficialDefiName(props.defiName)}</span>
+                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} {getOfficialDefiName(props.defiName)}</span>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 <p className="tvlChartUnitY">({currencyFullName} USD)</p>
-                                <p className="tvlChartUnitYRight">({dualYUnitText})</p>
+                                <p className="tvlChartUnitYRight" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>({txsUnitForDualY} {dualYUnitText})</p>
+                                <p className="tvlChartUnitYRightOnSubPage" style={props.defiName != "DeFi" ? undefined : {display: "none"}}>({dualYUnitText})</p>
 
                                 {/* Main Chart: dual Y 차트 */}
                                 <div style={props.defiName != "DeFi" ? {display: "none"} : undefined}>
@@ -1088,7 +1132,7 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     id="tvlGoogleChart"
-                                    style={{"margin-left":"-5px"}}
+                                    style={{"margin-left":"-7px"}}
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
@@ -1130,7 +1174,7 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
-                                    style={{"margin-left":"-5px"}}
+                                    style={{"margin-left":"-7px"}}
                                     chartType="LineChart"
                                     loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
