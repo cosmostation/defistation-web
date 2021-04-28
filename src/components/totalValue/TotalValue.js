@@ -564,9 +564,9 @@ const TotalValue = observer((props) => {
 
     function selectOfficialLink(defiName) {
         switch (defiName) {
-            case "pancake":
-                setDefiIcon(pancake);
-                break;
+            // case "pancake":
+            //     setDefiIcon(pancake);
+            //     break;
             case "Peach Swap":
                 setDefiIcon(peachswap);
                 break;   
@@ -633,9 +633,9 @@ const TotalValue = observer((props) => {
             case "QIAN":
                 setDefiIcon(qian);
                 break;    
-            case "PancakeBunny":
-                setDefiIcon(pancakebunny);
-                break;
+            // case "PancakeBunny":
+            //     setDefiIcon(pancakebunny);
+            //     break;
             case "JulSwap":
                 setDefiIcon(julswap);
                 break;
