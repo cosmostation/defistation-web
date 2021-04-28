@@ -375,8 +375,8 @@ const TheDefiList = observer(() => {
                     <li onClick={() => window.open(tempUrl, "_blank")}>
                         <img 
                             src={defiIconArr[i]} 
-                            width="40px" 
-                            style={{"min-height":"40px"}}
+                            width="30px" 
+                            style={{"height":"30px"}}
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
@@ -401,7 +401,19 @@ const TheDefiList = observer(() => {
         <>
             <div className="wrapper">
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
+                {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div> */}
+                <div>
+                    <ul className="tvlTitleBox">
+                        <li>
+                            <span className="subPageTitle">Projects</span>
+                        </li>
+                        <li>
+                            <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                
                 <div className="applyBtn" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>

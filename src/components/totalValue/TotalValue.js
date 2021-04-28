@@ -985,61 +985,15 @@ const TotalValue = observer((props) => {
             isMobile = true;
         }
 
-        // console.log("window.screen.orientation: ", window.screen.orientation);
-        // if (isMobile && String(window.screen.orientation).indexOf("landscape") != -1 && screen.height >= 768) {
-        //     setViewWidth("708px");
-        //     setChartWidth("94%");
-        //     setTvlChartCardTitleValue("TVL");
-        // } else {
-        //     if (!isMobile && window.innerWidth <= 1034) {
-        //         setViewWidth("364px");
-        //         setChartWidth("88%");
-        //         setTvlChartCardTitleValue("TVL");
-        //     } else {
-        //         if (screen.width >= 1024 && screen.width < 1034) {
-        //             setViewWidth("970px");
-        //             setChartWidth("94%");
-        //             setTvlChartCardTitleValue("TVL");
-        //         } else if (screen.width >= 768 && screen.width < 1024) {
-        //             setViewWidth("708px");
-        //             setChartWidth("94%");
-        //             setTvlChartCardTitleValue("TVL");
-        //         } else if (screen.width >= 414 && screen.width < 768) {
-        //             setViewWidth("364px");
-        //             setChartWidth("88%");
-        //             setTvlChartCardTitleValue("TVL");
-        //         } else if (screen.width >= 360 && screen.width < 414) {
-        //             setViewWidth("290px");
-        //             setChartWidth("88%");
-        //             setTvlChartCardTitleValue("TVL");
-        //         } else if (screen.width >= 1 && screen.width < 360) {
-        //             setViewWidth("270px");
-        //             setChartWidth("88%");
-        //             setTvlChartCardTitleValue("TVL");
-        //         }
-        //     }
-        // }
-
         setFakeControls([]);
-        // if (window.innerWidth <= 1034) {
-        //     console.log("1034 이하");
-        //     setViewWidth("91vw");
-        // } else {
-        //     console.log("1034 초과");
-        //     setViewWidth("750px");
-        // }
 
         if (isMobile) {
-            console.log("[0427] 모바일 기기");
-
             if (screen.width > 1034) {
                 console.log("1034 초과");
                 setViewWidth("750px");
                 setChartWidth("88%");
             } else if (screen.width <= 1034 && screen.width > 320) {
                 console.log("1034 이하");
-                // setViewWidth("91vw");
-
                 if (props.defiName == "DeFi") {
                     // 메인 페이지
                     setViewWidth("91vw");
@@ -1049,8 +1003,6 @@ const TotalValue = observer((props) => {
                     setViewWidth("89vw");
                     setChartWidth("85%");
                 }
-
-
             } else {
                 console.log("320 이하");
                 setViewWidth("89vw");
@@ -1059,6 +1011,11 @@ const TotalValue = observer((props) => {
         } else {
             if (window.innerWidth > 1034) {
                 console.log("1034 초과");
+                // if (props.defiName == "DeFi") {
+                //     setViewWidth("750px");
+                // } else {
+                //     setViewWidth("750px");
+                // }
                 setViewWidth("750px");
                 setChartWidth("88%");
             } else if (window.innerWidth <= 1034 && window.innerWidth > 320) {

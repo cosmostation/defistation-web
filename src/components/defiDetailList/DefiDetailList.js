@@ -250,17 +250,31 @@ const DefiDetailList = observer((props) => {
                     let holdersChange = 0;
                     if (i > 0) {
                         holders = holdersObj[Object.keys(holdersObj)[i]];
-                        holdersTag = numberWithCommas(holders, false);
+                        if (holders == 0) {
+                            holdersTag = "-";
+                        } else {
+                            holdersTag = numberWithCommas(holders, false);
+                        }
 
                         // holders 변화는 % 가 아니라 변화 증가, 감소 숫자로 보여준다
-                        holdersChange = holdersObj[Object.keys(holdersObj)[i]] - holdersObj[Object.keys(holdersObj)[i - 1]];
-                        if (holdersChange > 0) {
-                            holdersChangeTag = <span className="textGreen">+{numberWithCommas(holdersChange, false)}</span>;
-                        } else if (holdersChange == 0) {
-                            holdersChangeTag = <span className="textGray">{numberWithCommas(holdersChange, false)}</span>;
-                        } else if (holdersChange < 0) {
-                            holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
+                        if (holders == 0) {
+                            holdersChangeTag = <span className="textGray"></span>;
+                        } else {
+                            holdersChange = holdersObj[Object.keys(holdersObj)[i]] - holdersObj[Object.keys(holdersObj)[i - 1]];
+                            if (holdersChange > 0) {
+                                if (holdersObj[Object.keys(holdersObj)[i - 1]] == 0) {
+                                    holdersChangeTag = <span className="textGray">-</span>;
+                                } else {
+                                    holdersChangeTag = <span className="textGreen">+{numberWithCommas(holdersChange, false)}</span>;
+                                }
+                            } else if (holdersChange == 0) {
+                                holdersChangeTag = <span className="textGray">{numberWithCommas(holdersChange, false)}</span>;
+                                // holdersChangeTag = <span className="textGray">-</span>;
+                            } else if (holdersChange < 0) {
+                                holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
+                            }
                         }
+                        
                     }
 
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
@@ -338,7 +352,6 @@ const DefiDetailList = observer((props) => {
             <table className="defiDetailListTable">
                 <thead className="defiDetailListTableHead">
                     <tr>
-                        {/* <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th> */}
                         <th>Date</th>
                         <th>Token Price</th>
                         <th>Mkt Cap	</th>
@@ -359,76 +372,6 @@ const DefiDetailList = observer((props) => {
                 </thead>
                 <tbody className="defiDetailListTableBody">
                     {defiDataTag}
-                    {/* <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr> */}
                 </tbody>
             </table>
             <br />

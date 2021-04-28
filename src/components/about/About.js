@@ -25,7 +25,25 @@ const About = observer(() => {
         <>
             <div className="wrapper">
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">About</span></div>
+                {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">About</span></div> */}
+                
+                
+                <div>
+                    <ul className="tvlTitleBox">
+                        <li>
+                            <span className="subPageTitle">About</span>
+                        </li>
+                        <li>
+                            <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">About</span></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                
+                
+                
+                
+                
                 <div className="aboutBox">
                     <span className="defiOverviewTitle">What is Defistation?</span><br /><div className="defiOverviewBr"></div>
                     <span className="defiOverviewContent">
