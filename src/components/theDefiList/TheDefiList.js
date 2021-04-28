@@ -362,7 +362,7 @@ const TheDefiList = observer(() => {
                     <li onClick={() => history.push("/" + defiInfoName)}>
                         <img 
                             src={defiIconArr[i]} 
-                            width="40px" 
+                            width="30px" 
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
@@ -376,7 +376,7 @@ const TheDefiList = observer(() => {
                         <img 
                             src={defiIconArr[i]} 
                             width="30px" 
-                            style={{"height":"30px"}}
+                            style={{"height":"30px", "min-height": "30px"}}
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />

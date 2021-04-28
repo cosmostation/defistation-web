@@ -127,7 +127,8 @@ const MiniCards = observer((props) => {
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
                 // console.log("res: ", res);
-                setTotalBnbLockedNum(numberWithCommas(Math.floor(resultArr[resultArr.length - 1][1]), false));
+                // setTotalBnbLockedNum(numberWithCommas(Math.floor(resultArr[resultArr.length - 1][1]), false));
+                setTotalBnbLockedNum(Math.floor(resultArr[resultArr.length - 1][1]), false);
 
                 // setLockedBnbAmount(resultArr[resultArr.length - 1][1]);
                 // 해당 Defi BNB와 전체 BNB 유통량 비율

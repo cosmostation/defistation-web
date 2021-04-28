@@ -46,9 +46,9 @@ const DefiOverview = observer((props) => {
 
         setOverviewTag(
             <div className="defiOverview">
-                <span className="defiOverviewContent">
+                <p className="defiOverviewContent">
                     {overviewStr}
-                </span>
+                </p>
             </div>
         );
 

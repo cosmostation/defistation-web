@@ -238,7 +238,13 @@ const TotalValue = observer((props) => {
 
                 // ------------ 메인 페이지 TXs ------------
                 if (defiName == "DeFi") {
-                    setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGray">⦁</span> Transactions</>);
+                    // setChartLegendLabel(<div className="tvlChartLegendBox"><div className="circleYellow"></div><div>TVL</div> <div className="circleGray">⦁</div><div>Transactions</div></div>);
+                    setChartLegendLabel(<ul className="tvlChartLegendBoxUl">
+                                                <li><div className="circleYellow"></div></li>
+                                                <li><div className="tvlChartLegendLabel">TVL</div></li>
+                                                <li><div className="circleGray"></div></li>
+                                                <li>Transactions</li>
+                                            </ul>);
 
                     let dailyTxObj = res.dailyTx;
                     var dailyTxArr = Object.keys(dailyTxObj).map((key) => [Number(key), dailyTxObj[key]]);
@@ -294,10 +300,20 @@ const TotalValue = observer((props) => {
                     // console.log("priceArr: ", priceArr);
 
                     if (priceArr.length > 0) {
-                        setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGreen">⦁</span> {tokenSymbolName} Price</>);
+                        // setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGreen">⦁</span> {tokenSymbolName} Price</>);
+                        setChartLegendLabel(<ul className="tvlChartLegendBoxUl">
+                                                <li><div className="circleYellow"></div></li>
+                                                <li><div className="tvlChartLegendLabel">TVL</div></li>
+                                                <li><div className="circleGreen"></div></li>
+                                                <li className="noWrap">{tokenSymbolName} Price</li>
+                                            </ul>);
                     } else {
                         // defi 프로젝트에 토큰 가격이 없는 경우
-                        setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL</>);
+                        // setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL</>);
+                        setChartLegendLabel(<ul className="tvlChartLegendBoxUl">
+                                                <li><div className="circleYellow"></div></li>
+                                                <li><div className="tvlChartLegendLabel">TVL</div></li>
+                                            </ul>);
                     }
 
                     // // 최신 TXs 값 구하기. 최신 TXs 변화 % 계산하기
@@ -337,6 +353,13 @@ const TotalValue = observer((props) => {
                 currencyUnit = getCurrencyUnit(resultArr[resultArr.length - 1][1]);
                 tempCurrencyFullName = getCurrencyUnitFullName(resultArr[resultArr.length - 1][1]);
                 setCurrencyFullName(tempCurrencyFullName);
+
+                // 차트에 TVL B, M, K 단위 기입
+                if (defiName == "DeFi") {
+                    setChartData(['x', 'TVL(' + currencyFullName + ')', 'Transactions']);
+                } else {
+                    setChartData(['x', 'TVL(' + currencyFullName + ')', 'Token Price(USD)']);
+                }
 
                 // console.log("resultArr.length: ", resultArr.length);
                 
@@ -505,19 +528,34 @@ const TotalValue = observer((props) => {
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
+
                 // 차트 데이터 적용
                 if (defiName == "DeFi") {
                     // 메인 페이지
-                    tempChartData.unshift(['x', 'TVL(USD)', 'Transactions']);
+                    // tempChartData.unshift(['x', 'TVL(USD)', 'Transactions']);
+                    tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions(' + tempCurrencyFullNameForTx + ')']);
                 } else {
                     // 서브 페이지
                     if (priceArr.length > 0) {
-                        tempChartData.unshift(['x', 'TVL(USD)', 'Token Price(USD)']);
+                        tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
                     } else {
-                        tempChartData.unshift(['x', 'TVL(USD)']);
+                        tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')']);
                     }
                 }
                 setChartData(tempChartData);
+
+
+
+
+                // if (defiName == "DeFi") {
+                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions']);
+                // } else {
+                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
+                // }
+
+
+
+
 
                 // TVL 1 DAY(%)
                 // resultArr 가 2개 이상 요소를 가지고 있어야함. 그리고 가장 마지막과 그 이전의 % 차이를 계산하면 됨

@@ -416,7 +416,9 @@ const DefiList = observer((props) => {
                             verifiedTag = 
                             <>
                                 {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
-                                <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                                <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                 <ReactTooltip 
                                 id={'global' + i} 
                                 aria-haspopup='true'
@@ -438,8 +440,29 @@ const DefiList = observer((props) => {
                         } else {
                             if (auditInfoStr == "") {
                                 verifiedTag = 
+                                // <>
+                                //     <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                //     <ReactTooltip 
+                                //     id={'global' + i} 
+                                //     aria-haspopup='true'
+                                //     place="right"
+                                //     delayHide={200}
+                                //     effect="solid"
+                                //     >
+                                //     <div>
+                                //         <ul className="auditUl">
+                                //             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                //             <li>Audited</li>
+                                //         </ul>
+                                //         <ul className="auditListUl">
+                                //             <li>Unknown source</li>
+                                //         </ul>
+                                //     </div>
+                                //     </ReactTooltip>
+                                // </>;
                                 <>
-                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
@@ -491,7 +514,9 @@ const DefiList = observer((props) => {
                                         </ul>
                                     </div>
                                     </ReactTooltip> */}
-                                    <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'

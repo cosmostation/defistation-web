@@ -250,7 +250,7 @@ const DefiDetailList = observer((props) => {
                     let holdersChange = 0;
                     if (i > 0) {
                         holders = holdersObj[Object.keys(holdersObj)[i]];
-                        if (holders == 0) {
+                        if (holders == 0 || holders == undefined) {
                             holdersTag = "-";
                         } else {
                             holdersTag = numberWithCommas(holders, false);
