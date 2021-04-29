@@ -226,17 +226,27 @@ const DefiDetailList = observer((props) => {
                     let tokenPrice = 0;
                     let tokenPriceChange = 0;
                     let priceObj = resultBnblockedList.price;
+
                     if (i > 0 && Object.keys(priceObj).length > 0) {
                         tokenPrice = priceObj[Object.keys(priceObj)[i]];
-                        tokenPriceTag = "$ " + numberWithCommas((tokenPrice).toFixed(2), false);
+                        if (tokenPrice >= 1) {
+                            tokenPriceTag = "$ " + numberWithCommas((tokenPrice).toFixed(2), false);
+                        } else {
+                            tokenPriceTag = "$ " + numberWithCommas(tokenPrice, false);
+                        }
 
                         tokenPriceChange = (priceObj[Object.keys(priceObj)[i]] / priceObj[Object.keys(priceObj)[i - 1]] - 1);
-                        if (tokenPriceChange > 0) {
-                            tokenPriceChangeTag = <span className="textGreen">+{(tokenPriceChange * 100).toFixed(2)}%</span>;
-                        } else if (tokenPriceChange == 0) {
-                            tokenPriceChangeTag = <span className="textGray">{(tokenPriceChange * 100).toFixed(2)}%</span>;
-                        } else if (tokenPriceChange < 0) {
-                            tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                        
+                        if (tokenPriceChange == "Infinity") {
+                            tokenPriceChangeTag = "";
+                        } else {
+                            if (tokenPriceChange > 0) {
+                                tokenPriceChangeTag = <span className="textGreen">+{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            } else if (tokenPriceChange == 0) {
+                                tokenPriceChangeTag = <span className="textGray">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            } else if (tokenPriceChange < 0) {
+                                tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            }
                         }
                     } else {
                         tokenPriceTag = "-";
@@ -252,12 +262,16 @@ const DefiDetailList = observer((props) => {
                         marketCapTag = "$ " + convertToBMK(marketCap);
 
                         marketCapChange = (marketCapObj[Object.keys(marketCapObj)[i]] / marketCapObj[Object.keys(marketCapObj)[i - 1]] - 1);
-                        if (marketCapChange > 0) {
-                            marketCapChangeTag = <span className="textGreen">+{(marketCapChange * 100).toFixed(2)}%</span>;
-                        } else if (marketCapChange == 0) {
-                            marketCapChangeTag = <span className="textGray">{(marketCapChange * 100).toFixed(2)}%</span>;
-                        } else if (marketCapChange < 0) {
-                            marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
+                        if (marketCapChange == "Infinity") {
+                            marketCapChangeTag = "";
+                        } else {
+                            if (marketCapChange > 0) {
+                                marketCapChangeTag = <span className="textGreen">+{(marketCapChange * 100).toFixed(2)}%</span>;
+                            } else if (marketCapChange == 0) {
+                                marketCapChangeTag = <span className="textGray">{(marketCapChange * 100).toFixed(2)}%</span>;
+                            } else if (marketCapChange < 0) {
+                                marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
+                            }
                         }
                     } else {
                         marketCapChangeTag = "-";
@@ -295,7 +309,17 @@ const DefiDetailList = observer((props) => {
                         }
                     }
 
-                    console.log("[0429] Test 2222222222");
+                    if (holdersTag == undefined) {
+                        holdersTag = "-";
+                    }
+
+                    // Sponsored
+                    if (props.defiName == "ARIES FINANCIAL") {
+                        holdersTag = "-";
+                        holdersChangeTag = <span className="textGray"></span>;
+                    }
+
+                    // console.log("[0429] Test 2222222222");
 
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
