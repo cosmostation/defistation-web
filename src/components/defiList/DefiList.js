@@ -654,6 +654,12 @@ const DefiList = observer((props) => {
                         tokenHoldersChange24hNumTag = "";
                     }
 
+                    // Sponsored
+                    if (res[i].name == "ARIES FINANCIAL") {
+                        tokenHoldersTag = "-";
+                        tokenHoldersChange24hNumTag = null;
+                    }                    
+
                     if (res[i].contractNum == 0) {
                         // tableCodeArr.push(
                         //     <tr key={i}>

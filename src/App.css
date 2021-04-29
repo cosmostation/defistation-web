@@ -318,6 +318,16 @@ hr.sideMenuLine {
     width: 18px;
     margin-right: 5px;
   }
+
+  .sponsored {
+    color: #34AB62;
+    font-size: 11px;
+    border-radius: 7px;
+    border: solid 1px #1A5030;
+    padding: 3px 8px 3px 8px;
+    margin-left: 9px;
+    margin-top: -2.5px;
+  }
 }
 
 .subPageTitle {
@@ -536,19 +546,16 @@ hr.sideMenuLine {
   box-sizing: border-box;
 }
 
-/* iPad Pro */
 @media all and (device-width: 1024px) {
   .tvlLink0 {
     display: none;
   }
   
   .tvlLink {
-    /* display: none; */
     height: 68px;
   }
 }
 
-/* iPad */
 @media all and (device-width: 768px) {
   .tvlLink0 {
     display: none;
@@ -1424,7 +1431,7 @@ hr.sideMenuLine {
   text-align: left;
   color: #fff;
   position: absolute;
-  margin-top: 14px;
+  margin-top: 13px;
   display: block;
   overflow: hidden;
   /* cursor: pointer; */
@@ -1807,7 +1814,7 @@ hr.sideMenuLine {
   left: 0;
   width: 100%;
   height: 100%;
-  /* border-radius: 5px; */
+  border-radius: 5px;
 }
 
 @media (min-width:768px) and (max-width:1034px) {
