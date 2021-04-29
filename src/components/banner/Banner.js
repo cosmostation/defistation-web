@@ -153,10 +153,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bannerImg2} /></div>
                     </ReactGA.OutboundLink>
@@ -175,10 +175,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bannerImg2} /></div>
                     </ReactGA.OutboundLink>
@@ -197,10 +197,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bannerImg2} /></div>
                     </ReactGA.OutboundLink>
@@ -222,10 +222,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bifiMobile} /></div>
                     </ReactGA.OutboundLink>
@@ -244,10 +244,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bifiMobile} /></div>
                     </ReactGA.OutboundLink>
@@ -266,10 +266,10 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     id="outbountBanner2"
-                    eventLabel="bannerClick(BiFi)"
-                    to="http://bsc.bifi.finance/"
+                    eventLabel="bannerClick(ARIES FINANCIAL)"
+                    to="https://www.aries.financial/YieldFarmingV2"
                     target="_blank"
-                    trackerNames={['BiFi']}
+                    trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bifiMobile} /></div>
                     </ReactGA.OutboundLink>
