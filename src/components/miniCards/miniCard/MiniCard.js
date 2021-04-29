@@ -34,12 +34,14 @@ const MiniCard = observer((props) => {
             {
                 props.symbol == "BNB" && props.dataNum > 0 ? props.data24hChange : undefined
             }
+            {
+                props.symbol != "BNB" ? props.data24hChange : undefined
+            }
             {props.trendingDefiName}
             {/* <p style={props.symbol == "BNB" ? undefined : { display: "none" } }  className="miniCardDataNum">{props.dataNum} <span style={{"color":"#f0b923"}}>BNB</span></p>
             <p style={props.symbol == "BNB" ? { display: "none" } : undefined }  className="miniCardDataNum">{props.dataNum}</p> */}
             <p style={props.symbol == "BNB" && props.dataNum > 0 ? undefined : { display: "none" } }  className="miniCardDataNum">{numberWithCommas(props.dataNum, false)} <span style={{"color":"#f0b923"}}>BNB</span></p>
             <p style={props.symbol == "BNB" && props.dataNum == 0 ? undefined : { display: "none" } }  className="miniCardDataNum">-</p>
-
             <p style={props.symbol == "BNB" ? { display: "none" } : undefined }  className="miniCardDataNum">{props.dataNum}</p> 
         </li>
     );

@@ -276,7 +276,7 @@ hr.sideMenuLine {
   /* font-family: Heebo-Regular; */
   font-family: "Heebo-Regular", sans-serif;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
@@ -3254,6 +3254,11 @@ img:hover{
   padding: 20px;
   box-sizing: border-box;
   cursor: pointer;
+  line-height: 1.1;
+}
+
+.theDefiListUl li img {
+  margin-bottom: 7px;
 }
 
 .theDefiListUl li:hover {
@@ -3350,10 +3355,10 @@ img:hover{
   /* font-family: Heebo-Regular; */
   font-family: "Heebo-Regular", sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.1;
+  line-height: 1.0;
   letter-spacing: normal;
   text-align: left;
   color: #9BA5B5;
