@@ -130,7 +130,7 @@ const TheDefiList = observer(() => {
 
             // 아이콘 지금까지 저장한거 체크. 이후로는 defistationApplicationList.json 에 있는 코인 이미지 url로 사용
             
-            console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
+            // console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
 
             switch (defistationApplicationList[i]["Official Project Name"]) {
                 case "pancake":

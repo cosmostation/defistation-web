@@ -93,8 +93,6 @@ const DefiDetailList = observer((props) => {
             .then(res => {
                 if (res.result == null) return;
 
-                // console.log("test1111111");
-
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
@@ -122,10 +120,14 @@ const DefiDetailList = observer((props) => {
                 let holdersTag;
                 let holdersChangeTag;
 
+                console.log("[0429] resultArr.length: ", resultArr.length);
+
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
                     }
+
+                    console.log("[0429] resultArr[i][1]: ", resultArr[i][1]);
 
                     if (resultArr[i][1] == 0) {
                         continue;
@@ -163,20 +165,33 @@ const DefiDetailList = observer((props) => {
                     // BNB locked 변화량(개수로 표현)
                     let bnbChange = 0;
                     if (i > 0) {
-                        if (lockedBnbArr[i][1] > 0) {
-                            if (lockedBnbArr[i - 1][1] > 0) {
-                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
-                            } else {
-                                if (lockedBnbArr[i - 2][1] > 0) {
-                                    bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 2][1] - 1);
-                                } else {
-                                    if (lockedBnbArr[i - 3][1] > 0) {
-                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 3][1] - 1);
+                        if (lockedBnbArr[i] != undefined) {
+                            if (lockedBnbArr[i][1] > 0) {
+                                if (lockedBnbArr[i - 1] != undefined) {
+                                    if (lockedBnbArr[i - 1][1] > 0) {
+                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
                                     } else {
-                                        if (lockedBnbArr[i - 4][1] > 0) {
-                                            bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 4][1] - 1);
-                                        } else {
-                                            bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 5][1] - 1);
+                                        // console.log("[0429] lockedBnbArr[i - 2]: ", lockedBnbArr[i - 2]);
+                                        if (lockedBnbArr[i - 2] != undefined) {
+                                            if (lockedBnbArr[i - 2][1] > 0) {
+                                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 2][1] - 1);
+                                            } else {
+                                                if (lockedBnbArr[i - 3] != undefined) {
+                                                    if (lockedBnbArr[i - 3][1] > 0) {
+                                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 3][1] - 1);
+                                                    } else {
+                                                        if (lockedBnbArr[i - 4] != undefined) {
+                                                            if (lockedBnbArr[i - 4][1] > 0) {
+                                                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 4][1] - 1);
+                                                            } else {
+                                                                if (lockedBnbArr[i - 5] != undefined) {
+                                                                    bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 5][1] - 1);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -211,7 +226,7 @@ const DefiDetailList = observer((props) => {
                     let tokenPrice = 0;
                     let tokenPriceChange = 0;
                     let priceObj = resultBnblockedList.price;
-                    if (i > 0) {
+                    if (i > 0 && Object.keys(priceObj).length > 0) {
                         tokenPrice = priceObj[Object.keys(priceObj)[i]];
                         tokenPriceTag = "$ " + numberWithCommas((tokenPrice).toFixed(2), false);
 
@@ -223,13 +238,15 @@ const DefiDetailList = observer((props) => {
                         } else if (tokenPriceChange < 0) {
                             tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
                         }
+                    } else {
+                        tokenPriceTag = "-";
                     }
 
                     // MarketCap
                     let marketCapObj = resultBnblockedList.marketCap;
                     let marketCap = 0;
                     let marketCapChange = 0;
-                    if (i > 0) {
+                    if (i > 0 && Object.keys(marketCapObj).length > 0) {
                         marketCap = marketCapObj[Object.keys(marketCapObj)[i]];
                         // marketCapTag = "$ " + (marketCap).toFixed(0);
                         marketCapTag = "$ " + convertToBMK(marketCap);
@@ -242,13 +259,15 @@ const DefiDetailList = observer((props) => {
                         } else if (marketCapChange < 0) {
                             marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
                         }
+                    } else {
+                        marketCapChangeTag = "-";
                     }
 
                     // Holders
                     let holdersObj = resultBnblockedList.holders;
                     let holders = 0;
                     let holdersChange = 0;
-                    if (i > 0) {
+                    if (i > 0 && Object.keys(holdersObj).length > 0) {
                         holders = holdersObj[Object.keys(holdersObj)[i]];
                         if (holders == 0 || holders == undefined) {
                             holdersTag = "-";
@@ -274,8 +293,9 @@ const DefiDetailList = observer((props) => {
                                 holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
                             }
                         }
-                        
                     }
+
+                    console.log("[0429] Test 2222222222");
 
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {

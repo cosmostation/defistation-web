@@ -48,7 +48,7 @@ const MiniCards = observer((props) => {
 
         // if (defiName == "")
 
-        console.log("[0426] defiName: ", defiName);
+        // console.log("[0426] defiName: ", defiName);
 
         const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
             method: 'GET',
@@ -354,7 +354,7 @@ const MiniCards = observer((props) => {
             );
         }
 
-        console.log("[0426 test] props.defiName: ", props.defiName);
+        // console.log("[0426 test] props.defiName: ", props.defiName);
         
         return () => {
 
