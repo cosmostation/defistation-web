@@ -21,6 +21,9 @@ import btcstMobile from "../../assets/images/banner/banner_btcst_mobile.png";
 import bifi from "../../assets/images/banner/Defistation Banner_BiFi.png";
 import bifiMobile from "../../assets/images/banner/banner_bifi_mobile.png";
 
+import aries from "../../assets/images/banner/banner_ARIES_web.png";
+import ariesMobile from "../../assets/images/banner/banner_ARIES_mobile.png";
+
 // Google Analytics
 import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
 
@@ -35,7 +38,8 @@ const Banner = observer((props) => {
         autoplay: true,
         speed: 2000,
         autoplaySpeed: 7000,
-        vertical: true
+        vertical: true,
+        adaptiveHeight: false
     };
 
     // const [bannerTag, setBannerTag] = useState();
@@ -79,23 +83,23 @@ const Banner = observer((props) => {
 
         // if (isMobile) {
         //     setBannerImg(btcstMobile);
-        //     setBannerImg2(bifiMobile);
+        //     setBannerImg2(ariesMobile);
         // } else {
         //     if (window.innerWidth >= 1024 && window.innerWidth < 1034) {
         //         setBannerImg(btcst);
-        //         setBannerImg2(bifi);
+        //         setBannerImg2(aries);
         //     } else if (window.innerWidth >= 768 && window.innerWidth < 1024) {
         //         setBannerImg(btcst);
-        //         setBannerImg2(bifi);
+        //         setBannerImg2(aries);
         //     } else if (window.innerWidth >= 414 && window.innerWidth < 768) {
         //         setBannerImg(btcstMobile);
-        //         setBannerImg2(bifiMobile);
+        //         setBannerImg2(ariesMobile);
         //     } else if (window.innerWidth >= 360 && window.innerWidth < 414) {
         //         setBannerImg(btcstMobile);
-        //         setBannerImg2(bifiMobile);
+        //         setBannerImg2(ariesMobile);
         //     } else if (window.innerWidth >= 1 && window.innerWidth < 360) {
         //         setBannerImg(btcstMobile);
-        //         setBannerImg2(bifiMobile);
+        //         setBannerImg2(ariesMobile);
         //     }
         // }
 
@@ -105,10 +109,10 @@ const Banner = observer((props) => {
 
         if (window.innerWidth > 1034) {
             setBannerImg(btcst);
-            setBannerImg2(bifi);
+            setBannerImg2(aries);
         } else {
             setBannerImg(btcstMobile);
-            setBannerImg2(bifiMobile);
+            setBannerImg2(ariesMobile);
         }
         
         return () => {

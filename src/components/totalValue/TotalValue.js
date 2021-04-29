@@ -977,10 +977,16 @@ const TotalValue = observer((props) => {
 
     var isMobile = false;
 
-    useEffect(() => {
-        getChart(props.defiName);
+    const [sponsoredVal, setSponsoredVal] = useState();
 
-        
+    useEffect(() => {
+        // Sponsored
+        if (props.defiName == "BTC Standard Hashrate Token" ||
+            props.defiName == "ARIES FINANCIAL") {
+            setSponsoredVal(<div className="sponsored">Sponsored</div>);
+        }
+
+        getChart(props.defiName);
 
         // 2) 414px ~ 1034px: 374px, 88%
         // 3) 360px ~ 413px: 290px, 88%
@@ -1096,7 +1102,9 @@ const TotalValue = observer((props) => {
                     <li>
                         <ul className="tvlSubPageTitleIconLabel">
                             <li><img src={defiIcon} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></li>
-                            <li><span>{getOfficialDefiName(props.defiName)}</span></li>
+                            <li><div>{getOfficialDefiName(props.defiName)}</div></li>
+                            {/* <li><div className="sponsored">Sponsored</div></li> */}
+                            <li>{sponsoredVal}</li>
                         </ul>
                     </li>
                     <li>
