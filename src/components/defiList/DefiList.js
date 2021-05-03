@@ -9,7 +9,7 @@ import '../../App.css';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK } from '../../util/Util';
 
 // table icon
 import rankIcon1 from "../../assets/images/rank1@2x.png";
@@ -81,6 +81,21 @@ const DefiList = observer((props) => {
     const [defiListTableCode, setDefiListTableCode] = useState();
 
     const [volumeTag, setVolumeTag] = useState();
+
+    function findDefiIndexNum(defiName) {
+        // 예외처리
+        if (defiName == "pancake") {
+            defiName = "PancakeSwap";
+        }
+        let index = 0;
+        for (var i = 0; i < defistationApplicationList.length; i++) {
+            if (defistationApplicationList[i]["Official Project Name"] == defiName) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
 
     function findLogoUrl(defiName) {
         // defistationApplicationList 에서 Official Project Name 이 defiName와 일치하는 것 찾기
@@ -300,9 +315,15 @@ const DefiList = observer((props) => {
 
                 // AD random
                 let adNum = generateRandom(0, res.length);
+                let rankInfoArr = [];
+                // Trending 에는 price, marketcap, hoders, TVL 데이터가 들어간다.(2개씩)
+                // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+                // let trendingInfoArr = ["", "", 0, "", "", 0, "", "", 0, "", "", 0];
+                let trendingInfoArr = ["", null, null, "", null, null, "", null, null, "", null, null];
 
                 for (var i = 0; i < res.length; i++) {
                     let chainName;
+                    let tokenName;
                     // let rankNum = i + 1;
                     
                     let rankNum = rankingCount;
@@ -314,19 +335,31 @@ const DefiList = observer((props) => {
                     defiName = replaceAll(defiName, " ", "");
                     defiName = defiName.toLowerCase();
 
-                    if (i == 0) {
-                        rankNum = <img src={rankIcon1} style={{ "width": "24px", marginTop: "4px" }} />;
-                    } else if (i == 1) {
-                        rankNum = <img src={rankIcon2} style={{ "width": "24px", marginTop: "4px" }} />;
-                    } else if (i == 2) {
-                        rankNum = <img src={rankIcon3} style={{ "width": "24px", marginTop: "4px" }} />;
-                    }
+                    // rank 메달 이미지
+                    // if (i == 0) {
+                    //     rankNum = <img src={rankIcon1} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // } else if (i == 1) {
+                    //     rankNum = <img src={rankIcon2} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // } else if (i == 2) {
+                    //     rankNum = <img src={rankIcon3} style={{ "width": "24px", marginTop: "4px" }} />;
+                    // }
 
-                    if (res[i].chain == "bsc") {
-                        chainName = "BSC";
-                    } else {
-                        chainName = res[i].chain;
-                    }
+                    // if (res[i].chain == "bsc") {
+                    //     chainName = "BSC";
+                    // } else {
+                    //     chainName = res[i].chain;
+                    // }
+
+                    // Token 이름
+                    // tokenName
+                    
+
+
+
+
+
+
+
 
                     // 현재 기준 변화량
                     let change24hValue = res[i].tvlPercentChange24h;
@@ -340,17 +373,172 @@ const DefiList = observer((props) => {
                             // +
                             change24hTag = <span className="textGreen">+{(change24hValue * 100).toFixed(2)}%</span>;
                         } else if (change24hValue == 0) {
-                            change24hTag = <span>{(change24hValue * 100).toFixed(2)}%</span>;
+                            change24hTag = <span className="textGray">{(change24hValue * 100).toFixed(2)}%</span>;
                         } else if (change24hValue < 0) {
                             change24hTag = <span className="textRed">{(change24hValue * 100).toFixed(2)}%</span>;
                         }
                     }
 
                     let verifiedTag;
+                    // if (res[i].verified) {
+                    //     verifiedTag = <img src={verifiedIcon} />
+                    // } else {
+                    //     verifiedTag = <img src={noVerifiedIcon} />
+                    // }
+                    // 0420 수정중
+                    // <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
+                    // if (res[i].verified) {
+                    //     let index = findDefiIndexNum(res[i].name);
+                    //     let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                    //     console.log("auditInfoStr: ", auditInfoStr);
+
+                    //     if (auditInfoStr.indexOf("YES") != -1) {
+
+                    //     } else {
+                    //         // auditInfoStr 파싱: 첫번째 : 을 기준으로 나누기
+                    //         let auditLinkArr = auditInfoStr.split(":");
+                    //         let auditProvider = auditLinkArr[0];
+                    //         let auditLink = auditLinkArr[1] + ":" + auditLinkArr[2];
+                    //         let tempTag = `<span className='auditVerified'>⦁</span><span> Audited</span><br />` + auditProvider + `: <a className='auditLink' href='` + auditLink + `' target='_blank'>` + auditLink + `</a>`;
+                    //         verifiedTag = <div className="customTooltip" data-tip={tempTag}><span className='auditVerified'>⦁</span></div>;
+                    //     }
+
+                        
+                    // } else {
+                    //     verifiedTag = <span className='noAudit'>⦁</span>;
+                    // }
                     if (res[i].verified) {
-                        verifiedTag = <img src={verifiedIcon} />
+                        let index = findDefiIndexNum(res[i].name);
+                        let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                        if (auditInfoStr.indexOf("YES") != -1) {
+                            verifiedTag = 
+                            <>
+                                {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
+                                {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                                <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                                <ReactTooltip 
+                                id={'global' + i} 
+                                aria-haspopup='true'
+                                place="right"
+                                delayHide={200}
+                                effect="solid"
+                                >
+                                <div>
+                                    <ul className="auditUl">
+                                        <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                        <li>Audited</li>
+                                    </ul>
+                                    <ul className="auditListUl">
+                                        <li>Unknown source</li>
+                                    </ul>
+                                </div>
+                                </ReactTooltip>
+                            </>;
+                        } else {
+                            if (auditInfoStr == "") {
+                                verifiedTag = 
+                                // <>
+                                //     <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                //     <ReactTooltip 
+                                //     id={'global' + i} 
+                                //     aria-haspopup='true'
+                                //     place="right"
+                                //     delayHide={200}
+                                //     effect="solid"
+                                //     >
+                                //     <div>
+                                //         <ul className="auditUl">
+                                //             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                //             <li>Audited</li>
+                                //         </ul>
+                                //         <ul className="auditListUl">
+                                //             <li>Unknown source</li>
+                                //         </ul>
+                                //     </div>
+                                //     </ReactTooltip>
+                                // </>;
+                                <>
+                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    effect="solid"
+                                    >
+                                    <div>
+                                        <ul className="auditUl">
+                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                            <li>Audited</li>
+                                        </ul>
+                                        <ul className="auditListUl">
+                                            <li>Unknown source</li>
+                                        </ul>
+                                    </div>
+                                    </ReactTooltip>
+                                </>;
+                            } else {
+                                let resultAuditTag = [];
+
+                                // auditInfoStr 파싱 
+                                // 1) ; 기준으로 쪼개기
+                                let auditLinkArr1 = auditInfoStr.split(";");
+                                for (var k = 0; k < auditLinkArr1.length; k++) {
+                                    // 2) : 기준으로 쪼개기
+                                    let auditLinkArr2 = (auditLinkArr1[k]).split(":");
+
+                                    let auditName = auditLinkArr2[0];
+                                    let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
+
+                                    resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                }
+
+                                verifiedTag = 
+                                <>
+                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    effect="solid"
+                                    >
+                                    <div>
+                                        <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
+                                        <ul className="auditListUl">
+                                            {resultAuditTag}
+                                        </ul>
+                                    </div>
+                                    </ReactTooltip> */}
+                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                                    <ReactTooltip 
+                                    id={'global' + i} 
+                                    aria-haspopup='true'
+                                    place="right"
+                                    delayHide={200}
+                                    effect="solid"
+                                    >
+                                    <div>
+                                        <ul className="auditUl">
+                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                            <li>Audited</li>
+                                        </ul>
+                                        <ul className="auditListUl">
+                                            {resultAuditTag}
+                                        </ul>
+                                    </div>
+                                    </ReactTooltip>
+                                </>;
+                            }
+                        }
                     } else {
-                        verifiedTag = <img src={noVerifiedIcon} />
+                        verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
                     }
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
@@ -367,12 +555,14 @@ const DefiList = observer((props) => {
                     let digit = getCurrencyDigit(res[i].lockedUsd);
                     let currencyUnit = getCurrencyUnit(res[i].lockedUsd);
                     let currencyNum;
-                    // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
-                    if (digit <= 1000000) {
-                        currencyNum = (res[i].lockedUsd / digit).toFixed(1) * 1;
-                    } else {
-                        currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
-                    }
+                    // // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
+                    // if (digit <= 1000000) {
+                    //     currencyNum = (res[i].lockedUsd / digit).toFixed(1) * 1;
+                    // } else {
+                    //     currencyNum = (res[i].lockedUsd / digit).toFixed(2) * 1;
+                    // }
+                    // 소숫점 2자리로 표현
+                    currencyNum = (res[i].lockedUsd / digit).toFixed(2);
 
                     // volume
                     let digit2 = getCurrencyDigit(res[i].volume);
@@ -385,6 +575,90 @@ const DefiList = observer((props) => {
                     } else {
                         volumeStr = "-";
                     }
+
+                    // token symbol name
+                    // let tokenSymbolName = "CAKE";
+                    // let tokenPrice = "$ 99.99";
+                    // let tokenMarketCap = "$ 9.99B";
+                    // let tokenHolders = "999,999";
+                    let tokenSymbolName = res[i].token;
+                    if (tokenSymbolName == "" || tokenSymbolName == null) {
+                        tokenSymbolName = "-";
+                    }
+
+                    let tokenPrice;
+                    let tokenMarketCap;
+                    let digitForMarketCap;
+                    let currencyUnitForMarketCap;
+                    let tokenMarketCapNum;
+                    let tokenMarketCapTag;
+                    if (res[i].price == 0 || res[i].price == null) {
+                        tokenPrice = "-";
+                        tokenMarketCapTag = "-";
+                    } else {
+                        tokenPrice = "$ " + numberWithCommas(res[i].price, false, true);
+                        tokenMarketCap = res[i].marketCap;
+                        // K M B 단위로 표시
+                        digitForMarketCap = getCurrencyDigit(tokenMarketCap);
+                        currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
+                        tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
+                        tokenMarketCapTag = "$ " + tokenMarketCapNum + currencyUnitForMarketCap;
+                    }
+
+                    let tokenHolders = res[i].holders;
+                    let tokenHoldersTag;
+                    if (tokenHolders == 0 || tokenHolders == null) {
+                        tokenHoldersTag = "-";
+                    } else {
+                        tokenHoldersTag = numberWithCommas(tokenHolders, false);
+                    }
+
+                    // 변화율
+                    let tokenPriceChange24h = res[i].priceChange24h;
+                    let tokenPriceChange24hTag;
+                    if (tokenPriceChange24h > 0) {
+                        // +
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                    } else if (tokenPriceChange24h == 0) {
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                    } else if (tokenPriceChange24h < 0) {
+                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                    }
+
+                    let tokenMarketCapChange24h = res[i].marketCapChange24h;
+                    // console.log("[0423] tokenMarketCapChange24h: ", tokenMarketCapChange24h);
+                    let tokenMarketCapChange24hTag;
+                    if (tokenMarketCapChange24h > 0) {
+                        // +
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
+                    } else if (tokenMarketCapChange24h == 0) {
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textGray">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
+                    } else if (tokenMarketCapChange24h < 0) {
+                        tokenMarketCapChange24hTag = <span className="defiListTableSubText textRed">{(tokenMarketCapChange24h * 100).toFixed(2)}%</span>;
+                    }
+
+                    let tokenHoldersChange24hNum = res[i].holdersChange24hNum;
+                    // let tokenHoldersChange24hNum = 99999;
+                    let tokenHoldersChange24hNumTag;
+                    if (tokenHoldersChange24hNum > 0) {
+                        // +
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGreen">+{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
+                    } else if (tokenHoldersChange24hNum == 0) {
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textGray">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
+                    } else if (tokenHoldersChange24hNum < 0) {
+                        tokenHoldersChange24hNumTag = <span className="defiListTableSubText textRed">{numberWithCommas(tokenHoldersChange24hNum, false)}</span>;
+                    }
+
+                    // holders 변화량은 holder 가 0이거나 null 이면 표기하지 않는다
+                    if (tokenHolders == 0 || tokenHolders == null) {
+                        tokenHoldersChange24hNumTag = "";
+                    }
+
+                    // Sponsored
+                    if (res[i].name == "ARIES FINANCIAL") {
+                        tokenHoldersTag = "-";
+                        tokenHoldersChange24hNumTag = null;
+                    }                    
 
                     if (res[i].contractNum == 0) {
                         // tableCodeArr.push(
@@ -411,59 +685,173 @@ const DefiList = observer((props) => {
                             tempCategory = "Other";
                         }
 
-                        if (res[i].name == "Autofarm") {
-                            console.log("tempCategory: ", tempCategory);
-                        }
-
-                        // if (i == adNum) {
-                        if (getOfficialDefiName(res[i].name) == "BakerySwap") {
-                            // AD: 가장 앞에
-                            tableCodeArr.unshift(
-                                <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
-                                    <td>Ad</td>
-                                    <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
-                                    {/* <td>{coinImg}</td> */}
-                                    <td>{getOfficialDefiName(res[i].name)}</td>
-                                    <td>{verifiedTag}</td>
-                                    <td>{chainName}</td>
-                                    {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                    <td>{tempCategory}</td>
-                                    {/* <td>{res[i].contractNum}</td> */}
-                                    <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
-                                    <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
-                                    <td>$ {currencyNum + currencyUnit}</td>
-                                    <td>{change24hTag}</td>
-                                    {/* <td>{tempDate}</td> */}
-                                </tr>
-                            );
-                        }
+                        // if (getOfficialDefiName(res[i].name) == "BakerySwap") {
+                        //     // AD: 가장 앞에
+                        //     tableCodeArr.unshift(
+                        //         <tr className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                        //             <td>Ad</td>
+                        //             <td><img class="tokenImg" src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                        //             {/* <td>{coinImg}</td> */}
+                        //             <td>
+                        //                 {getOfficialDefiName(res[i].name)}<br />
+                        //                 <span className="defiListTableCategory">{tempCategory}</span>
+                        //             </td>
+                        //             <td>{verifiedTag}</td>
+                        //             <td>{tokenSymbolName}</td>
+                        //             {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
+                        //             <td>{tokenPrice}</td>
+                        //             <td>{tokenMarketCap}</td>
+                        //             <td>{tokenHolders}</td>
+                        //             {/* <td>{res[i].contractNum}</td> */}
+                        //             <td>{res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}</td>
+                        //             {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
+                        //             <td>$ {currencyNum + currencyUnit}</td>
+                        //             {/* <td>{change24hTag}</td> */}
+                        //             {/* <td>{tempDate}</td> */}
+                        //         </tr>
+                        //     );
+                        // }
 
                         tableCodeArr.push(
-                            <tr key={i} className="defiListTableTr" onClick={() => movePage("/" + defiName)}>
+                            <tr key={i} className="defiListTableTr">
                                 <td>{rankNum}</td>
-                                <td><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></td>
+                                <td><div className="tokenImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
-                                <td>{getOfficialDefiName(res[i].name)}</td>
-                                <td>{verifiedTag}</td>
-                                <td>{chainName}</td>
+                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
+                                    <span className="projectName">{getOfficialDefiName(res[i].name)}</span><br />
+                                    <span className="defiListTableCategory">{tempCategory}</span>
+                                </td>
+                                <td>
+                                    {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}
+                                    <li>
+                                        {/* <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
+                                        <ReactTooltip 
+                                        place="right"
+                                        html={true} 
+                                        className="react-tooltip-clickable-link" /> */}
+                                        {/* {verifiedTag} */}
+                                        {/* <ReactTooltip 
+                                        place="right"
+                                        html={true} 
+                                        type={'dark'}
+                                        className="react-tooltip-clickable-link" /> */}
+                                        {/* <a data-tip data-for='global'> (〃∀〃) </a>
+                                        <ReactTooltip id='global' aria-haspopup='true' >
+                                        <p>This is a global react component tooltip</p>
+                                        <p>You can put every thing here</p>
+                                        <ul>
+                                        <li>Word</li>
+                                        <li>Chart</li>
+                                        <li>Else</li>
+                                        </ul>
+                                        </ReactTooltip> */}
+                                        {verifiedTag}
+                                    </li>
+                                </td>
+                                <td>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                <td>{tempCategory}</td>
+                                <td>
+                                    <span className="noWrap">{tokenPrice}</span><br />
+                                    {tokenPriceChange24hTag}
+                                </td>
+                                <td>
+                                    {tokenMarketCapTag}<br />
+                                    {tokenMarketCapChange24hTag}
+                                </td>
+                                <td>
+                                    {tokenHoldersTag}<br />
+                                    {tokenHoldersChange24hNumTag}
+                                </td>
                                 {/* <td>{res[i].contractNum}</td> */}
                                 <td>
-                                    {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr} </p><ReactTooltip /></div>}
+                                    {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr}</p><ReactTooltip /></div>}
                                 </td>
-                                <td>$ {numberWithCommas(res[i].lockedUsd)}</td>
-                                <td>$ {currencyNum + currencyUnit}</td>
-                                <td>{change24hTag}</td>
+                                {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
+                                <td>
+                                    <span className="noWrap">$ {currencyNum + currencyUnit}</span><br />
+                                    <span className="defiListTableSubText">{change24hTag}</span>
+                                </td>
+                                {/* <td>{change24hTag}</td> */}
                                 {/* <td>{tempDate}</td> */}
                             </tr>
                         );
+
+                        // 랭킹 1,2,3위 보관
+                        let tempDefiName = res[i].name;
+                        if (tempDefiName == "pancake") {
+                            tempDefiName = "PancakeSwap"
+                        }
+                        rankInfoArr.push(tempDefiName, currencyNum + currencyUnit, change24hValue);
+
+                        // ----------------------------------- Trending -----------------------------------
+                        // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+                        // top price change 찾기
+
+                        // if (i == 0) {
+                        //     console.log("[0423-0] trendingInfoArr[2]: ", trendingInfoArr[2]);
+
+                        //     if (trendingInfoArr[2] == null) {
+                        //         console.log("[0423] trendingInfoArr[2]: ", trendingInfoArr[2]);
+                        //         trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
+                        //         console.log("[0423] success@");
+                        //     }
+                        // } else {
+                        //     console.log("[0423-1] trendingInfoArr[2]: ", trendingInfoArr[2]);
+
+                        // }
+
+                        if (tokenPriceChange24h > trendingInfoArr[2]) {
+                            trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[1] = tokenPrice;
+                            trendingInfoArr[1] = res[i].price;
+                            trendingInfoArr[0] = tokenSymbolName;
+                        }
+
+                        // top marketcap change 찾기
+                        if (tokenMarketCapChange24h > trendingInfoArr[5]) {
+                            trendingInfoArr[5] = tokenMarketCapChange24h.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[4] = tokenMarketCapTag;
+                            trendingInfoArr[4] = (res[i].marketCap).toFixed(0) * 1;
+                            trendingInfoArr[3] = tempDefiName;
+                        }
+
+                        // top holders change 찾기
+                        if (tokenHoldersChange24hNum > trendingInfoArr[8]) {
+                            trendingInfoArr[8] = tokenHoldersChange24hNum;
+                            // tag 보관
+                            // trendingInfoArr[7] = tokenHoldersTag;
+                            trendingInfoArr[7] = res[i].holders;
+                            trendingInfoArr[6] = tempDefiName;
+                        }
+
+                        // top TVL change 찾기
+                        if (change24hValue > trendingInfoArr[11]) {
+                            trendingInfoArr[11] = change24hValue.toFixed(4) * 1;
+                            // tag 보관
+                            // trendingInfoArr[10] = "$" + currencyNum + currencyUnit;
+                            trendingInfoArr[10] = res[i].lockedUsd;
+                            trendingInfoArr[9] = tempDefiName;
+                        }
                     }
                 }
-                console.count("DefiList Call");
+
+                // console.count("DefiList Call");
+
+                // 1, 2, 3위는 Trending 목록에 보관
+                // defiName0, tvl0, change0
+                // global.changeTrending([
+                //     res[0].name, res[0].lockedUsd, res[0].tvlPercentChange24h, 
+                //     res[1].name, res[1].lockedUsd, res[1].tvlPercentChange24h, 
+                //     res[2].name, res[2].lockedUsd, res[2].tvlPercentChange24h
+                // ]);
+                // global.changeTrending(rankInfoArr);
+
+                // 0422 수정
+                global.changeTrending(trendingInfoArr);
 
                 // console.log("tableCodeArr: ", tableCodeArr);
-
                 setDefiListTableCode(tableCodeArr);
             })
             .catch(err => setResponseError(err));
@@ -486,27 +874,43 @@ const DefiList = observer((props) => {
             <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>Rank</th>
+                        <th>#</th>
                         <th></th>
-                        <th>Name</th>
+                        <th>Projects</th>
                         <th>
                             <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
-                                {/* <li><img src={questionIcon} onClick={() => movePage("/about")} /></li> */}
+                                <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
                             </ul>
                         </th>
-                        <th>Chain</th>
-                        <th>Category</th>
+                        <th>Token</th>
+                        <th>Token Price</th>
                         {/* <th>Contract(#)</th> */}
-                        <th>Volume 24h</th>
-                        <th>Locked</th>
-                        <th>Locked</th>
                         <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Mkt Cap</li>
+                                {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li> */}
+                            </ul>
+                        </th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Holders</li>
+                                <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        <th>TVL</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>TVL</li>
+                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        {/* <th>
                             <ul className="defiListTableHeadCellRight">
                                 <li>Change 24h</li>
                                 <li className="change24h"><img src={questionIcon} onClick={() => movePage("/about")} /></li>
                             </ul>
-                        </th>
+                        </th> */}
                         {/* <th>Last updated(UTC)</th> */}
                     </tr>
                 </thead>

@@ -15,6 +15,7 @@ import Apply from './components/apply/Apply';
 // import 'typeface-roboto';       // $ npm install --save typeface-roboto
 
 require('typeface-rubik')   // npm install --save typeface-rubik
+require('typeface-heebo')   // npm install --save typeface-heebo
 
 import './App.css';
 

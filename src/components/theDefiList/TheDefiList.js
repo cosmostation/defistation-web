@@ -130,7 +130,7 @@ const TheDefiList = observer(() => {
 
             // 아이콘 지금까지 저장한거 체크. 이후로는 defistationApplicationList.json 에 있는 코인 이미지 url로 사용
             
-            console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
+            // console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
 
             switch (defistationApplicationList[i]["Official Project Name"]) {
                 case "pancake":
@@ -362,7 +362,7 @@ const TheDefiList = observer(() => {
                     <li onClick={() => history.push("/" + defiInfoName)}>
                         <img 
                             src={defiIconArr[i]} 
-                            width="40px" 
+                            width="30px" 
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
@@ -375,8 +375,8 @@ const TheDefiList = observer(() => {
                     <li onClick={() => window.open(tempUrl, "_blank")}>
                         <img 
                             src={defiIconArr[i]} 
-                            width="40px" 
-                            style={{"min-height":"40px"}}
+                            width="30px" 
+                            style={{"height":"30px", "min-height": "30px"}}
                             onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
                         /><br />
                         <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
@@ -401,7 +401,19 @@ const TheDefiList = observer(() => {
         <>
             <div className="wrapper">
                 <TopBar />
-                <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
+                {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div> */}
+                <div>
+                    <ul className="tvlTitleBox">
+                        <li>
+                            <span className="subPageTitle">Projects</span>
+                        </li>
+                        <li>
+                            <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">Projects</span></div>
+                        </li>
+                    </ul>
+                </div>
+                
+                
                 <div className="applyBtn" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>

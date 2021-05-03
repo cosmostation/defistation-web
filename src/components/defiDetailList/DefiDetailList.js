@@ -1,13 +1,16 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import useStores from '../../useStores';
 
 import '../../App.css';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
+
+import questionIcon from "../../assets/images/question_ic.svg";
 
 const DefiDetailList = observer((props) => {
     const { global } = useStores();
@@ -23,6 +26,9 @@ const DefiDetailList = observer((props) => {
     const [defiDataTag, setDefiDataTag] = useState();
 
     const [defiListTableCode, setDefiListTableCode] = useState();
+
+    // const [resultBnblockedList, setResultBnblockedList] = useState();
+    let resultBnblockedList = new Object;
 
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     function getMonthAndDay(date) {
@@ -43,10 +49,10 @@ const DefiDetailList = observer((props) => {
                 .json()
                 .then(res => {
                     if (res.result == null) return;
-
+                    // setResultBnblockedList(res);
+                    resultBnblockedList = res;
                     let resultObj = res.result;
                     var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
-
                     resolve(resultArr);
                 });
         });    
@@ -66,7 +72,7 @@ const DefiDetailList = observer((props) => {
         if (urlStr == "") return;
 
         let lockedBnbArr = await getBnbLockedList(defiName);
-        console.log("lockedBnbArr: ", lockedBnbArr);
+        console.log("[0426] lockedBnbArr: ", lockedBnbArr);
 
         let chartFullUrl;
         if (chartPeriod == 7) {
@@ -87,8 +93,6 @@ const DefiDetailList = observer((props) => {
             .then(res => {
                 if (res.result == null) return;
 
-                // console.log("test1111111");
-
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
@@ -104,69 +108,106 @@ const DefiDetailList = observer((props) => {
 
                 // console.log("test111111111111");
 
+                let bnbLockedAmountTag;
+
                 let tvlChangeTag;
                 let bnbChangeTag;
+
+                let tokenPriceTag;
+                let tokenPriceChangeTag;
+                let marketCapTag;
+                let marketCapChangeTag;
+                let holdersTag;
+                let holdersChangeTag;
+
+                console.log("[0429] resultArr.length: ", resultArr.length);
 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
                     }
 
+                    console.log("[0429] resultArr[i][1]: ", resultArr[i][1]);
+
                     if (resultArr[i][1] == 0) {
                         continue;
                     }
-
-                    // console.log("resultArr[i][0]: ", resultArr[i][0]);
-                    // console.log("resultArr[i][1]: ", resultArr[i][1]);
-
-                    // let digit = getCurrencyDigit(resultArr[i][1]);
-                    // console.log("digit: ", digit);
-
-                    // let currencyNum = (resultArr[i][1] / digit).toFixed(3) * 1;
-
-                    // if (i == 0) {
-                    //     tempMinTvl = currencyNum;
-                    // } else {
-                    //     // 가장 작은 값 찾기(vAxis 최솟값)
-                    //     if (tempMinTvl > currencyNum) {
-                    //         tempMinTvl = currencyNum;
-                    //     }
-                    // }
 
                     let tvlChange = 0;
                     if (i > 0) {
                         // tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
                         tvlChange = (resultArr[i][1] / resultArr[i - 1][1] - 1);
-                        if (tvlChange > 0) {
-                            // +
-                            tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
-                        } else if (tvlChange == 0) {
-                            tvlChangeTag = <span>{(tvlChange * 100).toFixed(2)}%</span>;
-                        } else if (tvlChange < 0) {
-                            tvlChangeTag = <span className="textRed">{(tvlChange * 100).toFixed(2)}%</span>;
+                        if (tvlChange == "Infinity") {
+                            tvlChange = "";
+                        } else {
+                            if (tvlChange > 0) {
+                                // +
+                                tvlChangeTag = <span className="textGreen">+{(tvlChange * 100).toFixed(2)}%</span>;
+                            } else if (tvlChange == 0) {
+                                tvlChangeTag = <span className="textGray">{(tvlChange * 100).toFixed(2)}%</span>;
+                            } else if (tvlChange < 0) {
+                                tvlChangeTag = <span className="textRed">{(tvlChange * 100).toFixed(2)}%</span>;
+                            }
+                        }
+                    }
+
+                    // BNB locked 수량
+                    if (Math.floor(lockedBnbArr[i][1]) > 0) {
+                        bnbLockedAmountTag = numberWithCommas(Math.floor(lockedBnbArr[i][1]));
+                    } else {
+                        if (i > 0) {
+                            if (Math.floor(lockedBnbArr[i - 1][1]) > 0) {
+                                bnbLockedAmountTag = numberWithCommas(Math.floor(lockedBnbArr[i - 1][1]));
+                            }
                         }
                     }
 
                     // BNB locked 변화량(개수로 표현)
                     let bnbChange = 0;
                     if (i > 0) {
-                        bnbChange = lockedBnbArr[i][1] - lockedBnbArr[i - 1][1];
-                        // if (bnbChange > 0) {
-                        //     // +
-                        //     bnbChangeTag = <span className="textGreen">+{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange == 0) {
-                        //     bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // } else if (bnbChange < 0) {
-                        //     bnbChangeTag = <span className="textRed">{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        // }
-
-                        if (bnbChange > 0) {
-                            // +
-                            bnbChangeTag = <span>+{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        } else if (bnbChange == 0) {
-                            bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
-                        } else if (bnbChange < 0) {
-                            bnbChangeTag = <span>{numberWithCommas(Math.floor(bnbChange))}</span>;
+                        if (lockedBnbArr[i] != undefined) {
+                            if (lockedBnbArr[i][1] > 0) {
+                                if (lockedBnbArr[i - 1] != undefined) {
+                                    if (lockedBnbArr[i - 1][1] > 0) {
+                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 1][1] - 1);
+                                    } else {
+                                        // console.log("[0429] lockedBnbArr[i - 2]: ", lockedBnbArr[i - 2]);
+                                        if (lockedBnbArr[i - 2] != undefined) {
+                                            if (lockedBnbArr[i - 2][1] > 0) {
+                                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 2][1] - 1);
+                                            } else {
+                                                if (lockedBnbArr[i - 3] != undefined) {
+                                                    if (lockedBnbArr[i - 3][1] > 0) {
+                                                        bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 3][1] - 1);
+                                                    } else {
+                                                        if (lockedBnbArr[i - 4] != undefined) {
+                                                            if (lockedBnbArr[i - 4][1] > 0) {
+                                                                bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 4][1] - 1);
+                                                            } else {
+                                                                if (lockedBnbArr[i - 5] != undefined) {
+                                                                    bnbChange = (lockedBnbArr[i][1] / lockedBnbArr[i - 5][1] - 1);
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (bnbChange == "Infinity" || bnbLockedAmountTag == undefined) {
+                            bnbChangeTag = "";
+                        } else {
+                            if (bnbChange > 0) {
+                                bnbChangeTag = <span className="textGreen">+{(bnbChange * 100).toFixed(2)}%</span>;
+                            } else if (bnbChange == 0) {
+                                bnbChangeTag = <span className="textGray">{(bnbChange * 100).toFixed(2)}%</span>;
+                            } else if (bnbChange < 0) {
+                                bnbChangeTag = <span className="textRed">{(bnbChange * 100).toFixed(2)}%</span>;
+                            }
                         }
                     }
 
@@ -181,15 +222,140 @@ const DefiDetailList = observer((props) => {
                         currencyNum = (resultArr[i][1] / digit).toFixed(2) * 1;
                     }
 
+                    // Token Price
+                    let tokenPrice = 0;
+                    let tokenPriceChange = 0;
+                    let priceObj = resultBnblockedList.price;
+
+                    if (i > 0 && Object.keys(priceObj).length > 0) {
+                        tokenPrice = priceObj[Object.keys(priceObj)[i]];
+                        if (tokenPrice >= 1) {
+                            tokenPriceTag = "$ " + numberWithCommas((tokenPrice).toFixed(2), false);
+                        } else {
+                            tokenPriceTag = "$ " + numberWithCommas(tokenPrice, false);
+                        }
+
+                        tokenPriceChange = (priceObj[Object.keys(priceObj)[i]] / priceObj[Object.keys(priceObj)[i - 1]] - 1);
+                        
+                        if (tokenPriceChange == "Infinity") {
+                            tokenPriceChangeTag = "";
+                        } else {
+                            if (tokenPriceChange > 0) {
+                                tokenPriceChangeTag = <span className="textGreen">+{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            } else if (tokenPriceChange == 0) {
+                                tokenPriceChangeTag = <span className="textGray">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            } else if (tokenPriceChange < 0) {
+                                tokenPriceChangeTag = <span className="textRed">{(tokenPriceChange * 100).toFixed(2)}%</span>;
+                            }
+                        }
+                    } else {
+                        tokenPriceTag = "-";
+                    }
+
+                    // MarketCap
+                    let marketCapObj = resultBnblockedList.marketCap;
+                    let marketCap = 0;
+                    let marketCapChange = 0;
+                    if (i > 0 && Object.keys(marketCapObj).length > 0) {
+                        marketCap = marketCapObj[Object.keys(marketCapObj)[i]];
+                        // marketCapTag = "$ " + (marketCap).toFixed(0);
+                        marketCapTag = "$ " + convertToBMK(marketCap);
+
+                        marketCapChange = (marketCapObj[Object.keys(marketCapObj)[i]] / marketCapObj[Object.keys(marketCapObj)[i - 1]] - 1);
+                        if (marketCapChange == "Infinity") {
+                            marketCapChangeTag = "";
+                        } else {
+                            if (marketCapChange > 0) {
+                                marketCapChangeTag = <span className="textGreen">+{(marketCapChange * 100).toFixed(2)}%</span>;
+                            } else if (marketCapChange == 0) {
+                                marketCapChangeTag = <span className="textGray">{(marketCapChange * 100).toFixed(2)}%</span>;
+                            } else if (marketCapChange < 0) {
+                                marketCapChangeTag = <span className="textRed">{(marketCapChange * 100).toFixed(2)}%</span>;
+                            }
+                        }
+                    } else {
+                        marketCapChangeTag = "-";
+                    }
+
+                    // Holders
+                    let holdersObj = resultBnblockedList.holders;
+                    let holders = 0;
+                    let holdersChange = 0;
+                    if (i > 0 && Object.keys(holdersObj).length > 0) {
+                        holders = holdersObj[Object.keys(holdersObj)[i]];
+                        if (holders == 0 || holders == undefined) {
+                            holdersTag = "-";
+                        } else {
+                            holdersTag = numberWithCommas(holders, false);
+                        }
+
+                        // holders 변화는 % 가 아니라 변화 증가, 감소 숫자로 보여준다
+                        if (holders == 0) {
+                            holdersChangeTag = <span className="textGray"></span>;
+                        } else {
+                            holdersChange = holdersObj[Object.keys(holdersObj)[i]] - holdersObj[Object.keys(holdersObj)[i - 1]];
+                            if (holdersChange > 0) {
+                                if (holdersObj[Object.keys(holdersObj)[i - 1]] == 0) {
+                                    holdersChangeTag = <span className="textGray">-</span>;
+                                } else {
+                                    holdersChangeTag = <span className="textGreen">+{numberWithCommas(holdersChange, false)}</span>;
+                                }
+                            } else if (holdersChange == 0) {
+                                holdersChangeTag = <span className="textGray">{numberWithCommas(holdersChange, false)}</span>;
+                                // holdersChangeTag = <span className="textGray">-</span>;
+                            } else if (holdersChange < 0) {
+                                holdersChangeTag = <span className="textRed">{numberWithCommas(holdersChange, false)}</span>;
+                            }
+                        }
+                    }
+
+                    if (holdersTag == undefined) {
+                        holdersTag = "-";
+                    }
+
+                    // Sponsored
+                    if (props.defiName == "ARIES FINANCIAL") {
+                        holdersTag = "-";
+                        holdersChangeTag = <span className="textGray"></span>;
+                    }
+
+                    // console.log("[0429] Test 2222222222");
+
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
                         defiDataTagArr.unshift(<tr key={i}>
-                            <td>{convertDateFormat(new Date(resultArr[i][0] * 1000))}</td>
+                            {/* <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
                             <td>$ {numberWithCommas(resultArr[i][1])}</td>
                             <td>$ {currencyNum + currencyUnit}</td>
                             <td>{tvlChangeTag}</td>
                             <td>{numberWithCommas(Math.floor(lockedBnbArr[i][1]))} <span style={{"color":"#f0b923"}}>BNB</span></td>
-                            <td>{bnbChangeTag} <span style={{"color":"#f0b923"}}>BNB</span></td>
+                            <td>{bnbChangeTag} <span style={{"color":"#f0b923"}}>BNB</span></td> */}
+                            
+                            <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
+                            <td>
+                                {tokenPriceTag}
+                                <br /><span className="defiListTableSubText">{tokenPriceChangeTag}</span>
+                            </td>
+                            <td>
+                                {marketCapTag}
+                                <br /><span className="defiListTableSubText">{marketCapChangeTag}</span>
+                            </td>
+                            <td>
+                                {holdersTag}
+                                <br /><span className="defiListTableSubText">{holdersChangeTag}</span>
+                            </td>
+                            <td>
+                                {/* {numberWithCommas(Math.floor(lockedBnbArr[i][1]))} */}
+                                {/* {bnbLockedAmountTag} */}
+                                {
+                                    bnbLockedAmountTag == undefined ? "-" : bnbLockedAmountTag
+                                }
+                                <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
+                            </td>
+                            <td>
+                                $ {convertToBMK(resultArr[i][1])}
+                                <br /><span className="defiListTableSubText">{tvlChangeTag}</span>
+                            </td>
                         </tr>);
                     }
                 }
@@ -219,7 +385,7 @@ const DefiDetailList = observer((props) => {
         // getDefiList();
         console.log("props.defiName22222: ", props.defiName);
         getChart(props.defiName);
-
+        
         return () => {
 
         };
@@ -230,81 +396,26 @@ const DefiDetailList = observer((props) => {
             <table className="defiDetailListTable">
                 <thead className="defiDetailListTableHead">
                     <tr>
-                        <th>Date</th><th>TVL</th><th>TVL</th><th>TVL Change 24h</th><th>Total BNB Locked</th><th>BNB Locked 24h</th>
+                        <th>Date</th>
+                        <th>Token Price</th>
+                        <th>Mkt Cap	</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>Holders</li>
+                                <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
+                        <th>BNB Locked</th>
+                        <th>
+                            <ul className="defiListTableHeadCellRight">
+                                <li>TVL</li>
+                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
+                            </ul>
+                        </th>
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">
                     {defiDataTag}
-                    {/* <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr>
-                    <tr>
-                        <td>2020-10-13</td>
-                        <td>$00.00B</td>
-                        <td><span className="textGreen">+ 0.00M</span></td>
-                        <td>108.65 <span style={{"color":"#f0b923"}}>BNB</span></td>
-                        <td><span className="textGreen">+ 000.00</span></td>
-                    </tr> */}
                 </tbody>
             </table>
             <br />

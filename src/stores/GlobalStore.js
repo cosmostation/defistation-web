@@ -24,5 +24,39 @@ export default class GlobalStore {
     this.tvl1DayPercent = value;
   };
 
+  // TXs 24h
+  @observable transactions24h = 0;
+  @action changeTransactions24h = (value) => {
+    this.transactions24h = value;
+  };
 
+  // TXs 24h 변화(%)
+  @observable transactions24hPercent = "";
+  @action changeTransactions24hPercent = (value) => {
+    this.transactions24hPercent = value;
+  };
+
+  // Trending
+  @observable trending = [];
+  @action changeTrending = (value) => {
+    this.trending = value;
+  };
+
+  // Trending 24h 변화(%)
+  @observable trending24hPercent = [];
+  @action changeTrending24hPercent = (value) => {
+    this.trending24hPercent = value;
+  };
+
+  // // Token Price
+  // @observable tokenPrice = 0;
+  // @action changeTokenPrice = (value) => {
+  //   this.tokenPrice = value;
+  // };
+
+  // // Token Price 24h 변화(%)
+  // @observable tokenPrice24hPercent = 0;
+  // @action changeTokenPrice24hPercent = (value) => {
+  //   this.tokenPrice24hPercent = value;
+  // };
 }
