@@ -6,8 +6,6 @@ import useStores from '../../useStores';
 
 import '../../App.css';
 
-import defistationApplicationList from "../../defistationApplicationList.json";
-
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
 
 import questionIcon from "../../assets/images/question_ic.svg";

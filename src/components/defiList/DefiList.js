@@ -16,9 +16,6 @@ import rankIcon1 from "../../assets/images/rank1@2x.png";
 import rankIcon2 from "../../assets/images/rank2@2x.png";
 import rankIcon3 from "../../assets/images/rank3@2x.png";
 
-import verifiedIcon from "../../assets/images/verifiedic.svg";
-import noVerifiedIcon from "../../assets/images/verifiedic_none.svg";
-
 import questionIcon from "../../assets/images/question_ic.svg";
 
 // coin image
