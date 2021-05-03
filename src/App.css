@@ -2239,13 +2239,7 @@ hr.sideMenuLine {
   position: absolute;
 }
 
-/* .auditVerified {
-  color: #297ee2;
-  font-size: 18px;
-} */
 .auditVerified {
-  /* color: #297ee2; */
-  /* font-size: 18px; */
   background-color:#297ee2;
   border:1px solid #297ee2;
   width:8px; height:8px;
@@ -2254,14 +2248,8 @@ hr.sideMenuLine {
   margin:0 auto;
   font-size:12px; color:#fff;
   vertical-align:middle;
-  /* line-height:100px; */
   line-height: 50px;
 }
-
-/* .noAudit {
-  color: #454b57;
-  font-size: 18px;
-} */
 
 .noAudit {
   background-color:#454b57;
@@ -2290,6 +2278,53 @@ hr.sideMenuLine {
 
 .auditListUl li {
   line-height: 20px;
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .auditUl li {
+    font-size: 11px
+  }
+
+  .auditVerified {
+    background-color:#297ee2;
+    border:1px solid #297ee2;
+    width:6px; height:6px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    line-height: 50px;
+  }
+  
+  .noAudit {
+    background-color:#454b57;
+    border:1px solid #454b57;
+    width:6px; height:6px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    /* line-height:100px; */
+    line-height: 50px;
+  }
+  
+  .auditListUl {
+    font-family: Heebo;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    /* line-height: normal; */
+    letter-spacing: normal;
+    text-align: left;
+    margin-top: 0px;
+  }
+  
+  .auditListUl li {
+    line-height: 18px;
+  }
 }
 
 .defiListTable {

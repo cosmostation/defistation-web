@@ -82,6 +82,8 @@ const DefiList = observer((props) => {
 
     const [volumeTag, setVolumeTag] = useState();
 
+    // const [auditPlace, setAuditPlace] = useState();
+
     function findDefiIndexNum(defiName) {
         // 예외처리
         if (defiName == "pancake") {
@@ -310,6 +312,24 @@ const DefiList = observer((props) => {
             .then(res => {
                 // console.log("res: ", res);
 
+                let isMobile = false;
+                let auditPlace = "right";
+
+                if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+                    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) { 
+                    isMobile = true;
+                }
+
+                if (isMobile) {
+                    if (screen.width <= 320) {
+                        auditPlace = "bottom";
+                    }
+                } else {
+                    if (window.innerWidth <= 320) {
+                        auditPlace = "bottom";
+                    }
+                }
+
                 let tableCodeArr = [];
                 let rankingCount = 1;
 
@@ -380,34 +400,6 @@ const DefiList = observer((props) => {
                     }
 
                     let verifiedTag;
-                    // if (res[i].verified) {
-                    //     verifiedTag = <img src={verifiedIcon} />
-                    // } else {
-                    //     verifiedTag = <img src={noVerifiedIcon} />
-                    // }
-                    // 0420 수정중
-                    // <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
-                    // if (res[i].verified) {
-                    //     let index = findDefiIndexNum(res[i].name);
-                    //     let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
-
-                    //     console.log("auditInfoStr: ", auditInfoStr);
-
-                    //     if (auditInfoStr.indexOf("YES") != -1) {
-
-                    //     } else {
-                    //         // auditInfoStr 파싱: 첫번째 : 을 기준으로 나누기
-                    //         let auditLinkArr = auditInfoStr.split(":");
-                    //         let auditProvider = auditLinkArr[0];
-                    //         let auditLink = auditLinkArr[1] + ":" + auditLinkArr[2];
-                    //         let tempTag = `<span className='auditVerified'>⦁</span><span> Audited</span><br />` + auditProvider + `: <a className='auditLink' href='` + auditLink + `' target='_blank'>` + auditLink + `</a>`;
-                    //         verifiedTag = <div className="customTooltip" data-tip={tempTag}><span className='auditVerified'>⦁</span></div>;
-                    //     }
-
-                        
-                    // } else {
-                    //     verifiedTag = <span className='noAudit'>⦁</span>;
-                    // }
                     if (res[i].verified) {
                         let index = findDefiIndexNum(res[i].name);
                         let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
@@ -422,7 +414,7 @@ const DefiList = observer((props) => {
                                 <ReactTooltip 
                                 id={'global' + i} 
                                 aria-haspopup='true'
-                                place="right"
+                                place={auditPlace}
                                 delayHide={200}
                                 effect="solid"
                                 >
@@ -440,33 +432,13 @@ const DefiList = observer((props) => {
                         } else {
                             if (auditInfoStr == "") {
                                 verifiedTag = 
-                                // <>
-                                //     <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
-                                //     <ReactTooltip 
-                                //     id={'global' + i} 
-                                //     aria-haspopup='true'
-                                //     place="right"
-                                //     delayHide={200}
-                                //     effect="solid"
-                                //     >
-                                //     <div>
-                                //         <ul className="auditUl">
-                                //             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
-                                //             <li>Audited</li>
-                                //         </ul>
-                                //         <ul className="auditListUl">
-                                //             <li>Unknown source</li>
-                                //         </ul>
-                                //     </div>
-                                //     </ReactTooltip>
-                                // </>;
                                 <>
                                     <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
                                     <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
-                                    place="right"
+                                    place={auditPlace}
                                     delayHide={200}
                                     effect="solid"
                                     >
@@ -499,28 +471,12 @@ const DefiList = observer((props) => {
 
                                 verifiedTag = 
                                 <>
-                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div>
-                                    <ReactTooltip 
-                                    id={'global' + i} 
-                                    aria-haspopup='true'
-                                    place="right"
-                                    delayHide={200}
-                                    effect="solid"
-                                    >
-                                    <div>
-                                        <div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div> Audited
-                                        <ul className="auditListUl">
-                                            {resultAuditTag}
-                                        </ul>
-                                    </div>
-                                    </ReactTooltip> */}
-                                    {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
                                     <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
                                     <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                     <ReactTooltip 
                                     id={'global' + i} 
                                     aria-haspopup='true'
-                                    place="right"
+                                    place={auditPlace}
                                     delayHide={200}
                                     effect="solid"
                                     >
@@ -724,27 +680,6 @@ const DefiList = observer((props) => {
                                 <td>
                                     {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}
                                     <li>
-                                        {/* <div data-tip="<a href='https://www.naver.com' target='_blank'>test</a>">{verifiedTag}</div>
-                                        <ReactTooltip 
-                                        place="right"
-                                        html={true} 
-                                        className="react-tooltip-clickable-link" /> */}
-                                        {/* {verifiedTag} */}
-                                        {/* <ReactTooltip 
-                                        place="right"
-                                        html={true} 
-                                        type={'dark'}
-                                        className="react-tooltip-clickable-link" /> */}
-                                        {/* <a data-tip data-for='global'> (〃∀〃) </a>
-                                        <ReactTooltip id='global' aria-haspopup='true' >
-                                        <p>This is a global react component tooltip</p>
-                                        <p>You can put every thing here</p>
-                                        <ul>
-                                        <li>Word</li>
-                                        <li>Chart</li>
-                                        <li>Else</li>
-                                        </ul>
-                                        </ReactTooltip> */}
                                         {verifiedTag}
                                     </li>
                                 </td>
