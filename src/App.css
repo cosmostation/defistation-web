@@ -2409,6 +2409,19 @@ hr.sideMenuLine {
   font-weight: 700;
 }
 
+.mobileRankNum {
+  display: none;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .mobileRankNum {
+    color: #fff;
+    display: inline-table;
+    margin-right: 5px;
+    font-weight: 700;
+  }
+}
+
 .comingSoon {
   color: #9BA5B5;
 }
@@ -2602,6 +2615,13 @@ img:hover{
 }
 
 @media (min-width:1px) and (max-width:1034px) {
+  .defiListTable th:nth-child(1) {
+    display: none;
+  }
+  .defiListTable td:nth-child(1) {
+    display: none;
+  }
+
   .defiListTable th:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
@@ -2953,10 +2973,34 @@ img:hover{
   cursor: pointer;
 }
 
+.defiOverviewShowMoreText {
+  font-family: "Heebo-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  /* text-align: left; */
+  text-align: justify;
+  color: #9aa0a8;
+
+  /* border-radius: 5px;
+  background-color: #171a20;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden; */
+  width: 100%;
+}
+
+.defiOverviewShowMoreText a {
+  color: #fff;
+}
+
 @media (min-width:1px) and (max-width:1034px) {
   .defiOverview {
     margin-top: 0px;
-    padding: 0 15px 0 15px;
+    padding: 15px;
   }
   
   .defiOverviewTitle {

@@ -41,24 +41,24 @@ const DefiOverview = observer((props) => {
         let overviewStr = findDescription(props.defiName);
 
         setOverviewTag(
-            <div className="defiOverview">
-                <p className="defiOverviewContent">
-                    {overviewStr}
-                </p>
-            </div>
-            // <ShowMoreText
-            //     /* Default options */
-            //     lines={3}
-            //     more='More'
-            //     less='Less'
-            //     className='defiOverview'
-            //     anchorClass='my-anchor-css-class'
-            //     expanded={false}
-            // >
+            // <div className="defiOverview">
             //     <p className="defiOverviewContent">
             //         {overviewStr}
             //     </p>
-            // </ShowMoreText>
+            // </div>
+            <div className="defiOverview">
+                <ShowMoreText
+                    /* Default options */
+                    lines={6}
+                    more='Show more'
+                    less='Show less'
+                    className='defiOverviewShowMoreText'
+                    anchorClass='my-anchor-css-class'
+                    expanded={false}
+                >
+                    {overviewStr}
+                </ShowMoreText>
+            </div>
         );
 
         return () => {

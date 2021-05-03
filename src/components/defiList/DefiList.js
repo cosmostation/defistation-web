@@ -732,6 +732,7 @@ const DefiList = observer((props) => {
                                 {/* <td>{coinImg}</td> */}
                                 <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
                                     <span className="projectName">{getOfficialDefiName(res[i].name)}</span><br />
+                                    <span className="mobileRankNum">{rankNum}</span>
                                     <span className="defiListTableCategory">{tempCategory}</span>
                                 </td>
                                 <td>
