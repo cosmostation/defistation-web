@@ -1168,7 +1168,12 @@ const TotalValue = observer((props) => {
                                         colors: ["#f0b923", "#888A8F"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
-                                        crosshair: {orientation: 'vertical', trigger: 'focus'},
+                                        crosshair: {
+                                            orientation: 'vertical', 
+                                            trigger: 'focus',
+                                            color: '#fff',
+                                            opacity: 0.1,
+                                        },
                                         }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />
@@ -1212,7 +1217,12 @@ const TotalValue = observer((props) => {
                                         colors: ["#f0b923", "#34ab62"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
-                                        crosshair: {orientation: 'vertical', trigger: 'focus'},
+                                        crosshair: {
+                                            orientation: 'vertical', 
+                                            trigger: 'focus',
+                                            color: '#fff',
+                                            opacity: 0.1,
+                                        },
                                         }}
                                     rootProps={{ 'data-testid': '2' }}
                                     />

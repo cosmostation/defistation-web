@@ -410,7 +410,7 @@ const DefiDetailList = observer((props) => {
                                 }
                                 <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
                             </td>
-                            <td>
+                            <td onClick={() => switchDefiListTable()}>
                                 $ {convertToBMK(resultArr[i][1])}
                                 <br /><span className="defiListTableSubText">{tvlChangeTag}</span>
                             </td>

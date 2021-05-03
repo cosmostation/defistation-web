@@ -1,14 +1,10 @@
 import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-
-import { getOfficialDefiName } from '../../util/Util';
+import ShowMoreText from 'react-show-more-text';    // https://www.npmjs.com/package/react-show-more-text
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
 import '../../App.css';
-
-import binanceImg1 from "../../assets/images/binance_img@2x.png";
 
 const DefiOverview = observer((props) => {
 
@@ -50,6 +46,19 @@ const DefiOverview = observer((props) => {
                     {overviewStr}
                 </p>
             </div>
+            // <ShowMoreText
+            //     /* Default options */
+            //     lines={3}
+            //     more='More'
+            //     less='Less'
+            //     className='defiOverview'
+            //     anchorClass='my-anchor-css-class'
+            //     expanded={false}
+            // >
+            //     <p className="defiOverviewContent">
+            //         {overviewStr}
+            //     </p>
+            // </ShowMoreText>
         );
 
         return () => {
