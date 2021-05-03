@@ -731,9 +731,9 @@ const DefiList = observer((props) => {
                                 <td><div className="tokenImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
                                 {/* <td>{coinImg}</td> */}
                                 <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
-                                    <span className="projectName">{getOfficialDefiName(res[i].name)}</span><br />
+                                    <span className="projectName noWrap">{getOfficialDefiName(res[i].name)}</span><br />
                                     <span className="mobileRankNum">{rankNum}</span>
-                                    <span className="defiListTableCategory">{tempCategory}</span>
+                                    <span className="defiListTableCategory noWrap">{tempCategory}</span>
                                 </td>
                                 <td>
                                     {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}

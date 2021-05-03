@@ -2494,7 +2494,7 @@ img:hover{
   font-size: 12px;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+/* @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
     font-size: 10px;
   }
@@ -2502,7 +2502,7 @@ img:hover{
 
 .defiListTableSubText {
   font-size: 12px;
-}
+} */
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
@@ -2661,6 +2661,7 @@ img:hover{
   }
 
   .defiListTable th:nth-child(7) {
+    white-space:nowrap;
     display: none;
     width: 20%;
     /* width: 40%; */
