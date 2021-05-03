@@ -2415,9 +2415,29 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .mobileRankNum {
-    color: #fff;
+    /* color: #fff;
     display: inline-table;
     margin-right: 5px;
+    font-weight: 700;
+    background-color: #454B57;
+    border-radius: 15px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    font-size: 9px;
+    vertical-align: middle; */
+    
+    display: inline-table;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    font-size: 9px;
+    color: #fff;
+    text-align: center;
+    background: #454B57;
+    color: #fff;
+    margin-right: 4px;
     font-weight: 700;
   }
 }
@@ -2506,7 +2526,7 @@ img:hover{
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .defiListTableSubText {
@@ -2732,6 +2752,7 @@ img:hover{
   .defiListTableBody {
     font-size: 11.5px;
     letter-spacing: -0.3px;
+    line-height: 1.3;
   }
 }
 
