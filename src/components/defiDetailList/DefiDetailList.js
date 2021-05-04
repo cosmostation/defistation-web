@@ -178,14 +178,14 @@ const DefiDetailList = observer((props) => {
                 let holdersTag;
                 let holdersChangeTag;
 
-                console.log("[0429] resultArr.length: ", resultArr.length);
+                // console.log("[0429] resultArr.length: ", resultArr.length);
 
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
                     }
 
-                    console.log("[0429] resultArr[i][1]: ", resultArr[i][1]);
+                    // console.log("[0429] resultArr[i][1]: ", resultArr[i][1]);
 
                     if (resultArr[i][1] == 0) {
                         continue;
@@ -337,6 +337,7 @@ const DefiDetailList = observer((props) => {
 
                     // Holders
                     let holdersObj = resultBnblockedList.holders;
+                    console.log("holdersObj: ", holdersObj);
                     let holders = 0;
                     let holdersChange = 0;
                     if (i > 0 && Object.keys(holdersObj).length > 0) {

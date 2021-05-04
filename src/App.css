@@ -2514,6 +2514,10 @@ img:hover{
   font-size: 12px;
 }
 
+.defiListTableSubText {
+  font-size: 12px;
+}
+
 /* @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
     font-size: 10px;
