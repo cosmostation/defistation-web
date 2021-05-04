@@ -1,6 +1,6 @@
 {
   "name": "defistation-web",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "private": true,
   "dependencies": {
     "@ledgerhq/hw-transport-webhid": "^5.23.0",
@@ -24,6 +24,7 @@
     "react-responsive-modal": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-show-more-text": "^1.4.6",
     "react-slick": "^0.28.1",
     "react-tooltip": "^4.2.14",
     "secp256k1": "^4.0.2",

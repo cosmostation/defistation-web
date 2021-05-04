@@ -2239,13 +2239,7 @@ hr.sideMenuLine {
   position: absolute;
 }
 
-/* .auditVerified {
-  color: #297ee2;
-  font-size: 18px;
-} */
 .auditVerified {
-  /* color: #297ee2; */
-  /* font-size: 18px; */
   background-color:#297ee2;
   border:1px solid #297ee2;
   width:8px; height:8px;
@@ -2254,14 +2248,8 @@ hr.sideMenuLine {
   margin:0 auto;
   font-size:12px; color:#fff;
   vertical-align:middle;
-  /* line-height:100px; */
   line-height: 50px;
 }
-
-/* .noAudit {
-  color: #454b57;
-  font-size: 18px;
-} */
 
 .noAudit {
   background-color:#454b57;
@@ -2290,6 +2278,100 @@ hr.sideMenuLine {
 
 .auditListUl li {
   line-height: 20px;
+}
+
+@media (min-width:321px) and (max-width:768px) {
+  .auditUl li {
+    font-size: 12px
+  }
+
+  .auditVerified {
+    background-color:#297ee2;
+    border:1px solid #297ee2;
+    width:8px; height:8px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    line-height: 50px;
+  }
+  
+  .noAudit {
+    background-color:#454b57;
+    border:1px solid #454b57;
+    width:8px; height:8px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    /* line-height:100px; */
+    line-height: 50px;
+  }
+  
+  .auditListUl {
+    font-family: Heebo;
+    font-size: 11px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    /* line-height: normal; */
+    letter-spacing: normal;
+    text-align: left;
+    margin-top: 0px;
+  }
+  
+  .auditListUl li {
+    line-height: 18px;
+  }
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .auditUl li {
+    font-size: 11px
+  }
+
+  .auditVerified {
+    background-color:#297ee2;
+    border:1px solid #297ee2;
+    width:6px; height:6px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    line-height: 50px;
+  }
+  
+  .noAudit {
+    background-color:#454b57;
+    border:1px solid #454b57;
+    width:6px; height:6px;
+    border-radius:75px;
+    text-align:center;
+    margin:0 auto;
+    font-size:12px; color:#fff;
+    vertical-align:middle;
+    /* line-height:100px; */
+    line-height: 50px;
+  }
+  
+  .auditListUl {
+    font-family: Heebo;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    /* line-height: normal; */
+    letter-spacing: normal;
+    text-align: left;
+    margin-top: 0px;
+  }
+  
+  .auditListUl li {
+    line-height: 18px;
+  }
 }
 
 .defiListTable {
@@ -2325,6 +2407,39 @@ hr.sideMenuLine {
 
 .projectName {
   font-weight: 700;
+}
+
+.mobileRankNum {
+  display: none;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .mobileRankNum {
+    /* color: #fff;
+    display: inline-table;
+    margin-right: 5px;
+    font-weight: 700;
+    background-color: #454B57;
+    border-radius: 15px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    font-size: 9px;
+    vertical-align: middle; */
+    
+    display: inline-table;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    font-size: 9px;
+    color: #fff;
+    text-align: center;
+    background: #454B57;
+    color: #fff;
+    margin-right: 4px;
+    font-weight: 700;
+  }
 }
 
 .comingSoon {
@@ -2399,7 +2514,11 @@ img:hover{
   font-size: 12px;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+.defiListTableSubText {
+  font-size: 12px;
+}
+
+/* @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
     font-size: 10px;
   }
@@ -2407,11 +2526,11 @@ img:hover{
 
 .defiListTableSubText {
   font-size: 12px;
-}
+} */
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiListTableCategory {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .defiListTableSubText {
@@ -2520,6 +2639,13 @@ img:hover{
 }
 
 @media (min-width:1px) and (max-width:1034px) {
+  .defiListTable th:nth-child(1) {
+    display: none;
+  }
+  .defiListTable td:nth-child(1) {
+    display: none;
+  }
+
   .defiListTable th:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
@@ -2559,19 +2685,24 @@ img:hover{
   }
 
   .defiListTable th:nth-child(7) {
+    white-space:nowrap;
     display: none;
+    width: 20%;
     /* width: 40%; */
   }
   .defiListTable td:nth-child(7) {
     display: none;
+    width: 20%;
     /* width: 40%; */
   }
 
   .defiListTable th:nth-child(8) {
     display: none;
+    width: 30%;
   }
   .defiListTable td:nth-child(8) {
     display: none;
+    width: 30%;
   }
 
   .defiListTable th:nth-child(9) {
@@ -2625,6 +2756,7 @@ img:hover{
   .defiListTableBody {
     font-size: 11.5px;
     letter-spacing: -0.3px;
+    line-height: 1.3;
   }
 }
 
@@ -2867,10 +2999,34 @@ img:hover{
   cursor: pointer;
 }
 
+.defiOverviewShowMoreText {
+  font-family: "Heebo-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  /* text-align: left; */
+  text-align: justify;
+  color: #9aa0a8;
+
+  /* border-radius: 5px;
+  background-color: #171a20;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden; */
+  width: 100%;
+}
+
+.defiOverviewShowMoreText a {
+  color: #fff;
+}
+
 @media (min-width:1px) and (max-width:1034px) {
   .defiOverview {
     margin-top: 0px;
-    padding: 0 15px 0 15px;
+    padding: 15px;
   }
   
   .defiOverviewTitle {
@@ -3083,16 +3239,20 @@ img:hover{
   
   .defiDetailListTable th:nth-child(3) {
     display: none;
+    width: 30%;
   }
   .defiDetailListTable td:nth-child(3) {
     display: none;
+    width: 30%;
   }
 
   .defiDetailListTable th:nth-child(4) {
     display: none;
+    width: 30%;
   }
   .defiDetailListTable td:nth-child(4) {
     display: none;
+    width: 30%;
   }
 
   .defiDetailListTable th:nth-child(5) {
