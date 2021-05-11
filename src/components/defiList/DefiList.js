@@ -728,11 +728,15 @@ const DefiList = observer((props) => {
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr">
                                 <td>{rankNum}</td>
-                                <td><div className="tokenImgCircleMask"><img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div></td>
+                                <td>
+                                    <div className="mobileRankNum">{rankNum}</div>
+                                    <div className="tokenImgCircleMask">
+                                    <img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div>
+                                </td>
                                 {/* <td>{coinImg}</td> */}
                                 <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
                                     <span className="projectName noWrap">{getOfficialDefiName(res[i].name)}</span><br />
-                                    <div className="mobileRankNum">{rankNum}</div>
+                                    {/* <div className="mobileRankNum">{rankNum}</div> */}
                                     <span className="defiListTableCategory noWrap">{tempCategory}</span>
                                 </td>
                                 <td>

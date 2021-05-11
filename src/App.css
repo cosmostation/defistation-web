@@ -2414,19 +2414,7 @@ hr.sideMenuLine {
 }
 
 @media (min-width:1px) and (max-width:1034px) {
-  .mobileRankNum {
-    /* color: #fff;
-    display: inline-table;
-    margin-right: 5px;
-    font-weight: 700;
-    background-color: #454B57;
-    border-radius: 15px;
-    width: 15px;
-    height: 15px;
-    text-align: center;
-    font-size: 9px;
-    vertical-align: middle; */
-    
+  /* .mobileRankNum {
     display: inline-table;
     width: 16px;
     height: 16px;
@@ -2439,6 +2427,25 @@ hr.sideMenuLine {
     color: #fff;
     margin-right: 4px;
     font-weight: 700;
+  } */
+
+  .mobileRankNum {
+    display: inline-table;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    font-size: 9px;
+    color: #fff;
+    text-align: center;
+    background: #454B57;
+    color: #fff;
+    /* margin-right: 6px; */
+    font-weight: 700;
+    position: absolute;
+    z-index: 999;
+    margin-left: -10px;
+    margin-top: -3px;
   }
 }
 
@@ -2653,6 +2660,13 @@ img:hover{
   .defiListTable td:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
+  }
+
+  .defiListTable th:nth-child(3) {
+    padding-left: 3px;
+  }
+  .defiListTable td:nth-child(3) {
+    padding-left: 3px;
   }
 
   .defiListTable th:nth-child(4) {
