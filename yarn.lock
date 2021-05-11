@@ -7911,7 +7911,7 @@ postcss-attribute-case-insensitive@^4.0.1:
   resolved "https://registry.yarnpkg.com/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-4.0.2.tgz#d93e46b504589e94ac7277b0463226c68041a880"
   integrity sha512-clkFxk/9pcdb4Vkn0hAHq3YnxBQ2p0CGD1dy24jN+reBck+EWxMbxSUqN4Yj7t0w8csl87K6p0gxBe1utkJsYA==
   dependencies:
-    postcss "^7.0.2"
+    postcss "^8.2.10"
     postcss-selector-parser "^6.0.2"
 
 postcss-browser-comments@^3.0.0:
