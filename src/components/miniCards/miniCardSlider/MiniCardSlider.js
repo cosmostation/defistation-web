@@ -2,7 +2,7 @@ import React, { Fragment, Suspense, useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName, convertToBMK } from '../../../util/Util';
-// import { useHistory, useLocation } from 'react-router-dom';
+import EllipsisText from "react-ellipsis-text";
 
 import Slider from "react-slick";   // https://github.com/akiran/react-slick
 // $ npm install react-slick --save
@@ -76,7 +76,12 @@ const MiniCardSlider = observer((props) => {
                     <span style={props.data24hChange0 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange0 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange0 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange0 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName0)}>{props.defiName0}</span>
+                    {/* <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName0)}>{props.defiName0}</span> */}
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName0)}>
+                        {
+                            props.defiName0 != undefined ? <EllipsisText text={props.defiName0} length={"20"} /> : undefined
+                        }
+                    </span>
                     <p className="miniCardDataNum">$ {numberWithCommas(props.dataNum0, false)}</p>
                 </div>
                 <div>
@@ -87,7 +92,12 @@ const MiniCardSlider = observer((props) => {
                     <span style={props.data24hChange1 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange1 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName1)}>{props.defiName1}</span>
+                    {/* <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName1)}>{props.defiName1}</span> */}
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName1)}>
+                        {
+                            props.defiName1 != undefined ? <EllipsisText text={props.defiName1} length={"20"} /> : undefined
+                        }
+                    </span>
                     <p className="miniCardDataNum">$ {convertToBMK(props.dataNum1, false)}</p>
                 </div>
                 <div>
@@ -98,7 +108,12 @@ const MiniCardSlider = observer((props) => {
                     <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{numberWithCommas(props.data24hChange2)}</span>
                     <span style={props.data24hChange2 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{numberWithCommas(props.data24hChange2)}</span>
 
-                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName2)}>{props.defiName2}</span>
+                    {/* <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName2)}>{props.defiName2}</span> */}
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName2)}>
+                        {
+                            props.defiName2 != undefined ? <EllipsisText text={props.defiName2} length={"20"} /> : undefined
+                        }
+                    </span>
                     <p className="miniCardDataNum">{numberWithCommas(props.dataNum2, false)}</p>
                 </div>
                 <div>
@@ -109,7 +124,12 @@ const MiniCardSlider = observer((props) => {
                     <span style={props.data24hChange3 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange3 * 100).toFixed(2)}%</span>
 
-                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName3)}>{props.defiName3}</span>
+                    {/* <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName3)}>{props.defiName3}</span> */}
+                    <span className="trendingDefiName" onClick={() => goToTrendingDetailPage(props.defiName3)}>
+                        {
+                            props.defiName3 != undefined ? <EllipsisText text={props.defiName3} length={"20"} /> : undefined
+                        }
+                    </span>
                     <p className="miniCardDataNum">$ {convertToBMK(props.dataNum3, false)}</p>
                 </div>
             </Slider>
