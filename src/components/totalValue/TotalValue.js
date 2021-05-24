@@ -604,6 +604,8 @@ const TotalValue = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let index = 0;
@@ -622,6 +624,8 @@ const TotalValue = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let logoUrl = "";
@@ -849,35 +853,42 @@ const TotalValue = observer((props) => {
 
         let index = findDefiIndexNum(defiName);
 
+        console.log("[0524] test github: ", defistationApplicationList[index]["Github URL"]);
+
         setProjectBtnLink(
             <div className="defiDetailPageLink noDrag">
                 {
-                    defistationApplicationList[index]["Project Official Website (URL)"] != undefined
+                    (defistationApplicationList[index]["Project Official Website (URL)"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Project Official Website (URL)"])}><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiOfficialSiteIcon} /><span className="subPageDefiLinkBoxTitle">Official Website</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Github URL"] != undefined
+                    // defistationApplicationList[index]["Github URL"] != ""
+                    (defistationApplicationList[index]["Github URL"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Github URL"])}><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiGithubIcon} /><span className="subPageDefiLinkBoxTitle">Github</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Developer Docs URL"] != undefined
+                    // defistationApplicationList[index]["Developer Docs URL"] != ""
+                    (defistationApplicationList[index]["Developer Docs URL"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Developer Docs URL"])}><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiDocsIcon} /><span className="subPageDefiLinkBoxTitle">Docs</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Twitter URL"] != undefined
+                    // defistationApplicationList[index]["Twitter URL"] != ""
+                    (defistationApplicationList[index]["Twitter URL"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Twitter URL"])}><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTwitterIcon} /><span className="subPageDefiLinkBoxTitle">Twitter</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Telegram(EN) URL"] != undefined
+                    // defistationApplicationList[index]["Telegram(EN) URL"] != ""
+                    (defistationApplicationList[index]["Telegram(EN) URL"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Telegram(EN) URL"])}><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiTelegramIcon} /><span className="subPageDefiLinkBoxTitle">Telegram</span></div>
                 }
                 {
-                    defistationApplicationList[index]["Medium Blog URL"] != undefined
+                    // defistationApplicationList[index]["Medium Blog URL"] != ""
+                    (defistationApplicationList[index]["Medium Blog URL"]).indexOf("http") != -1
                     ? <div className="subPageDefiLinkBox" onClick={() => openWindow(defistationApplicationList[index]["Medium Blog URL"])}><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                     : <div className="subPageDefiLinkBox disableBtn"><img src={defiBlogIcon} /><span className="subPageDefiLinkBoxTitle">Blog</span></div>
                 }

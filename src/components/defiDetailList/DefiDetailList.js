@@ -337,7 +337,7 @@ const DefiDetailList = observer((props) => {
 
                     // Holders
                     let holdersObj = resultBnblockedList.holders;
-                    console.log("holdersObj: ", holdersObj);
+                    // console.log("holdersObj: ", holdersObj);
                     let holders = 0;
                     let holdersChange = 0;
                     if (i > 0 && Object.keys(holdersObj).length > 0) {

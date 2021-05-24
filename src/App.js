@@ -11,8 +11,8 @@ import TheDefiList from './components/theDefiList/TheDefiList';
 import Apply from './components/apply/Apply';
 
 // Font
-// import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
-// import 'typeface-roboto';       // $ npm install --save typeface-roboto
+import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
+import 'typeface-roboto';       // $ npm install --save typeface-roboto
 
 require('typeface-rubik')   // npm install --save typeface-rubik
 require('typeface-heebo')   // npm install --save typeface-heebo

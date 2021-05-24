@@ -8,6 +8,13 @@ import '../../../App.css';
 const MiniCard = observer((props) => {
     // const [miniCardTag, setMiniCardTag] = useState();
 
+    function textEllipsis2(input) {
+        if (input.length > 85) {
+           return input.substring(0, 85) + ' ...';
+        }
+        return input;
+    };
+
     useEffect(() => {
         // if (props.symbol == "BNB") {
         //     if (props.dataNum > 0) {
