@@ -3140,7 +3140,7 @@ img:hover{
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiOverview {
-    margin-top: 0px;
+    margin-top: -4px;
     padding: 15px;
   }
   
@@ -3189,6 +3189,52 @@ img:hover{
 
 .defiOverviewWebsiteLinkUl li:nth-child(1) {
   vertical-align: middle;
+}
+
+/* -------------------------------- MobileDefiBtns -------------------------------- */
+.mobileDefiBtnsUl {
+  margin-top: 177px;
+  display: none;
+}
+
+@media (min-width:1px) and (max-width:1034px) {
+  .mobileDefiBtnsUl {
+    margin-top: 177px;
+    display: flex;
+  }
+}
+
+.mobileDefiBtnsUl li {
+  margin-right: 8px;
+}
+
+.mobileDefiBtnsUl li:nth-child(6) {
+  margin-right: 0px;
+}
+
+.mobileDefiBtn {
+  width: 15%;
+  height: 14vw;
+  background-color: #262932;
+  border: solid 1px #404752;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.mobileDefiBtn img {
+  margin-top: 3.9vw;
+}
+
+.disableIcon {
+  filter:saturate(0%);
+  opacity: 0.5;
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .mobileDefiBtn img {
+    margin-top: 4vw;
+    width: 6vw;
+  }
 }
 
 /* -------------------------------- Not Found -------------------------------- */

@@ -13,6 +13,7 @@ import TotalValue from '../totalValue/TotalValue';
 import MiniCards from '../miniCards/MiniCards';
 import DefiOverview from '../defiOverview/DefiOverview';
 import DefiDetailList from '../defiDetailList/DefiDetailList';
+import MobileDefiBtns from '../mobileDefiBtns/MobileDefiBtns';
 import Footer from '../footer/Footer';
 
 const DefiDetail = observer(() => {
@@ -79,6 +80,7 @@ const DefiDetail = observer(() => {
                 <TopBar />
                 <TotalValue defiName={defiName} />
                 <MiniCards defiName={defiName} />
+                <MobileDefiBtns defiName={defiName} />
                 <DefiOverview defiName={defiName} />
                 <DefiDetailList defiName={defiName} />
                 <Footer />
