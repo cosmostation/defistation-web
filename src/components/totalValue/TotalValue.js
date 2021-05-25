@@ -81,10 +81,11 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
-
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
+
+import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -825,6 +826,9 @@ const TotalValue = observer((props) => {
                 break;
             case "SwampFinance":
                 setDefiIcon(swampfinance);
+                break;
+            case "Nominex":
+                setDefiIcon(nominex);
                 break;
             default:
                 let logoUrl = findLogoUrl(defiName);

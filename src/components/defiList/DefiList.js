@@ -66,10 +66,11 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
-
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
+
+import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -85,6 +86,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         let index = 0;
         for (var i = 0; i < defistationApplicationList.length; i++) {
@@ -102,6 +105,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let logoUrl = "";
@@ -120,6 +125,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let categoryName = "";
@@ -279,7 +286,10 @@ const DefiList = observer((props) => {
                 break;
             case "SwampFinance":
                 resultImg = swampfinance;
-                break;    
+                break;  
+            case "Nominex":
+                resultImg = nominex;
+                break;
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
