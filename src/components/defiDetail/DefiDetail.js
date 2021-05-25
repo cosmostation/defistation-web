@@ -79,8 +79,8 @@ const DefiDetail = observer(() => {
             <div className="wrapper" style={defiName != "" ? undefined : {display: "none"}}>
                 <TopBar />
                 <TotalValue defiName={defiName} />
-                <MiniCards defiName={defiName} />
                 <MobileDefiBtns defiName={defiName} />
+                <MiniCards defiName={defiName} />
                 <DefiOverview defiName={defiName} />
                 <DefiDetailList defiName={defiName} />
                 <Footer />
