@@ -72,6 +72,14 @@ import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 
 import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 
+// audit logo for button
+import anchain from "../../assets/images/auditLogo/anchain.png";
+import certik from "../../assets/images/auditLogo/certik.png";
+import peckshield from "../../assets/images/auditLogo/peckshield.png";
+import slowmist from "../../assets/images/auditLogo/slowmist.png";
+import techrate from "../../assets/images/auditLogo/techrate.png";
+import sooho from "../../assets/images/auditLogo/sooho.png";
+
 const DefiList = observer((props) => {
     const { global } = useStores();
     const history = useHistory();
@@ -491,7 +499,10 @@ const DefiList = observer((props) => {
                                         <li>Audited</li>
                                     </ul>
                                     <ul className="auditListUl">
-                                        <li>Unknown source</li>
+                                        <li>
+                                            {/* Unknown source */}
+                                            <div className="auditButtonText">Unknown source</div>
+                                        </li>
                                     </ul>
                                 </div>
                                 </ReactTooltip>
@@ -515,7 +526,10 @@ const DefiList = observer((props) => {
                                             <li>Audited</li>
                                         </ul>
                                         <ul className="auditListUl">
-                                            <li>Unknown source</li>
+                                            <li>
+                                                {/* Unknown source */}
+                                                <div className="auditButtonText">Unknown source</div>
+                                            </li>
                                         </ul>
                                     </div>
                                     </ReactTooltip>
@@ -533,7 +547,28 @@ const DefiList = observer((props) => {
                                     let auditName = auditLinkArr2[0];
                                     let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
 
-                                    resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                    // 예전) url 함께 표현하던 방식
+                                    // resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                
+                                    // 2021-05-26 변경) audit logo 표현 방식
+                                    let auditButton;
+                                    if ((auditName.toLowerCase()).indexOf("anchain") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={anchain} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("certik") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={certik} />; 
+                                    } else if ((auditName.toLowerCase()).indexOf("peck") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={peckshield} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("mist") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={slowmist} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("techrate") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={techrate} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("sooho") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={sooho} />;
+                                    } else {
+                                        auditButton = <div className="auditButtonText">{auditName}</div>;
+                                    }
+
+                                    resultAuditTag.push(<li><a className="auditLink" href={auditLink} target='_blank'>{auditButton}</a></li>);
                                 }
 
                                 verifiedTag = 
