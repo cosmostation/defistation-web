@@ -3200,6 +3200,7 @@ img:hover{
   .mobileDefiBtnsUl {
     margin-top: -4px;
     display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -3227,6 +3228,16 @@ img:hover{
 .disableIcon {
   filter:saturate(0%);
   opacity: 0.5;
+}
+
+@media (min-width:600px) and (max-width:1034px) {
+  .mobileDefiBtn img {
+    margin-top: 1.4vw;
+  }
+
+  .mobileDefiBtn {
+    height: 5vw;
+  }
 }
 
 @media (min-width:1px) and (max-width:320px) {
