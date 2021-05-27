@@ -2273,11 +2273,10 @@ hr.sideMenuLine {
 
 .auditListUl {
   display: block;
-  /* columns: 2; */
   margin-top: 0px;
   margin-bottom: -4px;
   font-family: Roboto;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
@@ -2310,12 +2309,13 @@ hr.sideMenuLine {
 
 .auditButtonImg {
   width: 120px;
-  margin-top: 3px;
+  margin-top: -1px;
+  margin-bottom: -4px;
 }
 
 .auditButtonText {
   width: 120px;
-  height: 38px;
+  height: 35px;
   line-height: 35px;
 }
 
