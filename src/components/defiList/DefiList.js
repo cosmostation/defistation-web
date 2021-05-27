@@ -69,8 +69,9 @@ import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
-
 import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
+
+import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -298,6 +299,9 @@ const DefiList = observer((props) => {
             case "Nominex":
                 resultImg = nominex;
                 break;
+            case "Wault.Finance":
+                resultImg = waultfinance;
+                break;
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
@@ -498,7 +502,7 @@ const DefiList = observer((props) => {
                                         <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
                                         <li>Audited</li>
                                     </ul>
-                                    <ul className="auditListUl">
+                                    <ul className="auditListUnknownUl">
                                         <li>
                                             {/* Unknown source */}
                                             <div className="auditButtonText">Unknown source</div>
@@ -525,7 +529,7 @@ const DefiList = observer((props) => {
                                             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
                                             <li>Audited</li>
                                         </ul>
-                                        <ul className="auditListUl">
+                                        <ul className="auditListUnknownUl">
                                             <li>
                                                 {/* Unknown source */}
                                                 <div className="auditButtonText">Unknown source</div>

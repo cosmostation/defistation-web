@@ -2287,21 +2287,30 @@ hr.sideMenuLine {
   /* max-width: 250px; */
 }
 
-.auditListUl li {
-  /* line-height: 20px; */
-
+.auditListUnknownUl li {
   border: solid 1px #404752;
   border-radius: 5px;
   text-align: center;
   padding: 0px;
   margin: 5px;
+  cursor: default;
+}
 
-  
-  /* box-sizing: border-box; */
+.auditListUl li {
+  border: solid 1px #404752;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0px;
+  margin: 5px;
+}
+
+.auditListUl li:hover {
+  border: solid 1px #9BA5B5;
 }
 
 .auditButtonImg {
   width: 120px;
+  margin-top: 3px;
 }
 
 .auditButtonText {
