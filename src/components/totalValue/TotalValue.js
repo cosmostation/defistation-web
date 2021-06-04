@@ -180,21 +180,16 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        // let chartFullUrl;
-        // if (chartPeriod == 7) {
-        //     // default
-        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        // } else {
-        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        // }
-
         let chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-
+        
         // detail
         if (urlFlagDetail == chartFullUrl) return;
         setUrlFlagDetail(chartFullUrl);
 
-        const res = await fetch(global.defistationApiUrl + chartFullUrl, {
+        // 7d, 30d, 90d 모두 days 90으로 가져옴
+        let chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+
+        const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
             headers: {
                 Authorization: global.auth
@@ -233,6 +228,13 @@ const TotalValue = observer((props) => {
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
+
+                console.log("[0604 TEST] resultArr: ", resultArr);
+
+                // chartPeriod 가 7, 30, 90 에 따라서 배열에 해당 최신 개수만 남겨두기
+                if (chartPeriod == 7 || chartPeriod == 30) {
+                    resultArr.splice(0, resultArr.length - chartPeriod);
+                }
 
                 let digitForTx;
                 let currencyUnitForTx;
