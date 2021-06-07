@@ -81,10 +81,12 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
-
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
+import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
+
+import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -178,21 +180,16 @@ const TotalValue = observer((props) => {
             return;
         }
 
-        // let chartFullUrl;
-        // if (chartPeriod == 7) {
-        //     // default
-        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        // } else {
-        //     chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-        // }
-
         let chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
-
+        
         // detail
         if (urlFlagDetail == chartFullUrl) return;
         setUrlFlagDetail(chartFullUrl);
 
-        const res = await fetch(global.defistationApiUrl + chartFullUrl, {
+        // 7d, 30d, 90d 모두 days 90으로 가져옴
+        let chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+
+        const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
             headers: {
                 Authorization: global.auth
@@ -231,6 +228,13 @@ const TotalValue = observer((props) => {
                 // res.result 를 배열로 바꾸기 
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
+
+                console.log("[0604 TEST] resultArr: ", resultArr);
+
+                // chartPeriod 가 7, 30, 90 에 따라서 배열에 해당 최신 개수만 남겨두기
+                if (chartPeriod == 7 || chartPeriod == 30) {
+                    resultArr.splice(0, resultArr.length - chartPeriod);
+                }
 
                 let digitForTx;
                 let currencyUnitForTx;
@@ -826,6 +830,12 @@ const TotalValue = observer((props) => {
             case "SwampFinance":
                 setDefiIcon(swampfinance);
                 break;
+            case "Nominex":
+                setDefiIcon(nominex);
+                break;
+            case "Wault.Finance":
+                setDefiIcon(waultfinance);
+                break;    
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -992,8 +1002,7 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "BTC Standard Hashrate Token" ||
-            props.defiName == "ARIES FINANCIAL") {
+        if (props.defiName == "BTC Standard Hashrate Token") {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 

@@ -2210,7 +2210,7 @@ hr.sideMenuLine {
   border-radius: 10px !important;
   /* padding-top: 15px !important;
   padding-bottom: 15px !important; */
-  padding: 20px 20px 15px 15px !important;
+  padding: 15px 10px 15px 10px !important;
 }
 
 .__react_component_tooltip.show {
@@ -2223,13 +2223,14 @@ hr.sideMenuLine {
 
 .auditLink {
   color: #fff;
-  text-decoration: underline !important;
+  /* text-decoration: underline !important; */
 }
 
 .auditUl {
   padding: 0;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+  /* margin-bottom: 0.1em; */
+  margin-top: 3px;
+  margin-left: 12px;
 }
 
 .auditUl li {
@@ -2271,19 +2272,51 @@ hr.sideMenuLine {
 }
 
 .auditListUl {
+  display: block;
+  margin-top: 0px;
+  margin-bottom: -4px;
   font-family: Roboto;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   /* line-height: normal; */
   letter-spacing: normal;
   text-align: left;
-  margin-top: 0px;
+  /* max-width: 250px; */
+}
+
+.auditListUnknownUl li {
+  border: solid 1px #404752;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0px;
+  margin: 5px;
+  cursor: default;
 }
 
 .auditListUl li {
-  line-height: 20px;
+  border: solid 1px #404752;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0px;
+  margin: 5px;
+}
+
+.auditListUl li:hover {
+  border: solid 1px #9BA5B5;
+}
+
+.auditButtonImg {
+  width: 120px;
+  margin-top: -1px;
+  margin-bottom: -4px;
+}
+
+.auditButtonText {
+  width: 120px;
+  height: 35px;
+  line-height: 35px;
 }
 
 @media (min-width:321px) and (max-width:768px) {
@@ -3193,14 +3226,14 @@ img:hover{
 
 /* -------------------------------- MobileDefiBtns -------------------------------- */
 .mobileDefiBtnsUl {
-  margin-top: 177px;
   display: none;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
   .mobileDefiBtnsUl {
-    margin-top: 177px;
+    margin-top: -4px;
     display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -3215,7 +3248,7 @@ img:hover{
 .mobileDefiBtn {
   width: 15%;
   height: 14vw;
-  background-color: #262932;
+  /* background-color: #262932; */
   border: solid 1px #404752;
   border-radius: 5px;
   text-align: center;
@@ -3228,6 +3261,16 @@ img:hover{
 .disableIcon {
   filter:saturate(0%);
   opacity: 0.5;
+}
+
+@media (min-width:600px) and (max-width:1034px) {
+  .mobileDefiBtn img {
+    margin-top: 1.4vw;
+  }
+
+  .mobileDefiBtn {
+    height: 5vw;
+  }
 }
 
 @media (min-width:1px) and (max-width:320px) {

@@ -161,7 +161,10 @@ export function getOfficialDefiName(defiName) {
             break;
         case "BTC Standard Hashrate Token":
             convertedName = "BTC Standard Hashrate";
-            break;    
+            break;  
+        case "Wault.Finance":
+            convertedName = "Wault";
+            break;
         default:
             convertedName = defiName;
             break;                                                   

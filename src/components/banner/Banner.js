@@ -65,25 +65,9 @@ const Banner = observer((props) => {
     }, [bannerImg])
 
     return (
-        // <div className="banner" onClick={() => window.open("https://www.binance.org/en/smartChain", "_blank")}>
-        //     <span className="bannerTitle">Binance Smart Chain</span>
-        //     <p className="bannerContent">An Ethereum Virtual Machine-compatible blockchain with a Proof of Staked Authority consensus mechanism</p>
-        //     <img className="noDragImg" src={binanceImg1} />
-        // </div>
-
-        // <div className="banner" onClick={() => openBannerWindow("https://app.btcst.finance/")}>
-        //     <div className="bannerAdTextRect" style={bannerImg == btcst ? undefined : { display: "none" } }>
-        //         <span className="bannerAdText">Ad</span>
-        //     </div>
-        //     <img src={bannerImg}  />
-        // </div>
-
         <div>
-            {/* <div className="bannerAdTextRect" style={bannerImg == btcst || bannerImg2 == bifi ? undefined : { display: "none" } }>
-                <span className="bannerAdText">Ad</span>
-            </div> */}
             <Slider {...settings} className="bannerWrapper" style={randomNum % 2 == 0 ? undefined : { display: "none" }}>
-                <div>
+                {/* <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick"
                     to="https://app.btcst.finance/"
@@ -141,11 +125,71 @@ const Banner = observer((props) => {
                     trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bannerImg2} /></div>
+                    </ReactGA.OutboundLink>
+                </div> */}
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
                 </div>
             </Slider>
             <Slider {...settings} className="bannerWrapper" style={randomNum % 2 == 1 ? undefined : { display: "none" }}>
-                <div>
+                {/* <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(ARIES FINANCIAL)"
                     to="https://www.aries.financial/YieldFarmingV2"
@@ -193,6 +237,66 @@ const Banner = observer((props) => {
                     trackerNames={['ARIES FINANCIAL']}
                     >
                         <div className="banner"><img src={bannerImg2} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div> */}
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick"
+                    to="https://app.btcst.finance/"
+                    target="_blank"
+                    trackerNames={['BTC Standard Hashrate Token']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>

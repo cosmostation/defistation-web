@@ -66,10 +66,20 @@ import demex from "../../assets/images/defiLogo/demex@2x.png";
 import dodo from "../../assets/images/defiLogo/dodo@2x.png";
 import helmet from "../../assets/images/defiLogo/helmet@2x.png";
 import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
-
 import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
+import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
+
+import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
+
+// audit logo for button
+import anchain from "../../assets/images/auditLogo/anchain.png";
+import certik from "../../assets/images/auditLogo/certik.png";
+import peckshield from "../../assets/images/auditLogo/peckshield.png";
+import slowmist from "../../assets/images/auditLogo/slowmist.png";
+import techrate from "../../assets/images/auditLogo/techrate.png";
+import sooho from "../../assets/images/auditLogo/sooho.png";
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -85,6 +95,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         let index = 0;
         for (var i = 0; i < defistationApplicationList.length; i++) {
@@ -102,6 +114,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let logoUrl = "";
@@ -120,6 +134,8 @@ const DefiList = observer((props) => {
         // 예외처리
         if (defiName == "pancake") {
             defiName = "PancakeSwap";
+        } else if (defiName == "Stakecow") {
+            defiName = "Milk Protocol";
         }
         
         let categoryName = "";
@@ -279,7 +295,13 @@ const DefiList = observer((props) => {
                 break;
             case "SwampFinance":
                 resultImg = swampfinance;
-                break;    
+                break;  
+            case "Nominex":
+                resultImg = nominex;
+                break;
+            case "Wault.Finance":
+                resultImg = waultfinance;
+                break;
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
@@ -480,8 +502,11 @@ const DefiList = observer((props) => {
                                         <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
                                         <li>Audited</li>
                                     </ul>
-                                    <ul className="auditListUl">
-                                        <li>Unknown source</li>
+                                    <ul className="auditListUnknownUl">
+                                        <li>
+                                            {/* Unknown source */}
+                                            <div className="auditButtonText">Unknown source</div>
+                                        </li>
                                     </ul>
                                 </div>
                                 </ReactTooltip>
@@ -504,8 +529,11 @@ const DefiList = observer((props) => {
                                             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
                                             <li>Audited</li>
                                         </ul>
-                                        <ul className="auditListUl">
-                                            <li>Unknown source</li>
+                                        <ul className="auditListUnknownUl">
+                                            <li>
+                                                {/* Unknown source */}
+                                                <div className="auditButtonText">Unknown source</div>
+                                            </li>
                                         </ul>
                                     </div>
                                     </ReactTooltip>
@@ -523,7 +551,28 @@ const DefiList = observer((props) => {
                                     let auditName = auditLinkArr2[0];
                                     let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
 
-                                    resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                    // 예전) url 함께 표현하던 방식
+                                    // resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                
+                                    // 2021-05-26 변경) audit logo 표현 방식
+                                    let auditButton;
+                                    if ((auditName.toLowerCase()).indexOf("anchain") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={anchain} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("certik") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={certik} />; 
+                                    } else if ((auditName.toLowerCase()).indexOf("peck") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={peckshield} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("mist") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={slowmist} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("techrate") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={techrate} />;
+                                    } else if ((auditName.toLowerCase()).indexOf("sooho") != -1) {
+                                        auditButton = <img className="auditButtonImg" src={sooho} />;
+                                    } else {
+                                        auditButton = <div className="auditButtonText">{auditName}</div>;
+                                    }
+
+                                    resultAuditTag.push(<li><a className="auditLink" href={auditLink} target='_blank'>{auditButton}</a></li>);
                                 }
 
                                 verifiedTag = 
@@ -616,6 +665,9 @@ const DefiList = observer((props) => {
                         currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
                         tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
                         tokenMarketCapTag = "$ " + tokenMarketCapNum + currencyUnitForMarketCap;
+                        if (tokenMarketCapTag == "$ 0.00") {
+                            tokenMarketCapTag = "-";
+                        }
                     }
 
                     let tokenHolders = res[i].holders;
@@ -668,10 +720,10 @@ const DefiList = observer((props) => {
                     }
 
                     // Sponsored
-                    if (res[i].name == "ARIES FINANCIAL") {
-                        tokenHoldersTag = "-";
-                        tokenHoldersChange24hNumTag = null;
-                    }                    
+                    // if (res[i].name == "ARIES FINANCIAL") {
+                    //     tokenHoldersTag = "-";
+                    //     tokenHoldersChange24hNumTag = null;
+                    // }
 
                     if (res[i].contractNum == 0) {
                         // tableCodeArr.push(
