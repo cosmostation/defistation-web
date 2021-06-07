@@ -1002,8 +1002,7 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "BTC Standard Hashrate Token" ||
-            props.defiName == "ARIES FINANCIAL") {
+        if (props.defiName == "BTC Standard Hashrate Token") {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 

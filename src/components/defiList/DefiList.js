@@ -665,6 +665,9 @@ const DefiList = observer((props) => {
                         currencyUnitForMarketCap = getCurrencyUnit(tokenMarketCap);
                         tokenMarketCapNum = (tokenMarketCap / digitForMarketCap).toFixed(2);
                         tokenMarketCapTag = "$ " + tokenMarketCapNum + currencyUnitForMarketCap;
+                        if (tokenMarketCapTag == "$ 0.00") {
+                            tokenMarketCapTag = "-";
+                        }
                     }
 
                     let tokenHolders = res[i].holders;
@@ -717,10 +720,10 @@ const DefiList = observer((props) => {
                     }
 
                     // Sponsored
-                    if (res[i].name == "ARIES FINANCIAL") {
-                        tokenHoldersTag = "-";
-                        tokenHoldersChange24hNumTag = null;
-                    }                    
+                    // if (res[i].name == "ARIES FINANCIAL") {
+                    //     tokenHoldersTag = "-";
+                    //     tokenHoldersChange24hNumTag = null;
+                    // }
 
                     if (res[i].contractNum == 0) {
                         // tableCodeArr.push(
