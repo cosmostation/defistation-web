@@ -293,9 +293,13 @@ const DefiDetailList = observer((props) => {
                             tokenPriceTag = "$ " + numberWithCommas(tokenPrice, false);
                         }
 
+                        if (tokenPrice <= 0.0001) {
+                            tokenPriceTag = "-";
+                        }
+
                         tokenPriceChange = (priceObj[Object.keys(priceObj)[i]] / priceObj[Object.keys(priceObj)[i - 1]] - 1);
                         
-                        if (tokenPriceChange == "Infinity") {
+                        if (tokenPriceChange == "Infinity" || tokenPrice <= 0.0001) {
                             tokenPriceChangeTag = "";
                         } else {
                             if (tokenPriceChange > 0) {
@@ -319,8 +323,12 @@ const DefiDetailList = observer((props) => {
                         // marketCapTag = "$ " + (marketCap).toFixed(0);
                         marketCapTag = "$ " + convertToBMK(marketCap);
 
+                        if (marketCap <= 0.01) {
+                            marketCapTag = "-";
+                        }
+
                         marketCapChange = (marketCapObj[Object.keys(marketCapObj)[i]] / marketCapObj[Object.keys(marketCapObj)[i - 1]] - 1);
-                        if (marketCapChange == "Infinity") {
+                        if (marketCapChange == "Infinity" || marketCap <= 0.01) {
                             marketCapChangeTag = "";
                         } else {
                             if (marketCapChange > 0) {
