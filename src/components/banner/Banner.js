@@ -83,7 +83,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
@@ -103,7 +103,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
@@ -123,7 +123,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
@@ -135,7 +135,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
@@ -155,7 +155,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
@@ -175,7 +175,7 @@ const Banner = observer((props) => {
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com"
+                    to="https://o3swap.com/vault"
                     target="_blank"
                     trackerNames={['O3 Swap']}
                     >
