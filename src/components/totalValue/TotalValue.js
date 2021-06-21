@@ -85,8 +85,9 @@ import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
 import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
-
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
+
+import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -95,7 +96,6 @@ import defiDocsIcon from "../../assets/images/defiLink/docs.svg";
 import defiTwitterIcon from "../../assets/images/defiLink/twitter.svg";
 import defiTelegramIcon from "../../assets/images/defiLink/telegram.svg";
 import defiBlogIcon from "../../assets/images/defiLink/blog.svg";
-import { find } from 'lodash';
 
 const TotalValue = observer((props) => {
     const { global } = useStores();
@@ -229,7 +229,7 @@ const TotalValue = observer((props) => {
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
 
-                console.log("[0604 TEST] resultArr: ", resultArr);
+                // console.log("[0604 TEST] resultArr: ", resultArr);
 
                 // chartPeriod 가 7, 30, 90 에 따라서 배열에 해당 최신 개수만 남겨두기
                 if (chartPeriod == 7 || chartPeriod == 30) {
@@ -265,8 +265,8 @@ const TotalValue = observer((props) => {
                         }
                     }
                     
-                    console.log("latestTxVal: ", latestTxVal);
-                    console.log("latestTxChange: ", latestTxChange.toFixed(2));
+                    // console.log("latestTxVal: ", latestTxVal);
+                    // console.log("latestTxChange: ", latestTxChange.toFixed(2));
 
                     global.changeTransactions24h(numberWithCommas(latestTxVal));
                     global.changeTransactions24hPercent(latestTxChange.toFixed(2));
@@ -278,7 +278,7 @@ const TotalValue = observer((props) => {
                     // let digitForTx;
                     // let currencyUnitForTx;
                     // let tempCurrencyFullNameForTx;
-                    console.log("[0428] 테스트 111111: ", latestTxVal);
+                    // console.log("[0428] 테스트 111111: ", latestTxVal);
 
                     // 메인 페이지
                     digitForTx = getCurrencyDigit(latestTxVal);
@@ -286,9 +286,9 @@ const TotalValue = observer((props) => {
                     tempCurrencyFullNameForTx = getCurrencyUnitFullName(latestTxVal);
                     setTxsUnitForDualY(tempCurrencyFullNameForTx);
 
-                    console.log("[0428] digitForTx: ", digitForTx);
-                    console.log("[0428] currencyUnitForTx: ", currencyUnitForTx);
-                    console.log("[0428] tempCurrencyFullNameForTx: ", tempCurrencyFullNameForTx);
+                    // console.log("[0428] digitForTx: ", digitForTx);
+                    // console.log("[0428] currencyUnitForTx: ", currencyUnitForTx);
+                    // console.log("[0428] tempCurrencyFullNameForTx: ", tempCurrencyFullNameForTx);
 
 
                 } else {
@@ -301,7 +301,6 @@ const TotalValue = observer((props) => {
                     // token price
                     let priceObj = res.price;
                     var priceArr = Object.keys(priceObj).map((key) => [Number(key), priceObj[key]]);
-                    // console.log("priceArr: ", priceArr);
 
                     if (priceArr.length > 0) {
                         // setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGreen">⦁</span> {tokenSymbolName} Price</>);
@@ -530,6 +529,9 @@ const TotalValue = observer((props) => {
                 }
 
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
+
+                console.log("[TEST 0608] tempMinTvl: ", tempMinTvl);
+                
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
 
@@ -836,6 +838,9 @@ const TotalValue = observer((props) => {
             case "Wault.Finance":
                 setDefiIcon(waultfinance);
                 break;    
+            case "WePiggy":
+                setDefiIcon(wepiggy);
+                break;
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -1002,7 +1007,8 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "BTC Standard Hashrate Token") {
+        if (props.defiName == "BTC Standard Hashrate Token" || 
+            props.defiName == "O3 Swap") {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 
@@ -1227,7 +1233,7 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
-                                            minValue: minTvl,
+                                            minValue: props.defiName == "JulSwap" ? 0.0001 : minTvl,
                                             textStyle: {
                                                 color: '#757f8e',
                                             },

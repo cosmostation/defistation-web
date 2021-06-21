@@ -1871,7 +1871,7 @@ hr.sideMenuLine {
   width: 100%;
   /* height: 80px; */
   /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5); */
-  background-image: linear-gradient(to left, #1b2027, #252932);
+  /* background-image: linear-gradient(to left, #1b2027, #252932); */
   cursor: pointer;
   overflow: hidden;
 }
@@ -1895,6 +1895,9 @@ hr.sideMenuLine {
     display: none;
   }
 
+  .banner img {
+    width: 99.8%;
+  }
 }
 
 @media (min-width:1px) and (max-width:768px) {
@@ -1907,6 +1910,10 @@ hr.sideMenuLine {
 
   .bannerAdTextRect {
     display: none;
+  }
+
+  .banner img {
+    width: 99.7%;
   }
 }
 
