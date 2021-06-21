@@ -385,7 +385,7 @@ const TheDefiList = observer(() => {
                     </li>
                 );
             } else {
-                let tempUrl = defistationApplicationList[i]["Official Website"];
+                let tempUrl = defistationApplicationList[i]["Project Official Website (URL)"];
                 codeArr.push(
                     <li onClick={() => window.open(tempUrl, "_blank")}>
                         <img 
