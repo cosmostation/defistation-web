@@ -2623,6 +2623,7 @@ img:hover{
 .defiListTable th:nth-child(3) {
   text-align: left;
   padding-left: 0px;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(3) {
   text-align: left;
@@ -2632,6 +2633,7 @@ img:hover{
 .defiListTable th:nth-child(4) {
   text-align: left;
   padding-left: 30px;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(4) {
   text-align: left;
@@ -2650,6 +2652,7 @@ img:hover{
 .defiListTable th:nth-child(6) {
   text-align: right;
   width: 15%;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(6) {
   text-align: right;
@@ -2659,6 +2662,7 @@ img:hover{
 .defiListTable th:nth-child(7) {
   text-align: right;
   width: 15%;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(7) {
   text-align: right;
@@ -2668,6 +2672,7 @@ img:hover{
 .defiListTable th:nth-child(8) {
   text-align: right;
   width: 15%;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(8) {
   text-align: right;
@@ -2677,6 +2682,7 @@ img:hover{
 .defiListTable th:nth-child(9) {
   text-align: right;
   display: none;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(9) {
   text-align: right;
@@ -2686,6 +2692,7 @@ img:hover{
 .defiListTable th:nth-child(10) {
   text-align: right;
   width: 15%;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(10) {
   text-align: right;
@@ -2891,9 +2898,9 @@ img:hover{
   color: #9BA5B5;
 }
 
-.defiListTableHead tr th {
+/* .defiListTableHead tr th {
   cursor: pointer;
-}
+} */
 
 .defiListTableBody {
   font-family: Roboto;

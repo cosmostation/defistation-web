@@ -923,8 +923,8 @@ const DefiList = observer((props) => {
             <table className="defiListTable sortable">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th className="sorttable_numeric">#</th>
-                        <th></th>
+                        <th className="sorttable_nosort">#</th>
+                        <th className="sorttable_nosort"></th>
                         <th>Projects</th>
                         <th>
                             <ul className="defiListTableHeadCell">
@@ -932,7 +932,7 @@ const DefiList = observer((props) => {
                                 <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
                             </ul>
                         </th>
-                        <th>Token</th>
+                        <th className="sorttable_nosort">Token</th>
                         <th className="switchable6 sorttable_numeric">Token Price</th>
                         <th className="switchable7 sorttable_numeric">
                             <ul className="defiListTableHeadCellRight">
