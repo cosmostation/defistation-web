@@ -2891,6 +2891,10 @@ img:hover{
   color: #9BA5B5;
 }
 
+.defiListTableHead tr th {
+  cursor: pointer;
+}
+
 .defiListTableBody {
   font-family: Roboto;
   font-size: 14px;
