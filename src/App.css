@@ -2592,12 +2592,18 @@ img:hover{
   }
 }
 
+/* defiListTable Sorting Icon */
+#sorttable_sortfwdind, #sorttable_sortrevind { 
+  display: none; 
+}
+
 .defiListTable th:nth-child(1) {
   text-align: left;
   width: 1%;
   white-space: nowrap;
   padding-right: 8px;
   padding-left: 0 !important;
+  cursor: pointer;
 }
 .defiListTable td:nth-child(1) {
   text-align: left;

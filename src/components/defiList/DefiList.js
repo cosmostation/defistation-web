@@ -654,7 +654,7 @@ const DefiList = observer((props) => {
                     let currencyUnitForMarketCap;
                     let tokenMarketCapNum;
                     let tokenMarketCapTag;
-                    if (res[i].price == 0 || res[i].price == null) {
+                    if (res[i].price < 0.0001 || res[i].price == null) {
                         tokenPrice = "-";
                         tokenMarketCapTag = "-";
                     } else {
@@ -681,13 +681,17 @@ const DefiList = observer((props) => {
                     // 변화율
                     let tokenPriceChange24h = res[i].priceChange24h;
                     let tokenPriceChange24hTag;
-                    if (tokenPriceChange24h > 0) {
-                        // +
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
-                    } else if (tokenPriceChange24h == 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
-                    } else if (tokenPriceChange24h < 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                    if (res[i].price < 0.0001 || res[i].price == null) {
+                        tokenPriceChange24h = "-";
+                    } else {
+                        if (tokenPriceChange24h > 0) {
+                            // +
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange24h == 0) {
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange24h < 0) {
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        }
                     }
 
                     let tokenMarketCapChange24h = res[i].marketCapChange24h;
@@ -902,6 +906,10 @@ const DefiList = observer((props) => {
 
                 // console.log("tableCodeArr: ", tableCodeArr);
                 setDefiListTableCode(tableCodeArr);
+
+                // Sorting
+                var newTableObject = document.getElementById("defiListTable1");
+                sorttable.makeSortable(newTableObject);
             })
             .catch(err => setResponseError(err));
     }
@@ -920,10 +928,10 @@ const DefiList = observer((props) => {
 
     return (
         <div className="defiList">
-            <table className="defiListTable sortable">
+            <table className="defiListTable" id="defiListTable1">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th className="sorttable_nosort">#</th>
+                        <th className="sorttable_numeric">#</th>
                         <th className="sorttable_nosort"></th>
                         <th>Projects</th>
                         <th>

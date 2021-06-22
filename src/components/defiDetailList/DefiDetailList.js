@@ -439,7 +439,6 @@ const DefiDetailList = observer((props) => {
                 //         tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
                 //     }
                 // }
-
             })
             .catch(err => setResponseError(err));
     }
@@ -450,7 +449,7 @@ const DefiDetailList = observer((props) => {
 
     useEffect(() => {
         // getDefiList();
-        console.log("props.defiName22222: ", props.defiName);
+        // console.log("props.defiName22222: ", props.defiName);
         getChart(props.defiName);
         
         return () => {
