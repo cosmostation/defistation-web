@@ -2593,8 +2593,42 @@ img:hover{
 }
 
 /* defiListTable Sorting Icon */
-#sorttable_sortfwdind, #sorttable_sortrevind { 
+
+/* 1) 정렬 아이콘 가리기 */
+/* #sorttable_sortfwdind, #sorttable_sortrevind { 
   display: none; 
+} */
+
+/* 2) 정렬 아이콘 default + up + down 표시 */
+table.sortable th::after, th.sorttable_sorted::after, th.sorttable_sorted_reverse::after {
+  content: " ";
+  display: inline-block;
+  width: 8px;
+  height: 12px;
+}
+/* up */
+th.sorttable_sorted::after {
+  margin-left: 4px;
+  background: url("./assets/sortingIcon/up.svg");
+  background-size: cover;
+}
+/* down */
+th.sorttable_sorted_reverse::after {
+  margin-left: 4px;
+  background: url("./assets/sortingIcon/down.svg");
+  background-size: cover;
+}
+/* 기본 아이콘 가리기 */
+#sorttable_sortfwdind, #sorttable_sortrevind { display: none; }
+.defiListTable th:not(.sorttable_nosort){
+	cursor:pointer;
+}
+/* default */
+.defiListTable th:not(.sorttable_nosort):not(.sorttable_sorted):not(.sorttable_sorted_reverse):after{
+	margin-left: 4px;
+  opacity: 1;
+	display:inline;
+  content: url("./assets/sortingIcon/default.svg");
 }
 
 .defiListTable th:nth-child(1) {
@@ -2603,7 +2637,6 @@ img:hover{
   white-space: nowrap;
   padding-right: 8px;
   padding-left: 0 !important;
-  cursor: pointer;
 }
 .defiListTable td:nth-child(1) {
   text-align: left;
@@ -2638,12 +2671,12 @@ img:hover{
 
 .defiListTable th:nth-child(4) {
   text-align: left;
-  padding-left: 30px;
+  padding-left: 10px;
   cursor: pointer;
 }
 .defiListTable td:nth-child(4) {
   text-align: left;
-  padding-left: 30px;
+  padding-left: 10px;
 }
 
 .defiListTable th:nth-child(5) {
@@ -2730,16 +2763,16 @@ img:hover{
   }
 
   .defiListTable th:nth-child(4) {
-    /* display: none; */
-    /* padding: 0; */
-    padding-left: 10px;
-    width: 10%;
+    /* padding-left: 10px;
+    width: 10%; */
+    padding-left: 0px;
+    width: 20%;
   }
   .defiListTable td:nth-child(4) {
-    /* display: none; */
-    /* padding: 0; */
-    padding-left: 10px;
-    width: 10%;
+    /* padding-left: 10px;
+    width: 10%; */
+    padding-left: 0px;
+    width: 20%;
   }
 
   .defiListTable th:nth-child(5) {
@@ -2823,16 +2856,12 @@ img:hover{
   }
 
   .defiListTable th:nth-child(4) {
-    /* display: none; */
-    /* padding: 0; */
     padding-left: 10px;
-    width: 10%;
+    width: 20%;
   }
   .defiListTable td:nth-child(4) {
-    /* display: none; */
-    /* padding: 0; */
     padding-left: 10px;
-    width: 10%;
+    width: 20%;
   }
 
   .defiListTable th:nth-child(5) {

@@ -466,17 +466,19 @@ const DefiDetailList = observer((props) => {
                         <th className="switchable2">Token Price</th>
                         <th className="switchable3">Mkt Cap</th>
                         <th className="switchable4">
-                            <ul className="defiListTableHeadCellRight">
+                            <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
                                 <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
                         <th className="switchable5">BNB Locked</th>
                         <th>
-                            <ul className="defiListTableHeadCellRight">
+                            <span data-tip="Total value locked">TVL</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>
                                 <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
                     </tr>
                 </thead>

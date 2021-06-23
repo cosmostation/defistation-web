@@ -334,38 +334,70 @@ const DefiList = observer((props) => {
         
         // 모바일 뷰, 스크린 조건일 때 스위치 기능 실행
         if (advanceSwitchFlag) {
-            if (!isSwitched) {
-                document.querySelectorAll('.switchable6').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-                document.querySelectorAll('.switchable7').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-        
-                document.querySelectorAll('.switchable8').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-                document.querySelectorAll('.switchable10').forEach(function(el) {
-                    el.style.display = 'none';
-                });
+            if (screen.width <= 320 || window.innerWidth <= 320) {
+                // Projects, Audit, TVL 만 표시
+                if (!isSwitched) {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+            
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
 
-                isSwitched = true;
+                    isSwitched = true;
+                } else {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+            
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+
+                    isSwitched = false;
+                }
             } else {
-                document.querySelectorAll('.switchable6').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-                document.querySelectorAll('.switchable7').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-        
-                document.querySelectorAll('.switchable8').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-                document.querySelectorAll('.switchable10').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
 
-                isSwitched = false;
+                if (!isSwitched) {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+            
+                    document.querySelectorAll('.switchable8').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+
+                    isSwitched = true;
+                } else {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+            
+                    document.querySelectorAll('.switchable8').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+
+                    isSwitched = false;
+                }
             }
         }
     }
@@ -931,34 +963,39 @@ const DefiList = observer((props) => {
             <table className="defiListTable" id="defiListTable1">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th className="sorttable_numeric">#</th>
+                        <th className="sorttable_nosort">#</th>
                         <th className="sorttable_nosort"></th>
-                        <th>Projects</th>
-                        <th>
-                            <ul className="defiListTableHeadCell">
+                        <th className="noDrag">Projects</th>
+                        <th className="noDrag">
+                            {/* Audit */}
+                            <span data-tip="As one of the security indicators, audit helps you to avoid scam project.">Audit</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
                                 <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
                         <th className="sorttable_nosort">Token</th>
-                        <th className="switchable6 sorttable_numeric">Token Price</th>
-                        <th className="switchable7 sorttable_numeric">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="switchable6 sorttable_numeric noDrag">Price</th>
+                        <th className="switchable7 sorttable_numeric noDrag">
+                            Mkt Cap
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>Mkt Cap</li>
-                            </ul>
+                            </ul> */}
                         </th>
-                        <th className="switchable8 sorttable_numeric">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="switchable8 sorttable_numeric noDrag">
+                            <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
                                 <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
-                        <th className="sorttable_numeric">TVL</th>
-                        <th className="switchable10 sorttable_numeric">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="sorttable_numeric noDrag">TVL</th>
+                        <th className="switchable10 sorttable_numeric noDrag">
+                            <span data-tip="Total value locked">TVL</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>
                                 <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
                     </tr>
                 </thead>
