@@ -976,7 +976,7 @@ const DefiList = observer((props) => {
 
     return (
         <div className="defiList tableContainer">
-            <table className="defiListTable" id="defiListTable1">
+            <table className="defiListTable">
                 <thead className="defiListTableHead">
                     <tr>
                         <th className="sorttable_nosort">#</th>
