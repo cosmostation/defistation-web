@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import useStores from '../../useStores';
-import _ from "lodash";
+// import _ from "lodash";
 
 import '../../App.css';
 
@@ -87,10 +87,6 @@ const DefiList = observer((props) => {
     const history = useHistory();
     const [responseError, setResponseError] = useState();
     const [defiListTableCode, setDefiListTableCode] = useState();
-
-    const [volumeTag, setVolumeTag] = useState();
-
-    // const [auditPlace, setAuditPlace] = useState();
 
     function findDefiIndexNum(defiName) {
         // 예외처리
@@ -338,38 +334,70 @@ const DefiList = observer((props) => {
         
         // 모바일 뷰, 스크린 조건일 때 스위치 기능 실행
         if (advanceSwitchFlag) {
-            if (!isSwitched) {
-                document.querySelectorAll('.switchable6').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-                document.querySelectorAll('.switchable7').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-        
-                document.querySelectorAll('.switchable8').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-                document.querySelectorAll('.switchable10').forEach(function(el) {
-                    el.style.display = 'none';
-                });
+            if (screen.width <= 320 || window.innerWidth <= 320) {
+                // Projects, Audit, TVL 만 표시
+                if (!isSwitched) {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+            
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
 
-                isSwitched = true;
+                    isSwitched = true;
+                } else {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+            
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+
+                    isSwitched = false;
+                }
             } else {
-                document.querySelectorAll('.switchable6').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
-                document.querySelectorAll('.switchable7').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-        
-                document.querySelectorAll('.switchable8').forEach(function(el) {
-                    el.style.display = 'none';
-                });
-                document.querySelectorAll('.switchable10').forEach(function(el) {
-                    el.style.display = 'table-cell';
-                });
 
-                isSwitched = false;
+                if (!isSwitched) {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+            
+                    document.querySelectorAll('.switchable8').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+
+                    isSwitched = true;
+                } else {
+                    document.querySelectorAll('.switchable6').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+                    document.querySelectorAll('.switchable7').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+            
+                    document.querySelectorAll('.switchable8').forEach(function(el) {
+                        el.style.display = 'none';
+                    });
+                    document.querySelectorAll('.switchable10').forEach(function(el) {
+                        el.style.display = 'table-cell';
+                    });
+
+                    isSwitched = false;
+                }
             }
         }
     }
@@ -658,7 +686,7 @@ const DefiList = observer((props) => {
                     let currencyUnitForMarketCap;
                     let tokenMarketCapNum;
                     let tokenMarketCapTag;
-                    if (res[i].price == 0 || res[i].price == null) {
+                    if (res[i].price < 0.0001 || res[i].price == null) {
                         tokenPrice = "-";
                         tokenMarketCapTag = "-";
                     } else {
@@ -685,13 +713,17 @@ const DefiList = observer((props) => {
                     // 변화율
                     let tokenPriceChange24h = res[i].priceChange24h;
                     let tokenPriceChange24hTag;
-                    if (tokenPriceChange24h > 0) {
-                        // +
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
-                    } else if (tokenPriceChange24h == 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
-                    } else if (tokenPriceChange24h < 0) {
-                        tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                    if (res[i].price < 0.0001 || res[i].price == null) {
+                        tokenPriceChange24h = "-";
+                    } else {
+                        if (tokenPriceChange24h > 0) {
+                            // +
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textGreen">+{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange24h == 0) {
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textGray">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        } else if (tokenPriceChange24h < 0) {
+                            tokenPriceChange24hTag = <span className="defiListTableSubText textRed">{(tokenPriceChange24h * 100).toFixed(2)}%</span>;
+                        }
                     }
 
                     let tokenMarketCapChange24h = res[i].marketCapChange24h;
@@ -790,7 +822,7 @@ const DefiList = observer((props) => {
                                     <img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div>
                                 </td>
                                 {/* <td>{coinImg}</td> */}
-                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)}>
+                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)} sorttable_customkey={getOfficialDefiName(res[i].name)}>
                                     <span className="projectName noWrap">{getOfficialDefiName(res[i].name)}</span><br />
                                     {/* <div className="mobileRankNum">{rankNum}</div> */}
                                     <span className="defiListTableCategory noWrap">{tempCategory}</span>
@@ -807,11 +839,11 @@ const DefiList = observer((props) => {
                                     <span className="noWrap">{tokenPrice}</span><br />
                                     {tokenPriceChange24hTag}
                                 </td>
-                                <td className="switchable7" onClick={() => switchDefiListTable()}>
+                                <td className="switchable7" onClick={() => switchDefiListTable()} sorttable_customkey={tokenMarketCap}>
                                     {tokenMarketCapTag}<br />
                                     {tokenMarketCapChange24hTag}
                                 </td>
-                                <td className="switchable8" onClick={() => switchDefiListTable()}>
+                                <td className="switchable8" onClick={() => switchDefiListTable()} sorttable_customkey={tokenHolders}>
                                     {tokenHoldersTag}<br />
                                     {tokenHoldersChange24hNumTag}
                                 </td>
@@ -820,7 +852,7 @@ const DefiList = observer((props) => {
                                     {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr}</p><ReactTooltip /></div>}
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
-                                <td className="switchable10" onClick={() => switchDefiListTable()}>
+                                <td className="switchable10" onClick={() => switchDefiListTable()} sorttable_customkey={res[i].lockedUsd}>
                                     <span className="noWrap">$ {currencyNum + currencyUnit}</span><br />
                                     <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
@@ -906,6 +938,10 @@ const DefiList = observer((props) => {
 
                 // console.log("tableCodeArr: ", tableCodeArr);
                 setDefiListTableCode(tableCodeArr);
+
+                // Sorting
+                var newTableObject = document.getElementById("defiListTable1");
+                sorttable.makeSortable(newTableObject);
             })
             .catch(err => setResponseError(err));
     }
@@ -924,47 +960,43 @@ const DefiList = observer((props) => {
 
     return (
         <div className="defiList">
-            <table className="defiListTable">
+            <table className="defiListTable" id="defiListTable1">
                 <thead className="defiListTableHead">
                     <tr>
-                        <th>#</th>
-                        <th></th>
-                        <th>Projects</th>
-                        <th>
-                            <ul className="defiListTableHeadCell">
+                        <th className="sorttable_nosort">#</th>
+                        <th className="sorttable_nosort"></th>
+                        <th className="noDrag">Projects</th>
+                        <th className="noDrag">
+                            {/* Audit */}
+                            <span data-tip="As one of the security indicators, audit helps you to avoid scam project.">Audit</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
                                 <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
-                        <th>Token</th>
-                        <th className="switchable6">Token Price</th>
-                        {/* <th>Contract(#)</th> */}
-                        <th className="switchable7">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="sorttable_nosort">Token</th>
+                        <th className="switchable6 sorttable_numeric noDrag">Price</th>
+                        <th className="switchable7 sorttable_numeric noDrag">
+                            Mkt Cap
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>Mkt Cap</li>
-                                {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "><img src={questionIcon} /></span><ReactTooltip /></li> */}
-                            </ul>
+                            </ul> */}
                         </th>
-                        <th className="switchable8">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="switchable8 sorttable_numeric noDrag">
+                            <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
                                 <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
-                        <th>TVL</th>
-                        <th className="switchable10">
-                            <ul className="defiListTableHeadCellRight">
+                        <th className="sorttable_numeric noDrag">TVL</th>
+                        <th className="switchable10 sorttable_numeric noDrag">
+                            <span data-tip="Total value locked">TVL</span><ReactTooltip />
+                            {/* <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>
                                 <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul>
+                            </ul> */}
                         </th>
-                        {/* <th>
-                            <ul className="defiListTableHeadCellRight">
-                                <li>Change 24h</li>
-                                <li className="change24h"><img src={questionIcon} onClick={() => movePage("/about")} /></li>
-                            </ul>
-                        </th> */}
-                        {/* <th>Last updated(UTC)</th> */}
                     </tr>
                 </thead>
                 <tbody className="defiListTableBody">
