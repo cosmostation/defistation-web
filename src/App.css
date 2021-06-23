@@ -2218,6 +2218,7 @@ hr.sideMenuLine {
   /* padding-top: 15px !important;
   padding-bottom: 15px !important; */
   padding: 15px 10px 15px 10px !important;
+  z-index: 1000 !important;
 }
 
 .__react_component_tooltip.show {
@@ -2629,6 +2630,49 @@ th.sorttable_sorted_reverse::after {
   opacity: 1;
 	display:inline;
   content: url("./assets/sortingIcon/default.svg");
+}
+
+/* .tableContainer {
+	height: 500px;
+	overflow: auto;
+}
+
+.fixedHeader {
+	position: sticky;
+	top: 0;
+} */
+
+/* .defiListTable tr:first-child>td{
+  position: sticky;
+  top: 0;
+} */
+
+/* .defiListTable tbody { display:block; max-height:450px; overflow-y:scroll; }
+.defiListTable thead, .defiListTable tbody tr { display:table; width:100%; table-layout:fixed; } */
+
+/* .fixedHeader {
+  position: fixed;
+} */
+
+.tableHeaderTooptip {
+  max-width: 80vw;
+  /* background-color: rgb(220, 220, 220) !important; */
+  background-color: rgb(210, 210, 210) !important;
+}
+
+.tableHeaderTooptip::before {
+  /* background-color: rgb(220, 220, 220) !important; */
+  /* opacity: 0.5; */
+}
+
+.tableHeaderTooptip::after {
+  /* background-color: rgb(220, 220, 220) !important; */
+  margin-top: -1px;
+  opacity: 0.8;
+}
+
+.tableHeaderTooptip span {
+  color: rgb(85, 85, 85);
 }
 
 .defiListTable th:nth-child(1) {
