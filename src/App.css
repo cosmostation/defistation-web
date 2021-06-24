@@ -2500,9 +2500,19 @@ hr.sideMenuLine {
   color: #9BA5B5;
 }
 
-.defiListTable th, td {
+.defiListTable th {
   /* height: 47.21px; */
-  height: 30px;
+  height: 32px;
+  /* border-bottom: 1px solid #404752; */
+  border-bottom: 1px solid #32373E;
+  /* padding: 10px; */
+  padding: 10px 0 7px 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.defiListTable td {
+  height: 47.21px;
+  /* height: 32px; */
   /* border-bottom: 1px solid #404752; */
   border-bottom: 1px solid #32373E;
   /* padding: 10px; */
@@ -2633,92 +2643,7 @@ th.sorttable_sorted_reverse::after {
   content: url("./assets/sortingIcon/default.svg");
 }
 
-/* .tableContainer {
-	height: 500px;
-	overflow: auto;
-}
-
-.fixedHeader {
-	position: sticky;
-	top: 0;
-} */
-
-/* .defiListTable tr:first-child>td{
-  position: sticky;
-  top: 0;
-} */
-
-/* .defiListTable tbody { display:block; max-height:450px; overflow-y:scroll; }
-.defiListTable thead, .defiListTable tbody tr { display:table; width:100%; table-layout:fixed; } */
-
-/* .fixedHeader {
-  position: fixed;
-} */
-
-
-
-
-
-
-
-
-
-
-/* Fixed table header */
-/* Standard Tables */
-
-/* table {
-  margin: 1em 0;
-  border-collapse: collapse;
-  border: 0.1em solid #d6d6d6;
-}
-
-caption {
-  text-align: left;
-  font-style: italic;
-  padding: 0.25em 0.5em 0.5em 0.5em;
-}
-
-th,
-td {
-  padding: 0.25em 0.5em 0.25em 1em;
-  vertical-align: text-top;
-  text-align: left;
-  text-indent: -0.5em;
-}
-
-th {
-  vertical-align: bottom;
-  background-color: #666;
-  color: #fff;
-}
-
-tr:nth-child(even) th[scope=row] {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) th[scope=row] {
-  background-color: #fff;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-td:nth-of-type(2) {
-  font-style: italic;
-}
-
-th:nth-of-type(3),
-td:nth-of-type(3) {
-  text-align: right;
-} */
-
-/* Fixed Headers */
+/* -------- Start: Fixed Table Header(https://adrianroselli.com/2020/01/fixed-table-headers.html) -------- */
 
 th {
   position: -webkit-sticky;
@@ -2741,7 +2666,7 @@ th[scope=row] {
   background: linear-gradient(90deg, transparent 0%, transparent calc(100% - .05em), #d6d6d6 calc(100% - .05em), #d6d6d6 100%);
 }
 
-.defiListTable:nth-of-type(2) th:not([scope=row]):first-child {
+table:nth-of-type(2) th:not([scope=row]):first-child {
   left: 0;
   z-index: 3;
   background: linear-gradient(90deg, #666 0%, #666 calc(100% - .05em), #ccc calc(100% - .05em), #ccc 100%);
@@ -2757,7 +2682,7 @@ th[scope=row] {
   min-width: 20em;
 }
 
-.defiListTableHead tr th {
+table tr th {
   border-radius: 5px;
   /* box-shadow: 0 3px 6px 0 rgb(0 0 0 / 50%); */
   background-color: #262932;
@@ -2767,21 +2692,7 @@ th[scope=row] {
   top: -2px;
 }
 
-/* body {
-  padding-bottom: 90vh;
-} */
-
-
-
-
-
-
-
-
-
-
-
-
+/* -------- End: Fixed Table Header -------- */
 
 .tableHeaderTooltip {
   max-width: 80vw;
@@ -3539,7 +3450,7 @@ th[scope=row] {
   padding: 15px 30px 15px 30px;
 
   box-sizing: border-box;
-  overflow: auto;
+  /* overflow: auto; */
   /* -ms-overflow-style: -ms-autohiding-scrollbar; */
 }
 
@@ -3571,8 +3482,17 @@ th[scope=row] {
   font-weight: 400;
 }
 
-.defiDetailListTable th, td {
-  height: 47.21px;
+.defiDetailListTable th {
+  /* height: 47.21px; */
+  height: 40px;
+  border-bottom: 1px solid #32373E;
+  /* padding: 10px; */
+  font-family: "Roboto", sans-serif;
+}
+
+.defiDetailListTable td {
+  height: 57.21px;
+  /* height: 32px; */
   border-bottom: 1px solid #32373E;
   /* padding: 10px; */
   font-family: "Roboto", sans-serif;
