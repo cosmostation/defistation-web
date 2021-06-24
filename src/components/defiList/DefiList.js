@@ -942,7 +942,7 @@ const DefiList = observer((props) => {
                 setDefiListTableCode(tableCodeArr);
 
                 // Sorting
-                var newTableObject = document.getElementById("defiListTable1");
+                var newTableObject = document.getElementById("defiListTableForSorting");
                 sorttable.makeSortable(newTableObject);
             })
             .catch(err => setResponseError(err));
@@ -976,7 +976,7 @@ const DefiList = observer((props) => {
 
     return (
         <div className="defiList tableContainer">
-            <table className="defiListTable">
+            <table className="defiListTable" id="defiListTableForSorting">
                 <thead className="defiListTableHead">
                     <tr>
                         <th className="sorttable_nosort">#</th>
@@ -1003,7 +1003,7 @@ const DefiList = observer((props) => {
                             </a>
                             <ReactTooltip
                             id="tableHeader4"
-                            className='tableHeaderTooptip'
+                            className='tableHeaderTooltip'
                             place="bottom" 
                             type="light" 
                             effect="solid"
@@ -1066,7 +1066,7 @@ const DefiList = observer((props) => {
                             </a>
                             <ReactTooltip
                             id="tableHeader8"
-                            className='tableHeaderTooptip'
+                            className='tableHeaderTooltip'
                             place="bottom" 
                             type="light" 
                             effect="solid"
@@ -1098,7 +1098,7 @@ const DefiList = observer((props) => {
                             </a>
                             <ReactTooltip
                             id="tableHeader9"
-                            className='tableHeaderTooptip'
+                            className='tableHeaderTooltip'
                             place="bottom" 
                             type="light" 
                             effect="solid"

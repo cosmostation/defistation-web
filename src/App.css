@@ -2763,6 +2763,8 @@ th[scope=row] {
   background-color: #262932;
   /* padding: 15px 30px 15px 30px; */
   /* box-sizing: border-box; */
+  z-index: 3000;
+  top: -2px;
 }
 
 /* body {
@@ -2781,26 +2783,31 @@ th[scope=row] {
 
 
 
-.tableHeaderTooptip {
+.tableHeaderTooltip {
   max-width: 80vw;
   /* background-color: rgb(220, 220, 220) !important; */
   background-color: rgb(210, 210, 210) !important;
 }
 
-.tableHeaderTooptip::before {
+.tableHeaderTooltip::before {
   /* background-color: rgb(220, 220, 220) !important; */
   /* opacity: 0.5; */
 }
 
-.tableHeaderTooptip::after {
+.tableHeaderTooltip::after {
   /* background-color: rgb(220, 220, 220) !important; */
   margin-top: -1px;
   opacity: 0.8;
 }
 
-.tableHeaderTooptip span {
+.tableHeaderTooltip span {
   color: rgb(85, 85, 85);
 }
+
+.place-bottom {
+  margin-top: 15px !important;
+}
+
 
 .defiListTable th:nth-child(1) {
   text-align: left;
