@@ -28,8 +28,8 @@ const Main = observer(() => {
             <TopBar />
             <TotalValue defiName="DeFi" />
             <MiniCards defiName="DeFi" />
-            <Banner />
-            <DefiList />
+            {/* <Banner /> */}
+            <DefiList  />
             <Footer />
         </div>
     );

@@ -7,16 +7,11 @@ import useStores from '../../useStores';
 
 import '../../App.css';
 
+import Banner from '../banner/Banner';
+
 import defistationApplicationList from "../../defistationApplicationList.json";
 
 import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK } from '../../util/Util';
-
-// table icon
-import rankIcon1 from "../../assets/images/rank1@2x.png";
-import rankIcon2 from "../../assets/images/rank2@2x.png";
-import rankIcon3 from "../../assets/images/rank3@2x.png";
-
-import questionIcon from "../../assets/images/question_ic.svg";
 
 // coin image
 import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
@@ -31,7 +26,6 @@ import bscswap from "../../assets/images/coins/bscswap.png";
 import bstablefinance from "../../assets/images/coins/bstable.png";
 import burgerswap from "../../assets/images/coins/burger-swap.png";
 import cberry from "../../assets/images/coins/cberry.png";
-// import creamfinance from "../../assets/images/coins/cream-finance.png";
 import creamfinance from "../../assets/images/defiLogo/creamfinance@2x.png";
 import fortube from "../../assets/images/coins/fortube.png";
 import fryworld from "../../assets/images/coins/fryworld.png";
@@ -87,6 +81,8 @@ const DefiList = observer((props) => {
     const history = useHistory();
     const [responseError, setResponseError] = useState();
     const [defiListTableCode, setDefiListTableCode] = useState();
+
+    const [mobileFlag, setMobileFlag] = useState(false);
 
     function findDefiIndexNum(defiName) {
         // 예외처리
@@ -815,44 +811,46 @@ const DefiList = observer((props) => {
 
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr">
-                                <td>{rankNum}</td>
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>{rankNum}</td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     <div className="mobileRankNum">{rankNum}</div>
                                     <div className="tokenImgCircleMask">
                                     <img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div>
                                 </td>
                                 {/* <td>{coinImg}</td> */}
-                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)} sorttable_customkey={getOfficialDefiName(res[i].name)}>
+                                <td
+                                style={i == 0 ? {"border-top":"none"} : undefined }
+                                className="defiNameClickArea" onClick={() => movePage("/" + defiName)} sorttable_customkey={getOfficialDefiName(res[i].name)}>
                                     <span className="projectName noWrap">{getOfficialDefiName(res[i].name)}</span><br />
                                     {/* <div className="mobileRankNum">{rankNum}</div> */}
                                     <span className="defiListTableCategory noWrap">{tempCategory}</span>
                                 </td>
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}
                                     <li>
                                         {verifiedTag}
                                     </li>
                                 </td>
-                                <td>{tokenSymbolName}</td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                <td className="switchable6" onClick={() => switchDefiListTable()}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable6" onClick={() => switchDefiListTable()}>
                                     <span className="noWrap">{tokenPrice}</span><br />
                                     {tokenPriceChange24hTag}
                                 </td>
-                                <td className="switchable7" onClick={() => switchDefiListTable()} sorttable_customkey={tokenMarketCap}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable7" onClick={() => switchDefiListTable()} sorttable_customkey={tokenMarketCap}>
                                     {tokenMarketCapTag}<br />
                                     {tokenMarketCapChange24hTag}
                                 </td>
-                                <td className="switchable8" onClick={() => switchDefiListTable()} sorttable_customkey={tokenHolders}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable8" onClick={() => switchDefiListTable()} sorttable_customkey={tokenHolders}>
                                     {tokenHoldersTag}<br />
                                     {tokenHoldersChange24hNumTag}
                                 </td>
                                 {/* <td>{res[i].contractNum}</td> */}
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr}</p><ReactTooltip /></div>}
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
-                                <td className="switchable10" onClick={() => switchDefiListTable()} sorttable_customkey={res[i].lockedUsd}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable10" onClick={() => switchDefiListTable()} sorttable_customkey={res[i].lockedUsd}>
                                     <span className="noWrap">$ {currencyNum + currencyUnit}</span><br />
                                     <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
@@ -940,7 +938,7 @@ const DefiList = observer((props) => {
                 setDefiListTableCode(tableCodeArr);
 
                 // Sorting
-                var newTableObject = document.getElementById("defiListTable1");
+                var newTableObject = document.getElementById("defiListTableForSorting");
                 sorttable.makeSortable(newTableObject);
             })
             .catch(err => setResponseError(err));
@@ -953,22 +951,88 @@ const DefiList = observer((props) => {
     useEffect(() => {
         getDefiList();
 
+        let isMobile = false;
+        if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+            || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) { 
+            isMobile = true;
+        }
+
+        if (isMobile) {
+            setMobileFlag(true);
+        } else {
+            if (screen.width <= 1034 || window.innerWidth <= 1034) {
+                setMobileFlag(true);
+            }
+        }
+
         return () => {
 
         };
-    }, [global.chartDataDetails])
+    }, [global.chartDataDetails, mobileFlag])
 
     return (
-        <div className="defiList">
-            <table className="defiListTable" id="defiListTable1">
+        <div className="defiList tableContainer">
+            <table className="defiListTable" id="defiListTableForSorting">
                 <thead className="defiListTableHead">
-                    <tr>
+                    {/* <tr><th colspan='10' className="sorttable_nosort defiListTableBanner"><Banner /></th></tr> */}
+                    <div className="defiListTableBanner"><Banner /></div>
+                    <tr className="defiListTableHeadTr">
                         <th className="sorttable_nosort">#</th>
                         <th className="sorttable_nosort"></th>
                         <th className="noDrag">Projects</th>
                         <th className="noDrag">
                             {/* Audit */}
-                            <span data-tip="As one of the security indicators, audit helps you to avoid scam project.">Audit</span><ReactTooltip />
+                            
+                            {/* <span data-tip="As one of the security indicators, audit helps you to avoid scam project.">Audit</span>
+                            <ReactTooltip 
+                            id='header1'
+                            place="bottom"
+                            delayHide={100}
+                            effect="solid"
+                            ></ReactTooltip> */}
+
+                            {/* PC */}
+                            <a 
+                            data-tip 
+                            data-for="tableHeader4" 
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            Audit
+                            </a>
+                            <ReactTooltip
+                            id="tableHeader4"
+                            className='tableHeaderTooltip'
+                            place="bottom" 
+                            type="light" 
+                            effect="solid"
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            <span>As one of the security indicators, audit helps you to avoid scam project.</span>
+                            </ReactTooltip>
+
+                            {/* Mobile (Tooltip 없음) */}
+                            <span style={mobileFlag ? undefined : {display: "none"}}>Audit</span>
+   
+                            {/* <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                            <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                            <ReactTooltip 
+                            id={'global' + i} 
+                            aria-haspopup='true'
+                            place={auditPlace}
+                            delayHide={200}
+                            effect="solid"
+                            >
+                            <div>
+                                <ul className="auditUl">
+                                    <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                    <li>Audited</li>
+                                </ul>
+                                <ul className="auditListUl">
+                                    {resultAuditTag}
+                                </ul>
+                            </div>
+                            </ReactTooltip> */}
+
                             {/* <ul className="defiListTableHeadCell">
                                 <li>Audit</li>
                                 <li><span data-tip="As one of the security indicators, audit helps you to avoid scam project."><img src={questionIcon} /><ul></ul></span><ReactTooltip /></li>
@@ -983,19 +1047,66 @@ const DefiList = observer((props) => {
                             </ul> */}
                         </th>
                         <th className="switchable8 sorttable_numeric noDrag">
-                            <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip />
+                            {/* <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip /> */}
+
                             {/* <ul className="defiListTableHeadCellRight">
                                 <li>Holders</li>
                                 <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul> */}
+
+                            {/* PC */}
+                            <a 
+                            data-tip 
+                            data-for="tableHeader8"
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            Holders
+                            </a>
+                            <ReactTooltip
+                            id="tableHeader8"
+                            className='tableHeaderTooltip'
+                            place="bottom" 
+                            type="light" 
+                            effect="solid"
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            <span>The number of wallets with a balance exceeding zero</span>
+                            </ReactTooltip>
+
+                            {/* Mobile (Tooltip 없음) */}
+                            <span style={mobileFlag ? undefined : {display: "none"}}>Holders</span>
                         </th>
                         <th className="sorttable_numeric noDrag">TVL</th>
                         <th className="switchable10 sorttable_numeric noDrag">
-                            <span data-tip="Total value locked">TVL</span><ReactTooltip />
+
+                            {/* <span data-tip="Total value locked">TVL</span><ReactTooltip /> */}
+
                             {/* <ul className="defiListTableHeadCellRight">
                                 <li>TVL</li>
                                 <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
                             </ul> */}
+
+                            {/* PC */}
+                            <a 
+                            data-tip 
+                            data-for="tableHeader9"
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            TVL
+                            </a>
+                            <ReactTooltip
+                            id="tableHeader9"
+                            className='tableHeaderTooltip'
+                            place="bottom" 
+                            type="light" 
+                            effect="solid"
+                            style={!mobileFlag ? undefined : {display: "none"}}
+                            >
+                            <span>Total value locked</span>
+                            </ReactTooltip>
+
+                            {/* Mobile (Tooltip 없음) */}
+                            <span style={mobileFlag ? undefined : {display: "none"}}>TVL</span>
                         </th>
                     </tr>
                 </thead>
