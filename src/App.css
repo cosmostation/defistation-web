@@ -3403,7 +3403,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 
 @media (min-width:1px) and (max-width:1034px) {
   .defiOverview {
-    margin-top: -4px;
+    margin-top: 10px;
     padding: 15px;
   }
   
@@ -3545,7 +3545,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 @media (min-width:1px) and (max-width:1034px) {
   .defiDetailList {
     /* height: 860px; */
-    margin-top: 10px;
+    margin-top: 7px;
     padding: 0 15px 0 15px;
   }
 }
@@ -3665,6 +3665,10 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   .defiDetailListTable td:nth-child(2) {
     display: none;
   } */
+
+  .defiDetailListTable th {
+    height: 57.21px;
+  }
   
   .defiDetailListTable th:nth-child(1) {
     /* width: 30%; */
