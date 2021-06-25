@@ -2862,12 +2862,12 @@ table tr thead {
   .defiListTable th:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 54px !important;
+    padding-left: 44px !important;
   }
   .defiListTable td:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 30px !important;
+    padding-left: 20px !important;
   }
 
   .defiListTable th:nth-child(3) {
@@ -2899,7 +2899,7 @@ table tr thead {
 
   .defiListTable th:nth-child(6) {
     /* display: none; */
-    /* width: 20%; */
+    width: 20%;
   }
   .defiListTable td:nth-child(6) {
     /* display: none; */
@@ -2909,22 +2909,25 @@ table tr thead {
   .defiListTable th:nth-child(7) {
     white-space:nowrap;
     display: none;
-    width: 20%;
+    width: 18%;
     /* width: 40%; */
   }
   .defiListTable td:nth-child(7) {
+    white-space:nowrap;
     display: none;
-    width: 20%;
+    width: 15%;
     /* width: 40%; */
   }
 
   .defiListTable th:nth-child(8) {
     display: none;
-    width: 30%;
+    width: 25%;
+    padding-right: 20px;
   }
   .defiListTable td:nth-child(8) {
     display: none;
-    width: 30%;
+    width: 40%;
+    padding-right: 20px;
   }
 
   .defiListTable th:nth-child(9) {
@@ -2938,11 +2941,13 @@ table tr thead {
 
   .defiListTable th:nth-child(10) {
     /* display: none; */
-    width: 25%;
+    width: 23%;
+    padding-right: 20px;
   }
   .defiListTable td:nth-child(10) {
     /* display: none; */
     width: 25%;
+    padding-right: 20px;
   }
 }
 
@@ -2957,12 +2962,12 @@ table tr thead {
   .defiListTable th:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 54px !important;
+    padding-left: 39px !important;
   }
   .defiListTable td:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 30px !important;
+    padding-left: 15px !important;
   }
 
   .defiListTable th:nth-child(3) {
@@ -3001,13 +3006,16 @@ table tr thead {
   .defiListTable th:nth-child(7) {
     white-space:nowrap;
     display: none;
-    width: 20%;
+    width: 30%;
     /* width: 40%; */
+    padding-right: 15px;
   }
   .defiListTable td:nth-child(7) {
+    white-space:nowrap;
     display: none;
     width: 20%;
     /* width: 40%; */
+    padding-right: 15px;
   }
 
   .defiListTable th:nth-child(8) {
@@ -3031,10 +3039,12 @@ table tr thead {
   .defiListTable th:nth-child(10) {
     /* display: none; */
     width: 30%;
+    padding-right: 15px;
   }
   .defiListTable td:nth-child(10) {
     /* display: none; */
     width: 20%;
+    padding-right: 15px;
   }
 }
 
