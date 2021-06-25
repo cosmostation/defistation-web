@@ -811,44 +811,46 @@ const DefiList = observer((props) => {
 
                         tableCodeArr.push(
                             <tr key={i} className="defiListTableTr">
-                                <td>{rankNum}</td>
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>{rankNum}</td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     <div className="mobileRankNum">{rankNum}</div>
                                     <div className="tokenImgCircleMask">
                                     <img class="tokenImg" key={i} src={coinImg} onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}} /></div>
                                 </td>
                                 {/* <td>{coinImg}</td> */}
-                                <td className="defiNameClickArea" onClick={() => movePage("/" + defiName)} sorttable_customkey={getOfficialDefiName(res[i].name)}>
+                                <td
+                                style={i == 0 ? {"border-top":"none"} : undefined }
+                                className="defiNameClickArea" onClick={() => movePage("/" + defiName)} sorttable_customkey={getOfficialDefiName(res[i].name)}>
                                     <span className="projectName noWrap">{getOfficialDefiName(res[i].name)}</span><br />
                                     {/* <div className="mobileRankNum">{rankNum}</div> */}
                                     <span className="defiListTableCategory noWrap">{tempCategory}</span>
                                 </td>
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     {/* <li><span data-tip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ">{verifiedTag}</span><ReactTooltip html={true} /></li> */}
                                     <li>
                                         {verifiedTag}
                                     </li>
                                 </td>
-                                <td>{tokenSymbolName}</td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>{tokenSymbolName}</td>
                                 {/* <td>{getOfficialCategoryName(res[i].category)}</td> */}
-                                <td className="switchable6" onClick={() => switchDefiListTable()}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable6" onClick={() => switchDefiListTable()}>
                                     <span className="noWrap">{tokenPrice}</span><br />
                                     {tokenPriceChange24hTag}
                                 </td>
-                                <td className="switchable7" onClick={() => switchDefiListTable()} sorttable_customkey={tokenMarketCap}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable7" onClick={() => switchDefiListTable()} sorttable_customkey={tokenMarketCap}>
                                     {tokenMarketCapTag}<br />
                                     {tokenMarketCapChange24hTag}
                                 </td>
-                                <td className="switchable8" onClick={() => switchDefiListTable()} sorttable_customkey={tokenHolders}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable8" onClick={() => switchDefiListTable()} sorttable_customkey={tokenHolders}>
                                     {tokenHoldersTag}<br />
                                     {tokenHoldersChange24hNumTag}
                                 </td>
                                 {/* <td>{res[i].contractNum}</td> */}
-                                <td>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined }>
                                     {res[i].volume > 0 ? volumeStr : <div><p data-tip="24hr trading volume hasn't been posted by project team."> {volumeStr}</p><ReactTooltip /></div>}
                                 </td>
                                 {/* <td>$ {numberWithCommas(res[i].lockedUsd)}</td> */}
-                                <td className="switchable10" onClick={() => switchDefiListTable()} sorttable_customkey={res[i].lockedUsd}>
+                                <td style={i == 0 ? {"border-top":"none"} : undefined } className="switchable10" onClick={() => switchDefiListTable()} sorttable_customkey={res[i].lockedUsd}>
                                     <span className="noWrap">$ {currencyNum + currencyUnit}</span><br />
                                     <span className="defiListTableSubText">{change24hTag}</span>
                                 </td>
