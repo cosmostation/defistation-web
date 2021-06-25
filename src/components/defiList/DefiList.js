@@ -7,16 +7,11 @@ import useStores from '../../useStores';
 
 import '../../App.css';
 
+import Banner from '../banner/Banner';
+
 import defistationApplicationList from "../../defistationApplicationList.json";
 
 import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK } from '../../util/Util';
-
-// table icon
-import rankIcon1 from "../../assets/images/rank1@2x.png";
-import rankIcon2 from "../../assets/images/rank2@2x.png";
-import rankIcon3 from "../../assets/images/rank3@2x.png";
-
-import questionIcon from "../../assets/images/question_ic.svg";
 
 // coin image
 import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
@@ -31,7 +26,6 @@ import bscswap from "../../assets/images/coins/bscswap.png";
 import bstablefinance from "../../assets/images/coins/bstable.png";
 import burgerswap from "../../assets/images/coins/burger-swap.png";
 import cberry from "../../assets/images/coins/cberry.png";
-// import creamfinance from "../../assets/images/coins/cream-finance.png";
 import creamfinance from "../../assets/images/defiLogo/creamfinance@2x.png";
 import fortube from "../../assets/images/coins/fortube.png";
 import fryworld from "../../assets/images/coins/fryworld.png";
@@ -978,7 +972,9 @@ const DefiList = observer((props) => {
         <div className="defiList tableContainer">
             <table className="defiListTable" id="defiListTableForSorting">
                 <thead className="defiListTableHead">
-                    <tr>
+                    {/* <tr><th colspan='10' className="sorttable_nosort defiListTableBanner"><Banner /></th></tr> */}
+                    <div className="defiListTableBanner"><Banner /></div>
+                    <tr className="defiListTableHeadTr">
                         <th className="sorttable_nosort">#</th>
                         <th className="sorttable_nosort"></th>
                         <th className="noDrag">Projects</th>

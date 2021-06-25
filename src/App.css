@@ -1852,13 +1852,11 @@ hr.sideMenuLine {
 }
 
 .bannerWrapper {
-  /* margin: 0 auto; */
-  width: 100%;
-  /* height: 80px; */
+  width: 1034px;
   overflow: hidden;
-  /* border-radius: 5px; */
-  /* position: absolute; */
   margin-top: -3px;
+  /* margin-left: -30px; */
+  /* background-color: #0c0e13; */
 }
 
 /* .bannerWrapperMobile {
@@ -2172,16 +2170,15 @@ hr.sideMenuLine {
 /* -------------------------------- Main Table -------------------------------- */
 
 .defiList {
-  margin-top: 9px;
+  /* margin-top: 9px; */
+  margin-top: -15px;
   width: 100%;
   /* height: 720px; */
   border-radius: 5px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
-  padding: 15px 30px 15px 30px;
+  /* background-color: #262932; */
+  /* padding: 15px 30px 15px 30px; */
   box-sizing: border-box;
-  /* overflow: auto; */
-  /* -ms-overflow-style: -ms-autohiding-scrollbar; */
 }
 
 /* @media (min-width:768px) and (max-width:1034px) {
@@ -2427,7 +2424,12 @@ hr.sideMenuLine {
   width: 100%;
   /* border-top: 1px solid #444444; */
   border-collapse: collapse;
+  /* margin-left: -15px; */
+  /* border-collapse:separate; 
+  border-spacing:5em; */
 }
+
+
 
 /* .defiListTable tbody tr {
   cursor: pointer;
@@ -2508,6 +2510,10 @@ hr.sideMenuLine {
   /* padding: 10px; */
   padding: 10px 0 7px 10px;
   font-family: "Roboto", sans-serif;
+
+  /* background-color: black; */
+  /* background-color: #262932; */
+  /* background-color: #0c0e13; */
 }
 
 .defiListTable td {
@@ -2515,7 +2521,6 @@ hr.sideMenuLine {
   /* height: 32px; */
   /* border-bottom: 1px solid #404752; */
   border-bottom: 1px solid #32373E;
-  /* padding: 10px; */
   padding: 10px 0 7px 10px;
   font-family: "Roboto", sans-serif;
 }
@@ -2645,28 +2650,28 @@ th.sorttable_sorted_reverse::after {
 
 /* -------- Start: Fixed Table Header(https://adrianroselli.com/2020/01/fixed-table-headers.html) -------- */
 
-th {
+thead {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 2;
 }
 
-th[scope=row] {
+thead[scope=row] {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
   z-index: 1;
 }
 
-th[scope=row] {
+thead[scope=row] {
   vertical-align: top;
   color: inherit;
   background-color: inherit;
   background: linear-gradient(90deg, transparent 0%, transparent calc(100% - .05em), #d6d6d6 calc(100% - .05em), #d6d6d6 100%);
 }
 
-table:nth-of-type(2) th:not([scope=row]):first-child {
+table:nth-of-type(2) thead:not([scope=row]):first-child {
   left: 0;
   z-index: 3;
   background: linear-gradient(90deg, #666 0%, #666 calc(100% - .05em), #ccc calc(100% - .05em), #ccc 100%);
@@ -2674,25 +2679,23 @@ table:nth-of-type(2) th:not([scope=row]):first-child {
 
 /* Strictly for making the scrolling happen. */
 
-th[scope=row] + td {
+thead[scope=row] + td {
   min-width: 24em;
 }
 
-th[scope=row] {
+thead[scope=row] {
   min-width: 20em;
 }
 
-table tr th {
+table tr thead {
   border-radius: 5px;
-  /* box-shadow: 0 3px 6px 0 rgb(0 0 0 / 50%); */
-  background-color: #262932;
-  /* padding: 15px 30px 15px 30px; */
-  /* box-sizing: border-box; */
-  z-index: 3000;
+  /* background-color: #262932; */
+  z-index: 1;
   top: -2px;
 }
 
 /* -------- End: Fixed Table Header -------- */
+
 
 .tableHeaderTooltip {
   max-width: 80vw;
@@ -2719,20 +2722,23 @@ table tr th {
   margin-top: 15px !important;
 }
 
-
 .defiListTable th:nth-child(1) {
   text-align: left;
   width: 1%;
   white-space: nowrap;
-  padding-right: 8px;
-  padding-left: 0 !important;
+  /* padding-right: 8px; */
+  padding-left: 30px !important;
+
+  /* head radius */
+  border-top-left-radius: 5px;
+  border-collapse: separate;
 }
 .defiListTable td:nth-child(1) {
   text-align: left;
   width: 1%;
   white-space: nowrap;
-  padding-right: 8px;
-  padding-left: 0 !important;
+  /* padding-right: 8px; */
+  padding-left: 30px !important;
 }
 
 .defiListTable th:nth-child(2) {
@@ -2821,10 +2827,16 @@ table tr th {
   text-align: right;
   width: 15%;
   cursor: pointer;
+  padding-right: 30px;
+
+  /* head radius */
+  border-top-right-radius: 5px;
+  border-collapse: separate;
 }
 .defiListTable td:nth-child(10) {
   text-align: right;
   width: 15%;
+  padding-right: 30px;
 }
 
 @media (min-width:321px) and (max-width:1034px) {
@@ -3020,7 +3032,33 @@ table tr th {
   letter-spacing: normal;
   text-align: center;
   color: #9BA5B5;
+  /* background-color: #262932; */
+  display: table-caption;
+  width: 1034px;
+  background-color: #0c0e13;
 }
+
+.defiListTableBanner {
+  /* height: 200px; */
+  max-width: 42px;
+  padding-bottom: 8px;
+  padding-top: 14px;
+  /* position: absolute; */
+  background-color: #0c0e13;
+}
+
+.defiListTableHeadTr {
+  background-color: #262932;
+  /* position: absolute;
+  margin-top: 104px; */
+  /* border-top-left-radius: 10px; */
+
+}
+
+/* tr:first-child td:first-child { border-top-left-radius: 10px; }
+tr:first-child td:last-child { border-top-right-radius: 10px; }
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 
 /* .defiListTableHead tr th {
   cursor: pointer;
@@ -3036,6 +3074,10 @@ table tr th {
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+  background-color: #262932;
+
+  /* position: absolute; */
+  /* margin-top: 104px; */
 }
 
 @media (min-width:1px) and (max-width:1034px) {
