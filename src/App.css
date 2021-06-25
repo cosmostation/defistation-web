@@ -1907,7 +1907,7 @@ hr.sideMenuLine {
 @media (min-width:1px) and (max-width:768px) {
   .bannerWrapper {
     width: 95vw;
-    /* height: 15vw; */
+    height: 15.5vw;
     overflow: hidden;
     margin-top: -18px !important;
   }
@@ -2513,8 +2513,8 @@ hr.sideMenuLine {
 }
 
 .defiListTable th {
-  /* height: 47.21px; */
-  height: 32px;
+  height: 47.21px;
+  /* height: 32px; */
   /* border-bottom: 1px solid #404752; */
   border-bottom: 1px solid #32373E;
   /* padding: 10px; */
@@ -2540,9 +2540,9 @@ hr.sideMenuLine {
   font-weight: 400;
 }
 
-@media (min-width:1px) and (max-width:1034px) {
-  .defiListTable th, td {
-    /* padding: 0 10px 0 10px; */
+@media (min-width:1px) and (max-width:320px) {
+  .defiListTable td {
+    padding: 10px 0 7px 5px;
   }
 }
 
@@ -2862,12 +2862,16 @@ table tr thead {
   .defiListTable th:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 44px !important;
+    padding-left: 39px !important;
+
+    /* head radius */
+    border-top-left-radius: 5px;
+    border-collapse: separate;
   }
   .defiListTable td:nth-child(2) {
     /* display: none; */
     padding: 0 8px 0 0;
-    padding-left: 20px !important;
+    padding-left: 15px !important;
   }
 
   .defiListTable th:nth-child(3) {
@@ -2909,7 +2913,7 @@ table tr thead {
   .defiListTable th:nth-child(7) {
     white-space:nowrap;
     display: none;
-    width: 18%;
+    width: 20%;
     /* width: 40%; */
   }
   .defiListTable td:nth-child(7) {
@@ -2921,13 +2925,13 @@ table tr thead {
 
   .defiListTable th:nth-child(8) {
     display: none;
-    width: 25%;
-    padding-right: 20px;
+    width: 23%;
+    padding-right: 15px;
   }
   .defiListTable td:nth-child(8) {
     display: none;
-    width: 40%;
-    padding-right: 20px;
+    width: 30%;
+    padding-right: 15px;
   }
 
   .defiListTable th:nth-child(9) {
@@ -2942,12 +2946,12 @@ table tr thead {
   .defiListTable th:nth-child(10) {
     /* display: none; */
     width: 23%;
-    padding-right: 20px;
+    padding-right: 15px;
   }
   .defiListTable td:nth-child(10) {
     /* display: none; */
     width: 25%;
-    padding-right: 20px;
+    padding-right: 15px;
   }
 }
 
@@ -3109,7 +3113,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   /* margin-top: 104px; */
 }
 
-@media (min-width:1px) and (max-width:1034px) {
+@media (min-width:321px) and (max-width:1034px) {
   .defiListTableHead {
     font-size: 11.5px;
     z-index: 3000;
@@ -3125,6 +3129,12 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
     padding-top: 25px;
     padding-bottom: 8px;
     margin-top: 2px;
+  }
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .defiListTableBanner {
+    padding-top: 18px;
   }
 }
 
@@ -3561,8 +3571,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 }
 
 .defiDetailListTable th {
-  /* height: 47.21px; */
-  height: 40px;
+  height: 47.21px;
+  /* height: 40px; */
   border-bottom: 1px solid #32373E;
   /* padding: 10px; */
   font-family: "Roboto", sans-serif;
