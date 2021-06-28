@@ -1184,7 +1184,7 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
-                                            minValue: minTvl,
+                                            // minValue: minTvl,
                                             textStyle: {
                                                 color: '#757f8e',
                                             },
