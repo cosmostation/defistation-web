@@ -76,17 +76,7 @@ const Banner = observer((props) => {
     return (
         <div>
             {/* 1 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum < 33 ? undefined : { display: "none" }}>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
-                    target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
-                    >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
+            <Slider {...settings} className="bannerWrapper" style={randomNum < 50 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
@@ -109,12 +99,22 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(O3 Swap)"
+                    to="https://o3swap.com/vault"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['O3 Swap']}
                     >
-                        <div className="banner"><img src={bannerImg} /></div>
+                        <div className="banner"><img src={bannerImg2} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(bscLaunch)"
+                    to="https://bsclaunch.org/"
+                    target="_blank"
+                    trackerNames={['bscLaunch']}
+                    >
+                        <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>
@@ -139,17 +139,7 @@ const Banner = observer((props) => {
                 </div>
             </Slider>
             {/* 2 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum >= 33 && randomNum < 66 ? undefined : { display: "none" }}>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com/vault"
-                    target="_blank"
-                    trackerNames={['O3 Swap']}
-                    >
-                        <div className="banner"><img src={bannerImg2} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
+            <Slider {...settings} className="bannerWrapper" style={randomNum >= 50 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(bscLaunch)"
@@ -158,69 +148,6 @@ const Banner = observer((props) => {
                     trackerNames={['bscLaunch']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
-                    target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
-                    >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com/vault"
-                    target="_blank"
-                    trackerNames={['O3 Swap']}
-                    >
-                        <div className="banner"><img src={bannerImg2} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bscLaunch)"
-                    to="https://bsclaunch.org/"
-                    target="_blank"
-                    trackerNames={['bscLaunch']}
-                    >
-                        <div className="banner"><img src={bannerImg3} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
-                    target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
-                    >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-            </Slider>
-            {/* 3 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum > 66 ? undefined : { display: "none" }}>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bscLaunch)"
-                    to="https://bsclaunch.org/"
-                    target="_blank"
-                    trackerNames={['bscLaunch']}
-                    >
-                        <div className="banner"><img src={bannerImg3} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
-                    target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
-                    >
-                        <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>
@@ -245,12 +172,22 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(O3 Swap)"
+                    to="https://o3swap.com/vault"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['O3 Swap']}
                     >
-                        <div className="banner"><img src={bannerImg} /></div>
+                        <div className="banner"><img src={bannerImg2} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(bscLaunch)"
+                    to="https://bsclaunch.org/"
+                    target="_blank"
+                    trackerNames={['bscLaunch']}
+                    >
+                        <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>
