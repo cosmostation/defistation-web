@@ -1232,7 +1232,15 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
-                                            minValue: props.defiName == "JulSwap" || props.defiName == "BiFi" || props.defiName == "ForTube" ? 0.0001 : minTvl,
+                                            minValue:   props.defiName == "JulSwap" || 
+                                                        props.defiName == "BiFi" || 
+                                                        props.defiName == "ForTube" || 
+                                                        props.defiName == "Bakery Swap" || 
+                                                        props.defiName == "Nerve Finance" || 
+                                                        props.defiName == "Alpha Homora" || 
+                                                        props.defiName == "Smoothy" || 
+                                                        props.defiName == "ApeSwap" ? 
+                                                        0.0001 : minTvl,
                                             textStyle: {
                                                 color: '#757f8e',
                                             },
