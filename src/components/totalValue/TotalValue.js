@@ -232,9 +232,10 @@ const TotalValue = observer((props) => {
                 // console.log("[0604 TEST] resultArr: ", resultArr);
 
                 // chartPeriod 가 7, 30, 90 에 따라서 배열에 해당 최신 개수만 남겨두기
-                if (chartPeriod == 7 || chartPeriod == 30) {
-                    resultArr.splice(0, resultArr.length - chartPeriod);
-                }
+                // if (chartPeriod == 7 || chartPeriod == 30) {
+                    // resultArr.splice(0, resultArr.length - chartPeriod);
+                    // resultArr.splice(resultArr.length - chartPeriod, resultArr.length - 1);
+                // }
 
                 let digitForTx;
                 let currencyUnitForTx;
@@ -365,7 +366,7 @@ const TotalValue = observer((props) => {
                 }
 
                 // console.log("resultArr.length: ", resultArr.length);
-                
+                let subChartStartingCorrectionFlag = false;
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
@@ -433,8 +434,6 @@ const TotalValue = observer((props) => {
                         }
                     }
                     
-                    
-                    
                     // dailyTxArr
                     if (initProjectTvlIndex == -1) {
                         if (defiName == "DeFi") {
@@ -460,20 +459,17 @@ const TotalValue = observer((props) => {
                             // console.log("[0416] priceArr: ", priceArr);
                             if (priceArr.length > 0) {
                                 tempPrice = priceArr[i][1];
-                                tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
 
-                                // 서브 페이지 miniCard 용
-                                // global.changeTokenPrice(tempPrice);
-
-                                // if (priceArr[i - 1] != undefined) {
-                                //     prevPrice = priceArr[i - 1][1];
-                                // }
-
-                                // let tempPriceChange24h = (tempPrice - prevPrice) / tempPrice;
-                                // if (tempPriceChange24h != 0) {
-                                //     console.log("[0423] tempPriceChange24h: ", tempPriceChange24h);
-                                //     global.changeTokenPrice24hPercent(tempPriceChange24h);
-                                // }
+                                if (defiName == "pancake") {
+                                    console.log("pancake 예외처리");
+                                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                } else {
+                                    if ((currencyNum > 0 && tempPrice > 0) || subChartStartingCorrectionFlag) {
+                                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                        subChartStartingCorrectionFlag = true;
+                                    }
+                                }
                                 
                             } else {
                                 tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
@@ -550,14 +546,12 @@ const TotalValue = observer((props) => {
                 }
                 setChartData(tempChartData);
 
+                // tempChartData
+                // tvl과 token price 한 쌍의 데이터에서 둘중 하나가 0인 경우 해당 쌍을 제거
+                // 서브페이지의 tempChartData[0]: "x", "TVL(Billion)", "Token Price(USD)"
+                console.log("[0708] tempChartData: ", tempChartData);
+                
 
-
-
-                // if (defiName == "DeFi") {
-                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions']);
-                // } else {
-                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
-                // }
 
 
 
@@ -1239,6 +1233,9 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "Nerve Finance" || 
                                                         props.defiName == "Alpha Homora" || 
                                                         props.defiName == "Smoothy" || 
+                                                        props.defiName == "Elephant Money" ||
+                                                        props.defiName == "Demex" ||
+                                                        props.defiName == "Kebab Finance" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
