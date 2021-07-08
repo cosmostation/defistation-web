@@ -367,6 +367,11 @@ const TotalValue = observer((props) => {
 
                 // console.log("resultArr.length: ", resultArr.length);
                 let subChartStartingCorrectionFlag = false;
+                let prevCurrencyNum = 0;
+                let nextCurrencyNum = 0;
+                let prevTokenPrice = 0;
+                let nextTokenPrice = 0;
+
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
@@ -461,12 +466,75 @@ const TotalValue = observer((props) => {
                                 tempPrice = priceArr[i][1];
                                 // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
 
+                                // 중간에 tvl, token price 에 0이 들어있는 경우 보정
+                                // ((이전 값) + (0이 아닌 다음 값)) / 2
+
                                 if (defiName == "pancake") {
                                     console.log("pancake 예외처리");
-                                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                    // --------------- tvl 보정 평균값 계산 START ---------------
+                                    let calCurrencyNum = 0;
+                                    if (currencyNum == 0) {
+                                        // 다음 0 이 아닌값 임시 조회
+                                        for (var j = i; j < resultArr.length; j++) {
+                                            nextCurrencyNum = (resultArr[j][1] / digit).toFixed(3) * 1;
+                                            if (nextCurrencyNum > 0) break;
+                                        }
+                                        calCurrencyNum = (prevCurrencyNum + nextCurrencyNum) / 2;
+                                    } else {
+                                        calCurrencyNum = currencyNum;
+                                    }
+                                    // --------------- tvl 보정 평균값 계산 END ---------------
+
+                                    // --------------- token price 보정 평균값 계산 START ---------------
+                                    let calTokenPrice = 0;
+                                    if (tempPrice == 0) {
+                                        // 다음 0 이 아닌값 임시 조회
+                                        for (var j = i; j < resultArr.length; j++) {
+                                            nextTokenPrice = priceArr[j][1];
+                                            if (nextTokenPrice > 0) break;
+                                        }
+                                        calTokenPrice = (prevTokenPrice + nextTokenPrice) / 2;
+                                    } else {
+                                        calTokenPrice = tempPrice;
+                                    }
+                                    // --------------- token price 보정 평균값 계산 END ---------------
+
+                                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), calCurrencyNum, calTokenPrice]);
+                                    if (currencyNum > 0) prevCurrencyNum = currencyNum;  // 차트 보정용
+                                    if (tempPrice > 0) prevTokenPrice = tempPrice;  // 차트 보정용
                                 } else {
                                     if ((currencyNum > 0 && tempPrice > 0) || subChartStartingCorrectionFlag) {
-                                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                        // --------------- tvl 보정 평균값 계산 START ---------------
+                                        let calCurrencyNum = 0;
+                                        if (currencyNum == 0) {
+                                            // 다음 0 이 아닌값 임시 조회
+                                            for (var j = i; j < resultArr.length; j++) {
+                                                nextCurrencyNum = (resultArr[j][1] / digit).toFixed(3) * 1;
+                                                if (nextCurrencyNum > 0) break;
+                                            }
+                                            calCurrencyNum = (prevCurrencyNum + nextCurrencyNum) / 2;
+                                        } else {
+                                            calCurrencyNum = currencyNum;
+                                        }
+                                        // --------------- tvl 보정 평균값 계산 END ---------------
+
+                                        // --------------- token price 보정 평균값 계산 START ---------------
+                                        let calTokenPrice = 0;
+                                        if (tempPrice == 0) {
+                                            // 다음 0 이 아닌값 임시 조회
+                                            for (var j = i; j < resultArr.length; j++) {
+                                                nextTokenPrice = priceArr[j][1];
+                                                if (nextTokenPrice > 0) break;
+                                            }
+                                            calTokenPrice = (prevTokenPrice + nextTokenPrice) / 2;
+                                        } else {
+                                            calTokenPrice = tempPrice;
+                                        }
+                                        // --------------- token price 보정 평균값 계산 END ---------------
+                                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), calCurrencyNum, calTokenPrice]);
+                                        if (currencyNum > 0) prevCurrencyNum = currencyNum;  // 차트 보정용
+                                        if (tempPrice > 0) prevTokenPrice = tempPrice;  // 차트 보정용
+
                                         subChartStartingCorrectionFlag = true;
                                     }
                                 }
@@ -494,27 +562,6 @@ const TotalValue = observer((props) => {
                         global.changeTotalValueLockedUsd("$ " + numberWithCommas(resultArr[i][1]));
                     }
                 }
-                
-                // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
-                // if (chartPeriod - resultArr.length > 0) {
-                //     let createEmptyDataLength = chartPeriod - resultArr.length;
-                //     // console.log("createEmptyDataLength: ", createEmptyDataLength);
-                //     for (var i = 0; i < createEmptyDataLength; i++) {
-                //         let calTimestamp = initTimestamp - (86400 * (i + 1));
-                //         // tempChartData 의 제일 앞에 넣어야함
-                //         tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
-                //     }
-                // }
-
-                // 차트 데이터가 7개 또는 30개가 안채워졌으면 뒤에 채워넣기
-                // let chartGap = resultArr.length - tempChartData.length;
-                // if (chartGap > 0) {
-                //     let lastTimestamp = resultArr[resultArr.length - 1][0];
-                //     for (var i = 0; i < chartGap; i++) {
-                //         let calTimestamp = lastTimestamp + (86400 * (i + 1));
-                //         tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
-                //     }
-                // }
 
                 // 차트: 7d, 30d
                 if (tempChartData.length > chartPeriod) {
@@ -525,8 +572,6 @@ const TotalValue = observer((props) => {
                 }
 
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
-
-                console.log("[TEST 0608] tempMinTvl: ", tempMinTvl);
                 
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
