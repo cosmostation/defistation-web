@@ -1046,7 +1046,8 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "O3 Swap") {
+        if (props.defiName == "O3 Swap" ||
+        props.defiName == "BunnyPark") {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 
