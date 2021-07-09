@@ -1,7 +1,7 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { MediaQuery } from 'react-responsive'
 import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
+import _ from "lodash";
 import useStores from '../../useStores';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
@@ -217,8 +217,6 @@ const TotalValue = observer((props) => {
                 let tempChartData = [];
                 let initProjectTvlIndex = -1;
 
-                let currentTokenPrice = 0;
-
                 if (res.result == null) {
                     setMinTvl(0);
                     global.changeTotalValueLockedUsd("$ 0");
@@ -240,6 +238,7 @@ const TotalValue = observer((props) => {
                 let digitForTx;
                 let currencyUnitForTx;
                 let tempCurrencyFullNameForTx;
+                let sumTokenPrice = 0;
 
                 // ------------ 메인 페이지 TXs ------------
                 if (defiName == "DeFi") {
@@ -303,7 +302,11 @@ const TotalValue = observer((props) => {
                     let priceObj = res.price;
                     var priceArr = Object.keys(priceObj).map((key) => [Number(key), priceObj[key]]);
 
-                    if (priceArr.length > 0) {
+                    for (var i = 0; i < priceArr.length; i++) {
+                        sumTokenPrice += priceArr[i][1];
+                    }
+
+                    if (priceArr.length > 0 && sumTokenPrice > 0) {
                         // setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGreen">⦁</span> {tokenSymbolName} Price</>);
                         setChartLegendLabel(<ul className="tvlChartLegendBoxUl">
                                                 <li><div className="circleYellow"></div></li>
@@ -319,16 +322,6 @@ const TotalValue = observer((props) => {
                                                 <li><div className="tvlChartLegendLabel">TVL</div></li>
                                             </ul>);
                     }
-
-                    // // 최신 TXs 값 구하기. 최신 TXs 변화 % 계산하기
-                    // let latestTxVal = 0;
-                    // let latestTxChange = 0;
-                    // for (var j = 0; j < priceArr.length; j++) {
-                    //     if (j > 0) {
-                    //         if (priceArr[j][1] > 0) latestTxVal = priceArr[j][1];
-                    //         if (priceArr[j - 1][1] > 0 && priceArr[j][1] > 0) latestTxChange = (priceArr[j][1] - priceArr[j - 1][1]) / priceArr[j][1] * 100;
-                    //     }
-                    // }
                 }
 
                 // console.log("dailyTxArr: ", dailyTxArr);
@@ -462,7 +455,7 @@ const TotalValue = observer((props) => {
                             let tempPrice = null;
                             // let prevPrice = null;
                             // console.log("[0416] priceArr: ", priceArr);
-                            if (priceArr.length > 0) {
+                            if (priceArr.length > 0 && sumTokenPrice > 0) {
                                 tempPrice = priceArr[i][1];
                                 // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
 
@@ -583,7 +576,7 @@ const TotalValue = observer((props) => {
                     tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions(' + tempCurrencyFullNameForTx + ')']);
                 } else {
                     // 서브 페이지
-                    if (priceArr.length > 0) {
+                    if (priceArr.length > 0 && sumTokenPrice > 0) {
                         tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
                     } else {
                         tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')']);
