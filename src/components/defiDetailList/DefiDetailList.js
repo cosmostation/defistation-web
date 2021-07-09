@@ -10,6 +10,12 @@ import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyD
 
 import questionIcon from "../../assets/images/question_ic.svg";
 
+// table board icon
+import tableBoardLeftIcon from "../../assets/images/tableBoardIcons/chevron_left_black_24dp.svg";
+import tableBoardRightIcon from "../../assets/images/tableBoardIcons/chevron_right_black_24dp.svg";
+import tableBoardFirstPageIcon from "../../assets/images/tableBoardIcons/first_page_black_24dp.svg";
+import tableBoardLastPageIcon from "../../assets/images/tableBoardIcons/last_page_black_24dp.svg";
+
 const DefiDetailList = observer((props) => {
     const { global } = useStores();
 
@@ -21,9 +27,15 @@ const DefiDetailList = observer((props) => {
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
 
-    const [defiDataTag, setDefiDataTag] = useState();
+    const [defiDataTag1, setDefiDataTag1] = useState();
+    const [defiDataTag2, setDefiDataTag2] = useState();
+    const [defiDataTag3, setDefiDataTag3] = useState();
+    const [defiDataTag4, setDefiDataTag4] = useState();
+    const [defiDataTag5, setDefiDataTag5] = useState();
+    const [defiDataTag6, setDefiDataTag6] = useState();
 
-    const [defiListTableCode, setDefiListTableCode] = useState();
+    const [currentTablePage, setCurrentTablePage]   = useState(1);
+    const [totalTablePage, setTotalTablePage]       = useState(2);
 
     const [mobileFlag, setMobileFlag] = useState(false);
 
@@ -393,13 +405,6 @@ const DefiDetailList = observer((props) => {
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
                         defiDataTagArr.unshift(<tr key={i}>
-                            {/* <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
-                            <td>$ {numberWithCommas(resultArr[i][1])}</td>
-                            <td>$ {currencyNum + currencyUnit}</td>
-                            <td>{tvlChangeTag}</td>
-                            <td>{numberWithCommas(Math.floor(lockedBnbArr[i][1]))} <span style={{"color":"#f0b923"}}>BNB</span></td>
-                            <td>{bnbChangeTag} <span style={{"color":"#f0b923"}}>BNB</span></td> */}
-                            
                             <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
                             <td className="switchable2" onClick={() => switchDefiListTable()}>
                                 {tokenPriceTag}
@@ -414,11 +419,7 @@ const DefiDetailList = observer((props) => {
                                 <br /><span className="defiListTableSubText">{holdersChangeTag}</span>
                             </td>
                             <td className="switchable5" onClick={() => switchDefiListTable()}>
-                                {/* {numberWithCommas(Math.floor(lockedBnbArr[i][1]))} */}
-                                {/* {bnbLockedAmountTag} */}
-                                {
-                                    bnbLockedAmountTag == undefined ? "-" : bnbLockedAmountTag
-                                }
+                                {bnbLockedAmountTag == undefined ? "-" : bnbLockedAmountTag}
                                 <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
                             </td>
                             <td onClick={() => switchDefiListTable()}>
@@ -429,24 +430,29 @@ const DefiDetailList = observer((props) => {
                     }
                 }
 
-                setDefiDataTag(defiDataTagArr);
-                
-                // // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
-                // if (chartPeriod - resultArr.length > 0) {
-                //     let createEmptyDataLength = chartPeriod - resultArr.length;
-                //     // console.log("createEmptyDataLength: ", createEmptyDataLength);
-                //     for (var i = 0; i < createEmptyDataLength; i++) {
-                //         let calTimestamp = initTimestamp - (86400 * (i + 1));
-                //         // tempChartData 의 제일 앞에 넣어야함
-                //         tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
-                //     }
-                // }
+                // 테이블 1~2페이지
+                setDefiDataTag1(defiDataTagArr.slice(0,15));
+                setDefiDataTag2(defiDataTagArr.slice(15,29));
             })
             .catch(err => setResponseError(err));
     }
 
     function movePage(path) {
         history.push(path);
+    }
+
+    function movePageLeft() {
+        if (currentTablePage - 1 > 0) {
+            let tempPageNum = currentTablePage - 1;
+            setCurrentTablePage(tempPageNum);
+        }
+    }
+
+    function movePageRight() {
+        if (currentTablePage + 1 <= totalTablePage) {
+            let tempPageNum = currentTablePage + 1;
+            setCurrentTablePage(tempPageNum);
+        }
     }
 
     useEffect(() => {
@@ -539,10 +545,20 @@ const DefiDetailList = observer((props) => {
                     </tr>
                 </thead>
                 <tbody className="defiDetailListTableBody">
-                    {defiDataTag}
+                    {currentTablePage == 1 ? defiDataTag1 : undefined}
+                    {currentTablePage == 2 ? defiDataTag2 : undefined}
                 </tbody>
             </table>
             <br />
+
+            <ul className="tableBoardPageIconsUl">
+                <li onClick={() => setCurrentTablePage(1)}><img src={tableBoardFirstPageIcon} /></li>
+                <li onClick={() => movePageLeft()}><img src={tableBoardLeftIcon} /></li>
+                <li className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
+                <li className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
+                <li onClick={() => movePageRight()}><img src={tableBoardRightIcon} /></li>
+                <li onClick={() => setCurrentTablePage(2)}><img src={tableBoardLastPageIcon} /></li>
+            </ul>
         </div>
     );
 })

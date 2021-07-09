@@ -3228,6 +3228,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 /* -------------------------------- Footer -------------------------------- */
 
 .footer {
+  display: inline-block;
   width: 100%;
   height: 100px;
   /* font-family: Montserrat; */
@@ -3748,6 +3749,36 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   text-align: center;
   color: #ffffff;
+}
+
+.tableBoardPageIconsUl {
+  display: flex;
+  float: right;
+
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: lighter;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.8;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.tableBoardPageIconsUl li {
+  margin-left: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tableBoardPageIconsUl li img {
+  filter:invert(1);
+}
+
+.selectedPage {
+  font-weight: bold;
 }
 
 @media (min-width:1px) and (max-width:1034px) {

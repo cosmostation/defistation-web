@@ -15,8 +15,8 @@ import '../../App.css';
 
 import binanceImg1 from "../../assets/images/binanceimg.gif";
 
-import btcst from "../../assets/images/banner/Defistation Banner_BTCST.png";
-import btcstMobile from "../../assets/images/banner/banner_btcst_mobile.png";
+import bunnyPark from "../../assets/images/banner/banner_bunnypark_web.jpg";
+import bunnyParkMobile from "../../assets/images/banner/banner_bunnypark_mobile.jpg";
 
 // import bifi from "../../assets/images/banner/Defistation Banner_BiFi.png";
 // import bifiMobile from "../../assets/images/banner/banner_bifi_mobile.png";
@@ -48,7 +48,7 @@ const Banner = observer((props) => {
         adaptiveHeight: false
     };
 
-    const [bannerImg, setBannerImg] = useState(btcst);
+    const [bannerImg, setBannerImg] = useState(bunnyPark);
     const [bannerImg2, setBannerImg2] = useState(o3Swap);
     const [bannerImg3, setBannerImg3] = useState(bscLaunch);
 
@@ -56,11 +56,11 @@ const Banner = observer((props) => {
 
     useEffect(() => {
         if (window.innerWidth > 1034) {
-            setBannerImg(btcst);
+            setBannerImg(bunnyPark);
             setBannerImg2(o3Swap);
             setBannerImg3(bscLaunch);
         } else {
-            setBannerImg(btcstMobile);
+            setBannerImg(bunnyParkMobile);
             setBannerImg2(o3SwapMobile);
             setBannerImg3(bscLaunchMobile);
         }
@@ -79,10 +79,10 @@ const Banner = observer((props) => {
             <Slider {...settings} className="bannerWrapper" style={randomNum < 33 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
@@ -109,10 +109,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
@@ -162,10 +162,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
@@ -192,10 +192,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
@@ -215,10 +215,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>
@@ -245,10 +245,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick"
-                    to="https://app.btcst.finance/"
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
                     target="_blank"
-                    trackerNames={['BTC Standard Hashrate Token']}
+                    trackerNames={['bunnyPark']}
                     >
                         <div className="banner"><img src={bannerImg} /></div>
                     </ReactGA.OutboundLink>

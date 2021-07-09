@@ -232,9 +232,10 @@ const TotalValue = observer((props) => {
                 // console.log("[0604 TEST] resultArr: ", resultArr);
 
                 // chartPeriod 가 7, 30, 90 에 따라서 배열에 해당 최신 개수만 남겨두기
-                if (chartPeriod == 7 || chartPeriod == 30) {
-                    resultArr.splice(0, resultArr.length - chartPeriod);
-                }
+                // if (chartPeriod == 7 || chartPeriod == 30) {
+                    // resultArr.splice(0, resultArr.length - chartPeriod);
+                    // resultArr.splice(resultArr.length - chartPeriod, resultArr.length - 1);
+                // }
 
                 let digitForTx;
                 let currencyUnitForTx;
@@ -365,7 +366,12 @@ const TotalValue = observer((props) => {
                 }
 
                 // console.log("resultArr.length: ", resultArr.length);
-                
+                let subChartStartingCorrectionFlag = false;
+                let prevCurrencyNum = 0;
+                let nextCurrencyNum = 0;
+                let prevTokenPrice = 0;
+                let nextTokenPrice = 0;
+
                 for (var i = 0; i < resultArr.length; i++) {
                     if (i == 0) {
                         initTimestamp = resultArr[i][0];
@@ -433,8 +439,6 @@ const TotalValue = observer((props) => {
                         }
                     }
                     
-                    
-                    
                     // dailyTxArr
                     if (initProjectTvlIndex == -1) {
                         if (defiName == "DeFi") {
@@ -460,20 +464,80 @@ const TotalValue = observer((props) => {
                             // console.log("[0416] priceArr: ", priceArr);
                             if (priceArr.length > 0) {
                                 tempPrice = priceArr[i][1];
-                                tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
+                                // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
 
-                                // 서브 페이지 miniCard 용
-                                // global.changeTokenPrice(tempPrice);
+                                // 중간에 tvl, token price 에 0이 들어있는 경우 보정
+                                // ((이전 값) + (0이 아닌 다음 값)) / 2
 
-                                // if (priceArr[i - 1] != undefined) {
-                                //     prevPrice = priceArr[i - 1][1];
-                                // }
+                                if (defiName == "pancake") {
+                                    console.log("pancake 예외처리");
+                                    // --------------- tvl 보정 평균값 계산 START ---------------
+                                    let calCurrencyNum = 0;
+                                    if (currencyNum == 0) {
+                                        // 다음 0 이 아닌값 임시 조회
+                                        for (var j = i; j < resultArr.length; j++) {
+                                            nextCurrencyNum = (resultArr[j][1] / digit).toFixed(3) * 1;
+                                            if (nextCurrencyNum > 0) break;
+                                        }
+                                        calCurrencyNum = (prevCurrencyNum + nextCurrencyNum) / 2;
+                                    } else {
+                                        calCurrencyNum = currencyNum;
+                                    }
+                                    // --------------- tvl 보정 평균값 계산 END ---------------
 
-                                // let tempPriceChange24h = (tempPrice - prevPrice) / tempPrice;
-                                // if (tempPriceChange24h != 0) {
-                                //     console.log("[0423] tempPriceChange24h: ", tempPriceChange24h);
-                                //     global.changeTokenPrice24hPercent(tempPriceChange24h);
-                                // }
+                                    // --------------- token price 보정 평균값 계산 START ---------------
+                                    let calTokenPrice = 0;
+                                    if (tempPrice == 0) {
+                                        // 다음 0 이 아닌값 임시 조회
+                                        for (var j = i; j < resultArr.length; j++) {
+                                            nextTokenPrice = priceArr[j][1];
+                                            if (nextTokenPrice > 0) break;
+                                        }
+                                        calTokenPrice = (prevTokenPrice + nextTokenPrice) / 2;
+                                    } else {
+                                        calTokenPrice = tempPrice;
+                                    }
+                                    // --------------- token price 보정 평균값 계산 END ---------------
+
+                                    tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), calCurrencyNum, calTokenPrice]);
+                                    if (currencyNum > 0) prevCurrencyNum = currencyNum;  // 차트 보정용
+                                    if (tempPrice > 0) prevTokenPrice = tempPrice;  // 차트 보정용
+                                } else {
+                                    if ((currencyNum > 0 && tempPrice > 0) || subChartStartingCorrectionFlag) {
+                                        // --------------- tvl 보정 평균값 계산 START ---------------
+                                        let calCurrencyNum = 0;
+                                        if (currencyNum == 0) {
+                                            // 다음 0 이 아닌값 임시 조회
+                                            for (var j = i; j < resultArr.length; j++) {
+                                                nextCurrencyNum = (resultArr[j][1] / digit).toFixed(3) * 1;
+                                                if (nextCurrencyNum > 0) break;
+                                            }
+                                            calCurrencyNum = (prevCurrencyNum + nextCurrencyNum) / 2;
+                                        } else {
+                                            calCurrencyNum = currencyNum;
+                                        }
+                                        // --------------- tvl 보정 평균값 계산 END ---------------
+
+                                        // --------------- token price 보정 평균값 계산 START ---------------
+                                        let calTokenPrice = 0;
+                                        if (tempPrice == 0) {
+                                            // 다음 0 이 아닌값 임시 조회
+                                            for (var j = i; j < resultArr.length; j++) {
+                                                nextTokenPrice = priceArr[j][1];
+                                                if (nextTokenPrice > 0) break;
+                                            }
+                                            calTokenPrice = (prevTokenPrice + nextTokenPrice) / 2;
+                                        } else {
+                                            calTokenPrice = tempPrice;
+                                        }
+                                        // --------------- token price 보정 평균값 계산 END ---------------
+                                        tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), calCurrencyNum, calTokenPrice]);
+                                        if (currencyNum > 0) prevCurrencyNum = currencyNum;  // 차트 보정용
+                                        if (tempPrice > 0) prevTokenPrice = tempPrice;  // 차트 보정용
+
+                                        subChartStartingCorrectionFlag = true;
+                                    }
+                                }
                                 
                             } else {
                                 tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum]);
@@ -498,27 +562,6 @@ const TotalValue = observer((props) => {
                         global.changeTotalValueLockedUsd("$ " + numberWithCommas(resultArr[i][1]));
                     }
                 }
-                
-                // 차트 데이터가 7개가 안채워졌으면 앞에 채워넣기
-                // if (chartPeriod - resultArr.length > 0) {
-                //     let createEmptyDataLength = chartPeriod - resultArr.length;
-                //     // console.log("createEmptyDataLength: ", createEmptyDataLength);
-                //     for (var i = 0; i < createEmptyDataLength; i++) {
-                //         let calTimestamp = initTimestamp - (86400 * (i + 1));
-                //         // tempChartData 의 제일 앞에 넣어야함
-                //         tempChartData.unshift([getMonthAndDay(new Date(calTimestamp * 1000)), 0]);
-                //     }
-                // }
-
-                // 차트 데이터가 7개 또는 30개가 안채워졌으면 뒤에 채워넣기
-                // let chartGap = resultArr.length - tempChartData.length;
-                // if (chartGap > 0) {
-                //     let lastTimestamp = resultArr[resultArr.length - 1][0];
-                //     for (var i = 0; i < chartGap; i++) {
-                //         let calTimestamp = lastTimestamp + (86400 * (i + 1));
-                //         tempChartData.push([getMonthAndDay(new Date(calTimestamp * 1000)), null]);
-                //     }
-                // }
 
                 // 차트: 7d, 30d
                 if (tempChartData.length > chartPeriod) {
@@ -529,8 +572,6 @@ const TotalValue = observer((props) => {
                 }
 
                 tempMinTvl = Math.floor(tempMinTvl * 0.9);
-
-                console.log("[TEST 0608] tempMinTvl: ", tempMinTvl);
                 
                 // 차트 최솟값 설정(차트 모양 예쁘게 하기 위함)
                 setMinTvl(tempMinTvl);
@@ -550,14 +591,12 @@ const TotalValue = observer((props) => {
                 }
                 setChartData(tempChartData);
 
+                // tempChartData
+                // tvl과 token price 한 쌍의 데이터에서 둘중 하나가 0인 경우 해당 쌍을 제거
+                // 서브페이지의 tempChartData[0]: "x", "TVL(Billion)", "Token Price(USD)"
+                console.log("[0708] tempChartData: ", tempChartData);
+                
 
-
-
-                // if (defiName == "DeFi") {
-                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions']);
-                // } else {
-                //     setChartData(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
-                // }
 
 
 
@@ -1007,8 +1046,8 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "BTC Standard Hashrate Token" || 
-            props.defiName == "O3 Swap") {
+        if (props.defiName == "O3 Swap" ||
+        props.defiName == "BunnyPark") {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 
@@ -1184,7 +1223,7 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
-                                            minValue: minTvl,
+                                            // minValue: minTvl,
                                             textStyle: {
                                                 color: '#757f8e',
                                             },
@@ -1233,7 +1272,18 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#3D424D',
                                         },
                                         vAxis: {
-                                            minValue: props.defiName == "JulSwap" || props.defiName == "BiFi" || props.defiName == "ForTube" ? 0.0001 : minTvl,
+                                            minValue:   props.defiName == "JulSwap" || 
+                                                        props.defiName == "BiFi" || 
+                                                        props.defiName == "ForTube" || 
+                                                        props.defiName == "Bakery Swap" || 
+                                                        props.defiName == "Nerve Finance" || 
+                                                        props.defiName == "Alpha Homora" || 
+                                                        props.defiName == "Smoothy" || 
+                                                        props.defiName == "Elephant Money" ||
+                                                        props.defiName == "Demex" ||
+                                                        props.defiName == "Kebab Finance" ||
+                                                        props.defiName == "ApeSwap" ? 
+                                                        0.0001 : minTvl,
                                             textStyle: {
                                                 color: '#757f8e',
                                             },
