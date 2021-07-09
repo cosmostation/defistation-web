@@ -67,6 +67,7 @@ import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
 import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
+import biswap from "../../assets/images/defiLogo/biswap@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -298,9 +299,12 @@ const DefiList = observer((props) => {
             case "WePiggy":
                 resultImg = wepiggy;
                 break;
-            case "rabbitfinance":
+            case "Rabbit Finance":
                 resultImg = rabbitfinance;
                 break;
+            case "Biswap":
+                resultImg = biswap;
+                break;    
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

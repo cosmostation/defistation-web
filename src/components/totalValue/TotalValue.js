@@ -88,6 +88,7 @@ import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
 import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
+import biswap from "../../assets/images/defiLogo/biswap@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -873,9 +874,12 @@ const TotalValue = observer((props) => {
             case "WePiggy":
                 setDefiIcon(wepiggy);
                 break;
-            case "rabbitfinance":
+            case "Rabbit Finance":
                 setDefiIcon(rabbitfinance);
                 break;
+            case "Biswap":
+                setDefiIcon(biswap);
+                break;    
             default:
                 let logoUrl = findLogoUrl(defiName);
 
