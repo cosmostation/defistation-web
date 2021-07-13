@@ -75,6 +75,7 @@ import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
 import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
 import biswap from "../../assets/images/defiLogo/biswap@2x.png";
+import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -366,7 +367,11 @@ const TheDefiList = observer(() => {
                 case "Biswap":
                     listFlag = true;
                     defiIconArr.push(biswap);
-                    break;     
+                    break;  
+                case "InsurAce Protocol":
+                    listFlag = true;
+                    defiIconArr.push(insuraceprotocol);
+                    break;
                 default:
                     // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                     if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {

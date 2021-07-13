@@ -68,6 +68,7 @@ import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
 import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
 import biswap from "../../assets/images/defiLogo/biswap@2x.png";
+import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -304,7 +305,10 @@ const DefiList = observer((props) => {
                 break;
             case "Biswap":
                 resultImg = biswap;
-                break;    
+                break;
+            case "InsurAce Protocol":
+                resultImg = insuraceprotocol;
+                break;
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
