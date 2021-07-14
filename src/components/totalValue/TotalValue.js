@@ -92,6 +92,7 @@ import biswap from "../../assets/images/defiLogo/biswap@2x.png";
 import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 import ten from "../../assets/images/defiLogo/ten@2x.png";
 import mdex from "../../assets/images/defiLogo/mdex@2x.png";
+import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -891,7 +892,10 @@ const TotalValue = observer((props) => {
                 break;
             case "MDEX":
                 setDefiIcon(mdex);
-                break;         
+                break;
+            case "Pumpy":
+                setDefiIcon(pumpy);
+                break;             
             default:
                 let logoUrl = findLogoUrl(defiName);
 

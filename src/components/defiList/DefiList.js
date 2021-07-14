@@ -71,6 +71,7 @@ import biswap from "../../assets/images/defiLogo/biswap@2x.png";
 import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 import ten from "../../assets/images/defiLogo/ten@2x.png";
 import mdex from "../../assets/images/defiLogo/mdex@2x.png";
+import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -316,7 +317,10 @@ const DefiList = observer((props) => {
                 break;
             case "MDEX":
                 resultImg = mdex;
-                break;        
+                break;
+            case "Pumpy":
+                resultImg = pumpy;
+                break;            
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
