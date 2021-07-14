@@ -91,6 +91,7 @@ import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
 import biswap from "../../assets/images/defiLogo/biswap@2x.png";
 import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 import ten from "../../assets/images/defiLogo/ten@2x.png";
+import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -887,7 +888,10 @@ const TotalValue = observer((props) => {
                 break; 
             case "TEN":
                 setDefiIcon(ten);
-                break;     
+                break;
+            case "MDEX":
+                setDefiIcon(mdex);
+                break;         
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -1290,6 +1294,7 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "Elephant Money" ||
                                                         props.defiName == "Demex" ||
                                                         props.defiName == "Kebab Finance" ||
+                                                        props.defiName == "Biswap" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
