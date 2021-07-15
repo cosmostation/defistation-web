@@ -305,6 +305,26 @@ hr.sideMenuLine {
   margin-left: 9px;
 }
 
+.rightTopSponsored {
+  float: right;
+  position: absolute;
+  margin-left: 204px !important;
+}
+
+@media (min-width:769px) and (max-width:1034px) {
+  .rightTopSponsored {
+    margin-left: 224px !important;
+  }
+}
+
+@media (min-width:1px) and (max-width:768px) {
+  .rightTopSponsored {
+    float: right;
+    position: inherit;
+    margin-left: 0px;
+  }
+}
+
 @media (min-width:1px) and (max-width:1034px) {
   .navBox {
     display: none;
@@ -4109,6 +4129,10 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   text-align: left;
   color: #9BA5B5;
+}
+
+.projectsCardSponsored {
+  border: solid 1px #34AB62;
 }
 
 @media (min-width:1px) and (max-width:767px) {

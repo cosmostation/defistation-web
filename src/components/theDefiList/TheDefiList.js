@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react';
 // import useStores from '../../useStores';
 
 import { textEllipsis } from '../../util/Util';
+import { getSponsors } from '../../sponsor/Sponsor';
 
 import '../../App.css';
 
@@ -79,6 +80,7 @@ import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.p
 import ten from "../../assets/images/defiLogo/ten@2x.png";
 import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
+import bsclaunch from "../../assets/images/defiLogo/bsclaunch@2x.png";
 
 const TheDefiList = observer(() => {
     // const { global } = useStores();
@@ -94,6 +96,7 @@ const TheDefiList = observer(() => {
     const [defiName, setDefiName] = useState("");
     
     const [defiListCode, setDefiListCode] = useState();
+    const [defiListCodeForSponsored, setDefiListCodeForSponsored] = useState();
 
     function movePage(path) {
         history.push(path);
@@ -102,6 +105,7 @@ const TheDefiList = observer(() => {
     function createDefiProjectCard() {
 
         let codeArr = [];
+        let codeArrForSponsored = [];
         let defiIconArr = [];
 
         // https://s2.coinmarketcap.com/static/img/coins/64x64/1.png
@@ -401,6 +405,12 @@ const TheDefiList = observer(() => {
                     break;    
             }
 
+            let sponsoredFlag = false;
+            if (getSponsors().indexOf(defistationApplicationList[i]["Official Project Name"]) != -1) {
+                sponsoredFlag = true;
+            }
+
+            // Sponsored
             if (listFlag) {
                 codeArr.push(
                     <li onClick={() => history.push("/" + defiInfoName)}>
@@ -413,6 +423,36 @@ const TheDefiList = observer(() => {
                         <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
                     </li>
                 );
+            } else if (sponsoredFlag) {
+
+                // 예외처리(url 링크)
+                if (defistationApplicationList[i]["Official Project Name"] == "BSClaunch") {
+                    codeArrForSponsored.push(
+                        <li onClick={() => window.open("https://bsclaunch.org/", "_blank")} className="projectsCardSponsored">
+                            <div className="sponsored rightTopSponsored">Sponsored</div>
+                            <img 
+                                src={bsclaunch} 
+                                width="30px" 
+                                onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                            /><br />
+                            <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                            <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
+                        </li>
+                    );
+                } else {
+                    codeArrForSponsored.push(
+                        <li onClick={() => history.push("/" + defiInfoName)} className="projectsCardSponsored">
+                            <div className="sponsored rightTopSponsored">Sponsored</div>
+                            <img 
+                                src={defiIconArr[i]} 
+                                width="30px" 
+                                onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                            /><br />
+                            <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                            <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
+                        </li>
+                    );
+                }
             } else {
                 let tempUrl = defistationApplicationList[i]["Project Official Website (URL)"];
                 codeArr.push(
@@ -431,6 +471,7 @@ const TheDefiList = observer(() => {
         }
 
         setDefiListCode(codeArr);
+        setDefiListCodeForSponsored(codeArrForSponsored);
     }
 
     useEffect(() => {
@@ -470,6 +511,7 @@ const TheDefiList = observer(() => {
                     </ul>
                 </div>
                 <ul className="theDefiListUl">
+                    {defiListCodeForSponsored}
                     {defiListCode}
                 </ul>
                 <Footer />
