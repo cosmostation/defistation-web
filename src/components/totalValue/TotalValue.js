@@ -3,9 +3,9 @@ import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import _ from "lodash";
 import useStores from '../../useStores';
+import { getSponsors } from '../../sponsor/Sponsor';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
-
 import TvlLink from './tvlLink/TvlLink';
 
 import Chart from "react-google-charts";
@@ -1062,8 +1062,7 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "O3 Swap" ||
-        props.defiName == "BunnyPark") {
+        if (getSponsors().indexOf(props.defiName ) != -1) {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 
