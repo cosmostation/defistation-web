@@ -30,6 +30,9 @@ import o3SwapMobile from "../../assets/images/banner/banner_o3swap_mobile.jpg";
 import bscLaunch from "../../assets/images/banner/banner_bsclaunch_web.gif";
 import bscLaunchMobile from "../../assets/images/banner/banner_bsclaunch_mobile.gif";
 
+import moonLiftProtocol from "../../assets/images/banner/banner_moonliftprotocol_web.png";
+import moonLiftProtocolMobile from "../../assets/images/banner/banner_moonliftprotocol_mobile.jpg";
+
 // Google Analytics
 import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
 
@@ -51,6 +54,7 @@ const Banner = observer((props) => {
     const [bannerImg, setBannerImg] = useState(bunnyPark);
     const [bannerImg2, setBannerImg2] = useState(o3Swap);
     const [bannerImg3, setBannerImg3] = useState(bscLaunch);
+    const [bannerImg4, setBannerImg4] = useState(moonLiftProtocol);
 
     const [randomNum, setRandomNum] = useState(0);
 
@@ -59,10 +63,12 @@ const Banner = observer((props) => {
             setBannerImg(bunnyPark);
             setBannerImg2(o3Swap);
             setBannerImg3(bscLaunch);
+            setBannerImg4(moonLiftProtocol);
         } else {
             setBannerImg(bunnyParkMobile);
             setBannerImg2(o3SwapMobile);
             setBannerImg3(bscLaunchMobile);
+            setBannerImg4(moonLiftProtocolMobile);
         }
         
         let tempRandom = generateRandom(0, 100);
@@ -76,7 +82,7 @@ const Banner = observer((props) => {
     return (
         <div>
             {/* 1 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum < 33 ? undefined : { display: "none" }}>
+            <Slider {...settings} className="bannerWrapper" style={randomNum < 25 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(bunnyPark)"
@@ -109,37 +115,17 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bunnyPark)"
-                    to="https://www.bunnypark.com/"
+                    eventLabel="bannerClick(MoonLift Protocol)"
+                    to="https://moonlift.io/"
                     target="_blank"
-                    trackerNames={['bunnyPark']}
+                    trackerNames={['MoonLift Protocol']}
                     >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com/vault"
-                    target="_blank"
-                    trackerNames={['O3 Swap']}
-                    >
-                        <div className="banner"><img src={bannerImg2} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bscLaunch)"
-                    to="https://bsclaunch.org/"
-                    target="_blank"
-                    trackerNames={['bscLaunch']}
-                    >
-                        <div className="banner"><img src={bannerImg3} /></div>
+                        <div className="banner"><img src={bannerImg4} /></div>
                     </ReactGA.OutboundLink>
                 </div>
             </Slider>
             {/* 2 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum >= 33 && randomNum < 66 ? undefined : { display: "none" }}>
+            <Slider {...settings} className="bannerWrapper" style={randomNum >= 25 && randomNum < 50 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(O3 Swap)"
@@ -162,32 +148,12 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bunnyPark)"
-                    to="https://www.bunnypark.com/"
+                    eventLabel="bannerClick(MoonLift Protocol)"
+                    to="https://moonlift.io/"
                     target="_blank"
-                    trackerNames={['bunnyPark']}
+                    trackerNames={['MoonLift Protocol']}
                     >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com/vault"
-                    target="_blank"
-                    trackerNames={['O3 Swap']}
-                    >
-                        <div className="banner"><img src={bannerImg2} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bscLaunch)"
-                    to="https://bsclaunch.org/"
-                    target="_blank"
-                    trackerNames={['bscLaunch']}
-                    >
-                        <div className="banner"><img src={bannerImg3} /></div>
+                        <div className="banner"><img src={bannerImg4} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>
@@ -202,7 +168,7 @@ const Banner = observer((props) => {
                 </div>
             </Slider>
             {/* 3 */}
-            <Slider {...settings} className="bannerWrapper" style={randomNum > 66 ? undefined : { display: "none" }}>
+            <Slider {...settings} className="bannerWrapper" style={randomNum >= 50 && randomNum < 75 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
                     eventLabel="bannerClick(bscLaunch)"
@@ -211,6 +177,49 @@ const Banner = observer((props) => {
                     trackerNames={['bscLaunch']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(MoonLift Protocol)"
+                    to="https://moonlift.io/"
+                    target="_blank"
+                    trackerNames={['MoonLift Protocol']}
+                    >
+                        <div className="banner"><img src={bannerImg4} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(bunnyPark)"
+                    to="https://www.bunnypark.com/"
+                    target="_blank"
+                    trackerNames={['bunnyPark']}
+                    >
+                        <div className="banner"><img src={bannerImg} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(O3 Swap)"
+                    to="https://o3swap.com/vault"
+                    target="_blank"
+                    trackerNames={['O3 Swap']}
+                    >
+                        <div className="banner"><img src={bannerImg2} /></div>
+                    </ReactGA.OutboundLink>
+                </div>
+            </Slider>
+            {/* 4 */}
+            <Slider {...settings} className="bannerWrapper" style={randomNum > 75 ? undefined : { display: "none" }}>
+                <div>
+                    <ReactGA.OutboundLink
+                    eventLabel="bannerClick(MoonLift Protocol)"
+                    to="https://moonlift.io/"
+                    target="_blank"
+                    trackerNames={['MoonLift Protocol']}
+                    >
+                        <div className="banner"><img src={bannerImg4} /></div>
                     </ReactGA.OutboundLink>
                 </div>
                 <div>
@@ -241,26 +250,6 @@ const Banner = observer((props) => {
                     trackerNames={['bscLaunch']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(bunnyPark)"
-                    to="https://www.bunnypark.com/"
-                    target="_blank"
-                    trackerNames={['bunnyPark']}
-                    >
-                        <div className="banner"><img src={bannerImg} /></div>
-                    </ReactGA.OutboundLink>
-                </div>
-                <div>
-                    <ReactGA.OutboundLink
-                    eventLabel="bannerClick(O3 Swap)"
-                    to="https://o3swap.com/vault"
-                    target="_blank"
-                    trackerNames={['O3 Swap']}
-                    >
-                        <div className="banner"><img src={bannerImg2} /></div>
                     </ReactGA.OutboundLink>
                 </div>
             </Slider>

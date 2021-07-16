@@ -1,7 +1,9 @@
 import React, { Component, Suspense, useState, useEffect } from "react";
 import { useHistory, useLocation } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-// import useStores from '../../useStores';
+import _ from "lodash";
+
+import useStores from '../../useStores';
 
 import { textEllipsis } from '../../util/Util';
 import { getSponsors } from '../../sponsor/Sponsor';
@@ -83,7 +85,7 @@ import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import bsclaunch from "../../assets/images/defiLogo/bsclaunch@2x.png";
 
 const TheDefiList = observer(() => {
-    // const { global } = useStores();
+    const { global } = useStores();
 
     const location = useLocation();
 
@@ -96,353 +98,360 @@ const TheDefiList = observer(() => {
     const [defiName, setDefiName] = useState("");
     
     const [defiListCode, setDefiListCode] = useState();
+    const [defiListCodeForListing, setDefiListCodeForListing] = useState();
     const [defiListCodeForSponsored, setDefiListCodeForSponsored] = useState();
+
+
 
     function movePage(path) {
         history.push(path);
     }
 
-    function createDefiProjectCard() {
+    const [urlFlag1, setUrlFlag1] = useState(false);
 
-        let codeArr = [];
-        let codeArrForSponsored = [];
-        let defiIconArr = [];
+    async function getDefiList() {
+        if (urlFlag1) return;
+        setUrlFlag1(true);
 
-        // https://s2.coinmarketcap.com/static/img/coins/64x64/1.png
+        console.count("[0716] getDefiListCall");
+        // if (global.chartDataDetails == null) return;
+        // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
-        // "Timestamp":"11/26/2020 21:25:11","Is your project operating on BSC?":"Yes","Official Project Name":"PARSIQ","Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)":"","Project Category":"Reverse Oracle","When did the project launch?":"","Do you have a governance token?":"","If yes, please provide the contract address for your governance token.":"","Official Website":"https://parsiq.net/","Github URL":"https://twitter.com/parsiq_net\nhttps://t.me/parsiq_group\nhttps://medium.com/parsiq","Developer Docs URL":"","Twitter URL":"","Telegram(EN) URL":"","Medium Blog URL":"","Discord(EN) URL":"","Detail":"PARSIQ is a universal middleware monitoring and automation layer that turns data into actions by providing a seamless bridge between blockchains and the real world.","Detailed Project Description":"PARSIQ in DeFI\n\nPARSIQ empower players in the DeFi and blockchain ecosystem to easily build monitoring and automation solutions (integrated with a variety of off-chain data providers, web services and apps) on our platform and as a result, save valuable time, save money and avoid complexities of monitoring events on the blockchain at scale, while providing real-time actionable data solutions for superior decision-making. PARSIQ is blockchain-agnostic and primed for blockchain interoperability.\n \nWhat is PARSIQ?\n \nPARSIQ is a monitoring and automation platform that bridges blockchains and off-chain, helping users make blockchain data easily consumable and actionable. We allow anyone to monitor blockchain events in real time  and set up triggers that if a type of event happens on the blockchain, the data is processed, transformed according to user’s conditional logic, enriched with off-chain data (if relevant) and then delivered to an app or device of choice for further actions. Essentially, IFTTT (if-this-then-that) for blockchains, allowing to apply if-this-then-that logic for real-time blockchain transactions at scale, with programmable off-chain reactions to those events.\n","Security Information":"NA" },
+        const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
+            method: 'GET',
+            headers: {
+                Authorization: global.auth
+            }
+        });
+        res
+            .json()
+            .then(res => {
+                // console.log("res: ", res);
+                // res[i].name
+
+                let listingProjectIndexArr = [];
+
+                // tvl 순서대로 카드 정렬
+                for (var i = 0; i < res.length; i++) {
+                    // res[i].name 으로 defistationApplicationList 의 index 순번 찾기
+                    let defiApplicationIndex = _.findIndex(defistationApplicationList, function(project) {
+                        let projectName = res[i].name;
+                        if (projectName == "pancake") projectName = "PancakeSwap";
+                        return project["Official Project Name"] == projectName;
+                    });
+                    listingProjectIndexArr.push(defiApplicationIndex);
+                }
+
+                console.log("listingProjectIndexArr: ", listingProjectIndexArr);
+
+                let codeArr = [];
+                let codeArrForListing = [];
+                codeArrForListing.length = res.length; // lockedUsd
+                let codeArrForSponsored = [];
+                let defiIconArr = [];
+
+                for (var i = 0; i < defistationApplicationList.length; i++) {
+                    let defiInfoName = (defistationApplicationList[i]["Official Project Name"]).toLowerCase();
         
-        // defistationApplicationList
-        for (var i = 0; i < defistationApplicationList.length; i++) {
-            // console.log(defistationApplicationList[i]["Email Address"]);
-
-            // defistationApplicationList[i]["Official Project Name"]
-
-            let defiInfoName = (defistationApplicationList[i]["Official Project Name"]).toLowerCase();
-
-            // 예외처리
-            if (defiInfoName == "pancakeswap") {
-                defiInfoName = "pancake";
-            }
-
-            // 이름에 공백 제거
-            if (defiInfoName.indexOf(" ") > 0) {
-                defiInfoName = defiInfoName.replace(" ", "");
-            }
-
-            // . 제거
-            if (defiInfoName.indexOf(".") > 0) {
-                defiInfoName = defiInfoName.replace(".", "");
-            }
-
-            // defistation 에 리스팅됐는가? 
-            let listFlag = false;
-
-            // 리스팅 된거 체크
-
-            // 아이콘 지금까지 저장한거 체크. 이후로는 defistationApplicationList.json 에 있는 코인 이미지 url로 사용
-            
-            // console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
-
-            switch (defistationApplicationList[i]["Official Project Name"]) {
-                case "pancake":
-                case "PancakeSwap":    
-                    listFlag = true;
-                    defiIconArr.push(pancake);
-                    break;
-                case "Peach Swap":
-                    defiIconArr.push(peachswap);
-                    break;   
-                case "Streamity":
-                    defiIconArr.push(streamity);
-                    break;   
-                case "bscSwap":
-                case "BSC Swap":
-                    listFlag = true;
-                    defiIconArr.push(bscswap);
-                    break;   
-                case "Spartan Protocol":
-                    listFlag = true;
-                    defiIconArr.push(spartanprotocol);
-                    break;   
-                case "Burger Swap":
-                    listFlag = true;
-                    defiIconArr.push(burgerswap);
-                    break;   
-                case "Stakecow":
-                case "Milk Protocol":
-                    listFlag = true;
-                    defiIconArr.push(stakecow);
-                    break;   
-                case "Alpha Finance":
-                    defiIconArr.push(alphafinance);
-                    break;   
-                case "Cream Finance":
-                    listFlag = true;
-                    defiIconArr.push(creamfinance);
-                    break;   
-                case "Bakery Swap":
-                    listFlag = true;
-                    defiIconArr.push(bakeryswap);
-                    break;   
-                case "ForTube":
-                    listFlag = true;
-                    defiIconArr.push(fortube);
-                    break;   
-                case "FryWorld":
-                    listFlag = true;
-                    defiIconArr.push(fryworld);
-                    break;   
-                case "beefy.finance":
-                    listFlag = true;
-                    defiIconArr.push(beefyfinance);
-                    break;
-                case "Narwhalswap":
-                case "NarwhalSwap":
-                    listFlag = true;
-                    defiIconArr.push(narwhalswap);
-                    break;   
-                case "STORMSWAP":
-                case "Storm Swap":  
-                    listFlag = true;  
-                    defiIconArr.push(stormswap);
-                    break;       
-                case "BnEX":
-                    listFlag = true;
-                    defiIconArr.push(bnexchange);
-                    break;
-                case "7up.finance":
-                case "7UP Finance":    
-                    defiIconArr.push(sevenupfinance);
-                    break;
-                case "BFis.finance":
-                case "BFis.Finance":
-                    defiIconArr.push(bfisfinance);
-                    break;
-                case "bStable.finance":
-                case "bStable":
-                    defiIconArr.push(bstablefinance);
-                    break;
-                case "Dego":
-                case "Dego.finance":    
-                    defiIconArr.push(dego);
-                    break;
-                case "Equator.finance":
-                case "Equator.Finance":
-                    defiIconArr.push(equatorfinance);
-                    break;
-                case "StableXSwap":
-                    defiIconArr.push(stablexswap);
-                    break;
-                case "QIAN":
-                    listFlag = true;
-                    defiIconArr.push(qian);
-                    break;    
-                case "PancakeBunny":
-                    listFlag = true;
-                    defiIconArr.push(pancakebunny);
-                    break;
-                case "JulSwap":
-                case "Julswap":   
-                    listFlag = true; 
-                    defiIconArr.push(julswap);
-                    break;
-                case "JustLiquidity":
-                    defiIconArr.push(justliquidity);
-                    break;
-                case "AnySwap":
-                    listFlag = true;
-                    defiIconArr.push(anyswap);
-                    break;
-                case "CokeFinance":
-                    listFlag = true;
-                    defiIconArr.push(cokefinance);
-                    break;
-                case "renVM":
-                    defiIconArr.push(renvm);
-                    break;
-                case "UniFi":
-                    defiIconArr.push(unifiprotocol);
-                    break;
-                case "Venus":
-                    listFlag = true;
-                    defiIconArr.push(venus);
-                    break;   
-                case "Thugs":
-                    listFlag = true;
-                    defiIconArr.push(thugs);
-                    break; 
-                case "CBerry":
-                    listFlag = true;
-                    defiIconArr.push(cberry);
-                    break; 
-                case "Jetfuel.Finance":
-                    defiIconArr.push(jetfuel);
-                    break;  
-                case "ACryptoS":
-                    listFlag = true;
-                    defiIconArr.push(acryptos);
-                    break;   
-                case "SoftDrinkSwap":
-                    defiIconArr.push(softdrinkswap);
-                    break;    
-                case "Nyanswop":
-                    defiIconArr.push(nyanswap);
-                    break;
-                case "BSC Farm":
-                    defiIconArr.push(bscfarm);    
-                    break;   
-                case "bDollar Protocol":
-                    listFlag = true;
-                    defiIconArr.push(bdollar);    
-                    break;   
-                case "Autofarm":
-                    listFlag = true;
-                    defiIconArr.push(autofarm);    
-                    break;   
-                case "Binance Agile Set Dollar":
-                    defiIconArr.push(basddollar);    
-                    break;
-                case "BiFi":
-                    listFlag = true;
-                    defiIconArr.push(bifi);    
-                    break;
-                case "Multi-Chain Lend (MCL)":
-                    listFlag = true;
-                    defiIconArr.push(multiplier);    
-                    break;    
-                case "BlackHoleSwap":
-                    listFlag = true;
-                    defiIconArr.push(blackholeswap);    
-                    break;
-                case "Pika Finance":
-                    listFlag = true;
-                    defiIconArr.push(pikafinance);    
-                    break;  
-                case "Bscrunner":
-                    listFlag = true;
-                    defiIconArr.push(bscrunner);
-                    break;  
-                case "Ellipsis Finance":
-                    listFlag = true;
-                    defiIconArr.push(ellipsisfinance);
-                    break;
-                case "DODO":
-                    listFlag = true;
-                    defiIconArr.push(dodo);
-                    break;
-                case "Demex":
-                    listFlag = true;
-                    defiIconArr.push(demex);
-                    break;
-                case "Helmet":
-                    listFlag = true;
-                    defiIconArr.push(helmet);
-                    break;
-                case "ARIES FINANCIAL":
-                    listFlag = true;
-                    defiIconArr.push(ariesfinancial);
-                    break;
-                case "Alpha Homora":
-                    listFlag = true;
-                    defiIconArr.push(alphahomora);
-                    break;    
-                case "Cobalt.finance":
-                    listFlag = true;
-                    defiIconArr.push(cobaltfinance);
-                    break;
-                case "SwampFinance":
-                    listFlag = true;
-                    defiIconArr.push(swampfinance);
-                    break;
-                case "Nominex":
-                    listFlag = true;
-                    defiIconArr.push(nominex);
-                    break;
-                case "Wault.Finance":
-                    listFlag = true;
-                    defiIconArr.push(waultfinance);
-                    break;
-                case "WePiggy":
-                    listFlag = true;
-                    defiIconArr.push(wepiggy);
-                    break;
-                case "Rabbit Finance":
-                    listFlag = true;
-                    defiIconArr.push(rabbitfinance);
-                    break;
-                case "Biswap":
-                    listFlag = true;
-                    defiIconArr.push(biswap);
-                    break;  
-                case "InsurAce Protocol":
-                    listFlag = true;
-                    defiIconArr.push(insuraceprotocol);
-                    break;
-                case "TEN":
-                    listFlag = true;
-                    defiIconArr.push(ten);
-                    break;  
-                case "MDEX":
-                    listFlag = true;
-                    defiIconArr.push(mdex);
-                    break; 
-                case "Pumpy":
-                    listFlag = true;
-                    defiIconArr.push(pumpy);
-                    break;            
-                default:
-                    // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
-                    if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {
-                        if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"].indexOf("https://drive.google.com") > -1) {
-                            defiIconArr.push(defaultIcon);
-                        } else {
-                            defiIconArr.push(defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"]);
-                        }
-                    } else {
-                        defiIconArr.push(defaultIcon);
+                    // 예외처리
+                    if (defiInfoName == "pancakeswap") {
+                        defiInfoName = "pancake";
                     }
-                    break;    
-            }
+        
+                    // 이름에 공백 제거
+                    if (defiInfoName.indexOf(" ") > 0) {
+                        defiInfoName = defiInfoName.replace(" ", "");
+                    }
+        
+                    // . 제거
+                    if (defiInfoName.indexOf(".") > 0) {
+                        defiInfoName = defiInfoName.replace(".", "");
+                    }
+        
+                    // defistation 에 리스팅됐는가? 
+                    let listFlag = false;
+        
+                    // 리스팅 된거 체크
+        
+                    // 아이콘 지금까지 저장한거 체크. 이후로는 defistationApplicationList.json 에 있는 코인 이미지 url로 사용
+                    
+                    // console.log("Official Project Name: ", defistationApplicationList[i]["Official Project Name"]);
+        
+                    switch (defistationApplicationList[i]["Official Project Name"]) {
+                        case "pancake":
+                        case "PancakeSwap":    
+                            listFlag = true;
+                            defiIconArr.push(pancake);
+                            break;
+                        case "Peach Swap":
+                            defiIconArr.push(peachswap);
+                            break;   
+                        case "Streamity":
+                            defiIconArr.push(streamity);
+                            break;   
+                        case "bscSwap":
+                        case "BSC Swap":
+                            listFlag = true;
+                            defiIconArr.push(bscswap);
+                            break;   
+                        case "Spartan Protocol":
+                            listFlag = true;
+                            defiIconArr.push(spartanprotocol);
+                            break;   
+                        case "Burger Swap":
+                            listFlag = true;
+                            defiIconArr.push(burgerswap);
+                            break;   
+                        case "Stakecow":
+                        case "Milk Protocol":
+                            listFlag = true;
+                            defiIconArr.push(stakecow);
+                            break;   
+                        case "Alpha Finance":
+                            defiIconArr.push(alphafinance);
+                            break;   
+                        case "Cream Finance":
+                            listFlag = true;
+                            defiIconArr.push(creamfinance);
+                            break;   
+                        case "Bakery Swap":
+                            listFlag = true;
+                            defiIconArr.push(bakeryswap);
+                            break;   
+                        case "ForTube":
+                            listFlag = true;
+                            defiIconArr.push(fortube);
+                            break;   
+                        case "FryWorld":
+                            listFlag = true;
+                            defiIconArr.push(fryworld);
+                            break;   
+                        case "beefy.finance":
+                            listFlag = true;
+                            defiIconArr.push(beefyfinance);
+                            break;
+                        case "Narwhalswap":
+                        case "NarwhalSwap":
+                            listFlag = true;
+                            defiIconArr.push(narwhalswap);
+                            break;   
+                        case "STORMSWAP":
+                        case "Storm Swap":  
+                            listFlag = true;  
+                            defiIconArr.push(stormswap);
+                            break;       
+                        case "BnEX":
+                            listFlag = true;
+                            defiIconArr.push(bnexchange);
+                            break;
+                        case "7up.finance":
+                        case "7UP Finance":    
+                            defiIconArr.push(sevenupfinance);
+                            break;
+                        case "BFis.finance":
+                        case "BFis.Finance":
+                            defiIconArr.push(bfisfinance);
+                            break;
+                        case "bStable.finance":
+                        case "bStable":
+                            defiIconArr.push(bstablefinance);
+                            break;
+                        case "Dego":
+                        case "Dego.finance":    
+                            defiIconArr.push(dego);
+                            break;
+                        case "Equator.finance":
+                        case "Equator.Finance":
+                            defiIconArr.push(equatorfinance);
+                            break;
+                        case "StableXSwap":
+                            defiIconArr.push(stablexswap);
+                            break;
+                        case "QIAN":
+                            listFlag = true;
+                            defiIconArr.push(qian);
+                            break;    
+                        case "PancakeBunny":
+                            listFlag = true;
+                            defiIconArr.push(pancakebunny);
+                            break;
+                        case "JulSwap":
+                        case "Julswap":   
+                            listFlag = true; 
+                            defiIconArr.push(julswap);
+                            break;
+                        case "JustLiquidity":
+                            defiIconArr.push(justliquidity);
+                            break;
+                        case "AnySwap":
+                            listFlag = true;
+                            defiIconArr.push(anyswap);
+                            break;
+                        case "CokeFinance":
+                            listFlag = true;
+                            defiIconArr.push(cokefinance);
+                            break;
+                        case "renVM":
+                            defiIconArr.push(renvm);
+                            break;
+                        case "UniFi":
+                            defiIconArr.push(unifiprotocol);
+                            break;
+                        case "Venus":
+                            listFlag = true;
+                            defiIconArr.push(venus);
+                            break;   
+                        case "Thugs":
+                            listFlag = true;
+                            defiIconArr.push(thugs);
+                            break; 
+                        case "CBerry":
+                            listFlag = true;
+                            defiIconArr.push(cberry);
+                            break; 
+                        case "Jetfuel.Finance":
+                            defiIconArr.push(jetfuel);
+                            break;  
+                        case "ACryptoS":
+                            listFlag = true;
+                            defiIconArr.push(acryptos);
+                            break;   
+                        case "SoftDrinkSwap":
+                            defiIconArr.push(softdrinkswap);
+                            break;    
+                        case "Nyanswop":
+                            defiIconArr.push(nyanswap);
+                            break;
+                        case "BSC Farm":
+                            defiIconArr.push(bscfarm);    
+                            break;   
+                        case "bDollar Protocol":
+                            listFlag = true;
+                            defiIconArr.push(bdollar);    
+                            break;   
+                        case "Autofarm":
+                            listFlag = true;
+                            defiIconArr.push(autofarm);    
+                            break;   
+                        case "Binance Agile Set Dollar":
+                            defiIconArr.push(basddollar);    
+                            break;
+                        case "BiFi":
+                            listFlag = true;
+                            defiIconArr.push(bifi);    
+                            break;
+                        case "Multi-Chain Lend (MCL)":
+                            listFlag = true;
+                            defiIconArr.push(multiplier);    
+                            break;    
+                        case "BlackHoleSwap":
+                            listFlag = true;
+                            defiIconArr.push(blackholeswap);    
+                            break;
+                        case "Pika Finance":
+                            listFlag = true;
+                            defiIconArr.push(pikafinance);    
+                            break;  
+                        case "Bscrunner":
+                            listFlag = true;
+                            defiIconArr.push(bscrunner);
+                            break;  
+                        case "Ellipsis Finance":
+                            listFlag = true;
+                            defiIconArr.push(ellipsisfinance);
+                            break;
+                        case "DODO":
+                            listFlag = true;
+                            defiIconArr.push(dodo);
+                            break;
+                        case "Demex":
+                            listFlag = true;
+                            defiIconArr.push(demex);
+                            break;
+                        case "Helmet":
+                            listFlag = true;
+                            defiIconArr.push(helmet);
+                            break;
+                        case "ARIES FINANCIAL":
+                            listFlag = true;
+                            defiIconArr.push(ariesfinancial);
+                            break;
+                        case "Alpha Homora":
+                            listFlag = true;
+                            defiIconArr.push(alphahomora);
+                            break;    
+                        case "Cobalt.finance":
+                            listFlag = true;
+                            defiIconArr.push(cobaltfinance);
+                            break;
+                        case "SwampFinance":
+                            listFlag = true;
+                            defiIconArr.push(swampfinance);
+                            break;
+                        case "Nominex":
+                            listFlag = true;
+                            defiIconArr.push(nominex);
+                            break;
+                        case "Wault.Finance":
+                            listFlag = true;
+                            defiIconArr.push(waultfinance);
+                            break;
+                        case "WePiggy":
+                            listFlag = true;
+                            defiIconArr.push(wepiggy);
+                            break;
+                        case "Rabbit Finance":
+                            listFlag = true;
+                            defiIconArr.push(rabbitfinance);
+                            break;
+                        case "Biswap":
+                            listFlag = true;
+                            defiIconArr.push(biswap);
+                            break;  
+                        case "InsurAce Protocol":
+                            listFlag = true;
+                            defiIconArr.push(insuraceprotocol);
+                            break;
+                        case "TEN":
+                            listFlag = true;
+                            defiIconArr.push(ten);
+                            break;  
+                        case "MDEX":
+                            listFlag = true;
+                            defiIconArr.push(mdex);
+                            break; 
+                        case "Pumpy":
+                            listFlag = true;
+                            defiIconArr.push(pumpy);
+                            break;            
+                        default:
+                            // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
+                            if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {
+                                if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"].indexOf("https://drive.google.com") > -1) {
+                                    defiIconArr.push(defaultIcon);
+                                } else {
+                                    defiIconArr.push(defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"]);
+                                }
+                            } else {
+                                defiIconArr.push(defaultIcon);
+                            }
+                            break;    
+                    }
+        
+                    let sponsoredFlag = false;
+                    if (getSponsors().indexOf(defistationApplicationList[i]["Official Project Name"]) != -1) {
+                        sponsoredFlag = true;
+                    }
 
-            let sponsoredFlag = false;
-            if (getSponsors().indexOf(defistationApplicationList[i]["Official Project Name"]) != -1) {
-                sponsoredFlag = true;
-            }
+                    // listingProjectIndexArr 에 들어있는 순번대로 배치
 
-            // Sponsored
-            if (listFlag) {
-                codeArr.push(
-                    <li onClick={() => history.push("/" + defiInfoName)}>
-                        <img 
-                            src={defiIconArr[i]} 
-                            width="30px" 
-                            onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
-                        /><br />
-                        <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
-                    </li>
-                );
-            } else if (sponsoredFlag) {
-
-                // 예외처리(url 링크)
-                if (defistationApplicationList[i]["Official Project Name"] == "BSClaunch") {
-                    codeArrForSponsored.push(
-                        <li onClick={() => window.open("https://bsclaunch.org/", "_blank")} className="projectsCardSponsored">
-                            <div className="sponsored rightTopSponsored">Sponsored</div>
-                            <img 
-                                src={bsclaunch} 
-                                width="30px" 
-                                onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
-                            /><br />
-                            <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
-                            <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
-                        </li>
-                    );
-                } else {
-                    codeArrForSponsored.push(
-                        <li onClick={() => history.push("/" + defiInfoName)} className="projectsCardSponsored">
-                            <div className="sponsored rightTopSponsored">Sponsored</div>
+                    // 3가지 타입: Sponsored + 리스팅 + 대기
+                    if (listingProjectIndexArr.indexOf(i) != -1) {
+                        // 리스팅 되어 있음
+                        // 이 중에서 Sponsored 는 codeArrForSponsored 배열에 넣고
+                        // 일반 리스팅 프로젝트는 tvl 순서대로 보여주고
+                        // 가장 하단에 codeArrForListing 배열에 넣어 표시한다
+                        let tempCode = <li onClick={() => history.push("/" + defiInfoName)}>
                             <img 
                                 src={defiIconArr[i]} 
                                 width="30px" 
@@ -450,33 +459,67 @@ const TheDefiList = observer(() => {
                             /><br />
                             <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
                             <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
-                        </li>
-                    );
-                }
-            } else {
-                let tempUrl = defistationApplicationList[i]["Project Official Website (URL)"];
-                codeArr.push(
-                    <li onClick={() => window.open(tempUrl, "_blank")}>
-                        <img 
-                            src={defiIconArr[i]} 
-                            width="30px" 
-                            style={{"height":"30px", "min-height": "30px"}}
-                            onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
-                        /><br />
-                        <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
-                        <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
-                    </li>
-                );
-            }
-        }
+                        </li>;
 
-        setDefiListCode(codeArr);
-        setDefiListCodeForSponsored(codeArrForSponsored);
+                        if (sponsoredFlag) {
+                            // 예외처리(url 링크)
+                            if (defistationApplicationList[i]["Official Project Name"] == "BSClaunch") {
+                                tempCode = <li onClick={() => window.open("https://bsclaunch.org/", "_blank")} className="projectsCardSponsored">
+                                    <div className="sponsored rightTopSponsored">Sponsored</div>
+                                    <img 
+                                        src={bsclaunch} 
+                                        width="30px" 
+                                        onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                                    /><br />
+                                    <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                                    <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
+                                </li>;
+                            } else {
+                                // 일반 리스팅
+                                tempCode = <li onClick={() => history.push("/" + defiInfoName)} className="projectsCardSponsored">
+                                    <div className="sponsored rightTopSponsored">Sponsored</div>
+                                    <img 
+                                        src={defiIconArr[i]} 
+                                        width="30px" 
+                                        onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                                    /><br />
+                                    <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                                    <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
+                                </li>;
+                            }
+                            
+                            codeArrForSponsored.push(tempCode);
+                        } else {
+                            // listingProjectIndexArr 배열의 순번대로 넣어야함
+                            let orderByTvl = listingProjectIndexArr.indexOf(i);
+                            codeArrForListing[orderByTvl] = tempCode;
+                        }
+                    } else {
+                        let tempUrl = defistationApplicationList[i]["Project Official Website (URL)"];
+                        let tempCode = <li onClick={() => window.open(tempUrl, "_blank")}>
+                            <img 
+                                src={defiIconArr[i]} 
+                                width="30px" 
+                                style={{"height":"30px", "min-height": "30px"}}
+                                onError={(e)=>{e.target.onerror = null; e.target.src=defaultIcon}}
+                            /><br />
+                            <span className="theDefiListCardTitle">{defistationApplicationList[i]["Official Project Name"]}</span><br />
+                            <span className="theDefiListCardText">{textEllipsis(defistationApplicationList[i]["Detailed Project Description"])}</span>
+                        </li>;
+                        codeArr.push(tempCode);
+                    }
+                }
+
+                setDefiListCode(codeArr);
+                setDefiListCodeForSponsored(codeArrForSponsored);
+                setDefiListCodeForListing(codeArrForListing);
+            })
+            .catch(err => setResponseError(err));
     }
 
     useEffect(() => {
-        createDefiProjectCard();
-
+        getDefiList();
+        
         return () => {
             console.log('cleanup');
         };
@@ -512,6 +555,7 @@ const TheDefiList = observer(() => {
                 </div>
                 <ul className="theDefiListUl">
                     {defiListCodeForSponsored}
+                    {defiListCodeForListing}
                     {defiListCode}
                 </ul>
                 <Footer />
