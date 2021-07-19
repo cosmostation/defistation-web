@@ -85,8 +85,8 @@ export function getCurrencyDigit(amount) {
 }
 
 export function textEllipsis(input) {
-    if (input.length > 85) {
-       return input.substring(0, 85) + ' ...';
+    if (input.length > 83) {
+       return input.substring(0, 83) + ' ...';
     }
     return input;
 };
