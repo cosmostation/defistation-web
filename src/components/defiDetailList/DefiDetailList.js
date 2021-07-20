@@ -4,6 +4,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import useStores from '../../useStores';
 
+import _ from "lodash";
+
 import '../../App.css';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
@@ -22,7 +24,7 @@ const DefiDetailList = observer((props) => {
     const history = useHistory();
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("30");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 365
 
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
@@ -192,23 +194,24 @@ const DefiDetailList = observer((props) => {
                 let holdersTag;
                 let holdersChangeTag;
 
-                // console.log("[0429] resultArr.length: ", resultArr.length);
+                // 최근 30개만 남기기
+                let tempResultArr = _.filter(resultArr, (value, key)=> {
+                    return (key >= 60);
+                })
 
-                for (var i = 0; i < resultArr.length; i++) {
+                for (var i = 0; i < tempResultArr.length; i++) {
                     if (i == 0) {
-                        initTimestamp = resultArr[i][0];
+                        initTimestamp = tempResultArr[i][0];
                     }
 
-                    // console.log("[0429] resultArr[i][1]: ", resultArr[i][1]);
-
-                    if (resultArr[i][1] == 0) {
+                    if (tempResultArr[i][1] == 0) {
                         continue;
                     }
 
                     let tvlChange = 0;
                     if (i > 0) {
-                        // tvlChange = (1 - resultArr[i - 1][1] / resultArr[i][1]);
-                        tvlChange = (resultArr[i][1] / resultArr[i - 1][1] - 1);
+                        // tvlChange = (1 - tempResultArr[i - 1][1] / tempResultArr[i][1]);
+                        tvlChange = (tempResultArr[i][1] / tempResultArr[i - 1][1] - 1);
                         if (tvlChange == "Infinity") {
                             tvlChange = "";
                         } else {
@@ -284,14 +287,14 @@ const DefiDetailList = observer((props) => {
                     }
 
                     // tvl
-                    let digit = getCurrencyDigit(resultArr[i][1]);
-                    let currencyUnit = getCurrencyUnit(resultArr[i][1]);
+                    let digit = getCurrencyDigit(tempResultArr[i][1]);
+                    let currencyUnit = getCurrencyUnit(tempResultArr[i][1]);
                     let currencyNum;
                     // tvl이 M 이하 단위인 경우 소숫점 1자리만, B 단위 이상은 소숫점 2자리로 표현
                     if (digit <= 1000000) {
-                        currencyNum = (resultArr[i][1] / digit).toFixed(1) * 1;
+                        currencyNum = (tempResultArr[i][1] / digit).toFixed(1) * 1;
                     } else {
-                        currencyNum = (resultArr[i][1] / digit).toFixed(2) * 1;
+                        currencyNum = (tempResultArr[i][1] / digit).toFixed(2) * 1;
                     }
 
                     // Token Price
@@ -404,8 +407,10 @@ const DefiDetailList = observer((props) => {
 
                     // 30일의 change 24h 를 보여주려면 제일 첫번째껀 change 값이 Null 이다. null인 row는 가리기
                     if (tvlChangeTag != null) {
+                        console.log("tempResultArr[" + i + "][0]: ", tempResultArr[i][0]);
+
                         defiDataTagArr.unshift(<tr key={i}>
-                            <td>{convertDateFormat3(new Date(resultArr[i][0] * 1000))}</td>
+                            <td>{convertDateFormat3(new Date(tempResultArr[i][0] * 1000))}</td>
                             <td className="switchable2" onClick={() => switchDefiListTable()}>
                                 {tokenPriceTag}
                                 <br /><span className="defiListTableSubText">{tokenPriceChangeTag}</span>
@@ -423,7 +428,7 @@ const DefiDetailList = observer((props) => {
                                 <br /><span className="defiListTableSubText">{bnbChangeTag}</span>
                             </td>
                             <td onClick={() => switchDefiListTable()}>
-                                $ {convertToBMK(resultArr[i][1])}
+                                $ {convertToBMK(tempResultArr[i][1])}
                                 <br /><span className="defiListTableSubText">{tvlChangeTag}</span>
                             </td>
                         </tr>);
