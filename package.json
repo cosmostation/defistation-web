@@ -1,6 +1,6 @@
 {
   "name": "defistation-web",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "private": true,
   "dependencies": {
     "@ledgerhq/hw-transport-webhid": "^5.23.0",

@@ -65,8 +65,13 @@ import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
-
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
+import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
+import biswap from "../../assets/images/defiLogo/biswap@2x.png";
+import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
+import ten from "../../assets/images/defiLogo/ten@2x.png";
+import mdex from "../../assets/images/defiLogo/mdex@2x.png";
+import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -298,6 +303,24 @@ const DefiList = observer((props) => {
             case "WePiggy":
                 resultImg = wepiggy;
                 break;
+            case "Rabbit Finance":
+                resultImg = rabbitfinance;
+                break;
+            case "Biswap":
+                resultImg = biswap;
+                break;
+            case "InsurAce Protocol":
+                resultImg = insuraceprotocol;
+                break;
+            case "TEN":
+                resultImg = ten;
+                break;
+            case "MDEX":
+                resultImg = mdex;
+                break;
+            case "Pumpy":
+                resultImg = pumpy;
+                break;            
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

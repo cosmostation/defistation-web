@@ -1,11 +1,11 @@
 import React, { Component, Fragment, useState, useEffect } from 'react';
-import { MediaQuery } from 'react-responsive'
 import { observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
+import _ from "lodash";
 import useStores from '../../useStores';
+import { getSponsors } from '../../sponsor/Sponsor';
 
 import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName } from '../../util/Util';
-
 import TvlLink from './tvlLink/TvlLink';
 
 import Chart from "react-google-charts";
@@ -86,8 +86,13 @@ import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
 import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
-
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
+import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
+import biswap from "../../assets/images/defiLogo/biswap@2x.png";
+import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
+import ten from "../../assets/images/defiLogo/ten@2x.png";
+import mdex from "../../assets/images/defiLogo/mdex@2x.png";
+import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -217,8 +222,6 @@ const TotalValue = observer((props) => {
                 let tempChartData = [];
                 let initProjectTvlIndex = -1;
 
-                let currentTokenPrice = 0;
-
                 if (res.result == null) {
                     setMinTvl(0);
                     global.changeTotalValueLockedUsd("$ 0");
@@ -240,6 +243,7 @@ const TotalValue = observer((props) => {
                 let digitForTx;
                 let currencyUnitForTx;
                 let tempCurrencyFullNameForTx;
+                let sumTokenPrice = 0;
 
                 // ------------ 메인 페이지 TXs ------------
                 if (defiName == "DeFi") {
@@ -303,7 +307,11 @@ const TotalValue = observer((props) => {
                     let priceObj = res.price;
                     var priceArr = Object.keys(priceObj).map((key) => [Number(key), priceObj[key]]);
 
-                    if (priceArr.length > 0) {
+                    for (var i = 0; i < priceArr.length; i++) {
+                        sumTokenPrice += priceArr[i][1];
+                    }
+
+                    if (priceArr.length > 0 && sumTokenPrice > 0) {
                         // setChartLegendLabel(<><span className="circleYellow">⦁</span> TVL <span className="circleGreen">⦁</span> {tokenSymbolName} Price</>);
                         setChartLegendLabel(<ul className="tvlChartLegendBoxUl">
                                                 <li><div className="circleYellow"></div></li>
@@ -319,16 +327,6 @@ const TotalValue = observer((props) => {
                                                 <li><div className="tvlChartLegendLabel">TVL</div></li>
                                             </ul>);
                     }
-
-                    // // 최신 TXs 값 구하기. 최신 TXs 변화 % 계산하기
-                    // let latestTxVal = 0;
-                    // let latestTxChange = 0;
-                    // for (var j = 0; j < priceArr.length; j++) {
-                    //     if (j > 0) {
-                    //         if (priceArr[j][1] > 0) latestTxVal = priceArr[j][1];
-                    //         if (priceArr[j - 1][1] > 0 && priceArr[j][1] > 0) latestTxChange = (priceArr[j][1] - priceArr[j - 1][1]) / priceArr[j][1] * 100;
-                    //     }
-                    // }
                 }
 
                 // console.log("dailyTxArr: ", dailyTxArr);
@@ -462,7 +460,7 @@ const TotalValue = observer((props) => {
                             let tempPrice = null;
                             // let prevPrice = null;
                             // console.log("[0416] priceArr: ", priceArr);
-                            if (priceArr.length > 0) {
+                            if (priceArr.length > 0 && sumTokenPrice > 0) {
                                 tempPrice = priceArr[i][1];
                                 // tempChartData.push([getMonthAndDay(new Date(resultArr[i][0] * 1000)), currencyNum, tempPrice]);
 
@@ -583,7 +581,7 @@ const TotalValue = observer((props) => {
                     tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Transactions(' + tempCurrencyFullNameForTx + ')']);
                 } else {
                     // 서브 페이지
-                    if (priceArr.length > 0) {
+                    if (priceArr.length > 0 && sumTokenPrice > 0) {
                         tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')', 'Token Price(USD)']);
                     } else {
                         tempChartData.unshift(['x', 'TVL(' + tempCurrencyFullName + ')']);
@@ -880,6 +878,24 @@ const TotalValue = observer((props) => {
             case "WePiggy":
                 setDefiIcon(wepiggy);
                 break;
+            case "Rabbit Finance":
+                setDefiIcon(rabbitfinance);
+                break;
+            case "Biswap":
+                setDefiIcon(biswap);
+                break;   
+            case "InsurAce Protocol":
+                setDefiIcon(insuraceprotocol);
+                break; 
+            case "TEN":
+                setDefiIcon(ten);
+                break;
+            case "MDEX":
+                setDefiIcon(mdex);
+                break;
+            case "Pumpy":
+                setDefiIcon(pumpy);
+                break;             
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -1046,8 +1062,7 @@ const TotalValue = observer((props) => {
 
     useEffect(() => {
         // Sponsored
-        if (props.defiName == "O3 Swap" ||
-        props.defiName == "BunnyPark") {
+        if (getSponsors().indexOf(props.defiName ) != -1) {
             setSponsoredVal(<div className="sponsored">Sponsored</div>);
         }
 
@@ -1282,6 +1297,9 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "Elephant Money" ||
                                                         props.defiName == "Demex" ||
                                                         props.defiName == "Kebab Finance" ||
+                                                        props.defiName == "Biswap" ||
+                                                        props.defiName == "TEN" ||
+                                                        props.defiName == "dForce" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {

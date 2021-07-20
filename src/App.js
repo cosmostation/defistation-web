@@ -8,7 +8,6 @@ import Main from './components/main/Main';
 import DefiDetail from './components/defiDetail/DefiDetail';
 import About from './components/about/About';
 import TheDefiList from './components/theDefiList/TheDefiList';
-import Apply from './components/apply/Apply';
 
 // Font
 import 'typeface-montserrat';   // $ npm install --save typeface-montserrat

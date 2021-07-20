@@ -7,7 +7,6 @@ import '../../App.css';
 import TopBar from '../topBar/TopBar';
 import TotalValue from '../totalValue/TotalValue';
 import MiniCards from '../miniCards/MiniCards';
-import Banner from '../banner/Banner';
 import DefiList from '../defiList/DefiList';
 import Footer from '../footer/Footer';
 
