@@ -1202,7 +1202,7 @@ const TotalValue = observer((props) => {
                                 <p className="tvlChartLegend">{chartLegendLabel}</p>
 
                                 {/* Total Value Locked in ... */}
-                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} {getOfficialDefiName(props.defiName)}</span>
+                                <p className="tvlChartCardTitle">{tvlChartCardTitleValue} {getOfficialDefiName(props.defiName)}</p>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 <p className="tvlChartUnitY">({currencyFullName} USD)</p>
                                 <p className="tvlChartUnitYRight" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>({txsUnitForDualY} {dualYUnitText})</p>
@@ -1215,9 +1215,9 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     id="tvlGoogleChart"
-                                    style={{"margin-left":"-7px"}}
+                                    style={{"margin-left":"-7px", "margin-top":"28px"}}
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -1264,9 +1264,9 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
-                                    style={{"margin-left":"-7px"}}
+                                    style={{"margin-left":"-7px", "margin-top":"28px"}}
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -1330,11 +1330,14 @@ const TotalValue = observer((props) => {
                                     <button style={chartPeriod == 7 ? undefined : { display: "none" }} className="periodBtnSelected">7d</button>
                                     <button style={chartPeriod == 7 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("7")}>7d</button>
 
-                                    <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">30d</button>
-                                    <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button>
+                                    <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">1M</button>
+                                    <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>1M</button>
 
-                                    <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">90d</button>
-                                    <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>90d</button>
+                                    <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">3M</button>
+                                    <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>3M</button>
+
+                                    <button style={chartPeriod == 180 ? undefined : { display: "none" }} className="periodBtnSelected">6M</button>
+                                    <button style={chartPeriod == 180 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("180")}>6M</button>
                                 </div>
                             </li>
                         </ul>
