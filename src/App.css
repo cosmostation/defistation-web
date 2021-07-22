@@ -1211,22 +1211,28 @@ hr.sideMenuLine {
     margin-top: 38px;
   }
 
-  .tvlChartUnitYRight {
-    /* display: flex; */
-    /* left: 75vw; */
-    right: 0;
-    margin-right: 30px;
-    margin-top: 38px;
-  }
-
   .tvlChartUnitYRightOnSubPage {
     /* display: flex; */
     /* left: 82.5vw; */
     right: 0;
     margin-right: 14px;
   }
+}
 
-  
+@media (min-width:441px) and (max-width:1034px) {
+  .tvlChartUnitYRight {
+    right: 0;
+    margin-right: 30px;
+    margin-top: 38px;
+  }
+}
+
+@media (min-width:1px) and (max-width:441px) {
+  .tvlChartUnitYRight {
+    right: 0;
+    margin-right: 13px;
+    margin-top: 38px;
+  }
 }
 
 @media (min-width:321px) and (max-width:1034px) {

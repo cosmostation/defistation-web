@@ -1215,9 +1215,9 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     id="tvlGoogleChart"
-                                    style={{"margin-left":"-7px", "margin-top":"28px"}}
+                                    style={ window.innerWidth < 441 ? {"margin-left":"-7px", "margin-top":"28px"} : {"margin-left":"-7px", "margin-top":"0px"} }
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -1264,9 +1264,9 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
-                                    style={{"margin-left":"-7px", "margin-top":"28px"}}
+                                    style={ window.innerWidth < 441 ? {"margin-left":"-7px", "margin-top":"28px"} : {"margin-left":"-7px", "margin-top":"0px"} }
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
