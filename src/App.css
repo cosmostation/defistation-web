@@ -1235,7 +1235,14 @@ hr.sideMenuLine {
   }
 }
 
-@media (min-width:321px) and (max-width:1034px) {
+@media (min-width:768px) and (max-width:1034px) {
+  .tvlChartLegend {
+    /* display: none; */
+    margin-top: 0px;
+  }
+}
+
+@media (min-width:321px) and (max-width:767px) {
   .tvlChartLegend {
     /* display: none; */
     margin-top: 18px;
