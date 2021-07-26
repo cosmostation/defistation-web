@@ -45,7 +45,7 @@ import dego from "../../assets/images/defiLogo/dego@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
 import qian from "../../assets/images/defiLogo/qian@2x.png";
-import pancakebunny from "../../assets/images/defiLogo/pancakebunny@2x.png";
+import pancakebunny from "../../assets/images/coins/pancakebunny.png";
 import julswap from "../../assets/images/defiLogo/julswap@2x.png";
 import justliquidity from "../../assets/images/defiLogo/justliquidity@2x.png";
 import anyswap from "../../assets/images/defiLogo/anyswap@2x.png";
@@ -113,7 +113,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 180
 
     const [chartLegendLabel, setChartLegendLabel] = useState();
 
@@ -193,8 +193,13 @@ const TotalValue = observer((props) => {
         setUrlFlagDetail(chartFullUrl);
 
         // 7d, 30d, 90d 모두 days 90으로 가져옴
-        let chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
-
+        let chartFullUrl2;
+        if (chartPeriod == 180) {
+            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+        } else {
+            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+        }
+        
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
             headers: {
@@ -753,9 +758,9 @@ const TotalValue = observer((props) => {
             case "QIAN":
                 setDefiIcon(qian);
                 break;    
-            // case "PancakeBunny":
-            //     setDefiIcon(pancakebunny);
-            //     break;
+            case "PancakeBunny":
+                setDefiIcon(pancakebunny);
+                break;
             case "JulSwap":
                 setDefiIcon(julswap);
                 break;
