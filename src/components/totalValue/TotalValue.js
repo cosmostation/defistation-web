@@ -113,7 +113,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 180
+    const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
 
     const [chartLegendLabel, setChartLegendLabel] = useState();
 
