@@ -343,7 +343,7 @@ hr.sideMenuLine {
   }
 
   .sponsored {
-    color: #34AB62;
+    color: white;
     font-size: 11px;
     border-radius: 7px;
     border: solid 1px #1A5030;
@@ -520,9 +520,9 @@ hr.sideMenuLine {
 
 @media (min-width:1px) and (max-width:1034px) {
   .tvlChartCard {
-    /* width: 320px; */
     width: 100%;
-    height: 310px;
+    /* height: 310px; */
+    height: 332px;
     margin-bottom: 10px;
     box-sizing: border-box;
   }
@@ -674,6 +674,7 @@ hr.sideMenuLine {
   letter-spacing: normal;
   text-align: left;
   color: #9BA5B5;
+  margin-top: 4px;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
@@ -690,7 +691,8 @@ hr.sideMenuLine {
   }
 
   .periodBtns {
-    margin-right: -7px !important;
+    /* margin-right: -7px !important; */
+    float: right;
   }
 }
 
@@ -1046,6 +1048,7 @@ hr.sideMenuLine {
   line-height: 1.21;
   letter-spacing: normal;
   color: #ffffff;
+  margin-top: -12px;
 }
 
 .tvlChartUnitY {
@@ -1076,7 +1079,7 @@ hr.sideMenuLine {
   text-align: right;
   color: #9BA5B5;
   position: absolute;
-  right: 289px;
+  right: 291px;
   z-index: 10;
   /* margin-top: 3px; */
   /* left: 718px; */
@@ -1117,6 +1120,7 @@ hr.sideMenuLine {
   /* left: 460px; */
   margin-top: 0px;
   float: right;
+  margin-right: 15px;
 }
 
 /* .circleYellow {
@@ -1204,13 +1208,7 @@ hr.sideMenuLine {
   .tvlChartUnitY {
     /* display: none; */
     margin-left: -7px !important;
-  }
-
-  .tvlChartUnitYRight {
-    /* display: flex; */
-    /* left: 75vw; */
-    right: 0;
-    margin-right: 14px;
+    margin-top: 38px;
   }
 
   .tvlChartUnitYRightOnSubPage {
@@ -1218,10 +1216,45 @@ hr.sideMenuLine {
     /* left: 82.5vw; */
     right: 0;
     margin-right: 14px;
+    margin-top: 38px;
   }
+}
 
+@media (min-width:441px) and (max-width:1034px) {
+  .tvlChartUnitYRight {
+    right: 0;
+    margin-right: 30px;
+    margin-top: 38px;
+  }
+}
+
+@media (min-width:1px) and (max-width:441px) {
+  .tvlChartUnitYRight {
+    right: 0;
+    margin-right: 13px;
+    margin-top: 38px;
+  }
+}
+
+@media (min-width:768px) and (max-width:1034px) {
   .tvlChartLegend {
     /* display: none; */
+    margin-top: 0px;
+  }
+}
+
+@media (min-width:321px) and (max-width:767px) {
+  .tvlChartLegend {
+    /* display: none; */
+    margin-top: 18px;
+  }
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .tvlChartLegend {
+    /* display: none; */
+    margin-top: 18px;
+    letter-spacing: -0.5px;
   }
 }
 
@@ -1235,7 +1268,57 @@ hr.sideMenuLine {
 
 .tvlChartCardUl li:nth-child(2) {
   width: 25%;
-  text-align: right;
+  /* text-align: right; */
+}
+
+.periodBtns {
+  background-color: #1a1d24;
+  height: 22px;
+  border-radius: 5px;
+  width: 168px;
+  margin-left: 10px;
+}
+
+.periodBtnSelected {
+  margin-left: 5px;
+  width: 36px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: #f0b923;
+  border: 0;
+  outline: 0;
+  /* font-family: Montserrat; */
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: #0e1014;
+  /* cursor: pointer; */
+}
+
+.periodBtn {
+  margin-left: 5px;
+  width: 36px;
+  height: 18px;
+  border-radius: 5px;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: transparent;
+  border: 0;
+  outline: 0;
+  /* font-family: Montserrat; */
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: #9BA5B5;
+  cursor: pointer;
 }
 
 @media (min-width:550px) and (max-width:768px) {
@@ -1269,53 +1352,26 @@ hr.sideMenuLine {
   }
 
   .periodBtns {
+    /* position: absolute;
+    right: 6vw;
+    margin-top: 52px;
+    width: 91.5% !important; */
     position: absolute;
-    display: flex;
-    right: 22px;
-    margin-top: 26px;
+    right: 3.5vw;
+    margin-top: 52px;
+    width: 87.5vw !important;
+  }
+
+  .periodBtn {
+    width: 23%;
+  }
+
+  .periodBtnSelected {
+    width: 23%;
   }
 }
 
-.periodBtnSelected {
-  margin-left: 18px;
-  /* width: 32px; */
-  height: 18px;
-  border-radius: 5px;
-  background-color: #f0b923;
-  border: 0;
-  outline: 0;
-  /* font-family: Montserrat; */
-  font-family: "Montserrat", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.36;
-  letter-spacing: normal;
-  color: #0e1014;
-  /* cursor: pointer; */
-}
 
-.periodBtn {
-  margin-left: 18px;
-  height: 18px;
-  border-radius: 5px;
-  background-color: transparent !important;
-  background-image: none !important;
-  border-color: transparent;
-  border: 0;
-  outline: 0;
-  /* font-family: Montserrat; */
-  font-family: "Montserrat", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.36;
-  letter-spacing: normal;
-  color: #9BA5B5;
-  cursor: pointer;
-}
 
 @media (min-width:1px) and (max-width:1034px) {
   

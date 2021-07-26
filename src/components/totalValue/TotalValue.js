@@ -45,7 +45,7 @@ import dego from "../../assets/images/defiLogo/dego@2x.png";
 import equatorfinance from "../../assets/images/defiLogo/equatorfinance@2x.png";
 import stablexswap from "../../assets/images/defiLogo/stablexswap@2x.png";
 import qian from "../../assets/images/defiLogo/qian@2x.png";
-import pancakebunny from "../../assets/images/defiLogo/pancakebunny@2x.png";
+import pancakebunny from "../../assets/images/coins/pancakebunny.png";
 import julswap from "../../assets/images/defiLogo/julswap@2x.png";
 import justliquidity from "../../assets/images/defiLogo/justliquidity@2x.png";
 import anyswap from "../../assets/images/defiLogo/anyswap@2x.png";
@@ -93,6 +93,7 @@ import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.p
 import ten from "../../assets/images/defiLogo/ten@2x.png";
 import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
+import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -112,7 +113,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
 
     const [chartLegendLabel, setChartLegendLabel] = useState();
 
@@ -192,8 +193,13 @@ const TotalValue = observer((props) => {
         setUrlFlagDetail(chartFullUrl);
 
         // 7d, 30d, 90d 모두 days 90으로 가져옴
-        let chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
-
+        let chartFullUrl2;
+        if (chartPeriod == 180) {
+            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+        } else {
+            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+        }
+        
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
             headers: {
@@ -752,9 +758,9 @@ const TotalValue = observer((props) => {
             case "QIAN":
                 setDefiIcon(qian);
                 break;    
-            // case "PancakeBunny":
-            //     setDefiIcon(pancakebunny);
-            //     break;
+            case "PancakeBunny":
+                setDefiIcon(pancakebunny);
+                break;
             case "JulSwap":
                 setDefiIcon(julswap);
                 break;
@@ -895,7 +901,10 @@ const TotalValue = observer((props) => {
                 break;
             case "Pumpy":
                 setDefiIcon(pumpy);
-                break;             
+                break;
+            case "dForce":
+                setDefiIcon(dforce);
+                break;                 
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -1202,7 +1211,7 @@ const TotalValue = observer((props) => {
                                 <p className="tvlChartLegend">{chartLegendLabel}</p>
 
                                 {/* Total Value Locked in ... */}
-                                <span className="tvlChartCardTitle">{tvlChartCardTitleValue} {getOfficialDefiName(props.defiName)}</span>
+                                <p className="tvlChartCardTitle">{tvlChartCardTitleValue} {getOfficialDefiName(props.defiName)}</p>
                                 <p className="tvlValueUsd">$ {totalValueLockedUsd}</p>
                                 <p className="tvlChartUnitY">({currencyFullName} USD)</p>
                                 <p className="tvlChartUnitYRight" style={props.defiName != "DeFi" ? {display: "none"} : undefined}>({txsUnitForDualY} {dualYUnitText})</p>
@@ -1215,9 +1224,9 @@ const TotalValue = observer((props) => {
                                     width={viewWidth}
                                     height={'220px'}
                                     id="tvlGoogleChart"
-                                    style={{"margin-left":"-7px"}}
+                                    style={ window.innerWidth < 441 ? {"margin-left":"-7px", "margin-top":"28px"} : {"margin-left":"-7px", "margin-top":"0px"} }
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -1264,9 +1273,9 @@ const TotalValue = observer((props) => {
                                     id="tvlGoogleChart"
                                     width={viewWidth}
                                     height={'220px'}
-                                    style={{"margin-left":"-7px"}}
+                                    style={ window.innerWidth < 441 ? {"margin-left":"-7px", "margin-top":"28px"} : {"margin-left":"-7px", "margin-top":"0px"} }
                                     chartType="LineChart"
-                                    loader={<div style={{ "width": viewWidth, "height": "220px", "text-align": "center", "margin-top": "70px" }}>< img src={loading} /></div>}
+                                    loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
                                         backgroundColor: "#262932",
@@ -1300,6 +1309,7 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "Biswap" ||
                                                         props.defiName == "TEN" ||
                                                         props.defiName == "dForce" ||
+                                                        props.defiName == "ARIES FINANCIAL" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
@@ -1329,11 +1339,14 @@ const TotalValue = observer((props) => {
                                     <button style={chartPeriod == 7 ? undefined : { display: "none" }} className="periodBtnSelected">7d</button>
                                     <button style={chartPeriod == 7 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("7")}>7d</button>
 
-                                    <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">30d</button>
-                                    <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>30d</button>
+                                    <button style={chartPeriod == 30 ? undefined : { display: "none" }} className="periodBtnSelected">1M</button>
+                                    <button style={chartPeriod == 30 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("30")}>1M</button>
 
-                                    <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">90d</button>
-                                    <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>90d</button>
+                                    <button style={chartPeriod == 90 ? undefined : { display: "none" }} className="periodBtnSelected">3M</button>
+                                    <button style={chartPeriod == 90 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("90")}>3M</button>
+
+                                    <button style={chartPeriod == 180 ? undefined : { display: "none" }} className="periodBtnSelected">6M</button>
+                                    <button style={chartPeriod == 180 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("180")}>6M</button>
                                 </div>
                             </li>
                         </ul>
