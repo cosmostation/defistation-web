@@ -4088,6 +4088,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 .theDefiListUl li img {
   margin-bottom: 7px;
   max-height: 30px;
+  min-height: 30px;
 }
 
 .theDefiListUl li:hover {
