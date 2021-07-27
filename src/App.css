@@ -1273,14 +1273,15 @@ hr.sideMenuLine {
 
 .periodBtns {
   background-color: #1a1d24;
-  height: 22px;
+  height: 26px;
   border-radius: 5px;
   width: 168px;
   margin-left: 10px;
 }
 
 .periodBtnSelected {
-  margin-left: 5px;
+  margin-left: 4.7px;
+  margin-top: 4px;
   width: 36px;
   height: 18px;
   border-radius: 5px;
@@ -1364,6 +1365,7 @@ hr.sideMenuLine {
 
   .periodBtn {
     width: 23%;
+    margin-left: 6px !important;
   }
 
   .periodBtnSelected {
