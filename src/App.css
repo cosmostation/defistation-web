@@ -34,6 +34,7 @@ li {
   height: 100%;
   margin-left: -517px;
   margin-top: 0px;
+  /* -webkit-transform: translate3d(0,0,0); */
 }
 
 /* @media all and (device-width: 1024px) {
