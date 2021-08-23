@@ -194,11 +194,12 @@ const TotalValue = observer((props) => {
 
         // 7d, 30d, 90d 모두 days 90으로 가져옴
         let chartFullUrl2;
-        if (chartPeriod == 180) {
-            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
-        } else {
-            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
-        }
+        // if (chartPeriod == 180) {
+        //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+        // } else {
+        //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+        // }
+        chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
         
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',

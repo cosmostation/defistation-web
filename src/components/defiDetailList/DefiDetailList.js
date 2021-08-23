@@ -24,7 +24,7 @@ const DefiDetailList = observer((props) => {
     const history = useHistory();
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("90");    // 7, 30, 90, 365
+    const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
 
     const [responseError, setResponseError] = useState();
     const [response, setResponse] = useState({});
@@ -196,7 +196,7 @@ const DefiDetailList = observer((props) => {
 
                 // 최근 30개만 남기기
                 let tempResultArr = _.filter(resultArr, (value, key)=> {
-                    return (key >= 60);
+                    return (key >= chartPeriod - 30);
                 })
 
                 for (var i = 0; i < tempResultArr.length; i++) {
