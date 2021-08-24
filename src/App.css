@@ -34,52 +34,14 @@ li {
   height: 100%;
   margin-left: -517px;
   margin-top: 0px;
-  /* -webkit-transform: translate3d(0,0,0); */
 }
-
-/* @media all and (device-width: 1024px) {
-  .wrapper {
-    width: 1000px;
-    margin-left: -500px;
-  }
-}
-
-@media all and (device-width: 768px) {
-  .wrapper {
-    width: 738px;
-    margin-left: -369px;
-  }
-}
-
-@media (min-width:414px) and (max-width:767px) {
-  .wrapper {
-    width: 394px;
-    margin-left: -197px;
-  }
-}
-
-@media (min-width:360px) and (max-width:413px) {
-  .wrapper {
-    width: 320px;
-    margin-left: -160px;
-  }
-}
-
-@media (min-width:1px) and (max-width:359px) {
-  .wrapper {
-    width: 300px;
-    margin-left: -150px;
-  }
-} */
 
 @media (min-width:1px) and (max-width:1034px) {
   .wrapper {
     width: 95%;
-    /* margin-left: -150px; */
     margin-left: -47.5vw;
   }
 }
-
 
 /* -------------------------------- topBar -------------------------------- */
 
@@ -113,10 +75,11 @@ li {
 .topBarUl li span {
   cursor: pointer;
   -webkit-tap-highlight-color : rgba(0,0,0,0);
+  color: #0e1014;
 }
 
 .topBarUl li span:hover {
-  color: #A6B0BF;
+  color: #9d9fa4;
 }
 
 .topBarUl li:nth-child(1) { 
@@ -171,7 +134,7 @@ li {
   height: 100%;
   background-color: black;
   opacity: 0.5;
-  z-index: 1000;
+  z-index: 9000;
   float: left;
   left: 0;
   margin-top: -13px;
@@ -184,8 +147,10 @@ li {
   margin-top: -13px;
   width: 70%;
   height: 100%;
-  background-color: #262932;
-  color: #fff;
+  /* background-color: #262932;
+  color: #fff; */
+  background-color: #fff;
+  color: #0e1014;
   z-index: 9999;
 }
 
@@ -224,7 +189,8 @@ li {
 }
 
 hr.sideMenuLine {
-  border: 1px solid #3e434e;
+  /* border: 1px solid #3e434e; */
+  border: 1px solid #e2e2e2;
   margin-left: -24px;
   margin-top: 24px;
 }
@@ -398,9 +364,10 @@ hr.sideMenuLine {
   width: 100%;
   height: 270px;
   border-radius: 5px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
-  /* padding: 20px; */
+  /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: #262932; */
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
   padding: 20px 25px 20px 25px;
 }
 
@@ -674,7 +641,8 @@ hr.sideMenuLine {
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   margin-top: 4px;
 }
 
@@ -1048,7 +1016,8 @@ hr.sideMenuLine {
   font-style: normal;
   line-height: 1.21;
   letter-spacing: normal;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #0e1014;
   margin-top: -12px;
 }
 
@@ -1115,26 +1084,14 @@ hr.sideMenuLine {
   line-height: 1.9;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
-  /* position: absolute; */
+  /* color: #fff; */
+  color: #0e1014;
   z-index: 9;
   /* left: 460px; */
   margin-top: 0px;
   float: right;
   margin-right: 15px;
 }
-
-/* .circleYellow {
-  color: #f0b923;
-}
-
-.circleGreen {
-  color: #34ab62;
-}
-
-.circleGray {
-  color: #888A8F;
-} */
 
 .tvlChartLegendBox {
   display: inline-flex;
@@ -1273,7 +1230,8 @@ hr.sideMenuLine {
 }
 
 .periodBtns {
-  background-color: #1a1d24;
+  /* background-color: #1a1d24; */
+  background-color: #f3f3f4;
   height: 26px;
   border-radius: 5px;
   width: 168px;
@@ -1319,7 +1277,8 @@ hr.sideMenuLine {
   font-style: normal;
   line-height: 1.36;
   letter-spacing: normal;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   cursor: pointer;
 }
 
@@ -1532,7 +1491,7 @@ hr.sideMenuLine {
 }
 
 .trendingDefiName:hover {
-  /* color: #A6B0BF; */
+  /* color: #9d9fa4; */
 }
 
 @media (min-width:321px) and (max-width:768px) {
@@ -2543,7 +2502,7 @@ hr.sideMenuLine {
   cursor: pointer;
   /* background-color: #1f232b; */
   /* text-decoration: underline; */
-  color: #A6B0BF;
+  color: #9d9fa4;
 }
 
 .projectName {

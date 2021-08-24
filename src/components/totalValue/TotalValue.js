@@ -1205,8 +1205,8 @@ const TotalValue = observer((props) => {
             
             <ul className="totalValueUl">
                 <li>
-                    {/* style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}} */}
-                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
+                    {/* <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}> */}
+                    <div className="tvlChartCard">
                         <ul className="tvlChartCardUl">
                             <li>
                                 <p className="tvlChartLegend">{chartLegendLabel}</p>
