@@ -3531,8 +3531,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 .mobileDefiBtn {
   width: 15%;
   height: 14vw;
-  /* background-color: #262932; */
-  border: solid 1px #404752;
+  background-color: #fff;
+  border: solid 1px #dddddd;
   border-radius: 5px;
   text-align: center;
 }
