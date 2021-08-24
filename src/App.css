@@ -240,7 +240,8 @@ hr.sideMenuLine {
 .tvlSubPageTitleIconLabel li {
   display: table-cell;
   vertical-align: middle;
-  color: #fff;
+  /* color: #fff; */
+  color: #0e1014;
   /* font-family: Montserrat; */
   font-family: "Montserrat", sans-serif;
   font-size: 24px;
@@ -526,8 +527,9 @@ hr.sideMenuLine {
 .tvlLink0 {
   height: 310px;
   border-radius: 5px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  /* background-color: #262932; */
+  background-color: #fff;
   padding-top: 5px;
   padding-left: 15px;
   box-sizing: border-box;
@@ -536,8 +538,8 @@ hr.sideMenuLine {
 .tvlLink {
   height: 310px;
   border-radius: 5px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
   padding-top: 5px;
   padding-left: 15px;
   box-sizing: border-box;
@@ -580,13 +582,15 @@ hr.sideMenuLine {
   width: 216px;
   height: 61px;
   border-radius: 5px;
-  border: solid 1px #404752;
-  background-color: #20232b;
+  border: solid 1px #e2e2e2;
+  /* background-color: #20232b; */
+  background-color: #f3f3f4;
   cursor: pointer;
 }
 
 .tvlLinkBox:hover {
-  background-color: #252932;
+  /* background-color: #252932; */
+  background-color: #e6e6e6;
 }
 
 .tvlLinkBoxUl {
@@ -615,7 +619,8 @@ hr.sideMenuLine {
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #0e1014;
 }
 
 .linkBoxSubTitle {
@@ -628,7 +633,7 @@ hr.sideMenuLine {
   line-height: 1.27;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  color: #9d9fa4;
 }
 
 .tvlChartCardTitle {
@@ -798,13 +803,14 @@ hr.sideMenuLine {
   height: 40px;
   margin: 8.6px 0 8.6px;
   border-radius: 5px;
-  border: solid 1px #404752;
-  background-color: #20232b;
+  /* border: solid 1px #404752;
+  background-color: #20232b; */
+  border: solid 1px #ddd;
+  background-color: #f3f3f4;
   padding: 8px;
   box-sizing: border-box;
   cursor: pointer;
 }
-
 
 /* iPad Pro */
 @media all and (device-width: 1024px) {
@@ -903,7 +909,8 @@ hr.sideMenuLine {
 }
 
 .subPageDefiLinkBox:hover {
-  background-color: #252932;
+  /* background-color: #252932; */
+  background-color: #e6e6e6;
 }
 
 .disableBtn {
@@ -936,7 +943,8 @@ hr.sideMenuLine {
   line-height: normal;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
+  /* color: #fff; */
+  color: #0e1014;
 }
 
 
@@ -1031,7 +1039,8 @@ hr.sideMenuLine {
   line-height: 1.3;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   position: absolute;
   z-index: 10;
   /* margin-top: 3px; */
@@ -1047,7 +1056,8 @@ hr.sideMenuLine {
   line-height: 1.3;
   letter-spacing: normal;
   text-align: right;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   position: absolute;
   right: 291px;
   z-index: 10;
@@ -1065,7 +1075,8 @@ hr.sideMenuLine {
   line-height: 1.3;
   letter-spacing: normal;
   text-align: right;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   position: absolute;
   z-index: 9;
   right: 286px;
@@ -1426,7 +1437,9 @@ hr.sideMenuLine {
   /* width: 230px; */
   height: 80px;
   border-radius: 5px;
-  background-color: #262932;
+  /* background-color: #262932; */
+  background-color: #fff;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
 }
 
@@ -1440,7 +1453,7 @@ hr.sideMenuLine {
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  color: #9d9fa4;
 }
 
 .miniCardChange {
@@ -1469,7 +1482,7 @@ hr.sideMenuLine {
   line-height: 1.2;
   letter-spacing: normal;
   text-align: right;
-  color: #ffffff;
+  color: #0e1014;
   margin-right: 2px;
 }
 
@@ -2218,7 +2231,7 @@ hr.sideMenuLine {
 
 .defiList {
   /* margin-top: 9px; */
-  margin-top: -15px;
+  margin-top: -12px;
   width: 100%;
   /* height: 720px; */
   border-radius: 5px;
@@ -2263,6 +2276,8 @@ hr.sideMenuLine {
   padding-bottom: 15px !important; */
   padding: 15px 10px 15px 10px !important;
   z-index: 1000 !important;
+  background-color: #f3f3f4 !important;
+  color: #0e1014 !important;
 }
 
 .__react_component_tooltip.show {
@@ -2274,7 +2289,7 @@ hr.sideMenuLine {
 }
 
 .auditLink {
-  color: #fff;
+  color: #9d9fa4;
   /* text-decoration: underline !important; */
 }
 
@@ -2290,7 +2305,7 @@ hr.sideMenuLine {
 }
 
 .auditClickArea {
-  background-color:red;
+  /* background-color:red; */
   opacity: 0;
   width: 40px;
   height: 50px;
@@ -2305,14 +2320,15 @@ hr.sideMenuLine {
   border-radius:75px;
   text-align:center;
   margin:0 auto;
-  font-size:12px; color:#fff;
+  font-size:12px; 
+  color:#9d9fa4;
   vertical-align:middle;
   line-height: 50px;
 }
 
 .noAudit {
-  background-color:#454b57;
-  border:1px solid #454b57;
+  background-color:#fff;
+  border:1px solid #fff;
   width:8px; height:8px;
   border-radius:75px;
   text-align:center;
@@ -2339,7 +2355,7 @@ hr.sideMenuLine {
 }
 
 .auditListUnknownUl li {
-  border: solid 1px #404752;
+  border: solid 1px #9d9fa4;
   border-radius: 5px;
   text-align: center;
   padding: 0px;
@@ -2348,7 +2364,7 @@ hr.sideMenuLine {
 }
 
 .auditListUl li {
-  border: solid 1px #404752;
+  border: solid 1px #9d9fa4;
   border-radius: 5px;
   text-align: center;
   padding: 0px;
@@ -2356,19 +2372,22 @@ hr.sideMenuLine {
 }
 
 .auditListUl li:hover {
-  border: solid 1px #9BA5B5;
+  opacity: 0.6;
 }
 
 .auditButtonImg {
   width: 120px;
   margin-top: -1px;
   margin-bottom: -4px;
+  -webkit-filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
 }
 
 .auditButtonText {
   width: 120px;
   height: 35px;
   line-height: 35px;
+  color: #0e1014;
 }
 
 @media (min-width:321px) and (max-width:768px) {
@@ -2555,23 +2574,17 @@ hr.sideMenuLine {
 
 .defiListTable th {
   height: 47.21px;
-  /* height: 32px; */
-  /* border-bottom: 1px solid #404752; */
-  border-bottom: 1px solid #32373E;
-  /* padding: 10px; */
+  /* border-bottom: 1px solid #32373E; */
+  border-bottom: 1px solid #efefef;
   padding: 10px 0 7px 10px;
   font-family: "Roboto", sans-serif;
-
-  /* background-color: black; */
-  /* background-color: #262932; */
-  /* background-color: #0c0e13; */
 }
 
 .defiListTable td {
   height: 47.21px;
   /* height: 32px; */
   /* border-bottom: 1px solid #404752; */
-  border-top: 1px solid #32373E;
+  border-top: 1px solid #efefef;
   padding: 10px 0 7px 10px;
   font-family: "Roboto", sans-serif;
 }
@@ -2750,8 +2763,7 @@ table tr thead {
 
 .tableHeaderTooltip {
   max-width: 80vw;
-  /* background-color: rgb(220, 220, 220) !important; */
-  background-color: rgb(210, 210, 210) !important;
+  background-color: #f3f3f4 !important;
 }
 
 .tableHeaderTooltip::before {
@@ -3103,27 +3115,22 @@ table tr thead {
   letter-spacing: normal;
   text-align: center;
   color: #9BA5B5;
-  /* background-color: #262932; */
   display: table-caption;
-  /* width: 1034px; */
-  background-color: #0c0e13;
+  /* background-color: #0c0e13; */
+  background-color: #f3f3f4;
 }
 
 .defiListTableBanner {
-  /* height: 200px; */
   max-width: 42px;
   padding-bottom: 8px;
-  padding-top: 14px;
-  /* position: absolute; */
-  background-color: #0c0e13;
+  padding-top: 11px;
+  background-color: #f3f3f4;
 }
 
 .defiListTableHeadTr {
-  background-color: #262932;
-  /* position: absolute;
-  margin-top: 104px; */
-  /* border-top-left-radius: 10px; */
-
+  /* background-color: #262932; */
+  background-color: #fff;
+  box-shadow: 3px -3px 6px 0 rgba(0, 0, 0, 0.05);
 }
 
 /* tr:first-child td:first-child { border-top-left-radius: 10px; }
@@ -3144,14 +3151,13 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.2;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
-  background-color: #262932;
+  color: #0e1014;
+  /* background-color: #262932; */
+  background-color: #fff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: table-cell;
-
-  /* position: absolute; */
-  /* margin-top: 104px; */
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.05);
 }
 
 @media (min-width:321px) and (max-width:1034px) {
@@ -3379,7 +3385,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   /* height: 262px; */
   /* opacity: 0.8; */
   border-radius: 5px;
-  background-color: #171a20;
+  background-color: #fff;
   padding: 15px;
   box-sizing: border-box;
   overflow: hidden;
@@ -3410,7 +3416,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   /* text-align: left; */
   text-align: justify;
-  color: #9aa0a8;
+  color: #9d9fa4;
 }
 
 .defiOverviewContent a {

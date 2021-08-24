@@ -1230,7 +1230,7 @@ const TotalValue = observer((props) => {
                                     loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
-                                        backgroundColor: "#262932",
+                                        backgroundColor: "#fff",
                                         legend: "none",
                                         // animation : { duration:400, easing:'out'},
                                         // Gives each series an axis that matches the vAxes number below.
@@ -1240,20 +1240,20 @@ const TotalValue = observer((props) => {
                                         },
                                         hAxis: {
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                                 fontSize: 11,
                                             },
                                             slantedText: true,
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         vAxis: {
                                             // minValue: minTvl,
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                             },
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         colors: ["#f0b923", "#888A8F"],
                                         chartArea: { width: chartWidth, height: '70%' },
@@ -1279,7 +1279,7 @@ const TotalValue = observer((props) => {
                                     loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
-                                        backgroundColor: "#262932",
+                                        backgroundColor: "#fff",
                                         legend: "none",
                                         // animation : { duration:400, easing:'out'},
                                         // Gives each series an axis that matches the vAxes number below.
@@ -1289,12 +1289,12 @@ const TotalValue = observer((props) => {
                                         },
                                         hAxis: {
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                                 fontSize: 11,
                                             },
                                             slantedText: true,
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         vAxis: {
                                             minValue:   props.defiName == "JulSwap" || 
@@ -1314,10 +1314,10 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                             },
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         colors: ["#f0b923", "#34ab62"],
                                         chartArea: { width: chartWidth, height: '70%' },
