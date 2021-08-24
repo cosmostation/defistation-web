@@ -322,7 +322,7 @@ hr.sideMenuLine {
 }
 
 .subPageTitle {
-  color: #fff;
+  color: #0e1014;
   font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-weight: 500;
@@ -2288,6 +2288,10 @@ hr.sideMenuLine {
   pointer-events: auto
 }
 
+.__react_component_tooltip::after {
+  border-right-color: #f3f3f4 !important;
+}
+
 .auditLink {
   color: #9d9fa4;
   /* text-decoration: underline !important; */
@@ -2408,8 +2412,8 @@ hr.sideMenuLine {
   }
   
   .noAudit {
-    background-color:#454b57;
-    border:1px solid #454b57;
+    background-color:#fff;
+    border:1px solid #fff;
     width:8px; height:8px;
     border-radius:75px;
     text-align:center;
@@ -3389,6 +3393,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   padding: 15px;
   box-sizing: border-box;
   overflow: hidden;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
 }
 
 .defiOverviewTitle {
@@ -3401,7 +3406,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.22;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
+  color: #0e1014;
 }
 
 .defiOverviewContent {
@@ -3479,7 +3484,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
+  color: #0e1014;
 }
 
 .defiOverviewWebsiteLinkUl {
@@ -3581,8 +3586,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   width: 100%;
   /* height: 720px; */
   border-radius: 5px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #262932;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
   padding: 15px 30px 15px 30px;
 
   box-sizing: border-box;
@@ -3621,7 +3626,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 .defiDetailListTable th {
   height: 47.21px;
   /* height: 40px; */
-  border-bottom: 1px solid #32373E;
+  border-bottom: 1px solid #efefef;
   /* padding: 10px; */
   font-family: "Roboto", sans-serif;
 }
@@ -3629,7 +3634,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 .defiDetailListTable td {
   height: 57.21px;
   /* height: 32px; */
-  border-bottom: 1px solid #32373E;
+  border-bottom: 1px solid #efefef;
   /* padding: 10px; */
   font-family: "Roboto", sans-serif;
 }
@@ -3783,7 +3788,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   text-align: center;
   color: #9BA5B5;
-  background-color: #262932;
+  background-color: #fff;
 }
 
 .defiDetailListTableBody {
@@ -3795,7 +3800,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
+  color: #0e1014;
 }
 
 .tableBoardPageIconsUl {
@@ -3810,7 +3815,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.8;
   letter-spacing: normal;
   text-align: center;
-  color: #ffffff;
+  color: #0e1014;
   margin-top: 30px;
 }
 
@@ -3821,7 +3826,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 }
 
 .tableBoardPageIconsUl li img {
-  filter:invert(1);
+  filter:invert(0);
 }
 
 .selectedPage {
@@ -3844,47 +3849,12 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   width: 100%;
   /* height: 635px; */
   border-radius: 5px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #171a20;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
   padding: 40px;
   margin-top: 16px;
   box-sizing: border-box;
 }
-
-/* @media all and (device-width: 1024px) {
-  .aboutBox {
-    width: 1000px;
-    padding: 30px;
-  }
-}
-
-@media all and (device-width: 768px) {
-  .aboutBox {
-    width: 738px;
-    padding: 30px;
-  }
-}
-
-@media (min-width:414px) and (max-width:767px) {
-  .aboutBox {
-    width: 394px;
-    padding: 30px;
-  }
-}
-
-@media (min-width:360px) and (max-width:413px) {
-  .aboutBox {
-    width: 320px;
-    padding: 30px;
-  }
-}
-
-@media (min-width:1px) and (max-width:359px) {
-  .aboutBox {
-    width: 300px;
-    padding: 30px;
-  }
-} */
 
 @media (min-width:1px) and (max-width:767px) {
   .aboutBox {
@@ -3944,7 +3914,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.25;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
+  color: #0e1014;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -3955,8 +3925,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   margin-top: 16px;
   width: 100%;
   height: 80px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
-  background-color: #171a20;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
+  background-color: #fff;
   padding-top: 5px;
   padding-left: 25px;
   box-sizing: border-box;
@@ -4013,7 +3983,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.33;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
+  color: #0e1014;
 }
 
 @media (min-width:321px) and (max-width:768px) {
@@ -4044,11 +4014,12 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   width: 338px;
   height: 136px;
   border-radius: 5px;
-  background-color: #20232b;
+  background-color: #fff;
   padding: 20px;
   box-sizing: border-box;
   cursor: pointer;
   line-height: 1.1;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15);
 }
 
 .theDefiListUl li img {
@@ -4058,7 +4029,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 }
 
 .theDefiListUl li:hover {
-  background-color: #171A20;
+  background-color: #f9f9f9;
 }
 
 .theDefiListUl li:nth-child(3n+1) {
@@ -4144,7 +4115,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.3;
   letter-spacing: normal;
   text-align: left;
-  color: #ffffff;
+  color: #0e1014;
 }
 
 .theDefiListCardText {
@@ -4157,7 +4128,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.0;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  color: #9d9fa4;
 }
 
 .projectsCardSponsored {
