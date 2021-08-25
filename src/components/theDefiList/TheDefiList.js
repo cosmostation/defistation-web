@@ -84,6 +84,7 @@ import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import bsclaunch from "../../assets/images/defiLogo/bsclaunch@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
+import kebab from "../../assets/images/defiLogo/kebab@2x.png";
 
 const TheDefiList = observer(() => {
     const { global } = useStores();
@@ -428,7 +429,11 @@ const TheDefiList = observer(() => {
                         case "dForce":
                             listFlag = true;
                             defiIconArr.push(dforce);
-                            break;                
+                            break;      
+                        case "Kebab Finance":
+                            listFlag = true;
+                            defiIconArr.push(kebab);
+                            break;                    
                         default:
                             // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                             if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {
@@ -550,7 +555,7 @@ const TheDefiList = observer(() => {
                 <div className="applyBtn" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>
-                            <span className="applyBtnTitle">Apply to be listed</span><br />
+                            <p className="applyBtnTitle">Apply to be listed</p><br />
                             <span className="applyBtnText">Please fill in this application form to be begin your screening process to be listed on Defistation</span>
                         </li>
                         <li>
