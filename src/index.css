@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0d0f13 url('./pattern@2x.png') repeat;
+  /* background: #0d0f13 url('./pattern@2x.png') repeat; */
+  background: #f3f3f4 url('./patternLight@2x.png') repeat;
 }
 
 code {

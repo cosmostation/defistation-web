@@ -194,11 +194,12 @@ const TotalValue = observer((props) => {
 
         // 7d, 30d, 90d 모두 days 90으로 가져옴
         let chartFullUrl2;
-        if (chartPeriod == 180) {
-            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
-        } else {
-            chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
-        }
+        // if (chartPeriod == 180) {
+        //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+        // } else {
+        //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
+        // }
+        chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
         
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
@@ -1204,8 +1205,8 @@ const TotalValue = observer((props) => {
             
             <ul className="totalValueUl">
                 <li>
-                    {/* style={props.defiName != "DeFi" ? {backgroundColor: "#171a20"} : {backgroundColor: "#262932"}} */}
-                    <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}>
+                    {/* <div className="tvlChartCard" style={props.defiName != "DeFi" ? {backgroundColor: "#262932"} : {backgroundColor: "#262932"}}> */}
+                    <div className="tvlChartCard">
                         <ul className="tvlChartCardUl">
                             <li>
                                 <p className="tvlChartLegend">{chartLegendLabel}</p>
@@ -1229,7 +1230,7 @@ const TotalValue = observer((props) => {
                                     loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
-                                        backgroundColor: "#262932",
+                                        backgroundColor: "#fff",
                                         legend: "none",
                                         // animation : { duration:400, easing:'out'},
                                         // Gives each series an axis that matches the vAxes number below.
@@ -1239,22 +1240,22 @@ const TotalValue = observer((props) => {
                                         },
                                         hAxis: {
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                                 fontSize: 11,
                                             },
                                             slantedText: true,
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         vAxis: {
                                             // minValue: minTvl,
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                             },
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
-                                        colors: ["#f0b923", "#888A8F"],
+                                        colors: ["#FDCE32", "#888A8F"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
                                         crosshair: {
@@ -1278,7 +1279,7 @@ const TotalValue = observer((props) => {
                                     loader={<div style={{ "width": viewWidth, "height": "270px", "text-align": "center", "margin-top": "100px" }}>< img src={loading} /></div>}
                                     data={chartData}
                                     options={{
-                                        backgroundColor: "#262932",
+                                        backgroundColor: "#fff",
                                         legend: "none",
                                         // animation : { duration:400, easing:'out'},
                                         // Gives each series an axis that matches the vAxes number below.
@@ -1288,12 +1289,12 @@ const TotalValue = observer((props) => {
                                         },
                                         hAxis: {
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                                 fontSize: 11,
                                             },
                                             slantedText: true,
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
                                         vAxis: {
                                             minValue:   props.defiName == "JulSwap" || 
@@ -1310,15 +1311,16 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "TEN" ||
                                                         props.defiName == "dForce" ||
                                                         props.defiName == "ARIES FINANCIAL" ||
+                                                        props.defiName == "EmiSwap" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
-                                                color: '#757f8e',
+                                                color: '#9d9fa4',
                                             },
-                                            baselineColor: '#fff',
-                                            gridlineColor: '#3D424D',
+                                            baselineColor: '#efefef',
+                                            gridlineColor: '#efefef',
                                         },
-                                        colors: ["#f0b923", "#34ab62"],
+                                        colors: ["#FDCE32", "#34ab62"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
                                         crosshair: {

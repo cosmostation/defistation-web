@@ -53,25 +53,10 @@ const MiniCardSlider = observer((props) => {
 
     return (
         <li className="miniCardList">
-            {/* <span className="miniCardTitle">{props.title}</span>
-            {props.data24hChange}
-            {props.trendingDefiName}
-            <p style={props.symbol == "BNB" ? undefined : { display: "none" } }  className="miniCardDataNum">{props.dataNum} <span style={{"color":"#f0b923"}}>BNB</span></p>
-            <p style={props.symbol == "BNB" ? { display: "none" } : undefined }  className="miniCardDataNum">{props.dataNum}</p> */}
-            
-            
-            {/* 
-            title0={"Trending(Price)"} dataNum0={"$ 00.00"} data24hChange0={12.34} defiName={"name0"}
-            title1={"Trending(Mkt Cap)"} dataNum1={"$ 00.00B"} data24hChange1={-12.34} defiName1={"name1"}
-            title2={"Trending(Holders)"} dataNum2={"999,999"} data24hChange2={12.34} defiName2={"name2"}
-            title3={"Trending(TVL)"} dataNum3={"$ 00.00B"} data24hChange3={-12.34} defiName3={"name3"} 
-            */}
-            
             <Slider {...settingsMiniCard}>
                 <div>
                     <span className="miniCardTitle">{props.title0}</span>
                     {/* price */}
-
                     <span style={props.data24hChange0 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange0 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange0 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange0 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange0 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange0 * 100).toFixed(2)}%</span>
@@ -87,7 +72,6 @@ const MiniCardSlider = observer((props) => {
                 <div>
                     <span className="miniCardTitle">{props.title1}</span>
                     {/* Mkt Cap */}
-
                     <span style={props.data24hChange1 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange1 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange1 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange1 * 100).toFixed(2)}%</span>
@@ -103,7 +87,6 @@ const MiniCardSlider = observer((props) => {
                 <div>
                     <span className="miniCardTitle">{props.title2}</span>
                     {/* Holders */}
-
                     <span style={props.data24hChange2 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{numberWithCommas(props.data24hChange2)}</span>
                     <span style={props.data24hChange2 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{numberWithCommas(props.data24hChange2)}</span>
                     <span style={props.data24hChange2 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{numberWithCommas(props.data24hChange2)}</span>
@@ -119,7 +102,6 @@ const MiniCardSlider = observer((props) => {
                 <div>
                     <span className="miniCardTitle">{props.title3}</span>
                     {/* TVL */}
-
                     <span style={props.data24hChange3 > 0 ? undefined : { display: "none" }} className="miniCardChange textGreen">+{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 == 0 ? undefined : { display: "none" }} className="miniCardChange textGray">{(props.data24hChange3 * 100).toFixed(2)}%</span>
                     <span style={props.data24hChange3 < 0 ? undefined : { display: "none" }} className="miniCardChange textRed">{(props.data24hChange3 * 100).toFixed(2)}%</span>

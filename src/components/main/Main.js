@@ -17,6 +17,9 @@ const Main = observer(() => {
         // Google Analytics
         if (process.env.NODE_ENV === "production") ReactGA.pageview(window.location.pathname + window.location.search);
 
+        // const nightModeFlag = !window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        // console.log("nightModeFlag: ", nightModeFlag);
+
         return () => {
             console.log('cleanup');
         };
