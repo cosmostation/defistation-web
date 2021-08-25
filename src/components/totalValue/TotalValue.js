@@ -1255,7 +1255,7 @@ const TotalValue = observer((props) => {
                                             baselineColor: '#efefef',
                                             gridlineColor: '#efefef',
                                         },
-                                        colors: ["#f0b923", "#888A8F"],
+                                        colors: ["#FDCE32", "#888A8F"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
                                         crosshair: {
@@ -1311,6 +1311,7 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "TEN" ||
                                                         props.defiName == "dForce" ||
                                                         props.defiName == "ARIES FINANCIAL" ||
+                                                        props.defiName == "EmiSwap" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
@@ -1319,7 +1320,7 @@ const TotalValue = observer((props) => {
                                             baselineColor: '#efefef',
                                             gridlineColor: '#efefef',
                                         },
-                                        colors: ["#f0b923", "#34ab62"],
+                                        colors: ["#FDCE32", "#34ab62"],
                                         chartArea: { width: chartWidth, height: '70%' },
                                         focusTarget: 'category',
                                         crosshair: {
