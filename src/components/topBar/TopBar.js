@@ -106,7 +106,7 @@ const TopBar = observer((props) => {
                 <li>
                     {/* <img src={topBarLogo} style={{"width":"260px"}} onClick={() => movePage("/")} /> */}
                     {/* Defistation Default Theme: Dark */}
-                    <img src={defistationLogoLightBeta} style={{"width":"260px"}} onClick={() => movePage("/")} />
+                    <img className="defistationWithBinanceLogo" src={defistationLogoLightBeta} onClick={() => movePage("/")} />
                 </li>
                 {/* <li><span onClick={() => openWindow("https://t.me/defistation")}>Community <span class="material-icons" style={{"font-size":"13px"}}>open_in_new</span></span></li> */}
                 <li><span onClick={() => openWindow("https://t.me/defistation")}>Community</span></li>
