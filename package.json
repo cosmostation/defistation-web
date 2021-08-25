@@ -19,6 +19,7 @@
     "mobx-react": "^6.3.0",
     "mobx-react-lite": "^3.0.1",
     "normalize-url": "^4.5.1",
+    "path-parse": "^1.0.7",
     "postcss": "^7.0.36",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -42,7 +43,8 @@
     "typeface-heebo": "^1.1.13",
     "typeface-montserrat": "^1.1.13",
     "typeface-roboto": "^1.1.13",
-    "typeface-rubik": "^1.1.13"
+    "typeface-rubik": "^1.1.13",
+    "url-parse": "^1.5.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
