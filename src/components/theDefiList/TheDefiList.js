@@ -555,7 +555,7 @@ const TheDefiList = observer(() => {
                 <div className="applyBtn" onClick={() => window.open("https://forms.gle/SUPc87JiR8Nt4FMp7", "_blank")}>
                     <ul className="applyBtnUl">
                         <li>
-                            <span className="applyBtnTitle">Apply to be listed</span><br />
+                            <p className="applyBtnTitle">Apply to be listed</p><br />
                             <span className="applyBtnText">Please fill in this application form to be begin your screening process to be listed on Defistation</span>
                         </li>
                         <li>

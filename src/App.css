@@ -2279,6 +2279,7 @@ hr.sideMenuLine {
   z-index: 1000 !important;
   background-color: #f3f3f4 !important;
   color: #0e1014 !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15) !important;
 }
 
 .__react_component_tooltip.show {
@@ -2377,7 +2378,8 @@ hr.sideMenuLine {
 }
 
 .auditListUl li:hover {
-  opacity: 0.6;
+  /* opacity: 0.6; */
+  border: solid 1px #333;
 }
 
 .auditButtonImg {
@@ -3104,7 +3106,8 @@ table tr thead {
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #9BA5B5;
+  /* color: #9BA5B5; */
+  color: #9d9fa4;
   display: table-caption;
   /* background-color: #0c0e13; */
   background-color: #f3f3f4;
@@ -3426,7 +3429,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   text-align: left;
   /* text-align: justify; */
-  color: #9aa0a8;
+  color: #9d9fa4;
 
   /* border-radius: 5px;
   background-color: #171a20;
@@ -3773,7 +3776,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.33;
   letter-spacing: normal;
   text-align: center;
-  color: #9BA5B5;
+  color: #9d9fa4;
   background-color: #fff;
 }
 
@@ -3957,6 +3960,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   letter-spacing: normal;
   text-align: left;
   color: #f0b923;
+  margin-bottom: -17px;
+  margin-top: -2px;
 }
 
 .applyBtnText {
@@ -3973,8 +3978,16 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 }
 
 @media (min-width:321px) and (max-width:768px) {
+  .applyBtnTitle {
+    margin-bottom: -6px;
+  }
+  
   .applyBtnText {
     font-size: 12px;
+  }
+
+  .applyBtnUl {
+    line-height: 0.8;
   }
 }
 
