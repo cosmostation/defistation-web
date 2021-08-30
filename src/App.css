@@ -151,7 +151,7 @@ li {
     text-align: right;
     color: #fff;
   }
-  
+
   .defistationWithBinanceLogo { 
     width: 200px;
   }
@@ -3306,7 +3306,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  color: #9d9fa4;
 }
 
 .navHome {
@@ -3319,7 +3319,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   line-height: 1.6;
   letter-spacing: normal;
   text-align: left;
-  color: #9BA5B5;
+  color: #9d9fa4;
   cursor: pointer;
 }
 
