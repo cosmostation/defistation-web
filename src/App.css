@@ -297,6 +297,7 @@ hr.sideMenuLine {
   border-radius: 7px;
   padding: 2px 10px 2px 10px;
   line-height: 20px;
+  margin-left: 15px;
 }
 
 .rightTopSponsored {
