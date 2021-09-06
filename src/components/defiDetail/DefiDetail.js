@@ -43,9 +43,8 @@ const DefiDetail = observer(() => {
                     // res[i] 에 기호, 공백 제거하고 소문자로 변경하기
                     let tempDefiName = res[i];
                     
-                    // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
-                    tempDefiName = replaceAll(tempDefiName, ".", "");
-                    tempDefiName = replaceAll(tempDefiName, " ", "");
+                    // 기호, 공백 제거(url 용도)
+                    tempDefiName = tempDefiName.replace(/[.\s]/g,'');
                     tempDefiName = tempDefiName.toLowerCase();
 
                     // DB에 해당 pathname 이름이 존재한다.

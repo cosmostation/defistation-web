@@ -3451,7 +3451,7 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
 }
 
 .defiOverviewShowMoreText a {
-  color: #fff;
+  color: #0e1014;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
