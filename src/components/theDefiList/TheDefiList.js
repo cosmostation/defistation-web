@@ -152,22 +152,8 @@ const TheDefiList = observer(() => {
                     if (defiInfoName == "pancakeswap") {
                         defiInfoName = "pancake";
                     }
-        
-                    // // 이름에 공백 제거
-                    // if (defiInfoName.indexOf(" ") > 0) {
-                    //     defiInfoName = defiInfoName.replace(" ", "");
-                    // }
-        
-                    // // . 제거
-                    // if (defiInfoName.indexOf(".") > 0) {
-                    //     defiInfoName = defiInfoName.replace(".", "");
-                    // }
-                    // console.log("defiInfoName1: ", defiInfoName);
-
-                    // .replace(/ /g,'')
 
                     defiInfoName = defiInfoName.replace(/[.\s]/g,'');
-                    // console.log("defiInfoName2: ", defiInfoName2);
 
                     // defistation 에 리스팅됐는가? 
                     let listFlag = false;
