@@ -90,8 +90,6 @@ import fleta from "../../assets/images/defiLogo/fleta@2x.png";
 const TheDefiList = observer(() => {
     const { global } = useStores();
 
-    const location = useLocation();
-
     const history = useHistory();
 
     const [responseError, setResponseError] = useState();
@@ -104,8 +102,6 @@ const TheDefiList = observer(() => {
     const [defiListCodeForListing, setDefiListCodeForListing] = useState();
     const [defiListCodeForSponsored, setDefiListCodeForSponsored] = useState();
 
-
-
     function movePage(path) {
         history.push(path);
     }
@@ -117,8 +113,6 @@ const TheDefiList = observer(() => {
         setUrlFlag1(true);
 
         console.count("[0716] getDefiListCall");
-        // if (global.chartDataDetails == null) return;
-        // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
         const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
             method: 'GET',
@@ -130,8 +124,6 @@ const TheDefiList = observer(() => {
             .json()
             .then(res => {
                 // console.log("res: ", res);
-                // res[i].name
-
                 let listingProjectIndexArr = [];
 
                 // tvl 순서대로 카드 정렬
@@ -161,16 +153,22 @@ const TheDefiList = observer(() => {
                         defiInfoName = "pancake";
                     }
         
-                    // 이름에 공백 제거
-                    if (defiInfoName.indexOf(" ") > 0) {
-                        defiInfoName = defiInfoName.replace(" ", "");
-                    }
+                    // // 이름에 공백 제거
+                    // if (defiInfoName.indexOf(" ") > 0) {
+                    //     defiInfoName = defiInfoName.replace(" ", "");
+                    // }
         
-                    // . 제거
-                    if (defiInfoName.indexOf(".") > 0) {
-                        defiInfoName = defiInfoName.replace(".", "");
-                    }
-        
+                    // // . 제거
+                    // if (defiInfoName.indexOf(".") > 0) {
+                    //     defiInfoName = defiInfoName.replace(".", "");
+                    // }
+                    // console.log("defiInfoName1: ", defiInfoName);
+
+                    // .replace(/ /g,'')
+
+                    defiInfoName = defiInfoName.replace(/[.\s]/g,'');
+                    // console.log("defiInfoName2: ", defiInfoName2);
+
                     // defistation 에 리스팅됐는가? 
                     let listFlag = false;
         
