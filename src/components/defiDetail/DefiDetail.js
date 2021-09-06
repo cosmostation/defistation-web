@@ -4,8 +4,6 @@ import { observer, inject } from 'mobx-react';
 import ReactGA from "react-ga";
 import useStores from '../../useStores';
 
-import { numberWithCommas, capitalize, replaceAll } from '../../util/Util';
-
 import '../../App.css';
 
 import TopBar from '../topBar/TopBar';

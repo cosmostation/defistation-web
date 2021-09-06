@@ -26,8 +26,6 @@ const About = observer(() => {
             <div className="wrapper">
                 <TopBar />
                 {/* <div className="navBox noDrag"><span className="navHome" onClick={() => movePage("/")}>DEFISTATION</span> &gt; <span className="navDefiName">About</span></div> */}
-                
-                
                 <div>
                     <ul className="tvlTitleBox">
                         <li>
@@ -38,11 +36,6 @@ const About = observer(() => {
                         </li>
                     </ul>
                 </div>
-                
-                
-                
-                
-                
                 
                 <div className="aboutBox">
                     <span className="defiOverviewTitle">What is Defistation?</span><br /><div className="defiOverviewBr"></div>
@@ -114,10 +107,6 @@ Cosmostation develops, operates, and maintains all of its services in the spirit
                         <span onClick={() => openWindow("https://play.google.com/store/apps/details?id=wannabit.io.cosmostaion")}>Android Wallet</span><br />
                         <span onClick={() => openWindow("https://www.mintscan.io/")}>Mintscan Block Explorer</span><br />
                     </div>
-                    
-
-
-
                 </div>
                 <Footer />
             </div>

@@ -602,12 +602,6 @@ const TotalValue = observer((props) => {
                 // 서브페이지의 tempChartData[0]: "x", "TVL(Billion)", "Token Price(USD)"
                 console.log("[0708] tempChartData: ", tempChartData);
                 
-
-
-
-
-
-
                 // TVL 1 DAY(%)
                 // resultArr 가 2개 이상 요소를 가지고 있어야함. 그리고 가장 마지막과 그 이전의 % 차이를 계산하면 됨
                 if (resultArr.length >= 2) {
