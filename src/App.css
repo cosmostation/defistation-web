@@ -297,6 +297,7 @@ hr.sideMenuLine {
   border-radius: 7px;
   padding: 2px 10px 2px 10px;
   line-height: 20px;
+  margin-left: 15px;
 }
 
 .rightTopSponsored {
@@ -1505,7 +1506,8 @@ hr.sideMenuLine {
   line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
+  /* color: #fff; */
+  color: #0e1014;
   position: absolute;
   margin-top: 12px;
   display: block;
