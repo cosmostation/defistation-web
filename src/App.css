@@ -1506,7 +1506,8 @@ hr.sideMenuLine {
   line-height: 1.2;
   letter-spacing: normal;
   text-align: left;
-  color: #fff;
+  /* color: #fff; */
+  color: #0e1014;
   position: absolute;
   margin-top: 12px;
   display: block;
