@@ -588,21 +588,28 @@ const DefiDetailList = observer((props) => {
             </table>
             <br />
 
+            
+            
+            
+
+
+
             <ul className="tableBoardPageIconsUl">
                 <li onClick={() => setCurrentTablePage(1)}><img src={tableBoardFirstPageIcon} /></li>
                 <li onClick={() => movePageLeft()}><img src={tableBoardLeftIcon} /></li>
-                <li className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
-                <li className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
-                <li className={currentTablePage == 3 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(3)}>3</li>
-                <li className={currentTablePage == 4 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(4)}>4</li>
-                <li className={currentTablePage == 5 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(5)}>5</li>
-                <li className={currentTablePage == 6 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(6)}>6</li>
-                <li className={currentTablePage == 7 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(7)}>7</li>
-                <li className={currentTablePage == 8 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(8)}>8</li>
-                <li className={currentTablePage == 9 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(9)}>9</li>
-                <li className={currentTablePage == 10 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(10)}>10</li>
-                <li className={currentTablePage == 11 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(11)}>11</li>
-                <li className={currentTablePage == 12 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(12)}>12</li>
+                {/* 현재 페이지를 기준으로 -2, +2 까지 보여주기 */}
+                <li style={currentTablePage >= 1 && currentTablePage <= 3 ? undefined : {display: "none"}} className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 4 ? undefined : {display: "none"}} className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 5 ? undefined : {display: "none"}} className={currentTablePage == 3 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(3)}>3</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 6 ? undefined : {display: "none"}} className={currentTablePage == 4 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(4)}>4</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 7 ? undefined : {display: "none"}} className={currentTablePage == 5 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(5)}>5</li>
+                <li style={currentTablePage >= 4 && currentTablePage <= 8 ? undefined : {display: "none"}} className={currentTablePage == 6 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(6)}>6</li>
+                <li style={currentTablePage >= 5 && currentTablePage <= 9 ? undefined : {display: "none"}} className={currentTablePage == 7 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(7)}>7</li>
+                <li style={currentTablePage >= 6 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 8 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(8)}>8</li>
+                <li style={currentTablePage >= 7 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 9 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(9)}>9</li>
+                <li style={currentTablePage >= 8 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 10 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(10)}>10</li>
+                <li style={currentTablePage >= 9 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 11 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(11)}>11</li>
+                <li style={currentTablePage >= 10 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 12 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(12)}>12</li>
                 <li onClick={() => movePageRight()}><img src={tableBoardRightIcon} /></li>
                 <li onClick={() => setCurrentTablePage(12)}><img src={tableBoardLastPageIcon} /></li>
             </ul>
