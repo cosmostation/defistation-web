@@ -35,9 +35,15 @@ const DefiDetailList = observer((props) => {
     const [defiDataTag4, setDefiDataTag4] = useState();
     const [defiDataTag5, setDefiDataTag5] = useState();
     const [defiDataTag6, setDefiDataTag6] = useState();
+    const [defiDataTag7, setDefiDataTag7] = useState();
+    const [defiDataTag8, setDefiDataTag8] = useState();
+    const [defiDataTag9, setDefiDataTag9] = useState();
+    const [defiDataTag10, setDefiDataTag10] = useState();
+    const [defiDataTag11, setDefiDataTag11] = useState();
+    const [defiDataTag12, setDefiDataTag12] = useState();
 
     const [currentTablePage, setCurrentTablePage]   = useState(1);
-    const [totalTablePage, setTotalTablePage]       = useState(2);
+    const [totalTablePage, setTotalTablePage]       = useState(12);
 
     const [mobileFlag, setMobileFlag] = useState(false);
 
@@ -53,7 +59,7 @@ const DefiDetailList = observer((props) => {
 
     async function getBnbLockedList(defiName) {
         return new Promise(async function(resolve, reject) {
-            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=30", {
+            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=180", {
                 method: 'GET',
                 headers: {
                     Authorization: global.auth
@@ -195,8 +201,12 @@ const DefiDetailList = observer((props) => {
                 let holdersChangeTag;
 
                 // 최근 30개만 남기기
+                // let tempResultArr = _.filter(resultArr, (value, key)=> {
+                //     return (key >= chartPeriod - 30);
+                // })
+
                 let tempResultArr = _.filter(resultArr, (value, key)=> {
-                    return (key >= chartPeriod - 30);
+                    return (key >= 0);
                 })
 
                 for (var i = 0; i < tempResultArr.length; i++) {
@@ -436,8 +446,20 @@ const DefiDetailList = observer((props) => {
                 }
 
                 // 테이블 1~2페이지
+                // setDefiDataTag1(defiDataTagArr.slice(0,15));
+                // setDefiDataTag2(defiDataTagArr.slice(15,29));
                 setDefiDataTag1(defiDataTagArr.slice(0,15));
-                setDefiDataTag2(defiDataTagArr.slice(15,29));
+                setDefiDataTag2(defiDataTagArr.slice(15,30));
+                setDefiDataTag3(defiDataTagArr.slice(30,45));
+                setDefiDataTag4(defiDataTagArr.slice(45,60));
+                setDefiDataTag5(defiDataTagArr.slice(60,75));
+                setDefiDataTag6(defiDataTagArr.slice(75,90));
+                setDefiDataTag7(defiDataTagArr.slice(90,105));
+                setDefiDataTag8(defiDataTagArr.slice(105,120));
+                setDefiDataTag9(defiDataTagArr.slice(120,135));
+                setDefiDataTag10(defiDataTagArr.slice(135,150));
+                setDefiDataTag11(defiDataTagArr.slice(150,165));
+                setDefiDataTag12(defiDataTagArr.slice(165,179));
             })
             .catch(err => setResponseError(err));
     }
@@ -552,6 +574,16 @@ const DefiDetailList = observer((props) => {
                 <tbody className="defiDetailListTableBody">
                     {currentTablePage == 1 ? defiDataTag1 : undefined}
                     {currentTablePage == 2 ? defiDataTag2 : undefined}
+                    {currentTablePage == 3 ? defiDataTag3 : undefined}
+                    {currentTablePage == 4 ? defiDataTag4 : undefined}
+                    {currentTablePage == 5 ? defiDataTag5 : undefined}
+                    {currentTablePage == 6 ? defiDataTag6 : undefined}
+                    {currentTablePage == 7 ? defiDataTag7 : undefined}
+                    {currentTablePage == 8 ? defiDataTag8 : undefined}
+                    {currentTablePage == 9 ? defiDataTag9 : undefined}
+                    {currentTablePage == 10 ? defiDataTag10 : undefined}
+                    {currentTablePage == 11 ? defiDataTag11 : undefined}
+                    {currentTablePage == 12 ? defiDataTag12 : undefined}
                 </tbody>
             </table>
             <br />
@@ -561,8 +593,18 @@ const DefiDetailList = observer((props) => {
                 <li onClick={() => movePageLeft()}><img src={tableBoardLeftIcon} /></li>
                 <li className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
                 <li className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
+                <li className={currentTablePage == 3 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(3)}>3</li>
+                <li className={currentTablePage == 4 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(4)}>4</li>
+                <li className={currentTablePage == 5 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(5)}>5</li>
+                <li className={currentTablePage == 6 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(6)}>6</li>
+                <li className={currentTablePage == 7 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(7)}>7</li>
+                <li className={currentTablePage == 8 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(8)}>8</li>
+                <li className={currentTablePage == 9 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(9)}>9</li>
+                <li className={currentTablePage == 10 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(10)}>10</li>
+                <li className={currentTablePage == 11 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(11)}>11</li>
+                <li className={currentTablePage == 12 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(12)}>12</li>
                 <li onClick={() => movePageRight()}><img src={tableBoardRightIcon} /></li>
-                <li onClick={() => setCurrentTablePage(2)}><img src={tableBoardLastPageIcon} /></li>
+                <li onClick={() => setCurrentTablePage(12)}><img src={tableBoardLastPageIcon} /></li>
             </ul>
         </div>
     );

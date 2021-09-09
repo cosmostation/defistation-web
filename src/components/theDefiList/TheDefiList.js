@@ -86,6 +86,7 @@ import bsclaunch from "../../assets/images/defiLogo/bsclaunch@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import kebab from "../../assets/images/defiLogo/kebab@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 const TheDefiList = observer(() => {
     const { global } = useStores();
@@ -422,7 +423,11 @@ const TheDefiList = observer(() => {
                         case "Fleta Connect":
                             listFlag = true;
                             defiIconArr.push(fleta);
-                            break;                        
+                            break;   
+                        case "Coinwind":
+                            listFlag = true;
+                            defiIconArr.push(coinwind);
+                            break; 
                         default:
                             // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                             if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {

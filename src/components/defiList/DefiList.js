@@ -74,6 +74,7 @@ import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -328,7 +329,10 @@ const DefiList = observer((props) => {
                 break;  
             case "Fleta Connect":
                 resultImg = fleta;
-                break;                    
+                break; 
+            case "Coinwind":
+                resultImg = coinwind;
+                break;                        
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

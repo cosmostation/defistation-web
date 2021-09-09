@@ -95,6 +95,7 @@ import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -903,7 +904,10 @@ const TotalValue = observer((props) => {
                 break;  
             case "Fleta Connect":
                 setDefiIcon(fleta);
-                break;                     
+                break; 
+            case "Coinwind":
+                setDefiIcon(coinwind);
+                break;
             default:
                 let logoUrl = findLogoUrl(defiName);
 
