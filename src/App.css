@@ -1346,7 +1346,7 @@ hr.sideMenuLine {
   }
 
   .periodBtn {
-    width: 23%;
+    width: 22.9%;
     margin-left: 6px !important;
   }
 
@@ -3825,6 +3825,17 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   cursor: pointer;
   max-width: 18px;
   min-width: 18px;
+}
+
+@media (min-width:1px) and (max-width:320px) {
+  .tableBoardPageIconsUl {
+    /* float: left; */
+  }
+  
+  .tableBoardPageIconsUl li {
+    max-width: 14px;
+    min-width: 14px;
+  }
 }
 
 .tableBoardPageIconsUl li img {
