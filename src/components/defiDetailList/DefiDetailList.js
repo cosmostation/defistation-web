@@ -8,9 +8,7 @@ import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
-
-import questionIcon from "../../assets/images/question_ic.svg";
+import { numberWithCommas, getCurrencyUnit, getCurrencyDigit, convertDateFormat3, convertToBMK } from '../../util/Util';
 
 // table board icon
 import tableBoardLeftIcon from "../../assets/images/tableBoardIcons/chevron_left_black_24dp.svg";
@@ -27,7 +25,6 @@ const DefiDetailList = observer((props) => {
     const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
 
     const [responseError, setResponseError] = useState();
-    const [response, setResponse] = useState({});
 
     const [defiDataTag1, setDefiDataTag1] = useState();
     const [defiDataTag2, setDefiDataTag2] = useState();
