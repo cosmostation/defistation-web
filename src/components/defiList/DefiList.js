@@ -74,6 +74,7 @@ import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -328,7 +329,10 @@ const DefiList = observer((props) => {
                 break;  
             case "Fleta Connect":
                 resultImg = fleta;
-                break;                    
+                break; 
+            case "Coinwind":
+                resultImg = coinwind;
+                break;                        
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    
@@ -488,36 +492,9 @@ const DefiList = observer((props) => {
                     let defiName = res[i].name;
                     let coinImg = selectCoinImg(res[i].name);
 
-                    // beefy.finance 같은 경우 기호, 공백 제거(url 용도)
-                    defiName = replaceAll(defiName, ".", "");
-                    defiName = replaceAll(defiName, " ", "");
+                    // 기호, 공백 제거(url 용도)
+                    defiName = defiName.replace(/[.\s]/g,'');
                     defiName = defiName.toLowerCase();
-
-                    // rank 메달 이미지
-                    // if (i == 0) {
-                    //     rankNum = <img src={rankIcon1} style={{ "width": "24px", marginTop: "4px" }} />;
-                    // } else if (i == 1) {
-                    //     rankNum = <img src={rankIcon2} style={{ "width": "24px", marginTop: "4px" }} />;
-                    // } else if (i == 2) {
-                    //     rankNum = <img src={rankIcon3} style={{ "width": "24px", marginTop: "4px" }} />;
-                    // }
-
-                    // if (res[i].chain == "bsc") {
-                    //     chainName = "BSC";
-                    // } else {
-                    //     chainName = res[i].chain;
-                    // }
-
-                    // Token 이름
-                    // tokenName
-                    
-
-
-
-
-
-
-
 
                     // 현재 기준 변화량
                     let change24hValue = res[i].tvlPercentChange24h;

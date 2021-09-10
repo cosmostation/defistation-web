@@ -35,9 +35,15 @@ const DefiDetailList = observer((props) => {
     const [defiDataTag4, setDefiDataTag4] = useState();
     const [defiDataTag5, setDefiDataTag5] = useState();
     const [defiDataTag6, setDefiDataTag6] = useState();
+    const [defiDataTag7, setDefiDataTag7] = useState();
+    const [defiDataTag8, setDefiDataTag8] = useState();
+    const [defiDataTag9, setDefiDataTag9] = useState();
+    const [defiDataTag10, setDefiDataTag10] = useState();
+    const [defiDataTag11, setDefiDataTag11] = useState();
+    const [defiDataTag12, setDefiDataTag12] = useState();
 
     const [currentTablePage, setCurrentTablePage]   = useState(1);
-    const [totalTablePage, setTotalTablePage]       = useState(2);
+    const [totalTablePage, setTotalTablePage]       = useState(12);
 
     const [mobileFlag, setMobileFlag] = useState(false);
 
@@ -53,7 +59,7 @@ const DefiDetailList = observer((props) => {
 
     async function getBnbLockedList(defiName) {
         return new Promise(async function(resolve, reject) {
-            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=30", {
+            const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + defiName + "?days=180", {
                 method: 'GET',
                 headers: {
                     Authorization: global.auth
@@ -195,8 +201,12 @@ const DefiDetailList = observer((props) => {
                 let holdersChangeTag;
 
                 // 최근 30개만 남기기
+                // let tempResultArr = _.filter(resultArr, (value, key)=> {
+                //     return (key >= chartPeriod - 30);
+                // })
+
                 let tempResultArr = _.filter(resultArr, (value, key)=> {
-                    return (key >= chartPeriod - 30);
+                    return (key >= 0);
                 })
 
                 for (var i = 0; i < tempResultArr.length; i++) {
@@ -435,15 +445,21 @@ const DefiDetailList = observer((props) => {
                     }
                 }
 
-                // 테이블 1~2페이지
-                setDefiDataTag1(defiDataTagArr.slice(0,15));
-                setDefiDataTag2(defiDataTagArr.slice(15,29));
+                let cellNum = 15;
+                setDefiDataTag1(defiDataTagArr.slice(0, cellNum * 1));
+                setDefiDataTag2(defiDataTagArr.slice(cellNum * 1, cellNum * 2));
+                setDefiDataTag3(defiDataTagArr.slice(cellNum * 2, cellNum * 3));
+                setDefiDataTag4(defiDataTagArr.slice(cellNum * 3, cellNum * 4));
+                setDefiDataTag5(defiDataTagArr.slice(cellNum * 4, cellNum * 5));
+                setDefiDataTag6(defiDataTagArr.slice(cellNum * 5, cellNum * 6));
+                setDefiDataTag7(defiDataTagArr.slice(cellNum * 6, cellNum * 7));
+                setDefiDataTag8(defiDataTagArr.slice(cellNum * 7, cellNum * 8));
+                setDefiDataTag9(defiDataTagArr.slice(cellNum * 8, cellNum * 9));
+                setDefiDataTag10(defiDataTagArr.slice(cellNum * 9, cellNum * 10));
+                setDefiDataTag11(defiDataTagArr.slice(cellNum * 10, cellNum * 11));
+                setDefiDataTag12(defiDataTagArr.slice(cellNum * 11, cellNum * 12));
             })
             .catch(err => setResponseError(err));
-    }
-
-    function movePage(path) {
-        history.push(path);
     }
 
     function movePageLeft() {
@@ -461,8 +477,6 @@ const DefiDetailList = observer((props) => {
     }
 
     useEffect(() => {
-        // getDefiList();
-        // console.log("props.defiName22222: ", props.defiName);
         getChart(props.defiName);
 
         let isMobile = false;
@@ -493,13 +507,6 @@ const DefiDetailList = observer((props) => {
                         <th className="switchable2">Token Price</th>
                         <th className="switchable3">Mkt Cap</th>
                         <th className="switchable4">
-                            {/* <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip /> */}
-
-                            {/* <ul className="defiListTableHeadCellRight">
-                                <li>Holders</li>
-                                <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul> */}
-
                             {/* PC */}
                             <a 
                             data-tip 
@@ -521,13 +528,6 @@ const DefiDetailList = observer((props) => {
                         </th>
                         <th className="switchable5">BNB Locked</th>
                         <th>
-                            {/* <span data-tip="Total value locked">TVL</span><ReactTooltip /> */}
-
-                            {/* <ul className="defiListTableHeadCellRight">
-                                <li>TVL</li>
-                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul> */}
-
                             {/* PC */}
                             <a 
                             data-tip 
@@ -552,6 +552,16 @@ const DefiDetailList = observer((props) => {
                 <tbody className="defiDetailListTableBody">
                     {currentTablePage == 1 ? defiDataTag1 : undefined}
                     {currentTablePage == 2 ? defiDataTag2 : undefined}
+                    {currentTablePage == 3 ? defiDataTag3 : undefined}
+                    {currentTablePage == 4 ? defiDataTag4 : undefined}
+                    {currentTablePage == 5 ? defiDataTag5 : undefined}
+                    {currentTablePage == 6 ? defiDataTag6 : undefined}
+                    {currentTablePage == 7 ? defiDataTag7 : undefined}
+                    {currentTablePage == 8 ? defiDataTag8 : undefined}
+                    {currentTablePage == 9 ? defiDataTag9 : undefined}
+                    {currentTablePage == 10 ? defiDataTag10 : undefined}
+                    {currentTablePage == 11 ? defiDataTag11 : undefined}
+                    {currentTablePage == 12 ? defiDataTag12 : undefined}
                 </tbody>
             </table>
             <br />
@@ -559,10 +569,21 @@ const DefiDetailList = observer((props) => {
             <ul className="tableBoardPageIconsUl">
                 <li onClick={() => setCurrentTablePage(1)}><img src={tableBoardFirstPageIcon} /></li>
                 <li onClick={() => movePageLeft()}><img src={tableBoardLeftIcon} /></li>
-                <li className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
-                <li className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
+                {/* 현재 페이지를 기준으로 -2, +2 까지 보여주기 */}
+                <li style={currentTablePage >= 1 && currentTablePage <= 3 ? undefined : {display: "none"}} className={currentTablePage == 1 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(1)}>1</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 4 ? undefined : {display: "none"}} className={currentTablePage == 2 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(2)}>2</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 5 ? undefined : {display: "none"}} className={currentTablePage == 3 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(3)}>3</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 6 ? undefined : {display: "none"}} className={currentTablePage == 4 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(4)}>4</li>
+                <li style={currentTablePage >= 1 && currentTablePage <= 7 ? undefined : {display: "none"}} className={currentTablePage == 5 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(5)}>5</li>
+                <li style={currentTablePage >= 4 && currentTablePage <= 8 ? undefined : {display: "none"}} className={currentTablePage == 6 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(6)}>6</li>
+                <li style={currentTablePage >= 5 && currentTablePage <= 9 ? undefined : {display: "none"}} className={currentTablePage == 7 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(7)}>7</li>
+                <li style={currentTablePage >= 6 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 8 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(8)}>8</li>
+                <li style={currentTablePage >= 7 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 9 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(9)}>9</li>
+                <li style={currentTablePage >= 8 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 10 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(10)}>10</li>
+                <li style={currentTablePage >= 9 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 11 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(11)}>11</li>
+                <li style={currentTablePage >= 10 && currentTablePage <= 12 ? undefined : {display: "none"}} className={currentTablePage == 12 ? "selectedPage" : undefined} onClick={() => setCurrentTablePage(12)}>12</li>
                 <li onClick={() => movePageRight()}><img src={tableBoardRightIcon} /></li>
-                <li onClick={() => setCurrentTablePage(2)}><img src={tableBoardLastPageIcon} /></li>
+                <li onClick={() => setCurrentTablePage(12)}><img src={tableBoardLastPageIcon} /></li>
             </ul>
         </div>
     );

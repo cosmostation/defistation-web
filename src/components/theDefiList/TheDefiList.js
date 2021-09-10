@@ -86,11 +86,10 @@ import bsclaunch from "../../assets/images/defiLogo/bsclaunch@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import kebab from "../../assets/images/defiLogo/kebab@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 const TheDefiList = observer(() => {
     const { global } = useStores();
-
-    const location = useLocation();
 
     const history = useHistory();
 
@@ -104,8 +103,6 @@ const TheDefiList = observer(() => {
     const [defiListCodeForListing, setDefiListCodeForListing] = useState();
     const [defiListCodeForSponsored, setDefiListCodeForSponsored] = useState();
 
-
-
     function movePage(path) {
         history.push(path);
     }
@@ -117,8 +114,6 @@ const TheDefiList = observer(() => {
         setUrlFlag1(true);
 
         console.count("[0716] getDefiListCall");
-        // if (global.chartDataDetails == null) return;
-        // console.log("global.chartDataDetails.pancake[1603274430]: ", global.chartDataDetails.pancake[1603274430]);
 
         const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
             method: 'GET',
@@ -130,8 +125,6 @@ const TheDefiList = observer(() => {
             .json()
             .then(res => {
                 // console.log("res: ", res);
-                // res[i].name
-
                 let listingProjectIndexArr = [];
 
                 // tvl 순서대로 카드 정렬
@@ -160,17 +153,9 @@ const TheDefiList = observer(() => {
                     if (defiInfoName == "pancakeswap") {
                         defiInfoName = "pancake";
                     }
-        
-                    // 이름에 공백 제거
-                    if (defiInfoName.indexOf(" ") > 0) {
-                        defiInfoName = defiInfoName.replace(" ", "");
-                    }
-        
-                    // . 제거
-                    if (defiInfoName.indexOf(".") > 0) {
-                        defiInfoName = defiInfoName.replace(".", "");
-                    }
-        
+
+                    defiInfoName = defiInfoName.replace(/[.\s]/g,'');
+
                     // defistation 에 리스팅됐는가? 
                     let listFlag = false;
         
@@ -438,7 +423,11 @@ const TheDefiList = observer(() => {
                         case "Fleta Connect":
                             listFlag = true;
                             defiIconArr.push(fleta);
-                            break;                        
+                            break;   
+                        case "Coinwind":
+                            listFlag = true;
+                            defiIconArr.push(coinwind);
+                            break; 
                         default:
                             // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                             if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {

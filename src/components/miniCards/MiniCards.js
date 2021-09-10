@@ -1,8 +1,8 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { observer, inject } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useStores from '../../useStores';
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
+import { numberWithCommas } from '../../util/Util';
 
 import '../../App.css';
 
@@ -35,8 +35,6 @@ const MiniCards = observer((props) => {
     const [totalBnbLockedNum, setTotalBnbLockedNum] = useState(0);
     const [projectNum, setProjectNum] = useState(0);
 
-    const [lockedBnbAmount, setLockedBnbAmount] = useState();
-
     const [miniCard4thTag, setMiniCard4thTag] = useState();
 
     const [urlFlag2, setUrlFlag2] = useState(false);
@@ -45,11 +43,6 @@ const MiniCards = observer((props) => {
         setUrlFlag2(true);
 
         console.count("getDefiListCall");
-
-        // if (defiName == "")
-
-        // console.log("[0426] defiName: ", defiName);
-
         const res = await fetch(global.defistationApiUrl + "/defiTvlList", {
             method: 'GET',
             headers: {
@@ -96,13 +89,10 @@ const MiniCards = observer((props) => {
         setUrlFlag1(true);
 
         // console.log("getTotalBnbLocked 함수 시작");
-
         let urlStr = "";
         if (defiName == "DeFi") {
-            // urlStr = "all";
             urlStr = "all?days=30";
         } else {
-            // urlStr = defiName;
             urlStr = defiName + "?days=30";
         }
 
@@ -110,7 +100,6 @@ const MiniCards = observer((props) => {
         if (urlFlagDetail == urlStr) return;
         setUrlFlagDetail(urlStr);
 
-        // console.log("urlStr: ", urlStr);
         if (urlStr == "" || urlStr == "?days=30") return;
         const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr, {
             method: 'GET',
@@ -125,17 +114,11 @@ const MiniCards = observer((props) => {
                 // res.result 를 배열로 바꾸고 가장 마지막 요소(최신) 확인
                 let resultObj = res.result;
                 var resultArr = Object.keys(resultObj).map((key) => [Number(key), resultObj[key]]);
-
-                // console.log("res: ", res);
-                // setTotalBnbLockedNum(numberWithCommas(Math.floor(resultArr[resultArr.length - 1][1]), false));
                 setTotalBnbLockedNum(Math.floor(resultArr[resultArr.length - 1][1]), false);
 
-                // setLockedBnbAmount(resultArr[resultArr.length - 1][1]);
                 // 해당 Defi BNB와 전체 BNB 유통량 비율
                 if (props.defiName != "DeFi") {
                     // 서브 페이지
-                    // 유통량: 147883948 -> 153432897
-                    // setMiniCardData3(((resultArr[resultArr.length - 1][1] * 1 / 153432897 * 100).toFixed(4) * 1) + "%");
 
                     // ---------------------------- Total BNB locked change(%) ----------------------------
                     console.log("resultArr[resultArr.length - 2][1]: ", resultArr[resultArr.length - 2][1]);
@@ -189,19 +172,8 @@ const MiniCards = observer((props) => {
             .catch(err => setResponseError(err));
     }
 
-    // function showTvl1Day() {
-    //     if (global.tvl1DayPercent > 0) { 
-    //         setMiniCardData1("+" + global.tvl1DayPercent + "%");
-    //     } else {
-    //         setMiniCardData1(global.tvl1DayPercent + "%");
-    //     }
-    // }
-
-    // const [trendingDefiName, setTrendingDefiName] = useState("");
-
     useEffect(() => {
         getTotalBnbLocked(props.defiName);
-        // showTvl1Day();
 
         // 메인 페이지 or 서브 페이지?
         if (props.defiName == "DeFi") {
@@ -274,7 +246,7 @@ const MiniCards = observer((props) => {
             let trendingArr = global.trending;
 
             // trending minicard 보여주기
-            // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
+            // trendingArr 예시: ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
             setMiniCard4thTag(
             <MiniCardSlider 
             title0={"Trending (Price)"} defiName0={trendingArr[0]} dataNum0={trendingArr[1] * 1} data24hChange0={trendingArr[2]} 
@@ -291,20 +263,6 @@ const MiniCards = observer((props) => {
             setMiniCardTitle2("Total BNB Locked");
             setMiniCardTitle3("Last updated(UTC)");
 
-            // TVL Change 24h
-            // minicard 0 으로 보이는 현상 임시
-            // if (miniCardData0 == "0%") {
-            //     setTimeout(function() {
-            //         if (miniCardData0 != "0%") return;
-            //         // showTvl1Day();
-            //         if (global.tvl1DayPercent > 0) { 
-            //             setMiniCardData1("+" + global.tvl1DayPercent + "%");
-            //         } else {
-            //             setMiniCardData1(global.tvl1DayPercent + "%");
-            //         }
-            //     }, 3000);
-            // }
-
             // Total Value Locked 변화량(%) 값
             console.log("changeVal0: ", changeVal0);
             if (changeVal0 == "") {
@@ -319,42 +277,16 @@ const MiniCards = observer((props) => {
                     }
                 }, 3000);
             }
-
-            // if (String(global.tvl1DayPercent).indexOf("+") != -1) {
-            //     setChangeVal0(<span className="miniCardChange textGreen">{global.tvl1DayPercent}</span>);
-            // } else if (String(global.tvl1DayPercent).indexOf("-") != -1) {
-            //     setChangeVal0(<span className="miniCardChange textRed">{global.tvl1DayPercent}</span>);
-            // } else {
-            //     setChangeVal0(<span className="miniCardChange">{global.tvl1DayPercent}</span>);
-            // }
             
             // ---------------------------- Token Price ----------------------------
-            // console.log("global.tokenPrice: ", global.tokenPrice);
-            // setMiniCardData1("$ " + global.tokenPrice);
-
             // 서브페이지일 때 Token Price 랑 변화량 가져오기 -> minicard2 적용
             if (props.defiName != "") getDefiList(props.defiName);
-
-
-            // console.log("global.transactions24hPercent: ", global.transactions24hPercent);
-            // if (global.transactions24hPercent * 1 > 0) {
-            //     setChangeVal1(<span className="miniCardChange textGreen">+{global.transactions24hPercent}%</span>);
-            // } else if (global.transactions24hPercent * 1 < 0) {
-            //     setChangeVal1(<span className="miniCardChange textRed">{global.transactions24hPercent}%</span>);
-            // } else {
-            //     setChangeVal1(<span className="miniCardChange">{global.transactions24hPercent}%</span>);
-            // }
-
-            // console.log("global.tokenPrice24hPercent: ", global.tokenPrice24hPercent);
-
 
             // 서브페이지에서는 trending 이 아니라 일반 minicard 보여주기
             setMiniCard4thTag(
                 <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} />
             );
         }
-
-        // console.log("[0426 test] props.defiName: ", props.defiName);
         
         return () => {
 
@@ -368,8 +300,6 @@ const MiniCards = observer((props) => {
                 <MiniCard title={miniCardTitle0} dataNum={global.totalValueLockedUsd} data24hChange={changeVal0} />
                 <MiniCard title={miniCardTitle1} dataNum={miniCardData1} data24hChange={changeVal1} />
                 <MiniCard title={miniCardTitle2} dataNum={totalBnbLockedNum} symbol="BNB" data24hChange={changeVal2} />
-                {/* <MiniCard title={miniCardTitle3} dataNum={miniCardData3} data24hChange={changeVal3} trendingDefiName={miniCardData3b} /> */}
-                {/* <MiniCardSlider style={props.defiName == "DeFi" ? undefined : { display: "none" } } /> */}
                 {miniCard4thTag}
             </ul>
         </div>

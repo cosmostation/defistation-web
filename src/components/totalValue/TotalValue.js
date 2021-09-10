@@ -95,6 +95,7 @@ import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import dforce from "../../assets/images/defiLogo/dforce@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -602,12 +603,6 @@ const TotalValue = observer((props) => {
                 // 서브페이지의 tempChartData[0]: "x", "TVL(Billion)", "Token Price(USD)"
                 console.log("[0708] tempChartData: ", tempChartData);
                 
-
-
-
-
-
-
                 // TVL 1 DAY(%)
                 // resultArr 가 2개 이상 요소를 가지고 있어야함. 그리고 가장 마지막과 그 이전의 % 차이를 계산하면 됨
                 if (resultArr.length >= 2) {
@@ -909,7 +904,10 @@ const TotalValue = observer((props) => {
                 break;  
             case "Fleta Connect":
                 setDefiIcon(fleta);
-                break;                     
+                break; 
+            case "Coinwind":
+                setDefiIcon(coinwind);
+                break;
             default:
                 let logoUrl = findLogoUrl(defiName);
 
