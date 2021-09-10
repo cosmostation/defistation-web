@@ -445,27 +445,21 @@ const DefiDetailList = observer((props) => {
                     }
                 }
 
-                // 테이블 1~2페이지
-                // setDefiDataTag1(defiDataTagArr.slice(0,15));
-                // setDefiDataTag2(defiDataTagArr.slice(15,29));
-                setDefiDataTag1(defiDataTagArr.slice(0,15));
-                setDefiDataTag2(defiDataTagArr.slice(15,30));
-                setDefiDataTag3(defiDataTagArr.slice(30,45));
-                setDefiDataTag4(defiDataTagArr.slice(45,60));
-                setDefiDataTag5(defiDataTagArr.slice(60,75));
-                setDefiDataTag6(defiDataTagArr.slice(75,90));
-                setDefiDataTag7(defiDataTagArr.slice(90,105));
-                setDefiDataTag8(defiDataTagArr.slice(105,120));
-                setDefiDataTag9(defiDataTagArr.slice(120,135));
-                setDefiDataTag10(defiDataTagArr.slice(135,150));
-                setDefiDataTag11(defiDataTagArr.slice(150,165));
-                setDefiDataTag12(defiDataTagArr.slice(165,179));
+                let cellNum = 15;
+                setDefiDataTag1(defiDataTagArr.slice(0, cellNum * 1));
+                setDefiDataTag2(defiDataTagArr.slice(cellNum * 1, cellNum * 2));
+                setDefiDataTag3(defiDataTagArr.slice(cellNum * 2, cellNum * 3));
+                setDefiDataTag4(defiDataTagArr.slice(cellNum * 3, cellNum * 4));
+                setDefiDataTag5(defiDataTagArr.slice(cellNum * 4, cellNum * 5));
+                setDefiDataTag6(defiDataTagArr.slice(cellNum * 5, cellNum * 6));
+                setDefiDataTag7(defiDataTagArr.slice(cellNum * 6, cellNum * 7));
+                setDefiDataTag8(defiDataTagArr.slice(cellNum * 7, cellNum * 8));
+                setDefiDataTag9(defiDataTagArr.slice(cellNum * 8, cellNum * 9));
+                setDefiDataTag10(defiDataTagArr.slice(cellNum * 9, cellNum * 10));
+                setDefiDataTag11(defiDataTagArr.slice(cellNum * 10, cellNum * 11));
+                setDefiDataTag12(defiDataTagArr.slice(cellNum * 11, cellNum * 12 - 1));
             })
             .catch(err => setResponseError(err));
-    }
-
-    function movePage(path) {
-        history.push(path);
     }
 
     function movePageLeft() {
@@ -483,8 +477,6 @@ const DefiDetailList = observer((props) => {
     }
 
     useEffect(() => {
-        // getDefiList();
-        // console.log("props.defiName22222: ", props.defiName);
         getChart(props.defiName);
 
         let isMobile = false;
@@ -515,13 +507,6 @@ const DefiDetailList = observer((props) => {
                         <th className="switchable2">Token Price</th>
                         <th className="switchable3">Mkt Cap</th>
                         <th className="switchable4">
-                            {/* <span data-tip="The number of wallets with a balance exceeding zero">Holders</span><ReactTooltip /> */}
-
-                            {/* <ul className="defiListTableHeadCellRight">
-                                <li>Holders</li>
-                                <li><span data-tip="The number of wallets with a balance exceeding zero"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul> */}
-
                             {/* PC */}
                             <a 
                             data-tip 
@@ -543,13 +528,6 @@ const DefiDetailList = observer((props) => {
                         </th>
                         <th className="switchable5">BNB Locked</th>
                         <th>
-                            {/* <span data-tip="Total value locked">TVL</span><ReactTooltip /> */}
-
-                            {/* <ul className="defiListTableHeadCellRight">
-                                <li>TVL</li>
-                                <li><span data-tip="Total value locked"><img src={questionIcon} /></span><ReactTooltip /></li>
-                            </ul> */}
-
                             {/* PC */}
                             <a 
                             data-tip 
@@ -587,12 +565,6 @@ const DefiDetailList = observer((props) => {
                 </tbody>
             </table>
             <br />
-
-            
-            
-            
-
-
 
             <ul className="tableBoardPageIconsUl">
                 <li onClick={() => setCurrentTablePage(1)}><img src={tableBoardFirstPageIcon} /></li>
