@@ -457,7 +457,7 @@ const DefiDetailList = observer((props) => {
                 setDefiDataTag9(defiDataTagArr.slice(cellNum * 8, cellNum * 9));
                 setDefiDataTag10(defiDataTagArr.slice(cellNum * 9, cellNum * 10));
                 setDefiDataTag11(defiDataTagArr.slice(cellNum * 10, cellNum * 11));
-                setDefiDataTag12(defiDataTagArr.slice(cellNum * 11, cellNum * 12 - 1));
+                setDefiDataTag12(defiDataTagArr.slice(cellNum * 11, cellNum * 12));
             })
             .catch(err => setResponseError(err));
     }
