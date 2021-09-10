@@ -3823,6 +3823,8 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   margin-left: 20px;
   text-align: center;
   cursor: pointer;
+  max-width: 18px;
+  min-width: 18px;
 }
 
 .tableBoardPageIconsUl li img {
