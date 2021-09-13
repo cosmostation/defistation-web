@@ -3827,6 +3827,18 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; } */
   min-width: 18px;
 }
 
+@media (min-width:1px) and (max-width:1034px) {
+  .tableBoardPageIconsUl {
+    float: none;
+    justify-content: center;
+  }
+
+  .tableBoardPageIconsUl li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 @media (min-width:1px) and (max-width:320px) {
   .tableBoardPageIconsUl {
     /* float: left; */
