@@ -30,11 +30,14 @@ import o3SwapMobile from "../../assets/images/banner/banner_o3swap_mobile.jpg";
 import bscLaunch from "../../assets/images/banner/banner_bsclaunch_web.gif";
 import bscLaunchMobile from "../../assets/images/banner/banner_bsclaunch_mobile.gif";
 
-import moonLiftProtocol from "../../assets/images/banner/banner_moonliftprotocol_web.png";
-import moonLiftProtocolMobile from "../../assets/images/banner/banner_moonliftprotocol_mobile.jpg";
+// import moonLiftProtocol from "../../assets/images/banner/banner_moonliftprotocol_web.png";
+// import moonLiftProtocolMobile from "../../assets/images/banner/banner_moonliftprotocol_mobile.jpg";
 
 import ten from "../../assets/images/banner/banner_tenfi_web.png";
 import tenMobile from "../../assets/images/banner/banner_tenfi_mobile.png";
+
+import cryptoPlanet from "../../assets/images/banner/CryptoPlanet_Web.jpg";
+import cryptoPlanetMobile from "../../assets/images/banner/CryptoPlanet_Mobile.jpg";
 
 // Google Analytics
 import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
@@ -57,7 +60,7 @@ const Banner = observer((props) => {
 
     const [bannerImg, setBannerImg] = useState(bunnyPark);
     const [bannerImg2, setBannerImg2] = useState(ten);
-    const [bannerImg3, setBannerImg3] = useState(moonLiftProtocol);
+    const [bannerImg3, setBannerImg3] = useState(cryptoPlanet);
 
     const [randomNum, setRandomNum] = useState(0);
 
@@ -65,11 +68,11 @@ const Banner = observer((props) => {
         if (window.innerWidth > 1034) {
             setBannerImg(bunnyPark);
             setBannerImg2(ten);
-            setBannerImg3(moonLiftProtocol);
+            setBannerImg3(cryptoPlanet);
         } else {
             setBannerImg(bunnyParkMobile);
             setBannerImg2(tenMobile);
-            setBannerImg3(moonLiftProtocolMobile);
+            setBannerImg3(cryptoPlanetMobile);
         }
         
         let tempRandom = generateRandom(0, 100);
@@ -106,10 +109,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
@@ -136,10 +139,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
@@ -159,10 +162,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
@@ -189,10 +192,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
@@ -212,10 +215,10 @@ const Banner = observer((props) => {
             <Slider {...settings} className="bannerWrapper" style={randomNum >= 66 ? undefined : { display: "none" }}>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
@@ -242,10 +245,10 @@ const Banner = observer((props) => {
                 </div>
                 <div>
                     <ReactGA.OutboundLink
-                    eventLabel="bannerClick(MoonLift Protocol)"
-                    to="http://dex.moonlift.io/"
+                    eventLabel="bannerClick(Crypto Planet)"
+                    to="https://t.me/CryptoPlanet_Gaming"
                     target="_blank"
-                    trackerNames={['MoonLift Protocol']}
+                    trackerNames={['Crypto Planet']}
                     >
                         <div className="banner"><img src={bannerImg3} /></div>
                     </ReactGA.OutboundLink>
