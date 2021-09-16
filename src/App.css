@@ -660,6 +660,7 @@ hr.sideMenuLine {
   /* color: #9BA5B5; */
   color: #9d9fa4;
   margin-top: 4px;
+  white-space: nowrap;
 }
 
 @media (min-width:1px) and (max-width:1034px) {
