@@ -8,9 +8,7 @@ import _ from "lodash";
 
 import '../../App.css';
 
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit, convertDateFormat, convertDateFormat3, convertToBMK } from '../../util/Util';
-
-import questionIcon from "../../assets/images/question_ic.svg";
+import { numberWithCommas, getCurrencyUnit, getCurrencyDigit, convertDateFormat3, convertToBMK } from '../../util/Util';
 
 // table board icon
 import tableBoardLeftIcon from "../../assets/images/tableBoardIcons/chevron_left_black_24dp.svg";
@@ -27,7 +25,6 @@ const DefiDetailList = observer((props) => {
     const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
 
     const [responseError, setResponseError] = useState();
-    const [response, setResponse] = useState({});
 
     const [defiDataTag1, setDefiDataTag1] = useState();
     const [defiDataTag2, setDefiDataTag2] = useState();
@@ -499,72 +496,74 @@ const DefiDetailList = observer((props) => {
     }, [props.defiName, mobileFlag])
 
     return (
-        <div className="defiDetailList">
-            <table className="defiDetailListTable">
-                <thead className="defiDetailListTableHead">
-                    <tr>
-                        <th>Date</th>
-                        <th className="switchable2">Token Price</th>
-                        <th className="switchable3">Mkt Cap</th>
-                        <th className="switchable4">
-                            {/* PC */}
-                            <a 
-                            data-tip 
-                            data-for="subTableHeader4"
-                            style={!mobileFlag ? undefined : {display: "none"}}
-                            >
-                            Holders
-                            </a>
-                            <ReactTooltip
-                            id="subTableHeader4"
-                            className='tableHeaderTooptip'
-                            place="bottom" 
-                            type="light" 
-                            effect="solid">
-                            <span>The number of wallets with a balance exceeding zero</span>
-                            </ReactTooltip>
-                            {/* Mobile (Tooltip 없음) */}
-                            <span style={mobileFlag ? undefined : {display: "none"}}>Holders</span>
-                        </th>
-                        <th className="switchable5">BNB Locked</th>
-                        <th>
-                            {/* PC */}
-                            <a 
-                            data-tip 
-                            data-for="subTableHeader6"
-                            style={!mobileFlag ? undefined : {display: "none"}}
-                            >
-                            TVL
-                            </a>
-                            <ReactTooltip
-                            id="subTableHeader6"
-                            className='tableHeaderTooptip'
-                            place="bottom" 
-                            type="light" 
-                            effect="solid">
-                            <span>Total value locked</span>
-                            </ReactTooltip>
-                            {/* Mobile (Tooltip 없음) */}
-                            <span style={mobileFlag ? undefined : {display: "none"}}>TVL</span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody className="defiDetailListTableBody">
-                    {currentTablePage == 1 ? defiDataTag1 : undefined}
-                    {currentTablePage == 2 ? defiDataTag2 : undefined}
-                    {currentTablePage == 3 ? defiDataTag3 : undefined}
-                    {currentTablePage == 4 ? defiDataTag4 : undefined}
-                    {currentTablePage == 5 ? defiDataTag5 : undefined}
-                    {currentTablePage == 6 ? defiDataTag6 : undefined}
-                    {currentTablePage == 7 ? defiDataTag7 : undefined}
-                    {currentTablePage == 8 ? defiDataTag8 : undefined}
-                    {currentTablePage == 9 ? defiDataTag9 : undefined}
-                    {currentTablePage == 10 ? defiDataTag10 : undefined}
-                    {currentTablePage == 11 ? defiDataTag11 : undefined}
-                    {currentTablePage == 12 ? defiDataTag12 : undefined}
-                </tbody>
-            </table>
-            <br />
+        <>
+            <div className="defiDetailList">
+                <table className="defiDetailListTable">
+                    <thead className="defiDetailListTableHead">
+                        <tr>
+                            <th>Date</th>
+                            <th className="switchable2">Token Price</th>
+                            <th className="switchable3">Mkt Cap</th>
+                            <th className="switchable4">
+                                {/* PC */}
+                                <a 
+                                data-tip 
+                                data-for="subTableHeader4"
+                                style={!mobileFlag ? undefined : {display: "none"}}
+                                >
+                                Holders
+                                </a>
+                                <ReactTooltip
+                                id="subTableHeader4"
+                                className='tableHeaderTooptip'
+                                place="bottom" 
+                                type="light" 
+                                effect="solid">
+                                <span>The number of wallets with a balance exceeding zero</span>
+                                </ReactTooltip>
+                                {/* Mobile (Tooltip 없음) */}
+                                <span style={mobileFlag ? undefined : {display: "none"}}>Holders</span>
+                            </th>
+                            <th className="switchable5">BNB Locked</th>
+                            <th>
+                                {/* PC */}
+                                <a 
+                                data-tip 
+                                data-for="subTableHeader6"
+                                style={!mobileFlag ? undefined : {display: "none"}}
+                                >
+                                TVL
+                                </a>
+                                <ReactTooltip
+                                id="subTableHeader6"
+                                className='tableHeaderTooptip'
+                                place="bottom" 
+                                type="light" 
+                                effect="solid">
+                                <span>Total value locked</span>
+                                </ReactTooltip>
+                                {/* Mobile (Tooltip 없음) */}
+                                <span style={mobileFlag ? undefined : {display: "none"}}>TVL</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="defiDetailListTableBody">
+                        {currentTablePage == 1 ? defiDataTag1 : undefined}
+                        {currentTablePage == 2 ? defiDataTag2 : undefined}
+                        {currentTablePage == 3 ? defiDataTag3 : undefined}
+                        {currentTablePage == 4 ? defiDataTag4 : undefined}
+                        {currentTablePage == 5 ? defiDataTag5 : undefined}
+                        {currentTablePage == 6 ? defiDataTag6 : undefined}
+                        {currentTablePage == 7 ? defiDataTag7 : undefined}
+                        {currentTablePage == 8 ? defiDataTag8 : undefined}
+                        {currentTablePage == 9 ? defiDataTag9 : undefined}
+                        {currentTablePage == 10 ? defiDataTag10 : undefined}
+                        {currentTablePage == 11 ? defiDataTag11 : undefined}
+                        {currentTablePage == 12 ? defiDataTag12 : undefined}
+                    </tbody>
+                </table>
+                <br />
+            </div>
 
             <ul className="tableBoardPageIconsUl">
                 <li onClick={() => setCurrentTablePage(1)}><img src={tableBoardFirstPageIcon} /></li>
@@ -585,7 +584,7 @@ const DefiDetailList = observer((props) => {
                 <li onClick={() => movePageRight()}><img src={tableBoardRightIcon} /></li>
                 <li onClick={() => setCurrentTablePage(12)}><img src={tableBoardLastPageIcon} /></li>
             </ul>
-        </div>
+        </>
     );
 })
 
