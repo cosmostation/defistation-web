@@ -1319,6 +1319,7 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "ARIES FINANCIAL" ||
                                                         props.defiName == "EmiSwap" ||
                                                         props.defiName == "Annex Finance" ||
+                                                        props.defiName == "Ellipsis Finance" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {
