@@ -11,7 +11,7 @@ import Banner from '../banner/Banner';
 
 import defistationApplicationList from "../../defistationApplicationList.json";
 
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK } from '../../util/Util';
+import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK, trim } from '../../util/Util';
 
 // coin image
 import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
@@ -518,16 +518,238 @@ const DefiList = observer((props) => {
                         }
                     }
 
-                    let verifiedTag;
-                    if (res[i].verified) {
+                    if (res[i].name == "Mars Ecosystem") {
+                        console.log("1012 테스트");
+
                         let index = findDefiIndexNum(res[i].name);
                         let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+                        console.log("auditInfoStr: ", auditInfoStr);
+                    }
 
-                        if (auditInfoStr.indexOf("YES") != -1) {
+                    // let verifiedTag;
+                    // if (res[i].verified) {
+                    //     let index = findDefiIndexNum(res[i].name);
+                    //     let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                    //     if (auditInfoStr.indexOf("YES") != -1) {
+                    //         verifiedTag = 
+                    //         <>
+                    //             {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
+                    //             {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                    //             <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                    //             <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                    //             <ReactTooltip 
+                    //             id={'global' + i} 
+                    //             aria-haspopup='true'
+                    //             place={auditPlace}
+                    //             delayHide={200}
+                    //             effect="solid"
+                    //             >
+                    //             <div>
+                    //                 <ul className="auditUl">
+                    //                     <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                    //                     <li>Audited</li>
+                    //                 </ul>
+                    //                 <ul className="auditListUnknownUl">
+                    //                     <li>
+                    //                         {/* Unknown source */}
+                    //                         <div className="auditButtonText">Unknown source</div>
+                    //                     </li>
+                    //                 </ul>
+                    //             </div>
+                    //             </ReactTooltip>
+                    //         </>;
+                    //     } else {
+                    //         if (auditInfoStr == "") {
+                    //             verifiedTag = 
+                    //             <>
+                    //                 <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                    //                 <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                    //                 <ReactTooltip 
+                    //                 id={'global' + i} 
+                    //                 aria-haspopup='true'
+                    //                 place={auditPlace}
+                    //                 delayHide={200}
+                    //                 effect="solid"
+                    //                 >
+                    //                 <div>
+                    //                     <ul className="auditUl">
+                    //                         <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                    //                         <li>Audited</li>
+                    //                     </ul>
+                    //                     <ul className="auditListUnknownUl">
+                    //                         <li>
+                    //                             {/* Unknown source */}
+                    //                             <div className="auditButtonText">Unknown source</div>
+                    //                         </li>
+                    //                     </ul>
+                    //                 </div>
+                    //                 </ReactTooltip>
+                    //             </>;
+                    //         } else {
+                    //             let resultAuditTag = [];
+
+                    //             // auditInfoStr 파싱 
+                    //             // 1) ; 기준으로 쪼개기
+                    //             let auditLinkArr1 = auditInfoStr.split(";");
+                    //             for (var k = 0; k < auditLinkArr1.length; k++) {
+                    //                 // 2) : 기준으로 쪼개기
+                    //                 let auditLinkArr2 = (auditLinkArr1[k]).split(":");
+
+                    //                 let auditName = auditLinkArr2[0];
+                    //                 let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
+
+                    //                 // 예전) url 함께 표현하던 방식
+                    //                 // resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                                
+                    //                 // 2021-05-26 변경) audit logo 표현 방식
+                    //                 let auditButton;
+                    //                 if ((auditName.toLowerCase()).indexOf("anchain") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={anchain} />;
+                    //                 } else if ((auditName.toLowerCase()).indexOf("certik") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={certik} />; 
+                    //                 } else if ((auditName.toLowerCase()).indexOf("peck") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={peckshield} />;
+                    //                 } else if ((auditName.toLowerCase()).indexOf("mist") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={slowmist} />;
+                    //                 } else if ((auditName.toLowerCase()).indexOf("techrate") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={techrate} />;
+                    //                 } else if ((auditName.toLowerCase()).indexOf("sooho") != -1) {
+                    //                     auditButton = <img className="auditButtonImg" src={sooho} />;
+                    //                 } else {
+                    //                     auditButton = <div className="auditButtonText">{auditName}</div>;
+                    //                 }
+
+                    //                 resultAuditTag.push(<li><a className="auditLink" href={auditLink} target='_blank'>{auditButton}</a></li>);
+                    //             }
+
+                    //             verifiedTag = 
+                    //             <>
+                    //                 <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                    //                 <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                    //                 <ReactTooltip 
+                    //                 id={'global' + i} 
+                    //                 aria-haspopup='true'
+                    //                 place={auditPlace}
+                    //                 delayHide={200}
+                    //                 effect="solid"
+                    //                 >
+                    //                 <div>
+                    //                     <ul className="auditUl">
+                    //                         <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                    //                         <li>Audited</li>
+                    //                     </ul>
+                    //                     <ul className="auditListUl">
+                    //                         {resultAuditTag}
+                    //                     </ul>
+                    //                 </div>
+                    //                 </ReactTooltip>
+                    //             </>;
+                    //         }
+                    //     }
+                    // } else {
+                    //     verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
+                    // }
+                    let verifiedTag;
+
+                    let index = findDefiIndexNum(res[i].name);
+                    let auditInfoStr = (defistationApplicationList[index]["Security Information"]);
+
+                    if (auditInfoStr.indexOf("YES") != -1) {
+                        verifiedTag = 
+                        <>
+                            {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
+                            {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
+                            <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                            <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                            <ReactTooltip 
+                            id={'global' + i} 
+                            aria-haspopup='true'
+                            place={auditPlace}
+                            delayHide={200}
+                            effect="solid"
+                            >
+                            <div>
+                                <ul className="auditUl">
+                                    <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                                    <li>Audited</li>
+                                </ul>
+                                <ul className="auditListUnknownUl">
+                                    <li>
+                                        {/* Unknown source */}
+                                        <div className="auditButtonText">Unknown source</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            </ReactTooltip>
+                        </>;
+                    } else {
+                        if (trim(auditInfoStr) == "" || trim(auditInfoStr) == "-" || trim(auditInfoStr) == "\n") {
+                            // verifiedTag = 
+                            // <>
+                            //     <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
+                            //     <div className="auditVerified" style={{"margin-left":"14px"}}></div>
+                            //     <ReactTooltip 
+                            //     id={'global' + i} 
+                            //     aria-haspopup='true'
+                            //     place={auditPlace}
+                            //     delayHide={200}
+                            //     effect="solid"
+                            //     >
+                            //     <div>
+                            //         <ul className="auditUl">
+                            //             <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
+                            //             <li>Audited</li>
+                            //         </ul>
+                            //         <ul className="auditListUnknownUl">
+                            //             <li>
+                            //                 {/* Unknown source */}
+                            //                 <div className="auditButtonText">Unknown source</div>
+                            //             </li>
+                            //         </ul>
+                            //     </div>
+                            //     </ReactTooltip>
+                            // </>;
+                            verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
+                        } else {
+                            let resultAuditTag = [];
+
+                            // auditInfoStr 파싱 
+                            // 1) ; 기준으로 쪼개기
+                            let auditLinkArr1 = auditInfoStr.split(";");
+                            for (var k = 0; k < auditLinkArr1.length; k++) {
+                                // 2) : 기준으로 쪼개기
+                                let auditLinkArr2 = (auditLinkArr1[k]).split(":");
+
+                                let auditName = auditLinkArr2[0];
+                                let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
+
+                                // 예전) url 함께 표현하던 방식
+                                // resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
+                            
+                                // 2021-05-26 변경) audit logo 표현 방식
+                                let auditButton;
+                                if ((auditName.toLowerCase()).indexOf("anchain") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={anchain} />;
+                                } else if ((auditName.toLowerCase()).indexOf("certik") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={certik} />; 
+                                } else if ((auditName.toLowerCase()).indexOf("peck") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={peckshield} />;
+                                } else if ((auditName.toLowerCase()).indexOf("mist") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={slowmist} />;
+                                } else if ((auditName.toLowerCase()).indexOf("techrate") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={techrate} />;
+                                } else if ((auditName.toLowerCase()).indexOf("sooho") != -1) {
+                                    auditButton = <img className="auditButtonImg" src={sooho} />;
+                                } else {
+                                    auditButton = <div className="auditButtonText">{auditName}</div>;
+                                }
+
+                                resultAuditTag.push(<li><a className="auditLink" href={auditLink} target='_blank'>{auditButton}</a></li>);
+                            }
+
                             verifiedTag = 
                             <>
-                                {/* <span className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> ⦁ </span> */}
-                                {/* <div className="auditVerified" data-tip data-for={'global' + i} style={{"margin-left":"14px"}}> </div> */}
                                 <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
                                 <div className="auditVerified" style={{"margin-left":"14px"}}></div>
                                 <ReactTooltip 
@@ -542,106 +764,19 @@ const DefiList = observer((props) => {
                                         <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
                                         <li>Audited</li>
                                     </ul>
-                                    <ul className="auditListUnknownUl">
-                                        <li>
-                                            {/* Unknown source */}
-                                            <div className="auditButtonText">Unknown source</div>
-                                        </li>
+                                    <ul className="auditListUl">
+                                        {resultAuditTag}
                                     </ul>
                                 </div>
                                 </ReactTooltip>
                             </>;
-                        } else {
-                            if (auditInfoStr == "") {
-                                verifiedTag = 
-                                <>
-                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
-                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
-                                    <ReactTooltip 
-                                    id={'global' + i} 
-                                    aria-haspopup='true'
-                                    place={auditPlace}
-                                    delayHide={200}
-                                    effect="solid"
-                                    >
-                                    <div>
-                                        <ul className="auditUl">
-                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
-                                            <li>Audited</li>
-                                        </ul>
-                                        <ul className="auditListUnknownUl">
-                                            <li>
-                                                {/* Unknown source */}
-                                                <div className="auditButtonText">Unknown source</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    </ReactTooltip>
-                                </>;
-                            } else {
-                                let resultAuditTag = [];
-
-                                // auditInfoStr 파싱 
-                                // 1) ; 기준으로 쪼개기
-                                let auditLinkArr1 = auditInfoStr.split(";");
-                                for (var k = 0; k < auditLinkArr1.length; k++) {
-                                    // 2) : 기준으로 쪼개기
-                                    let auditLinkArr2 = (auditLinkArr1[k]).split(":");
-
-                                    let auditName = auditLinkArr2[0];
-                                    let auditLink = auditLinkArr2[1] + ":" + auditLinkArr2[2];
-
-                                    // 예전) url 함께 표현하던 방식
-                                    // resultAuditTag.push(<li>{auditName}: <a className="auditLink" href={auditLink} target='_blank'>{auditLink}</a></li>);
-                                
-                                    // 2021-05-26 변경) audit logo 표현 방식
-                                    let auditButton;
-                                    if ((auditName.toLowerCase()).indexOf("anchain") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={anchain} />;
-                                    } else if ((auditName.toLowerCase()).indexOf("certik") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={certik} />; 
-                                    } else if ((auditName.toLowerCase()).indexOf("peck") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={peckshield} />;
-                                    } else if ((auditName.toLowerCase()).indexOf("mist") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={slowmist} />;
-                                    } else if ((auditName.toLowerCase()).indexOf("techrate") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={techrate} />;
-                                    } else if ((auditName.toLowerCase()).indexOf("sooho") != -1) {
-                                        auditButton = <img className="auditButtonImg" src={sooho} />;
-                                    } else {
-                                        auditButton = <div className="auditButtonText">{auditName}</div>;
-                                    }
-
-                                    resultAuditTag.push(<li><a className="auditLink" href={auditLink} target='_blank'>{auditButton}</a></li>);
-                                }
-
-                                verifiedTag = 
-                                <>
-                                    <div className="auditClickArea" data-tip data-for={'global' + i}>Audited</div>
-                                    <div className="auditVerified" style={{"margin-left":"14px"}}></div>
-                                    <ReactTooltip 
-                                    id={'global' + i} 
-                                    aria-haspopup='true'
-                                    place={auditPlace}
-                                    delayHide={200}
-                                    effect="solid"
-                                    >
-                                    <div>
-                                        <ul className="auditUl">
-                                            <li><div className='auditVerified' style={{"float":"left", "margin-right": "5px"}}></div></li>
-                                            <li>Audited</li>
-                                        </ul>
-                                        <ul className="auditListUl">
-                                            {resultAuditTag}
-                                        </ul>
-                                    </div>
-                                    </ReactTooltip>
-                                </>;
-                            }
                         }
-                    } else {
-                        verifiedTag = <div className='noAudit' style={{"margin-left":"14px"}}> </div>;
                     }
+
+                    
+
+
+                    
 
                     // Last updated(UTC) 표현에서 앞에 20, 뒤에 초 제거
                     let tempDate;

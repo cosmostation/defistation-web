@@ -210,3 +210,6 @@ export function convertToBMK(value) {
     return valueTag;
 }
 
+export function trim(str) {
+    return str.replace(/(^\s*)|(\s*$)/gi, "");
+}
