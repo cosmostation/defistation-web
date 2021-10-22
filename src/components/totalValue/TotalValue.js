@@ -116,7 +116,7 @@ const TotalValue = observer((props) => {
     const [response, setResponse] = useState({});
 
     // all, 1year, 90days
-    const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180
+    const [chartPeriod, setChartPeriod] = useState("180");    // 7, 30, 90, 180, 0(all)
 
     const [chartLegendLabel, setChartLegendLabel] = useState();
 
@@ -190,6 +190,9 @@ const TotalValue = observer((props) => {
         }
 
         let chartFullUrl = "/chart/" + urlStr + "?days=" + chartPeriod;
+        if (chartPeriod == "0" || chartPeriod == 0) {
+            chartFullUrl = "/chart/" + urlStr + "?days=all";
+        }
         
         // detail
         if (urlFlagDetail == chartFullUrl) return;
@@ -203,6 +206,9 @@ const TotalValue = observer((props) => {
         //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
         // }
         chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+        if (chartPeriod == "0" || chartPeriod == 0) {
+            chartFullUrl2 = "/chart/" + urlStr + "?days=all";
+        }
         
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
@@ -572,7 +578,8 @@ const TotalValue = observer((props) => {
                 }
 
                 // 차트: 7d, 30d
-                if (tempChartData.length > chartPeriod) {
+                console.log("tempChartData.length: ", tempChartData.length);
+                if (tempChartData.length > chartPeriod && chartPeriod > 0) {
                     let remainDataLength = tempChartData.length - chartPeriod;
                     for (var i = 0; i < remainDataLength; i++) {
                         tempChartData.shift();  // 맨 앞 원소 제거
@@ -1357,6 +1364,9 @@ const TotalValue = observer((props) => {
 
                                     <button style={chartPeriod == 180 ? undefined : { display: "none" }} className="periodBtnSelected">6M</button>
                                     <button style={chartPeriod == 180 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("180")}>6M</button>
+
+                                    <button style={chartPeriod == 0 ? undefined : { display: "none" }} className="periodBtnSelected">All</button>
+                                    <button style={chartPeriod == 0 ? { display: "none" } : undefined } className="periodBtn" onClick={() => setChartPeriod("0")}>All</button>
                                 </div>
                             </li>
                         </ul>

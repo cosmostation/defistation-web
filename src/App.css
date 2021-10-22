@@ -1244,11 +1244,11 @@ hr.sideMenuLine {
 }
 
 .tvlChartCardUl li:nth-child(1) {
-  width: 75%;
+  width: 70%;
 }
 
 .tvlChartCardUl li:nth-child(2) {
-  width: 25%;
+  width: 30%;
   /* text-align: right; */
 }
 
@@ -1257,7 +1257,7 @@ hr.sideMenuLine {
   background-color: #f3f3f4;
   height: 26px;
   border-radius: 5px;
-  width: 168px;
+  width: 209px;
   margin-left: 10px;
 }
 
@@ -1305,13 +1305,28 @@ hr.sideMenuLine {
   cursor: pointer;
 }
 
-@media (min-width:550px) and (max-width:768px) {
+@media (min-width:769px) and (max-width:1034px) {
   .tvlChartCardUl li:nth-child(1) {
-    width: 70%;
+    /* width: 70%; */
+    width: 65%;
   }
   
   .tvlChartCardUl li:nth-child(2) {
-    width: 30%;
+    /* width: 30%; */
+    width: 35%;
+    text-align: right;
+  }
+}
+
+@media (min-width:550px) and (max-width:768px) {
+  .tvlChartCardUl li:nth-child(1) {
+    /* width: 70%; */
+    width: 55%;
+  }
+  
+  .tvlChartCardUl li:nth-child(2) {
+    /* width: 30%; */
+    width: 45%;
     text-align: right;
   }
 }
@@ -1347,12 +1362,14 @@ hr.sideMenuLine {
   }
 
   .periodBtn {
-    width: 22.9%;
+    /* width: 22.9%;
+    margin-left: 6px !important; */
+    width: 18.1%;
     margin-left: 6px !important;
   }
 
   .periodBtnSelected {
-    width: 23%;
+    width: 16.9%;
   }
 }
 
