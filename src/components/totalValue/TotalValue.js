@@ -614,7 +614,8 @@ const TotalValue = observer((props) => {
                     // console.log("pastTvl: ", pastTvl);
                     // console.log("((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1: ", ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1);
 
-                    let resultTvl1DayPercent = ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1;
+                    // let resultTvl1DayPercent = ((1 - pastTvl / latestTvl) * 100).toFixed(2) * 1;
+                    let resultTvl1DayPercent = ((latestTvl / pastTvl - 1) * 100).toFixed(2) * 1;
                     if (!isNaN(resultTvl1DayPercent)) {
                         // 숫자인 경우에만
                         global.changeTvl1DayPercent(resultTvl1DayPercent);

@@ -91,16 +91,16 @@ const MiniCards = observer((props) => {
         // console.log("getTotalBnbLocked 함수 시작");
         let urlStr = "";
         if (defiName == "DeFi") {
-            urlStr = "all?days=30";
+            urlStr = "all?days=180";
         } else {
-            urlStr = defiName + "?days=30";
+            urlStr = defiName + "?days=180";
         }
 
         // detail
         if (urlFlagDetail == urlStr) return;
         setUrlFlagDetail(urlStr);
 
-        if (urlStr == "" || urlStr == "?days=30") return;
+        if (urlStr == "" || urlStr == "?days=180") return;
         const res = await fetch(global.defistationApiUrl + "/bnblockedList/" + urlStr, {
             method: 'GET',
             headers: {
