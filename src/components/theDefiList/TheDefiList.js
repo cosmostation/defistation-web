@@ -88,6 +88,7 @@ import kebab from "../../assets/images/defiLogo/kebab@2x.png";
 import fleta from "../../assets/images/defiLogo/fleta@2x.png";
 import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import wowsmile from "../../assets/images/defiLogo/wow_smile.png";
+import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
 
 const TheDefiList = observer(() => {
     const { global } = useStores();
@@ -433,6 +434,10 @@ const TheDefiList = observer(() => {
                             listFlag = true;
                             defiIconArr.push(wowsmile);
                             break;
+                        case "Bagels Finance":
+                            listFlag = true;
+                            defiIconArr.push(bagelsFinance);
+                            break;    
                         default:
                             // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                             if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {
