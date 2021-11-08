@@ -98,6 +98,7 @@ import fleta from "../../assets/images/defiLogo/fleta@2x.png";
 import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import wowsmile from "../../assets/images/defiLogo/wow_smile.png";
 import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
+import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -924,6 +925,9 @@ const TotalValue = observer((props) => {
             case "Bagels Finance":
                 setDefiIcon(bagelsFinance);
                 break;
+            case "Vaulty":
+                setDefiIcon(vaulty);
+                break;
             default:
                 let logoUrl = findLogoUrl(defiName);
 
@@ -1332,6 +1336,8 @@ const TotalValue = observer((props) => {
                                                         props.defiName == "EmiSwap" ||
                                                         props.defiName == "Annex Finance" ||
                                                         props.defiName == "Ellipsis Finance" ||
+                                                        props.defiName == "Belt Finance" ||
+                                                        props.defiName == "PancakeBunny" ||
                                                         props.defiName == "ApeSwap" ? 
                                                         0.0001 : minTvl,
                                             textStyle: {

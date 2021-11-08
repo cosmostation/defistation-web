@@ -77,6 +77,7 @@ import fleta from "../../assets/images/defiLogo/fleta@2x.png";
 import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import wowsmile from "../../assets/images/defiLogo/wow_smile.png";
 import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
+import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -340,6 +341,9 @@ const DefiList = observer((props) => {
                 break;
             case "Bagels Finance":
                 resultImg = bagelsFinance;
+                break;
+            case "Vaulty":
+                resultImg = vaulty;
                 break;
             default:
                 resultImg = findLogoUrl(defiName);
