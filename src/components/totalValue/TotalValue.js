@@ -1327,27 +1327,7 @@ const TotalValue = observer((props) => {
                                             gridlineColor: '#efefef',
                                         },
                                         vAxis: {
-                                            minValue:   props.defiName == "JulSwap" || 
-                                                        props.defiName == "BiFi" || 
-                                                        props.defiName == "ForTube" || 
-                                                        props.defiName == "Bakery Swap" || 
-                                                        props.defiName == "Nerve Finance" || 
-                                                        props.defiName == "Alpha Homora" || 
-                                                        props.defiName == "Smoothy" || 
-                                                        props.defiName == "Elephant Money" ||
-                                                        props.defiName == "Demex" ||
-                                                        props.defiName == "Kebab Finance" ||
-                                                        props.defiName == "Biswap" ||
-                                                        props.defiName == "TEN" ||
-                                                        props.defiName == "dForce" ||
-                                                        props.defiName == "ARIES FINANCIAL" ||
-                                                        props.defiName == "EmiSwap" ||
-                                                        props.defiName == "Annex Finance" ||
-                                                        props.defiName == "Ellipsis Finance" ||
-                                                        props.defiName == "Belt Finance" ||
-                                                        props.defiName == "PancakeBunny" ||
-                                                        props.defiName == "ApeSwap" ? 
-                                                        0.0001 : minTvl,
+                                            minValue: 0.0001,
                                             textStyle: {
                                                 color: '#9d9fa4',
                                             },
