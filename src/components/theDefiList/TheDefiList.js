@@ -90,6 +90,8 @@ import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import wowsmile from "../../assets/images/defiLogo/wow_smile.png";
 import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
 import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
+import dinosaurEggs from "../../assets/images/defiLogo/dinosaurEggs@2x.jpg";
+import sheepDex from "../../assets/images/defiLogo/sheepDex@2x.png";
 
 const TheDefiList = observer(() => {
     const { global } = useStores();
@@ -443,6 +445,14 @@ const TheDefiList = observer(() => {
                             listFlag = true;
                             defiIconArr.push(vaulty);
                             break; 
+                        case "Dinosaur Eggs（DSG）":
+                            listFlag = true;
+                            defiIconArr.push(dinosaurEggs);
+                            break;
+                        case "SheepDex":
+                            listFlag = true;
+                            defiIconArr.push(sheepDex);
+                            break;
                         default:
                             // defistationApplicationList.json 에 코인 심볼 아이콘 url이 있는가?
                             if (defistationApplicationList[i]["Project Logo URL (68px*68px png ONLY. Given link should directly DISPLAY Logo image without any BACKGROUND. Google drive link is NOT accepted.)"] != "") {
