@@ -186,7 +186,7 @@ const TotalValue = observer((props) => {
             setChartData(['x', 'TVL(USD)', 'Token Price(USD)']);
         }
 
-        // console.log("urlStr: ", urlStr);
+        console.log("urlStr: ", urlStr);
         if (urlStr == "") {
             global.changeTotalValueLockedUsd("$ 0");
             global.changeTvl1DayPercent(0);
@@ -209,10 +209,18 @@ const TotalValue = observer((props) => {
         // } else {
         //     chartFullUrl2 = "/chart/" + urlStr + "?days=" + "90";
         // }
-        chartFullUrl2 = "/chart/" + urlStr + "?days=" + "180";
+
+        console.log("urlStr2: ", encodeURI(urlStr));
+
+        // Dinosaur%20Eggs%EF%BC%88DSG%EF%BC%89
+        // Dinosaur%20Eggs%EF%BC%88DSG%EF%BC%89
+
+        chartFullUrl2 = "/chart/" + encodeURI(urlStr) + "?days=" + "180";
         if (chartPeriod == "0" || chartPeriod == 0) {
-            chartFullUrl2 = "/chart/" + urlStr + "?days=all";
+            chartFullUrl2 = "/chart/" + encodeURI(urlStr) + "?days=all";
         }
+
+        console.log("chartFullUrl2: ", chartFullUrl2);
         
         const res = await fetch(global.defistationApiUrl + chartFullUrl2, {
             method: 'GET',
@@ -223,7 +231,7 @@ const TotalValue = observer((props) => {
         res
             .json()
             .then(res => {
-                // console.log("res: ", res);
+                console.log("res: ", res);
 
                 // data={[
                 //     ['x', 'TVL(USD)'],
