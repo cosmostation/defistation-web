@@ -445,7 +445,7 @@ const TheDefiList = observer(() => {
                             listFlag = true;
                             defiIconArr.push(vaulty);
                             break; 
-                        case "Dinosaur Eggs（DSG）":
+                        case "Dinosaur Eggs":
                             listFlag = true;
                             defiIconArr.push(dinosaurEggs);
                             break;

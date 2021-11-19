@@ -938,7 +938,7 @@ const TotalValue = observer((props) => {
             case "Vaulty":
                 setDefiIcon(vaulty);
                 break;
-            case "Dinosaur Eggs（DSG）":
+            case "Dinosaur Eggs":
                 setDefiIcon(dinosaurEggs);
                 break;
             case "SheepDex":

@@ -347,7 +347,7 @@ const DefiList = observer((props) => {
             case "Vaulty":
                 resultImg = vaulty;
                 break;
-            case "Dinosaur Eggs（DSG）":
+            case "Dinosaur Eggs":
                 resultImg = dinosaurEggs;
                 break;
             case "SheepDex":
