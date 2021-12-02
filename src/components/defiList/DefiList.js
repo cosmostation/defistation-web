@@ -872,6 +872,9 @@ const DefiList = observer((props) => {
                     } else {
                         tokenHoldersTag = numberWithCommas(tokenHolders, false);
                     }
+                    // holder 수집 전까지 강제
+                    console.log("holder 수집 전까지 강제");
+                    tokenHoldersTag = "-";
 
                     // 변화율
                     let tokenPriceChange24h = res[i].priceChange24h;
@@ -1034,22 +1037,6 @@ const DefiList = observer((props) => {
                         rankInfoArr.push(tempDefiName, currencyNum + currencyUnit, change24hValue);
 
                         // ----------------------------------- Trending -----------------------------------
-                        // ["priceDefiName", "priceStr", price change, "marketCapDefiName", "marketcapStr", marketcap change, "holdersDefiName", "holdersStr", holders change, "tvlDefiName", "tvlStr", tvl change]
-                        // top price change 찾기
-
-                        // if (i == 0) {
-                        //     console.log("[0423-0] trendingInfoArr[2]: ", trendingInfoArr[2]);
-
-                        //     if (trendingInfoArr[2] == null) {
-                        //         console.log("[0423] trendingInfoArr[2]: ", trendingInfoArr[2]);
-                        //         trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
-                        //         console.log("[0423] success@");
-                        //     }
-                        // } else {
-                        //     console.log("[0423-1] trendingInfoArr[2]: ", trendingInfoArr[2]);
-
-                        // }
-
                         if (tokenPriceChange24h > trendingInfoArr[2]) {
                             trendingInfoArr[2] = tokenPriceChange24h.toFixed(4) * 1;
                             // tag 보관
