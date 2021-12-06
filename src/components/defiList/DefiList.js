@@ -873,8 +873,8 @@ const DefiList = observer((props) => {
                         tokenHoldersTag = numberWithCommas(tokenHolders, false);
                     }
                     // holder 수집 전까지 강제
-                    console.log("holder 수집 전까지 강제");
-                    tokenHoldersTag = "-";
+                    // console.log("holder 수집 전까지 강제");
+                    // tokenHoldersTag = "-";
 
                     // 변화율
                     let tokenPriceChange24h = res[i].priceChange24h;
