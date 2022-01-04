@@ -81,6 +81,7 @@ import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
 import dinosaurEggs from "../../assets/images/defiLogo/dinosaurEggs@2x.jpg";
 import sheepDex from "../../assets/images/defiLogo/sheepDex@2x.png";
 import nftb from "../../assets/images/defiLogo/nftb@2x.png";
+import yslio from "../../assets/images/defiLogo/yslio@2x.png";
 
 // audit logo for button
 import anchain from "../../assets/images/auditLogo/anchain.png";
@@ -356,7 +357,10 @@ const DefiList = observer((props) => {
                 break;
             case "NFTb":
                 resultImg = nftb;
-                break;    
+                break;  
+            case "YSLIO":
+                resultImg = yslio;
+                break;        
             default:
                 resultImg = findLogoUrl(defiName);
                 break;    

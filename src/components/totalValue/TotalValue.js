@@ -102,6 +102,7 @@ import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
 import dinosaurEggs from "../../assets/images/defiLogo/dinosaurEggs@2x.jpg";
 import sheepDex from "../../assets/images/defiLogo/sheepDex@2x.png";
 import nftb from "../../assets/images/defiLogo/nftb@2x.png";
+import yslio from "../../assets/images/defiLogo/yslio@2x.png";
 
 // Defi Link 아이콘
 import defiOfficialSiteIcon from "../../assets/images/defiLink/officialsite.svg";
@@ -947,7 +948,10 @@ const TotalValue = observer((props) => {
                 break;
             case "NFTb":
                 setDefiIcon(nftb);
-                break;    
+                break; 
+            case "YSLIO":
+                setDefiIcon(yslio);
+                break;        
             default:
                 let logoUrl = findLogoUrl(defiName);
 
