@@ -47,7 +47,7 @@
     "typeface-montserrat": "^1.1.13",
     "typeface-roboto": "^1.1.13",
     "typeface-rubik": "^1.1.13",
-    "url-parse": "^1.5.3"
+    "url-parse": "^1.5.9"
   },
   "scripts": {
     "start": "react-app-rewired start",
