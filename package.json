@@ -54,8 +54,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "deployDev": "yarn build && firebase deploy --project defistation-web-dev",
-    "deployProd": "yarn build && firebase deploy --project defistation-web"
+    "deploy": "yarn build && firebase deploy -P dev"
   },
   "eslintConfig": {
     "extends": "react-app"
