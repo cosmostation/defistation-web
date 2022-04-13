@@ -1,14 +1,12 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyUnitFullName, getCurrencyDigit, getOfficialDefiName, convertToBMK } from '../../../util/Util';
-import EllipsisText from "react-ellipsis-text";
-
-import Slider from "react-slick";   // https://github.com/akiran/react-slick
-// $ npm install react-slick --save
-// $ npm install slick-carousel
-
 import '../../../App.css';
+
+import React, { useEffect, useState } from "react";
+import { convertToBMK, numberWithCommas } from '../../../util/Util';
+
+import EllipsisText from "react-ellipsis-text";
+import Slider from "react-slick";
+import { observer } from 'mobx-react';
+import { useHistory } from 'react-router-dom';
 
 const MiniCardSlider = observer((props) => {
 

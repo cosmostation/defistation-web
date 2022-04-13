@@ -1,20 +1,18 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-import ReactTooltip from 'react-tooltip';
-import useStores from '../../useStores';
-
-import _ from "lodash";
-
 import '../../App.css';
 
-import { numberWithCommas, getCurrencyUnit, getCurrencyDigit, convertDateFormat3, convertToBMK } from '../../util/Util';
+import React, { Fragment, Suspense, useEffect, useState } from "react";
+import { convertDateFormat3, convertToBMK, getCurrencyDigit, getCurrencyUnit, numberWithCommas } from '../../util/Util';
+import { inject, observer } from 'mobx-react';
+import { useHistory, useLocation } from 'react-router-dom';
 
+import ReactTooltip from 'react-tooltip';
+import _ from "lodash";
+import tableBoardFirstPageIcon from "../../assets/images/tableBoardIcons/first_page_black_24dp.svg";
+import tableBoardLastPageIcon from "../../assets/images/tableBoardIcons/last_page_black_24dp.svg";
 // table board icon
 import tableBoardLeftIcon from "../../assets/images/tableBoardIcons/chevron_left_black_24dp.svg";
 import tableBoardRightIcon from "../../assets/images/tableBoardIcons/chevron_right_black_24dp.svg";
-import tableBoardFirstPageIcon from "../../assets/images/tableBoardIcons/first_page_black_24dp.svg";
-import tableBoardLastPageIcon from "../../assets/images/tableBoardIcons/last_page_black_24dp.svg";
+import useStores from '../../useStores';
 
 const DefiDetailList = observer((props) => {
     const { global } = useStores();

@@ -1,7 +1,7 @@
 export const numberWithCommas = (n, pointSizeDownFlag = true, priceFlag = false) => {
     // 1보다 작은 수는 소숫점 4자리까지 표현
     if (n != 0 && n < 1 && n > 0) {
-        n = (n).toFixed(4);
+        n = toFixed((n).toPrecision(2));
     } else {
         if (priceFlag) {
             n = (n).toFixed(2);
@@ -18,6 +18,24 @@ export const numberWithCommas = (n, pointSizeDownFlag = true, priceFlag = false)
 		return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
 	}
 }
+
+function toFixed(x) {
+    if (Math.abs(x) < 1.0) {
+      var e = parseInt(x.toString().split('e-')[1]);
+      if (e) {
+          x *= Math.pow(10,e-1);
+          x = '0.' + (new Array(e)).join('0') + x.toFixed(2).toString().substring(2);
+      }
+    } else {
+      var e = parseInt(x.toString().split('+')[1]);
+      if (e > 20) {
+          e -= 20;
+          x /= Math.pow(10,e);
+          x += (new Array(e+1)).join('0');
+      }
+    }
+    return x;
+  }
 
 function capitalize2(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1);

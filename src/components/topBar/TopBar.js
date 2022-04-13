@@ -1,16 +1,12 @@
-import React, { Component, Fragment, useState, useEffect } from 'react';
-import { observer } from 'mobx-react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-
-import defistationLogo from "../../assets/images/defistation_logo@2x.png";
-import defistationLogoAlpha from "../../assets/images/defistation_logo_alpha.svg";
-import defistationLogoBeta from "../../assets/images/defistation_logo_beta.svg";
-import defistationLogoLightBeta from "../../assets/images/defistation_logo_light_beta.svg";
 
 import bscLogo from "../../assets/images/bsc_logo@2x.png";
 import bscScanLogo from "../../assets/images/bscscan_logo@2x.png";
-import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
 import cosmostationLogo from "../../assets/images/cosmostation_logo@2x.png";
+import defistationLogoLightBeta from "../../assets/images/defistation_logo_light_beta.svg";
+import exchangeLogo from "../../assets/images/exchange_logo@2x.png";
+import { observer } from 'mobx-react';
 
 const TopBar = observer((props) => {
 

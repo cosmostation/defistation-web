@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { numberWithCommas } from '../../../util/Util';
-
 import '../../../App.css';
+
+import React, { useEffect } from "react";
+
+import { numberWithCommas } from '../../../util/Util';
+import { observer } from 'mobx-react';
 
 const MiniCard = observer((props) => {
     useEffect(() => {

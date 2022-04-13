@@ -1,14 +1,13 @@
-import React, { Component, Suspense, useState, useEffect } from "react";
-import { useHistory, useLocation } from 'react-router-dom';
-import { observer, inject } from 'mobx-react';
-
 import '../../App.css';
 
-import TopBar from '../topBar/TopBar';
 import Footer from '../footer/Footer';
-
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import TopBar from '../topBar/TopBar';
 import cosmostationLogo from "../../assets/images/cosmostationlogo.svg";
 import linkIcon from "../../assets/images/official_ic.svg";
+import { observer } from 'mobx-react';
+import { useHistory } from 'react-router-dom';
 
 const About = observer(() => {
     const history = useHistory();
@@ -95,7 +94,7 @@ Cosmostation develops, operates, and maintains all of its services in the spirit
                     </span>
 
                     <ul className="defiOverviewWebsiteLinkUl" onClick={() => window.open("https://www.cosmostation.io/", "_blank")}>
-                        <li><img src={linkIcon} /></li>
+                        <li><img src={linkIcon} alt="cosmostation" /></li>
                         <li><span className="defiOverviewWebsiteLink">Official Website</span></li>
                     </ul>
                     <br />

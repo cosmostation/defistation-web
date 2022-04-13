@@ -1,8 +1,7 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-
 import '../../../App.css';
+
+import React from "react";
+import { observer } from 'mobx-react';
 
 const ConnectBtn = observer((props) => {
 

@@ -1,95 +1,97 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-import ReactTooltip from 'react-tooltip';
-import useStores from '../../useStores';
-// import _ from "lodash";
-
 import '../../App.css';
 
+import React, { Fragment, Suspense, useEffect, useState } from "react";
+import { capitalize, convertDateFormat2, convertToBMK, generateRandom, getCurrencyDigit, getCurrencyUnit, getOfficialCategoryName, getOfficialDefiName, numberWithCommas, replaceAll, trim } from '../../util/Util';
+import { inject, observer } from 'mobx-react';
+import { useHistory, useLocation } from 'react-router-dom';
+
 import Banner from '../banner/Banner';
-
-import defistationApplicationList from "../../defistationApplicationList.json";
-
-import { numberWithCommas, capitalize, replaceAll, getOfficialDefiName, getOfficialCategoryName, getCurrencyDigit, getCurrencyUnit, convertDateFormat2, generateRandom, convertToBMK, trim } from '../../util/Util';
-
-// coin image
-import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
+import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
+import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
+import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
+import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
+import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
+import ReactTooltip from 'react-tooltip';
 import acryptos from "../../assets/images/coins/acryptos.png";
+import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
+// audit logo for button
+import anchain from "../../assets/images/auditLogo/anchain.png";
 import anyswap from "../../assets/images/coins/anyswap.png";
+import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
 import autofarm from "../../assets/images/coins/auto.png";
+import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
 import bakeryswap from "../../assets/images/coins/bakery.png";
 import bdollar from "../../assets/images/coins/bdollar.png";
 import beefyfinance from "../../assets/images/coins/beefy-finance.png";
+import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
+import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
+import biswap from "../../assets/images/defiLogo/biswap@2x.png";
+import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
 import bnexchange from "../../assets/images/coins/bnex.svg";
+import bscex from "../../assets/images/defiLogo/bscex@2x.png";
+import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
 import bscswap from "../../assets/images/coins/bscswap.png";
 import bstablefinance from "../../assets/images/coins/bstable.png";
 import burgerswap from "../../assets/images/coins/burger-swap.png";
 import cberry from "../../assets/images/coins/cberry.png";
+import certik from "../../assets/images/auditLogo/certik.png";
+import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
+import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import creamfinance from "../../assets/images/defiLogo/creamfinance@2x.png";
+// coin image
+import defaultIcon from "../../assets/images/defiLogo/project-none@2x.png";
+import defistationApplicationList from "../../defistationApplicationList.json";
+import demex from "../../assets/images/defiLogo/demex@2x.png";
+import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
+import dforce from "../../assets/images/defiLogo/dforce@2x.png";
+import dinosaurEggs from "../../assets/images/defiLogo/dinosaurEggs@2x.jpg";
+import dodo from "../../assets/images/defiLogo/dodo@2x.png";
+import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
+import fleta from "../../assets/images/defiLogo/fleta@2x.png";
 import fortube from "../../assets/images/coins/fortube.png";
 import fryworld from "../../assets/images/coins/fryworld.png";
+import goosefinance from "../../assets/images/defiLogo/goosefinance@2x.png";
+import helmet from "../../assets/images/defiLogo/helmet@2x.png";
+import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
 import jetfuel from "../../assets/images/coins/jetfuel.png";
 import julswap from "../../assets/images/coins/julswap.png";
+import kebab from "../../assets/images/defiLogo/kebab@2x.png";
+import mdex from "../../assets/images/defiLogo/mdex@2x.png";
 import milk from "../../assets/images/coins/milk.png";
+import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
 import narwhalswap from "../../assets/images/coins/narwhalswap.png";
-import pancakebunny from "../../assets/images/coins/pancakebunny.png";
+import nftb from "../../assets/images/defiLogo/nftb@2x.png";
+import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
 import pancake from "../../assets/images/coins/pancakeswap.png";
+import pancakebunny from "../../assets/images/coins/pancakebunny.png";
+import peckshield from "../../assets/images/auditLogo/peckshield.png";
+import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
+import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
 import qian from "../../assets/images/coins/qian-kun.png";
+import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
+import sheepDex from "../../assets/images/defiLogo/sheepDex@2x.png";
+import slowmist from "../../assets/images/auditLogo/slowmist.png";
+import sooho from "../../assets/images/auditLogo/sooho.png";
 import spartanprotocol from "../../assets/images/coins/spartan-protocol.png";
 import stormswap from "../../assets/images/coins/storm.png";
-import thugs from "../../assets/images/coins/thugs.png";
-import venus from "../../assets/images/coins/venus.png";
-import MidasDollar from "../../assets/images/defiLogo/MidasDollar@2x.png";
-import LinearFinance from "../../assets/images/defiLogo/LinearFinance@2x.png";
-import KEEP3RBSC from "../../assets/images/defiLogo/KEEP3RBSC@2x.png";
-import kebab from "../../assets/images/defiLogo/kebab@2x.png";
-import goosefinance from "../../assets/images/defiLogo/goosefinance@2x.png";
-import CrowFinance from "../../assets/images/defiLogo/CrowFinance@2x.png";
-import CheeseSwap from "../../assets/images/defiLogo/CheeseSwap@2x.png";
-import bscex from "../../assets/images/defiLogo/bscex@2x.png";
-import derifinance from "../../assets/images/defiLogo/derifinance@2x.png";
-import beltfinance from "../../assets/images/defiLogo/belt@2x.png";
-import bifi from "../../assets/images/defiLogo/bififinance@2x.png";
-import blackholeswap from "../../assets/images/defiLogo/blackholeswap@2x.png";
-import multiplier from "../../assets/images/defiLogo/multiplier@2x.png";
-import pikafinance from "../../assets/images/defiLogo/pikafinance@2x.png";
-import bscrunner from "../../assets/images/defiLogo/bscrunner@2x.png";
-import ellipsisfinance from "../../assets/images/defiLogo/ellipsisfinance@2x.png";
-import demex from "../../assets/images/defiLogo/demex@2x.png";
-import dodo from "../../assets/images/defiLogo/dodo@2x.png";
-import helmet from "../../assets/images/defiLogo/helmet@2x.png";
-import ariesfinancial from "../../assets/images/defiLogo/ariesfinancial@2x.png";
-import alphahomora from "../../assets/images/defiLogo/alphahomora@2x.png";
-import cobaltfinance from "../../assets/images/defiLogo/cobaltfinance@2x.png";
 import swampfinance from "../../assets/images/defiLogo/swampfinance@2x.png";
-import nominex from "../../assets/images/defiLogo/Nominex@2x.png";
+import techrate from "../../assets/images/auditLogo/techrate.png";
+import ten from "../../assets/images/defiLogo/ten@2x.png";
+import thugs from "../../assets/images/coins/thugs.png";
+import useStores from '../../useStores';
+import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
+import venus from "../../assets/images/coins/venus.png";
 import waultfinance from "../../assets/images/defiLogo/waultfinance@2x.png";
 import wepiggy from "../../assets/images/defiLogo/wepiggy@2x.png";
-import rabbitfinance from "../../assets/images/defiLogo/rabbitfinance@2x.png";
-import biswap from "../../assets/images/defiLogo/biswap@2x.png";
-import insuraceprotocol from "../../assets/images/defiLogo/insuraceprotocol@2x.png";
-import ten from "../../assets/images/defiLogo/ten@2x.png";
-import mdex from "../../assets/images/defiLogo/mdex@2x.png";
-import pumpy from "../../assets/images/defiLogo/pumpy@2x.png";
-import dforce from "../../assets/images/defiLogo/dforce@2x.png";
-import fleta from "../../assets/images/defiLogo/fleta@2x.png";
-import coinwind from "../../assets/images/defiLogo/coinwind.png";
 import wowsmile from "../../assets/images/defiLogo/wow_smile.png";
-import bagelsFinance from "../../assets/images/defiLogo/bagelsFinance@2x.png";
-import vaulty from "../../assets/images/defiLogo/vaulty@2x.png";
-import dinosaurEggs from "../../assets/images/defiLogo/dinosaurEggs@2x.jpg";
-import sheepDex from "../../assets/images/defiLogo/sheepDex@2x.png";
-import nftb from "../../assets/images/defiLogo/nftb@2x.png";
 import yslio from "../../assets/images/defiLogo/yslio@2x.png";
+// import _ from "lodash";
 
-// audit logo for button
-import anchain from "../../assets/images/auditLogo/anchain.png";
-import certik from "../../assets/images/auditLogo/certik.png";
-import peckshield from "../../assets/images/auditLogo/peckshield.png";
-import slowmist from "../../assets/images/auditLogo/slowmist.png";
-import techrate from "../../assets/images/auditLogo/techrate.png";
-import sooho from "../../assets/images/auditLogo/sooho.png";
+
+
+
+
+
 
 const DefiList = observer((props) => {
     const { global } = useStores();
@@ -853,7 +855,7 @@ const DefiList = observer((props) => {
                     let currencyUnitForMarketCap;
                     let tokenMarketCapNum;
                     let tokenMarketCapTag;
-                    if (res[i].price < 0.0001 || res[i].price == null) {
+                    if (res[i].price < 0.000000001 || res[i].price == null) {
                         tokenPrice = "-";
                         tokenMarketCapTag = "-";
                     } else {

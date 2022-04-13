@@ -1,18 +1,18 @@
-import React, { Component, Suspense, useState, useEffect } from "react";
-import { useHistory, useLocation } from 'react-router-dom';
-import { observer, inject } from 'mobx-react';
-import ReactGA from "react-ga";
-import useStores from '../../useStores';
-
 import '../../App.css';
 
+import React, { Component, Suspense, useEffect, useState } from "react";
+import { inject, observer } from 'mobx-react';
+import { useHistory, useLocation } from 'react-router-dom';
+
+import DefiDetailList from '../defiDetailList/DefiDetailList';
+import DefiOverview from '../defiOverview/DefiOverview';
+import Footer from '../footer/Footer';
+import MiniCards from '../miniCards/MiniCards';
+import MobileDefiBtns from '../mobileDefiBtns/MobileDefiBtns';
+import ReactGA from "react-ga";
 import TopBar from '../topBar/TopBar';
 import TotalValue from '../totalValue/TotalValue';
-import MiniCards from '../miniCards/MiniCards';
-import DefiOverview from '../defiOverview/DefiOverview';
-import DefiDetailList from '../defiDetailList/DefiDetailList';
-import MobileDefiBtns from '../mobileDefiBtns/MobileDefiBtns';
-import Footer from '../footer/Footer';
+import useStores from '../../useStores';
 
 const DefiDetail = observer(() => {
     const { global } = useStores();

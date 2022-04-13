@@ -1,14 +1,14 @@
-import React, { Component, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import ReactGA from "react-ga";
-
 import '../../App.css';
 
-import TopBar from '../topBar/TopBar';
-import TotalValue from '../totalValue/TotalValue';
-import MiniCards from '../miniCards/MiniCards';
+import React, { useEffect } from "react";
+
 import DefiList from '../defiList/DefiList';
 import Footer from '../footer/Footer';
+import MiniCards from '../miniCards/MiniCards';
+import ReactGA from "react-ga";
+import TopBar from '../topBar/TopBar';
+import TotalValue from '../totalValue/TotalValue';
+import { observer } from 'mobx-react';
 
 const Main = observer(() => {
 

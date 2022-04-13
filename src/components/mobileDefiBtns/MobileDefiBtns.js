@@ -1,13 +1,10 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-import useStores from '../../useStores';
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../util/Util';
-
 import '../../App.css';
+
+import React, { useEffect } from "react";
 
 import MobileDefiBtn from './mobileDefiBtn/MobileDefiBtn';
 import defistationApplicationList from "../../defistationApplicationList.json";
+import { observer } from 'mobx-react';
 
 const MobileDefiBtns = observer((props) => {
 

@@ -1,17 +1,13 @@
-import React, { Fragment, Suspense, useState, useEffect } from "react";
-import { observer, inject } from 'mobx-react';
-import { useHistory, useLocation } from 'react-router-dom';
-import useStores from '../../../useStores';
-import { numberWithCommas, capitalize, replaceAll, getCurrencyUnit, getCurrencyDigit } from '../../../util/Util';
-
 import '../../../App.css';
 
-import officialSiteIcon from "../../../assets/images/defiLink/icon-officialsite.svg";
-import githubIcon from "../../../assets/images/defiLink/icon-github.svg";
+import React from "react";
 import docsIcon from "../../../assets/images/defiLink/icon-docs.svg";
-import twitterIcon from "../../../assets/images/defiLink/icon-twitter.svg";
-import telegramIcon from "../../../assets/images/defiLink/icon-telegram.svg";
+import githubIcon from "../../../assets/images/defiLink/icon-github.svg";
 import mediumIcon from "../../../assets/images/defiLink/icon-medium.svg";
+import { observer } from 'mobx-react';
+import officialSiteIcon from "../../../assets/images/defiLink/icon-officialsite.svg";
+import telegramIcon from "../../../assets/images/defiLink/icon-telegram.svg";
+import twitterIcon from "../../../assets/images/defiLink/icon-twitter.svg";
 
 const MobileDefiBtn = observer((props) => {
 
