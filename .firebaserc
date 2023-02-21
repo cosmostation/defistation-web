@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "defistation-web",
+    "dev": "defistation-web-dev"
+  }
+}

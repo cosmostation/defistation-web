@@ -1,25 +1,29 @@
-import React, { Component, Fragment, Suspense, useState, useEffect } from 'react';
-import { observer, inject } from 'mobx-react';
+// Font
+import 'typeface-montserrat';
+import 'typeface-roboto';
+import './App.css';
+
 import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import React, { Component, Fragment, Suspense, useEffect, useState } from 'react';
+import { inject, observer } from 'mobx-react';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import Main from './components/main/Main';
-import DefiDetail from './components/defiDetail/DefiDetail';
 import About from './components/about/About';
+import DefiDetail from './components/defiDetail/DefiDetail';
+import Main from './components/main/Main';
+// Google Analytics
+import ReactGA from 'react-ga';
+import { Redirect } from "react-router-dom";
 import TheDefiList from './components/theDefiList/TheDefiList';
 
-// Font
-import 'typeface-montserrat';   // $ npm install --save typeface-montserrat
-import 'typeface-roboto';       // $ npm install --save typeface-roboto
+// $ npm install --save typeface-montserrat
+      // $ npm install --save typeface-roboto
 
 require('typeface-rubik')   // npm install --save typeface-rubik
 require('typeface-heebo')   // npm install --save typeface-heebo
 
-import './App.css';
 
-// Google Analytics
-import ReactGA from 'react-ga';     // https://github.com/react-ga/react-ga
+    // https://github.com/react-ga/react-ga
 if (process.env.NODE_ENV === "production") {
     ReactGA.initialize('UA-181754248-1');
 }
